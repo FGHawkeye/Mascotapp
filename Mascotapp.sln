@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29201.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mascotapp.Android", "Mascotapp\Mascotapp.Android\Mascotapp.Android.csproj", "{13E12E83-F2A2-47E9-BB40-0C7B9CC2A096}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mascotapp", "Mascotapp\Mascotapp\Mascotapp.csproj", "{9F6FF804-777A-42ED-A3F5-D3AC9F89D520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{6A64D446-E079-45AB-AF71-7C427D754D2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13E12E83-F2A2-47E9-BB40-0C7B9CC2A096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13E12E83-F2A2-47E9-BB40-0C7B9CC2A096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13E12E83-F2A2-47E9-BB40-0C7B9CC2A096}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{13E12E83-F2A2-47E9-BB40-0C7B9CC2A096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13E12E83-F2A2-47E9-BB40-0C7B9CC2A096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13E12E83-F2A2-47E9-BB40-0C7B9CC2A096}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9F6FF804-777A-42ED-A3F5-D3AC9F89D520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F6FF804-777A-42ED-A3F5-D3AC9F89D520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F6FF804-777A-42ED-A3F5-D3AC9F89D520}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9F6FF804-777A-42ED-A3F5-D3AC9F89D520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F6FF804-777A-42ED-A3F5-D3AC9F89D520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F6FF804-777A-42ED-A3F5-D3AC9F89D520}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6A64D446-E079-45AB-AF71-7C427D754D2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A64D446-E079-45AB-AF71-7C427D754D2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A64D446-E079-45AB-AF71-7C427D754D2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A64D446-E079-45AB-AF71-7C427D754D2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D09F1A95-BD95-4ABA-8DAC-43FF363496B0}
+	EndGlobalSection
+EndGlobal
