@@ -16,7 +16,7 @@ namespace Domain.Entidades
 
         public override string ToString()
         {
-            return NombreYApellido + " WEA";
+            return NombreYApellido;
         }
     }
 
