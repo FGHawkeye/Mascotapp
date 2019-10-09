@@ -8,7 +8,7 @@ namespace Domain.Entidades
     {
         public int IdUsuario { get; set; }
         public string NombreUsuario { get; set; }
-        public TipoUsuario TipoUsuario { get; set; }
+        public int IdTipoUsuario { get; set; }
         public string Contraseña { get; set; }
         public string NombreYApellido { get; set; }
         public long Telefono { get; set; }
@@ -19,12 +19,4 @@ namespace Domain.Entidades
             return NombreYApellido;
         }
     }
-
-    public enum TipoUsuario
-    {
-        Administrador = 1,
-        UsuarioRefugio = 2,
-        Usuario = 3
-    }
-    
 }

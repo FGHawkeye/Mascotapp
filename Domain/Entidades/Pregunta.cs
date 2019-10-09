@@ -8,6 +8,6 @@ namespace Domain.Entidades
     {
         public string Pregunta { get; set; }
         public int IdUsuario { get; set; }
-        public int Respuesta { get; set; }
+        public string Respuesta { get; set; }
     }
 }
