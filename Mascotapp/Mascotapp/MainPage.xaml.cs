@@ -1,4 +1,5 @@
 ﻿using Mascotapp.NavigationMenu;
+using Mascotapp.Visualizar_mapa;
 using Xamarin.Forms;
 
 namespace Mascotapp
@@ -13,7 +14,7 @@ namespace Mascotapp
         {
             InitializeComponent();
             this.Master = new Master();
-            this.Detail = new NavigationPage(new Detail());
+            this.Detail = new NavigationPage(new Mapa());
             //CargarUsuarios();
         }
 
