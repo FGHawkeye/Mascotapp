@@ -6,10 +6,35 @@
              mc:Ignorable="d"
              x:Class="Mascotapp.Marcador_animales.AltaMarcador">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
+        <StackLayout Orientation="Vertical">
+            <Label Text="Agregar marcador"
                 HorizontalOptions="CenterAndExpand" />
+            
+            <StackLayout BackgroundColor="GhostWhite">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Tipo animal: "/>
+                    <Picker  Title="Seleccione tipo animal" >
+                        <Picker.Items>
+                            <x:String>Gato</x:String>
+                            <x:String>Perro</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Descripcion: "/>
+                    <Editor Placeholder="Descripcion">
+                        
+                    </Editor>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Cancelar"></Button>
+                    <Button Text="Agregar"></Button>
+                </StackLayout>
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

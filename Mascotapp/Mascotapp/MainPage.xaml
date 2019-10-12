@@ -4,7 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:Mascotapp.NavigationMenu;assembly=Mascotapp"    
              x:Class="Mascotapp.MainPage">
-    
 
+
+    <MasterDetailPage.Master>
+        <local:Master x:Name="masterPage" />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:Master />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+    
 </MasterDetailPage>

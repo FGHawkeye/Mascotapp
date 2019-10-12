@@ -7,4 +7,10 @@
              x:Class="Mascotapp.NavigationMenu.Master"
              Title="Master">
 
+    <StackLayout>
+        <Button Text="Agregar Marcador" x:Name="btnAgregarMarcador" Clicked="BtnAgregarMarcador_Clicked" />
+        <Button Text="Login" x:Name="btnLogin"  />
+    </StackLayout> 
+
+
 </ContentPage>
