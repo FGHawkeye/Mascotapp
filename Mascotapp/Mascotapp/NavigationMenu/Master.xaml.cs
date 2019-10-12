@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mascotapp.Marcador_animales;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace Mascotapp.NavigationMenu
         public Master()
         {
             InitializeComponent();
+        }
+
+        private async void BtnAgregarMarcador_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new AltaMarcador());
         }
     }
 }
