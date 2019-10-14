@@ -9,6 +9,7 @@
 
     <StackLayout>
         <Button Text="Agregar Marcador" x:Name="btnAgregarMarcador" Clicked="BtnAgregarMarcador_Clicked" />
+        <Button Text="Agregar Adopcion" x:Name="btnAgregarAdopcion" Clicked="BtnAgregarAdopcion_Clicked" />
         <Button Text="Login" x:Name="btnLogin"  />
     </StackLayout> 
 
