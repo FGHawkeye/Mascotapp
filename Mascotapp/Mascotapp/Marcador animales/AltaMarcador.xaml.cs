@@ -1,5 +1,6 @@
 ﻿using Domain.Entidades;
 using Domain.Servicios;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,6 +24,9 @@ namespace Mascotapp.Marcador_animales
 
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioMarcadores serviceMarcadores = new ServicioMarcadores();
+        private ServicioImagenes serviceImagenes = new ServicioImagenes();
+
+        private MediaFile _currentImg;
 
         public AltaMarcador()
         {
@@ -54,20 +58,35 @@ namespace Mascotapp.Marcador_animales
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
 
             if (photo != null)
+            {
                 imgCamara.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
+                _currentImg = photo;
+            }
+                
         }
 
         private void btnAgregar_Clicked(object sender, EventArgs e)
         {
+            var idImagen = GuardarImagen();
+
             var marcador = new Marcadores();
-            marcador.IdTipoAnimal = 1;//pckTipoAnimal.SelectedItem.
+            marcador.IdTipoAnimal = 1;
             marcador.Descripcion = txtDescripcion.Text;
-            marcador.IdImagen = 1;
-            marcador.IdUsuario = 1;
+            marcador.IdImagen = idImagen;
+            marcador.IdUsuario = 1; //Crear ApplicationSession
             marcador.IdMarcador = 1;
-            marcador.Estado = "wea";
-            marcador.Ubicacion = "wea";
+            marcador.Estado = "Activo";
+            marcador.Ubicacion = "wea"; //Obtener ubicacion actual
             serviceMarcadores.GuardarMarcador(marcador);
+        }
+
+        private int GuardarImagen()
+        {
+            Imagenes img = new Imagenes();
+            img.Imagen = _currentImg.Path;
+            img.Estado = "Activo";
+            serviceImagenes.GuardarImagen(img);
+            return img.IdImagen;
         }
 
     }
