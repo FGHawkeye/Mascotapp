@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Mascotapp.Tipo_animales.TipoAnimales">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Tipo de animal" HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout BackgroundColor="GhostWhite">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Nombre: "/>
+                    <Editor Placeholder="Nombre"></Editor>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Descripcion: "/>
+                    <Editor Placeholder="Descripcion"></Editor>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Agregar"></Button>
+                    <Button Text="Modificar"></Button>
+                </StackLayout>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
