@@ -36,110 +36,117 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Ingregar Datos de la Adopción"
+        <ScrollView>
+            <StackLayout >
+                <Label Text="Ingregar Datos de la Adopción"
                HorizontalOptions="Center"
                FontAttributes="Bold" />
-            <Frame WidthRequest="300"
-                   HeightRequest="480">
-                <FlexLayout Direction="Column">
-                    <Image Source="" />
-                    <Label Text="Agregar Foto" />
-                </FlexLayout>
-            </Frame>
-            <Frame WidthRequest="300"
-                   HeightRequest="480">
-                <FlexLayout Direction="Column">
-                    <Label Text="Datos de adopcion" />
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Mascota"/>
-                        <Picker  Grid.Column="1"
-                            Title="Tipo animal" >
-                            <Picker.Items>
-                                <x:String>Gato</x:String>
-                                <x:String>Perro</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Edad"/>
-                        <Grid Grid.Column="1"
-                            >
+                <Frame WidthRequest="300"
+                   HeightRequest="480" >
+                    <FlexLayout Direction="Column">
+                        <Label Text="Agregar Foto" />
+                        <StackLayout Orientation="Horizontal"  HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
+                            <Image x:Name="imgCamara" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
+                        </StackLayout>
+                        <Label x:Name="lbImage" IsVisible="False"></Label>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnCamara" Text="Tomar Foto"  />
+                            <Button x:Name="btnQuitar" Text="Quitar Foto" Grid.Column="1" IsEnabled="False"  />
+                        </Grid>
+                        <Frame WidthRequest="300"
+                           HeightRequest="60" HorizontalOptions="Center">
+                            <FlexLayout Direction="Column" JustifyContent="Center" HorizontalOptions="Center">
+                                <StackLayout Orientation="Horizontal"  HeightRequest="48" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
+                                    <ImageButton x:Name="imgMin1" WidthRequest="48" Aspect="Fill"  Clicked="Img_Clicked" />
+                                    <ImageButton x:Name="imgMin2" WidthRequest="48" Aspect="Fill"  Clicked="Img_Clicked" />
+                                    <ImageButton x:Name="imgMin3" WidthRequest="48" Aspect="Fill"  Clicked="Img_Clicked" />
+                                </StackLayout>
+                            </FlexLayout>
+                        </Frame>
+                    </FlexLayout>
+                </Frame>
+                <Frame WidthRequest="300"
+                   HeightRequest="400">
+                    <FlexLayout Direction="Column">
+                        <Label Text="Datos de adopcion" />
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Entry
-                               Keyboard="Numeric" Placeholder="Edad"
-                               />
+                            <Label Text="Nombre"/>
+                            <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1"></Entry>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Mascota"/>
                             <Picker  Grid.Column="1"
-                            Title="Unidad" >
+                            Title="Tipo animal" x:Name="pckAnimal">
                                 <Picker.Items>
-                                    <x:String>Mes</x:String>
-                                    <x:String>Año</x:String>
+                                    <x:String>Gato</x:String>
+                                    <x:String>Perro</x:String>
                                 </Picker.Items>
                             </Picker>
                         </Grid>
-                    </Grid>
-                    <!-- _
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-
-                        <Image x:Name="PhotoImage" />
-                        <Button x:Name="CameraButton" Text="Take Photo" Grid.Row="1" />
-                    </Grid>
-                    -->
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Sexo"/>
-                        <Picker  Grid.Column="1"
-                            Title="Sexo" >
-                            <Picker.Items>
-                                <x:String>Macho</x:String>
-                                <x:String>Hembra</x:String>
-                            </Picker.Items>
-                        </Picker>
-                    </Grid>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Descripcion"/>
-                        <Label Grid.Column="1"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Edad"/>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Entry
+                               Keyboard="Numeric" Placeholder="Edad" x:Name="txtEdad"
+                               />
+                                <Picker  Grid.Column="1"
+                            Title="Unidad" x:Name="pckUnidad" >
+                                    <Picker.Items>
+                                        <x:String>Mes</x:String>
+                                        <x:String>Año</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </Grid>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Sexo"/>
+                            <Picker  Grid.Column="1"
+                            Title="Sexo" x:Name="pckSexo">
+                                <Picker.Items>
+                                    <x:String>Macho</x:String>
+                                    <x:String>Hembra</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Descripcion"/>
+                            <Label Grid.Column="1"
                                Text="Max: 250 caracteres."
                                />
-                    </Grid>
-
-                    <Editor Text="" MaxLength="250" />
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Button Text="Agregar Adopcion"/>
-                        <Button Grid.Column="1"
-                    Text="Cancelar"
-                    />
-                    </Grid>
-                </FlexLayout>
-            </Frame>
-        </StackLayout>
-
+                        </Grid>
+                        <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion"/>
+                        <Button x:Name="btnGuardar" Text="Agregar"/>
+                    </FlexLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
