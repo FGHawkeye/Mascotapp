@@ -6,7 +6,7 @@ namespace Domain.Entidades
 {
     public class Refugio
     {
-        public int IdRefugio { get; set; }
+        public int? IdRefugio { get; set; }
         public int IdUsuario { get; set; }
         public string RazonSocial { get; set; }
         public string Localidad { get; set; }

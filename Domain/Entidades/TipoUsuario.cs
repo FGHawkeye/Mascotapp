@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Domain.Entidades
 {
-    class TipoUsuario
+    public class TipoUsuario
     {
-        public int IdTipoUsuario { get; set; }
+        public int? IdTipoUsuario { get; set; }
         public string Descripcion { get; set; }
     }
 }
