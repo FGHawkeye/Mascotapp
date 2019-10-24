@@ -7,6 +7,7 @@ namespace Domain.Entidades
     public class TipoAnimal
     {
         public int IdTipoAnimal { get; set; }
+        public string Nombre { get; set; }
         public string Descripcion { get; set; }
     }
 }
