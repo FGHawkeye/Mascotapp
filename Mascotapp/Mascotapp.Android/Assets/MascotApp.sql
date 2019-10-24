@@ -5,11 +5,10 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS Adopciones;
 
 CREATE TABLE Adopciones (
-    IdAdopcion   INT           PRIMARY KEY
+    IdAdopcion   INTEGER           PRIMARY KEY,
+    IdUsuario    INTEGER           REFERENCES Usuarios (IdUsuario) 
                                NOT NULL,
-    IdUsuario    INT           REFERENCES Usuarios (IdUsuario) 
-                               NOT NULL,
-    IdTipoAnimal INT           REFERENCES TipoAnimal (IdTipoAnimal) 
+    IdTipoAnimal INTEGER           REFERENCES TipoAnimal (IdTipoAnimal) 
                                NOT NULL,
     Nombre       VARCHAR (50),
     Detalle      VARCHAR (50),
@@ -24,8 +23,7 @@ CREATE TABLE Adopciones (
 DROP TABLE IF EXISTS Imagenes;
 
 CREATE TABLE Imagenes (
-    IdImagen INT           PRIMARY KEY
-                           NOT NULL,
+    IdImagen INTEGER           PRIMARY KEY,
     Imagen   VARCHAR (100),
     Estado   VARCHAR (50) 
 );
@@ -35,9 +33,9 @@ CREATE TABLE Imagenes (
 DROP TABLE IF EXISTS ImagenXAdopcion;
 
 CREATE TABLE ImagenXAdopcion (
-    IdImagen   INT REFERENCES Imagenes (IdImagen) 
+    IdImagen   INTEGER REFERENCES Imagenes (IdImagen) 
                    NOT NULL,
-    IdAdopcion INT REFERENCES Adopciones (IdAdopcion) 
+    IdAdopcion INTEGER REFERENCES Adopciones (IdAdopcion) 
                    NOT NULL
 );
 
@@ -46,13 +44,12 @@ CREATE TABLE ImagenXAdopcion (
 DROP TABLE IF EXISTS Marcadores;
 
 CREATE TABLE Marcadores (
-    IdMarcador   INT           PRIMARY KEY
-                               NOT NULL,
+    IdMarcador   INTEGER           PRIMARY KEY,
     IdUsuario                  REFERENCES Usuarios (IdUsuario) 
                                NOT NULL,
-    IdTipoAnimal INT           REFERENCES TipoAnimal (IdTipoAnimal) 
+    IdTipoAnimal INTEGER           REFERENCES TipoAnimal (IdTipoAnimal) 
                                NOT NULL,
-    IdImagen     INT           NOT NULL
+    IdImagen     INTEGER           NOT NULL
                                REFERENCES Imagenes (IdImagen),
     Ubicacion    VARCHAR (100),
     Descripcion  VARCHAR (100),
@@ -66,7 +63,7 @@ DROP TABLE IF EXISTS Preguntas;
 CREATE TABLE Preguntas (
     Pregunta  VARCHAR (100) PRIMARY KEY
                             NOT NULL,
-    IdUsuario INT           REFERENCES Usuarios (IdUsuario) 
+    IdUsuario INTEGER           REFERENCES Usuarios (IdUsuario) 
                             NOT NULL,
     Respuesta VARCHAR (100) 
 );
@@ -76,9 +73,8 @@ CREATE TABLE Preguntas (
 DROP TABLE IF EXISTS Refugio;
 
 CREATE TABLE Refugio (
-    IdRefugio     INT           PRIMARY KEY
-                                NOT NULL,
-    IdUsuario     INT           REFERENCES Usuarios (IdUsuario) 
+    IdRefugio     INTEGER           PRIMARY KEY,
+    IdUsuario     INTEGER           REFERENCES Usuarios (IdUsuario) 
                                 NOT NULL
                                 UNIQUE,
     RazonSocial   VARCHAR (50)  NOT NULL,
@@ -96,11 +92,10 @@ CREATE TABLE Refugio (
 DROP TABLE IF EXISTS Reportes;
 
 CREATE TABLE Reportes (
-    IdReporte  INT PRIMARY KEY
+    IdReporte  INTEGER PRIMARY KEY,
+    IdUsuario  INTEGER REFERENCES Usuarios (IdUsuario) 
                    NOT NULL,
-    IdUsuario  INT REFERENCES Usuarios (IdUsuario) 
-                   NOT NULL,
-    IdMarcador INT REFERENCES Marcadores (IdMarcador) 
+    IdMarcador INTEGER REFERENCES Marcadores (IdMarcador) 
                    NOT NULL
 );
 
@@ -109,9 +104,9 @@ CREATE TABLE Reportes (
 DROP TABLE IF EXISTS SolicitudAdopcion;
 
 CREATE TABLE SolicitudAdopcion (
-    IdAdopcion           INT           REFERENCES Adopciones (IdAdopcion) 
+    IdAdopcion           INTEGER           REFERENCES Adopciones (IdAdopcion) 
                                        NOT NULL,
-    IdUsuarioSolicitante INT           REFERENCES Usuarios (IdUsuario) 
+    IdUsuarioSolicitante INTEGER           REFERENCES Usuarios (IdUsuario) 
                                        NOT NULL,
     Descripcion          VARCHAR (100),
     FechaCreacion        DATETIME,
@@ -123,8 +118,7 @@ CREATE TABLE SolicitudAdopcion (
 DROP TABLE IF EXISTS TipoAnimal;
 
 CREATE TABLE TipoAnimal (
-    IdTipoAnimal INT          PRIMARY KEY
-                              NOT NULL,
+    IdTipoAnimal INTEGER          PRIMARY KEY,
     Descripcion  VARCHAR (50) 
 );
 
@@ -133,8 +127,7 @@ CREATE TABLE TipoAnimal (
 DROP TABLE IF EXISTS TipoUsuario;
 
 CREATE TABLE TipoUsuario(
-    IdTipoUsuario INT          PRIMARY KEY
-                               NOT NULL,
+    IdTipoUsuario INTEGER          PRIMARY KEY,
     Descripcion   VARCHAR (20) 
 );
 
@@ -143,10 +136,9 @@ CREATE TABLE TipoUsuario(
 DROP TABLE IF EXISTS Usuarios;
 
 CREATE TABLE Usuarios (
-    IdUsuario       INT           PRIMARY KEY
-                                  NOT NULL,
+    IdUsuario       INTEGER           PRIMARY KEY,
     Usuario         VARCHAR (50)  UNIQUE,
-    IdTipoUsuario   INT           REFERENCES TipoUsuario (IdTipoUsuario) 
+    IdTipoUsuario   INTEGER           REFERENCES TipoUsuario (IdTipoUsuario) 
                                   NOT NULL,
     Contraseña      VARCHAR (50),
     NombreYApellido VARCHAR (100),
@@ -157,3 +149,19 @@ CREATE TABLE Usuarios (
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
+ 
+INSERT INTO TipoAnimal (IdTipoAnimal,Descripcion) VALUES 
+	(NULL,'Gato'),
+	(NULL,'Perro');
+	
+INSERT INTO TipoUsuario (IdTipoUsuario,Descripcion) VALUES 
+	(NULL,'Admin'),
+	(NULL,'Usuario'),
+	(NULL,'Refugio');
+
+INSERT INTO Usuarios (IdUsuario, Usuario, IdTipoUsuario, Contraseña, NombreYApellido, Telefono, Email) VALUES
+	(NULL,'LUCAS',1,'lucas123','Lucas Peña', 12345, 'lucas@lucas.com'),
+	(NULL,'UsuarioComun',2,'usuario123','Usuario Comun', 12345, 'usuario@comun.com'),
+	(NULL,'Refugio',2,'refugio123','Refugio Refugio', 12345, 'refugio@refugio.com');
+
+
