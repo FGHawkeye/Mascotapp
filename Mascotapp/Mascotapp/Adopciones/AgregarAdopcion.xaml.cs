@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mascotapp.NavigationMenu;
+using System.IO;
 
 namespace Mascotapp
 {
@@ -18,7 +19,9 @@ namespace Mascotapp
         #region BindableObjects
         List<TipoAnimal> _lstTipoAnimal = new List<TipoAnimal>();
         #endregion
-
+        private string image1;
+        private string image2;
+        private string image3;
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
         private ServicioImagenes servicioImagenes = new ServicioImagenes();
@@ -27,8 +30,16 @@ namespace Mascotapp
         {
             InitializeComponent();
             CargarEventos();
+            CargarTipoAnimal();
         }
-
+        public void CargarTipoAnimal()
+        {
+            _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            foreach (TipoAnimal tipo in _lstTipoAnimal)
+            {
+                pckAnimal.Items.Add(tipo.Descripcion);
+            }
+        }
         public void CargarEventos()
         {
             btnCamara.Clicked += CameraButton_Clicked;
@@ -47,8 +58,8 @@ namespace Mascotapp
 
             if (photo != null)
             {
-                ImageSource imageSource= ImageSource.FromStream(() => { return photo.GetStream(); });
-                AgregarFoto(imageSource);
+                ImageSource imageSource = ImageSource.FromStream(() => { return photo.GetStream(); });
+                AgregarFoto(imageSource,photo.Path);
             }       
         }
         private void Img_Clicked(object sender, EventArgs e)
@@ -82,7 +93,7 @@ namespace Mascotapp
                 btnQuitar.IsEnabled = false;
             }
         }
-        private void Guardar_Clicked(object sender, EventArgs e)
+        private async void Guardar_Clicked(object sender, EventArgs e)
         {
             try
             {
@@ -91,11 +102,11 @@ namespace Mascotapp
                     var adopcion = new Adopciones();
                     adopcion.IdUsuario = 2;
                     adopcion.IdAdopcion= null;
-                    adopcion.IdTipoAnimal =1;
+                    adopcion.IdTipoAnimal =pckAnimal.SelectedIndex;
                     adopcion.Detalle = txtDescripcion.Text;
                     adopcion.Edad = Int32.Parse(txtEdad.Text);//faltaria modificar la tabla para agregar edad meses y edad años
-                    adopcion.Estado = "Prueba";
-                    adopcion.Nombre = "Prueba";
+                    adopcion.Estado = true;
+                    adopcion.Nombre = txtNombre.Text;
                     adopcion.Sexo = pckSexo.SelectedItem.ToString();
                     adopcion.Ubicacion = "Prueba";
                     int idAd=servicioAdopciones.GuardarAdopcion(adopcion);
@@ -104,8 +115,8 @@ namespace Mascotapp
                     {
                         var imagen = new Imagenes();
                         imagen.IdImagen = null;
-                        imagen.Imagen = imgMin1.Source.ToString();
-                        imagen.Estado = "Prueba";
+                        imagen.Imagen = image1;
+                        imagen.Estado = true;
                         int idImg = servicioImagenes.GuardarImagen(imagen);
 
                         var imgXad = new ImagenXAdopcion();
@@ -118,8 +129,8 @@ namespace Mascotapp
                     {
                         var imagen = new Imagenes();
                         imagen.IdImagen = null;
-                        imagen.Imagen = imgMin2.Source.ToString();
-                        imagen.Estado = "Prueba";
+                        imagen.Imagen = image2;
+                        imagen.Estado = true;
                         int idImg = servicioImagenes.GuardarImagen(imagen);
 
                         var imgXad = new ImagenXAdopcion();
@@ -131,8 +142,8 @@ namespace Mascotapp
                     {
                         var imagen = new Imagenes();
                         imagen.IdImagen = null;
-                        imagen.Imagen = imgMin3.Source.ToString();
-                        imagen.Estado = "Prueba";
+                        imagen.Imagen = image3;
+                        imagen.Estado = true;
                         int idImg = servicioImagenes.GuardarImagen(imagen);
 
                         var imgXad = new ImagenXAdopcion();
@@ -140,9 +151,12 @@ namespace Mascotapp
                         imgXad.IdImagen = idImg;
                         int idIXA = servicioImagenXAdopcion.GuardarImagenXAdopcion(imgXad);
                     }
+                    await DisplayAlert("Adopciones", "Se publico correctamente!", "OK");
+                    await App.MasterD.Detail.Navigation.PopToRootAsync();
                 }
             }catch(Exception ex)
             {
+                await DisplayAlert("Adopciones", "Hubo un problema, vuelva a intentar mas tarde.", "OK");
                 Console.WriteLine(ex);
             }
             
@@ -178,7 +192,7 @@ namespace Mascotapp
             }
             return validate;
         }
-        public void AgregarFoto(ImageSource img)
+        public void AgregarFoto(ImageSource img,string path)
         {
             bool estado = false;
             if (imgMin1.Source == null)
@@ -186,16 +200,20 @@ namespace Mascotapp
                 estado = true;
                 lbImage.Text = imgMin1.Id.ToString();
                 imgMin1.Source = img;
+                image1 = path;
             }else if (imgMin2.Source == null)
             {
                 lbImage.Text = imgMin2.Id.ToString();
                 estado = true;
                 imgMin2.Source = img;
-            }else if (imgMin3.Source == null)
+                image2 = path;
+            }
+            else if (imgMin3.Source == null)
             {
                 lbImage.Text = imgMin3.Id.ToString();
                 estado = true;
                 imgMin3.Source = img;
+                image3 = path;
             }
             if (estado)
             {

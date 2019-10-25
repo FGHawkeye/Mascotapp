@@ -15,7 +15,7 @@ CREATE TABLE Adopciones (
     Ubicacion    VARCHAR (100),
     Sexo         VARCHAR (50),
     Edad         INT,
-    Estado       VARCHAR (50) 
+    Estado       BOOLEAN
 );
 
 
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS Imagenes;
 CREATE TABLE Imagenes (
     IdImagen INTEGER           PRIMARY KEY,
     Imagen   VARCHAR (100),
-    Estado   VARCHAR (50) 
+    Estado   VARCHAR (50)
 );
 
 
@@ -53,7 +53,7 @@ CREATE TABLE Marcadores (
                                REFERENCES Imagenes (IdImagen),
     Ubicacion    VARCHAR (100),
     Descripcion  VARCHAR (100),
-    Estado       VARCHAR (50) 
+    Estado       VARCHAR (50)
 );
 
 
@@ -84,7 +84,7 @@ CREATE TABLE Refugio (
     CodigoPostal  VARCHAR (50),
     Telefono      BIGINT,
     FechaCreacion DATETIME,
-    Estado        VARCHAR (50) 
+    Estado        BOOLEAN
 );
 
 
@@ -110,7 +110,7 @@ CREATE TABLE SolicitudAdopcion (
                                        NOT NULL,
     Descripcion          VARCHAR (100),
     FechaCreacion        DATETIME,
-    Estado               VARCHAR (50) 
+    Estado               BOOLEAN
 );
 
 
@@ -140,7 +140,7 @@ CREATE TABLE Usuarios (
     Usuario         VARCHAR (50)  UNIQUE,
     IdTipoUsuario   INTEGER           REFERENCES TipoUsuario (IdTipoUsuario) 
                                   NOT NULL,
-    Contraseña      VARCHAR (50),
+    ContraseÃ±a      VARCHAR (50),
     NombreYApellido VARCHAR (100),
     Telefono        BIGINT,
     Email           VARCHAR (50) 
@@ -149,19 +149,3 @@ CREATE TABLE Usuarios (
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
- 
-INSERT INTO TipoAnimal (IdTipoAnimal,Descripcion) VALUES 
-	(NULL,'Gato'),
-	(NULL,'Perro');
-	
-INSERT INTO TipoUsuario (IdTipoUsuario,Descripcion) VALUES 
-	(NULL,'Admin'),
-	(NULL,'Usuario'),
-	(NULL,'Refugio');
-
-INSERT INTO Usuarios (IdUsuario, Usuario, IdTipoUsuario, Contraseña, NombreYApellido, Telefono, Email) VALUES
-	(NULL,'LUCAS',1,'lucas123','Lucas Peña', 12345, 'lucas@lucas.com'),
-	(NULL,'UsuarioComun',2,'usuario123','Usuario Comun', 12345, 'usuario@comun.com'),
-	(NULL,'Refugio',2,'refugio123','Refugio Refugio', 12345, 'refugio@refugio.com');
-
-

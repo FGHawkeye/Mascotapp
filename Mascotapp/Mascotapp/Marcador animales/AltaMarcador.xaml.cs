@@ -65,7 +65,7 @@ namespace Mascotapp.Marcador_animales
             marcador.IdImagen = 1;
             marcador.IdUsuario = 1;
             marcador.IdMarcador = 1;
-            marcador.Estado = "wea";
+            marcador.Estado = true;
             marcador.Ubicacion = "wea";
             serviceMarcadores.GuardarMarcador(marcador);
         }

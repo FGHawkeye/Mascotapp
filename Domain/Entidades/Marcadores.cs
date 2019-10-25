@@ -12,6 +12,6 @@ namespace Domain.Entidades
         public int IdImagen { get; set; }
         public string Ubicacion { get; set; }
         public string Descripcion { get; set; }
-        public string Estado { get; set; }
+        public Boolean Estado { get; set; }
     }
 }
