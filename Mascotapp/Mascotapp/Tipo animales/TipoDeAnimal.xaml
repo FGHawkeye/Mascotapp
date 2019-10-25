@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.Tipo_animales.TipoAnimales">
+             x:Class="Mascotapp.Tipo_animales.TipoDeAnimal">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Label Text="Tipo de animal" HorizontalOptions="CenterAndExpand" />
@@ -12,18 +12,21 @@
             <StackLayout BackgroundColor="GhostWhite">
 
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Nombre: "/>
-                    <Editor Placeholder="Nombre"></Editor>
+                    <Label Text="Tipo animal: "/>
+                    <Picker x:Name="pckTipoAnimal" 
+                            Title="Seleccione tipo animal" 
+                            ItemDisplayBinding="{Binding Descripcion}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Vertical">
                     <Label Text="Descripcion: "/>
-                    <Editor Placeholder="Descripcion"></Editor>
+                    <Editor x:Name="txtDescripcion" 
+                            Placeholder="Descripcion"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Agregar"></Button>
-                    <Button Text="Modificar"></Button>
+                    <Button x:Name="btnAgregar" Text="Agregar"></Button>
+                    <Button x:Name="btnModificar" Text="Modificar"></Button>
                 </StackLayout>
 
             </StackLayout>
