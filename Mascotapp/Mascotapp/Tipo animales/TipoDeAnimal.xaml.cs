@@ -11,17 +11,20 @@ using Xamarin.Forms.Xaml;
 
 namespace Mascotapp.Tipo_animales
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TipoDeAnimal : ContentPage
-    {
-        private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
-        private List<Domain.Entidades.TipoAnimal> _lstTipoAnimal;
 
-        public TipoDeAnimal()
+    public partial class TipoAnimales : ContentPage
+    {
+        #region BindableObjects
+        List<TipoAnimal> _lstTipoAnimal = new List<TipoAnimal>();
+        #endregion
+
+        private ServicioTipoAnimal servicieTipoAnimal = new ServicioTipoAnimal();
+
+        public TipoDeAnimales()
         {
             InitializeComponent();
             CargarControles();
-            CargarEventos();
+            CargarElementos();
         }
 
         void CargarControles()
@@ -29,26 +32,21 @@ namespace Mascotapp.Tipo_animales
             CargarTipoAnimales();
         }
 
-        void CargarEventos()
-        {
-            btnAgregar.Clicked += btnAgregar_Clicked;
-            btnModificar.Clicked += btnModificar_Clicked;
-        }
-
         void CargarTipoAnimales()
         {
-            _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            _lstTipoAnimal = servicieTipoAnimal.ObtenerTipoAnimales();
             pckTipoAnimal.ItemsSource = _lstTipoAnimal;
+        }
+
+        void CargarElementos()
+        {
+            btnAgregar.Clicked += btnAgregar_Clicked;
+            btnModificar.Clicked += btnModificara_Clicked;
         }
 
         private void btnAgregar_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        private void btnModificar_Clicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            NuevoTipo();
         }
     }
 }
