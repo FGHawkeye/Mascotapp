@@ -1,4 +1,5 @@
 ﻿using Domain.Entidades;
+using Domain.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +11,20 @@ using Xamarin.Forms.Xaml;
 
 namespace Mascotapp.Tipo_animales
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class TipoAnimales : ContentPage
     {
         #region BindableObjects
         List<TipoAnimal> _lstTipoAnimal = new List<TipoAnimal>();
         #endregion
 
-        private ServicioTipoAnimales serviceTipoAnimal = new ServicioTipoAnimales();
+        private ServicioTipoAnimal servicieTipoAnimal = new ServicioTipoAnimal();
 
-        public TipoAnimales()
+        public TipoDeAnimales()
         {
             InitializeComponent();
             CargarControles();
-            CargarEventos();
+            CargarElementos();
         }
 
         void CargarControles()
@@ -31,10 +32,21 @@ namespace Mascotapp.Tipo_animales
             CargarTipoAnimales();
         }
 
-        void CargarEventos()
+        void CargarTipoAnimales()
         {
-            //btnCamera.Clicked += btnCamera_Clicked;
+            _lstTipoAnimal = servicieTipoAnimal.ObtenerTipoAnimales();
+            pckTipoAnimal.ItemsSource = _lstTipoAnimal;
+        }
+
+        void CargarElementos()
+        {
             btnAgregar.Clicked += btnAgregar_Clicked;
+            btnModificar.Clicked += btnModificara_Clicked;
+        }
+
+        private void btnAgregar_Clicked(object sender, EventArgs e)
+        {
+            NuevoTipo();
         }
     }
 }

@@ -11,24 +11,14 @@
 
             <StackLayout BackgroundColor="GhostWhite">
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tipo animal: "/>
-                    <Picker  Title="Seleccione tipo animal" >
-                        <Picker.Items>
-                            <x:String>Gato1</x:String>
-                            <x:String>Gatoo2</x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
-
                 <StackLayout Orientation="Vertical">
                     <Label Text="Descripcion: "/>
-                    <Editor Placeholder="Descripcion"></Editor>
-                </StackLayout>
+                    <Editor x:Name="txtDescripcion" Placeholder="Descripcion"/>
+                </StackLayout>    
 
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Guardar"></Button>
-                    <Button Text="Cancelar"></Button>
+                    <Button x:Name="btnGuardar" Text="Guardar"></Button>
+                    <Button x:Name="btnCancelar" Text="Cancelar"></Button>
                 </StackLayout>
 
             </StackLayout>

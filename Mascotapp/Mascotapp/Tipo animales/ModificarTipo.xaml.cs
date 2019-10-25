@@ -15,6 +15,25 @@ namespace Mascotapp.Tipo_animales
         public ModificarTipo()
         {
             InitializeComponent();
+            CargarEventos();
+            CargarControles();
+        }
+
+        void CargarEventos()
+        {
+            btnGuardar.Clicked += Guardar_Clicked;
+            btnCancelar.Clicked += Cancelar_Clicked;
+        }
+
+        void CargarControles()
+        {
+            CargarTipoAnimales();
+        }
+
+        void CargarTipoAnimales()
+        {
+            _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            pckTipoAnimal.ItemsSource = _lstTipoAnimal;
         }
     }
 }

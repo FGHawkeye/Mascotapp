@@ -12,9 +12,26 @@ namespace Mascotapp.Tipo_animales
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TipoAnimales : ContentPage
     {
-        public TipoAnimales()
+        private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
+
+        public NuevoTipo()
         {
             InitializeComponent();
+            CargarEventos();
+        }
+
+        public void CargarEventos()
+        {
+            btnGuardar.Clicked += Guardar_Clicked;
+            btnCancelar.Clicked += Cancelar_Clicked;
+        }
+
+        private void Guardar_Clicked(object sender, EventArgs e)
+        {
+            var tipoanimal = new TipoAnimales();
+            tipoanimal.txtDescripcion = 1; //pckTipoAnimal.SelectedItem.
+            tipoanimal.txtDescripcion = txtDescripcion.Text;
+            serviceTipoAnimal.GuardarTipoAnimal(tipoanimal);
         }
     }
 }
