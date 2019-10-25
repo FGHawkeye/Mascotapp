@@ -16,29 +16,24 @@ namespace Mascotapp.Tipo_animales
     {
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
 
-        public TipoAnimal()
+        public NuevoTipo()
         {
             InitializeComponent();
-            CargarEvento();
+            CargarEventos();
         }
 
-        void CargarEvento()
+        public void CargarEventos()
         {
-            btnGuardar.Clicked += btnGuardar_Clicked;
-            btnCancelar.Clicked += btnCancelar_Clicked;
+            btnGuardar.Clicked += Guardar_Clicked;
+            btnCancelar.Clicked += Cancelar_Clicked;
         }
 
-        private void btnGuardar_Clicked(object sender, EventArgs e)
+        private void Guardar_Clicked(object sender, EventArgs e)
         {
-            var tipoAnimal = new Domain.Entidades.TipoAnimal();
-            tipoAnimal.IdTipoAnimal = 1;//pckTipoAnimal.SelectedItem.
-            tipoAnimal.Descripcion = txtNuevaDescripcion.Text;
-            serviceTipoAnimal.GuardarTipoAnimal(tipoAnimal);
-        }
-
-        private void btnCancelar_Clicked(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            var tipoanimal = new TipoAnimales();
+            tipoanimal.txtDescripcion = 1; //pckTipoAnimal.SelectedItem.
+            tipoanimal.txtDescripcion = txtDescripcion.Text;
+            serviceTipoAnimal.GuardarTipoAnimal(tipoanimal);
         }
     }
 }
