@@ -14,27 +14,20 @@
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Tipo animal: "/>
-                    <Picker  Title="Seleccione tipo animal" >
-                        <Picker.Items>
-                            <x:String>Perro1</x:String>
-                            <x:String>Perro2</x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Nombre: "/>
-                    <Editor Placeholder="Nombre"></Editor>
+                    <Picker x:Name="pckTipoAnimal" 
+                            Title="Seleccione tipo animal" 
+                            ItemDisplayBinding="{Binding Descripcion}"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Vertical">
                     <Label Text="Descripcion: "/>
-                    <Editor Placeholder="Descripcion"></Editor>
+                    <Editor x:Name="txtDescripcion"
+                            Placeholder="Descripcion"/>
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Guardar"></Button>
-                    <Button Text="Cancelar"></Button>
+                    <Button x:Name="btnGuardar" Text="Guardar"></Button>
+                    <Button x:Name="btnCancelar" Text="Cancelar"></Button>
                 </StackLayout>
 
             </StackLayout>

@@ -2,10 +2,7 @@
 using Domain.Servicios;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,27 +12,27 @@ using Xamarin.Forms.Xaml;
 namespace Mascotapp.Tipo_animales
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ModificarTipo : ContentPage
+    public partial class TipoDeAnimal : ContentPage
     {
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private List<Domain.Entidades.TipoAnimal> _lstTipoAnimal;
 
-        public ModificarTipo()
+        public TipoDeAnimal()
         {
             InitializeComponent();
             CargarControles();
             CargarEventos();
         }
 
-        void CargarEventos()
-        {
-            btnGuardar.Clicked += btnGuardar_Clicked;
-            btnCancelar.Clicked += btnCancelar_Clicked;
-        }
-
         void CargarControles()
         {
             CargarTipoAnimales();
+        }
+
+        void CargarEventos()
+        {
+            btnAgregar.Clicked += btnAgregar_Clicked;
+            btnModificar.Clicked += btnModificar_Clicked;
         }
 
         void CargarTipoAnimales()
@@ -44,15 +41,12 @@ namespace Mascotapp.Tipo_animales
             pckTipoAnimal.ItemsSource = _lstTipoAnimal;
         }
 
-        private void btnGuardar_Clicked(object sender, EventArgs e)
+        private void btnAgregar_Clicked(object sender, EventArgs e)
         {
-            var tipoAniaml = new Domain.Entidades.TipoAnimal();
-            tipoAniaml.IdTipoAnimal = 1;//pckTipoAnimal.SelectedItem.
-            tipoAniaml.Descripcion = txtDescripcion.Text;
-            serviceTipoAnimal.GuardarTipoAnimal(tipoAniaml);
+            throw new NotImplementedException();
         }
 
-        private void btnCancelar_Clicked(object sender, EventArgs e)
+        private void btnModificar_Clicked(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
