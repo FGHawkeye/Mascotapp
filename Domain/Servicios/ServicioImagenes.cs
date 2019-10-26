@@ -2,6 +2,7 @@
 using Domain.Entidades;
 using SQLite;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -15,8 +16,9 @@ namespace Domain.Servicios
         {
             dbConnection = DependencyService.Get<IDBInterface>().CreateConnection();
         }
-
-        public Imagenes ObtenerImagenDeMarcador(int idMarcador)
+        public Imagenes ObtenerImagen(int id)
+        {
+            return dbConnection.Query<Imagenes>("Select * From [Imagenes]").Where(x=>x.IdImagen==id).FirstOrDefault();
         {
             //Reemplaza el "{0}" por el parametro idMarcador
             var query = string.Format(" select imagenes.* from imagenes inner join Marcadores on imagenes.IdImagen = Marcadores.IdImagen where Marcadores.IdMarcador = {0} ", idMarcador); 

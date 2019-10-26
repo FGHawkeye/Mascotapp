@@ -75,8 +75,8 @@ namespace Mascotapp.Marcador_animales
             marcador.IdImagen = idImagen;
             marcador.IdUsuario = 1; //Crear ApplicationSession
             marcador.IdMarcador = 1;
-            marcador.Estado = "Activo";
-            marcador.Ubicacion = "wea"; //Obtener ubicacion actual
+            marcador.Estado = true;
+            marcador.Ubicacion = "wea";
             serviceMarcadores.GuardarMarcador(marcador);
         }
 

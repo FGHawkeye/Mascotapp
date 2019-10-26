@@ -32,15 +32,57 @@ namespace Mascotapp
         public void CargarElementos()
         {
             List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones();
+            List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+
             foreach(Adopciones item in adopciones)
             {
-                Entry entry = new Entry
+                FlexLayout flexLayout = new FlexLayout
+                {
+                    Direction = FlexDirection.Row,
+                    JustifyContent=FlexJustify.SpaceBetween,
+                    AlignItems=FlexAlignItems.Center,
+                };
+                Frame frame = new Frame { };
+                Label lbNombre = new Label
                 {
                     Text = item.Nombre,
                     ClassId = item.IdAdopcion.ToString(),
                 };
-                Mostrar.Children.Add(entry);
+
+                Label lbTipoAnimal = new Label
+                {
+                    Text = tipoAnimal.Where(x=>x.IdTipoAnimal==item.IdTipoAnimal).FirstOrDefault().Descripcion,
+                    ClassId = tipoAnimal.Where(x => x.IdTipoAnimal == item.IdTipoAnimal).FirstOrDefault().IdTipoAnimal.ToString(),
+                };
+
+                Button btnModificar = new Button
+                {
+                    Text = "Modificar",
+                    ClassId = item.IdAdopcion.ToString(),
+                    BindingContext= item.IdAdopcion.ToString(),
+                };
+                btnModificar.Clicked += Modificar_Clicked;
+                flexLayout.Children.Add(lbNombre);
+                flexLayout.Children.Add(lbTipoAnimal);
+                flexLayout.Children.Add(btnModificar);
+                frame.Content = flexLayout;
+                Mostrar.Children.Add(frame);
             }
+
+        }
+        private async void Modificar_Clicked(object sender, EventArgs e)
+        {
+            /*
+             private async void BtnMostrarAdopciones_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new MostrarAdopciones());
+        }
+             */
+            Button btn = (Button)sender;
+            var id = Int32.Parse(btn.BindingContext.ToString());
+            App.MasterD.IsPresented = false;
+            await App.MasterD.Detail.Navigation.PushAsync(new ModificarAdopcion(id));
         }
     }
 }
