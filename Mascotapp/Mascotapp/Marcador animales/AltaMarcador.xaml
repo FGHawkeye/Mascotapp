@@ -25,10 +25,8 @@
                 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Tipo animal: "/>
-                    <Picker x:Name="pckTipoAnimal" 
-                        Title="Seleccione tipo animal" 
-                        ItemDisplayBinding="{Binding Descripcion}"/>
-                    
+                    <Picker Title="Tipo animal" x:Name="pckAnimal"/>
+
                 </StackLayout>
 
                 <StackLayout Orientation="Vertical">

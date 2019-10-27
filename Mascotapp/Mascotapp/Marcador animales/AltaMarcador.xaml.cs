@@ -1,10 +1,12 @@
 ﻿using Domain.Entidades;
 using Domain.Servicios;
+using Plugin.Geolocator;
 using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -15,13 +17,8 @@ using Xamarin.Forms.Xaml;
 
 namespace Mascotapp.Marcador_animales
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AltaMarcador : ContentPage
     {
-        #region BindableObjects
-        List<TipoAnimal> _lstTipoAnimal = new List<TipoAnimal>();
-        #endregion
-
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioMarcadores serviceMarcadores = new ServicioMarcadores();
         private ServicioImagenes serviceImagenes = new ServicioImagenes();
@@ -49,13 +46,18 @@ namespace Mascotapp.Marcador_animales
 
         void CargarTipoAnimales()
         {
-            _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
-            pckTipoAnimal.ItemsSource = _lstTipoAnimal;
+            var _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            pckAnimal.ItemsSource = _lstTipoAnimal;
+            pckAnimal.ItemDisplayBinding = new Binding("Descripcion");
         }
 
         private async void btnCamera_Clicked(object sender, EventArgs e)
         {
-            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
+            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
+                new Plugin.Media.Abstractions.StoreCameraMediaOptions()
+                {
+                    CompressionQuality = 5
+                });
 
             if (photo != null)
             {
@@ -65,28 +67,31 @@ namespace Mascotapp.Marcador_animales
                 
         }
 
-        private void btnAgregar_Clicked(object sender, EventArgs e)
+        private async void btnAgregar_Clicked(object sender, EventArgs e)
         {
             var idImagen = GuardarImagen();
 
             var marcador = new Marcadores();
-            marcador.IdTipoAnimal = 1;
+            marcador.IdTipoAnimal = pckAnimal.SelectedIndex;
             marcador.Descripcion = txtDescripcion.Text;
-            marcador.IdImagen = idImagen;
+            marcador.IdImagen = idImagen.HasValue ? idImagen.Value : 0;
             marcador.IdUsuario = 1; //Crear ApplicationSession
-            marcador.IdMarcador = 1;
             marcador.Estado = true;
-            marcador.Ubicacion = "wea";
+
+            var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
+            marcador.Ubicacion = currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString();
+
             serviceMarcadores.GuardarMarcador(marcador);
         }
 
-        private int GuardarImagen()
+        private int? GuardarImagen()
         {
             Imagenes img = new Imagenes();
-            img.Imagen = _currentImg.Path;
-            img.Estado = "Activo";
-            serviceImagenes.GuardarImagen(img);
-            return img.IdImagen;
+            img.IdImagen = null;
+            img.Imagen = Path.GetFileName(_currentImg.Path);
+            img.Estado = true;
+            var pk = serviceImagenes.GuardarImagen(img);
+            return pk;
         }
 
     }
