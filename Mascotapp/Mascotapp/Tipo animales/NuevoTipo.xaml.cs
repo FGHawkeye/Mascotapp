@@ -36,9 +36,9 @@ namespace Mascotapp.Tipo_animales
             serviceTipoAnimal.GuardarTipoAnimal(tipoAnimal);
         }
 
-        private void btnCancelar_Clicked(object sender, EventArgs e)
+        public void btnCancelar_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ModificarTipo();
         }
     }
 }
