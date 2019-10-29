@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.AgregarAdopcion">
+             x:Class="Mascotapp.ModificarAdopcion">
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
@@ -87,8 +87,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Mascota"/>
-                            <Picker  Grid.Column="1"
-                            Title="Tipo animal" x:Name="pckAnimal">
+                            <Picker  Grid.Column="1" Title="Tipo animal" x:Name="pckAnimal" >
                             </Picker>
                         </Grid>
                         <Grid>

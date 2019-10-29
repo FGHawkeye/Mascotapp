@@ -16,6 +16,6 @@ namespace Domain.Entidades
         public string Ubicacion { get; set; }
         public string Sexo { get; set; }
         public int Edad { get; set; }
-        public string Estado { get; set; }
+        public Boolean Estado { get; set; }
     }
 }
