@@ -42,12 +42,12 @@ namespace Mascotapp.Tipo_animales
 
         private void btnAgregar_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ((NavigationPage)this.Parent).PushAsync(new NuevoTipoAnimal());
         }
 
         private void btnModificar_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ((NavigationPage)this.Parent).PushAsync(new ModificarTipo());
         }
     }
 }

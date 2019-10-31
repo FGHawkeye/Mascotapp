@@ -210,7 +210,7 @@ namespace Mascotapp
                 btnQuitar.IsEnabled = false;
             }
         }
-        private async void Guardar_Clicked(object sender, EventArgs e)
+        /*private async void Guardar_Clicked(object sender, EventArgs e)
         {
             /*try
             {
@@ -280,7 +280,7 @@ namespace Mascotapp
             {
                 await DisplayAlert("Adopciones", "Hubo un problema, vuelva a intentar mas tarde.", "OK");
                 Console.WriteLine(ex);
-            }*/
-        }
+            }
+        }*/
     }
 }
