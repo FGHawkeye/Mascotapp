@@ -32,8 +32,9 @@ namespace Mascotapp.Visualizar_mapa
 
             foreach (var adopcion in adopciones)
             {
-                var pin = GenerarMarcador(adopcion.Nombre, adopcion.Ubicacion);
+                var pin = GenerarMarcador(adopcion.Nombre, adopcion.Ubicacion, "Adopcion");
                 map_Mapa.Pins.Add(pin);
+                map_Mapa.CustomPins.Add(pin);
             }
         }
 
@@ -42,13 +43,13 @@ namespace Mascotapp.Visualizar_mapa
             var marcadores = servicioMarcadores.ObtenerMarcadores();
             foreach (var marcador in marcadores)
             {
-                var pin = GenerarMarcador(marcador.Descripcion, marcador.Ubicacion);
+                var pin = GenerarMarcador(marcador.Descripcion, marcador.Ubicacion, "Marcador");
                 map_Mapa.CustomPins.Add(pin);
                 map_Mapa.Pins.Add(pin);             
             }
         }
 
-        private CustomPin GenerarMarcador(string descripcion, string ubicacion)
+        private CustomPin GenerarMarcador(string descripcion, string ubicacion, string tipoMarcador)
         {
             //Primero siempre latitud
             var arrayUbicacion = ubicacion.Split(';');
@@ -57,7 +58,8 @@ namespace Mascotapp.Visualizar_mapa
             {
                 Position = new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])),
                 Label = descripcion,
-                Url = "https://cdn3.iconfinder.com/data/icons/nature-animals/512/cat_A-512.png"
+                Url = "http://xamarin.com/about/",
+                MarkerType = tipoMarcador
             };
             return pin;
         }
