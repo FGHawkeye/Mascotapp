@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,7 @@ namespace Domain.Entidades
 {
     public class Marcadores
     {
+        [PrimaryKey, AutoIncrement]
         public int? IdMarcador { get; set; }
         public int IdUsuario { get; set; }
         public int IdTipoAnimal { get; set; }
