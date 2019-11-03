@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace Domain.Servicios
 {
@@ -18,12 +19,22 @@ namespace Domain.Servicios
 
         public List<Usuario> ObtenerUsuarios()
         {
-            return dbConnection.Query<Usuario>("Select * From [Usuarios]");
+            return dbConnection.Query<Usuario>("Select * From [Usuario]");
         }
 
-        public int GuardarUsuario(Usuario usuario)
+        public int RegistrarUsuario(Usuario usuario)
         {
             return dbConnection.Insert(usuario);
         }
+
+
+        public Usuario ValidarUsuario (Usuario usuario)
+        {
+            return dbConnection.Query<Usuario>("Select * From [Usuario] where NombreUsuario ='" + usuario.NombreUsuario + "' and Contraseña ='" + usuario.Contraseña + "'").FirstOrDefault();
+
+        }
+
+        
+
     }
 }
