@@ -72,13 +72,6 @@ namespace Mascotapp
         }
         private async void Modificar_Clicked(object sender, EventArgs e)
         {
-            /*
-             private async void BtnMostrarAdopciones_Clicked(object sender, EventArgs e)
-        {
-            App.MasterD.IsPresented = false; //isVisible = false
-            await App.MasterD.Detail.Navigation.PushAsync(new MostrarAdopciones());
-        }
-             */
             Button btn = (Button)sender;
             var id = Int32.Parse(btn.BindingContext.ToString());
             App.MasterD.IsPresented = false;
