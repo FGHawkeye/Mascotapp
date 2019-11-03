@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Views;
 using Android.Widget;
 using Domain.MapRenderer;
 using Mascotapp.Droid;
@@ -55,15 +56,19 @@ namespace Mascotapp.Droid
             {
                 marker.SetIcon(BitmapDescriptorFactory.DefaultMarker());
             }
-            else
+            else if(((CustomPin)pin).MarkerType == "Adopcion")
             {
                 marker.SetIcon(BitmapDescriptorFactory.DefaultMarker(hue:BitmapDescriptorFactory.HueViolet));
+            }
+            else
+            {
+                marker.SetIcon(BitmapDescriptorFactory.DefaultMarker(hue: BitmapDescriptorFactory.HueGreen));
             }
             
             return marker;
         }
 
-        void OnInfoWindowClick(object sender, GoogleMap.InfoWindowClickEventArgs e)
+        async void OnInfoWindowClick(object sender, GoogleMap.InfoWindowClickEventArgs e)
         {
             var customPin = GetCustomPin(e.Marker);
             if (customPin == null)
@@ -71,13 +76,19 @@ namespace Mascotapp.Droid
                 throw new Exception("Custom pin not found");
             }
 
-            if (!string.IsNullOrWhiteSpace(customPin.Url))
+            if(customPin.MarkerType == "Adopcion")
             {
-                var url = Android.Net.Uri.Parse(customPin.Url);
-                var intent = new Intent(Intent.ActionView, url);
-                intent.AddFlags(ActivityFlags.NewTask);
-                Android.App.Application.Context.StartActivity(intent);
+                App.MasterD.IsPresented = false;
+                await App.MasterD.Detail.Navigation.PushAsync(new MostrarAdopciones());
             }
+
+            //if (!string.IsNullOrWhiteSpace(customPin.Url))
+            //{
+            //    var url = Android.Net.Uri.Parse(customPin.Url);
+            //    var intent = new Intent(Intent.ActionView, url);
+            //    intent.AddFlags(ActivityFlags.NewTask);
+            //    Android.App.Application.Context.StartActivity(intent);
+            //}
         }
 
         public Android.Views.View GetInfoContents(Marker marker)
@@ -136,5 +147,6 @@ namespace Mascotapp.Droid
             }
             return null;
         }
+
     }
 }
