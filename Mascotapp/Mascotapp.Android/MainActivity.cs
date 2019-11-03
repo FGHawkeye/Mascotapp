@@ -10,6 +10,7 @@ using System.IO;
 using Android.Support.V4.Content;
 using Android;
 using Android.Support.V4.App;
+using Plugin.CurrentActivity;
 
 namespace Mascotapp.Droid
 {
@@ -33,6 +34,15 @@ namespace Mascotapp.Droid
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Camera }, 0);
             }
 
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation, Manifest.Permission.AccessMockLocation, Manifest.Permission.AccessLocationExtraCommands }, 0);
+            }
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Internet) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Internet, Manifest.Permission.AccessNetworkState, Manifest.Permission.AccessWifiState}, 0);
+            }
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -43,6 +53,8 @@ namespace Mascotapp.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             Xamarin.FormsMaps.Init(this, savedInstanceState);
+
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
             LoadApplication(new App());
         }
