@@ -1,4 +1,5 @@
-﻿using Domain.Servicios;
+﻿using Domain.Entidades;
+using Domain.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +31,14 @@ namespace Mascotapp.Tipo_animales
 
         void CargarTipoAnimales()
         {
+            /*_lstTipoAnimal = servicieTipoAnimal.ObtenerTipoAnimales();
+            pckTipoDeAnimal.ItemsSource = _lstTipoAnimal;*/
+
             _lstTipoAnimal = servicieTipoAnimal.ObtenerTipoAnimales();
-            pckTipoDeAnimal.ItemsSource = _lstTipoAnimal;
+            foreach (TipoAnimal tipo in _lstTipoAnimal)
+            {
+                pckTipoDeAnimal.Items.Add(tipo.Descripcion);
+            }
         }
 
         void CargarElementos()
