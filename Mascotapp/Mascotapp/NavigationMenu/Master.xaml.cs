@@ -1,4 +1,5 @@
 ﻿using Mascotapp.Marcador_animales;
+using Mascotapp.Tipo_animales;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,11 @@ namespace Mascotapp.NavigationMenu
         {
             App.MasterD.IsPresented = false; //isVisible = false
             await App.MasterD.Detail.Navigation.PushAsync(new VisualizarSolicitud(3));
+        }
+        private async void BtnMostrarTipoAnimal_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new TipoDeAnimal());
         }
     }
 }
