@@ -18,7 +18,7 @@ namespace Domain.Servicios
 
         public List<Usuario> ObtenerUsuarios()
         {
-            return dbConnection.Query<Usuario>("Select * From [Usuarios]");
+            return dbConnection.Query<Usuario>("Select * From [Usuario]");
         }
 
         public int GuardarUsuario(Usuario usuario)

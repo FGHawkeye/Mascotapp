@@ -107,8 +107,14 @@
                             <Label  Grid.Column="1" x:Name="lbSexo">
                             </Label>
                         </Grid>
-                        <Label Text="Descripcion"/>
-                        <Label x:Name="txtDescripcion"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Descripcion"/>
+                            <Label Grid.Column="1" x:Name="txtDescripcion"/>
+                        </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />

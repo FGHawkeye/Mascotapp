@@ -25,6 +25,10 @@ namespace Domain.Servicios
         {
             return dbConnection.Query<Adopciones>("Select * From [Adopciones]").Where(x => x.IdAdopcion== id).SingleOrDefault(); 
         }
+        public List<Adopciones> ObtenerAdopcionesUsuario(int id)
+        {
+            return dbConnection.Query<Adopciones>("Select * From [Adopciones]").Where(x => x.IdUsuario== id).ToList(); 
+        }
         public int GuardarAdopcion(Adopciones adopcion)
         {
             dbConnection.Insert(adopcion);
