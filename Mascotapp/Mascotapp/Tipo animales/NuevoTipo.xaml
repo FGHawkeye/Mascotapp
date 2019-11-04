@@ -55,7 +55,8 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Mascota"/>
-                            <Picker  Grid.Column="1" Title="Tipo de animal" x:Name="pckTipoAnimal" />
+                            <Entry x:Name="txtNuevoTipoAnimal" Placeholder="Nuevo Tipo de Mascota" Grid.Column="1"></Entry>
+                            <!--<Picker  Grid.Column="1" Title="Tipo de animal" x:Name="pckTipoAnimal" />-->
                         </Grid>
 
                         <Grid>

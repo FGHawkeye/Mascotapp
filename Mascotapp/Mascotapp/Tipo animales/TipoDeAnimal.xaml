@@ -54,7 +54,7 @@
                         <Label Text="Descripcion"/>
                         <Label Grid.Column="1" Text="Max: 250 caracteres."/>
                     </Grid>
-                    <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtNuevaDescripcion"/>
+                    <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtNuevaDescripcion" IsEnabled="False"/>
 
                 </FlexLayout>
             </Frame>

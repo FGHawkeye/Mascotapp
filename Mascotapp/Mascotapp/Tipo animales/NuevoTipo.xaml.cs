@@ -17,12 +17,12 @@ namespace Mascotapp.Tipo_animales
     public partial class NuevoTipoAnimal : ContentPage
     {
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
-        private List<TipoAnimal> _lstTipoAnimal;
+        //private List<TipoAnimal> _lstTipoAnimal;
 
         public NuevoTipoAnimal()
         {
             InitializeComponent();
-            CargarTipoAnimales();
+            //CargarTipoAnimales();
             CargarEvento();
         }
 
@@ -31,11 +31,17 @@ namespace Mascotapp.Tipo_animales
             btnGuardar.Clicked += btnGuardar_Clicked;
         }
 
-        void CargarTipoAnimales()
+        /*void CargarTipoAnimales()
         {
             _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
             pckTipoAnimal.ItemsSource = _lstTipoAnimal;
-        }
+
+            _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            foreach (TipoAnimal tipo in _lstTipoAnimal)
+            {
+                pckTipoAnimal.Items.Add(tipo.Descripcion);
+            }
+        }*/
 
         private async void btnGuardar_Clicked(object sender, EventArgs e)
         {
@@ -44,7 +50,7 @@ namespace Mascotapp.Tipo_animales
                 if (ValidarForm())
                 {
                     var tipoAnimal = new Domain.Entidades.TipoAnimal();
-                    tipoAnimal.IdTipoAnimal = 1; //pckTipoAnimal.SelectedItem.
+                    tipoAnimal.IdTipoAnimal = 1; // NUEVO TIPO, BUSCAR EN TODA LA BD Y AGREGAR UNOS MAS
                     tipoAnimal.Descripcion = txtNuevaDescripcion.Text;
                     serviceTipoAnimal.GuardarTipoAnimal(tipoAnimal);
 

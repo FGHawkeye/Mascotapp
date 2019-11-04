@@ -39,8 +39,14 @@ namespace Mascotapp.Tipo_animales
 
         void CargarTipoAnimales()
         {
+            /*_lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            pckTipoAnimal.ItemsSource = _lstTipoAnimal;*/
+
             _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
-            pckTipoAnimal.ItemsSource = _lstTipoAnimal;
+            foreach (TipoAnimal tipo in _lstTipoAnimal)
+            {
+                pckTipoAnimal.Items.Add(tipo.Descripcion);
+            }
         }
 
         private async void btnGuardar_Clicked(object sender, EventArgs e)
