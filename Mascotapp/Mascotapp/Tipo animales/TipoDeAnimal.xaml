@@ -5,31 +5,73 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Mascotapp.Tipo_animales.TipoDeAnimal">
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BorderColor" Value="Blue" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Blue" />
+            <Setter Property="BorderRadius" Value="20" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Label Text="Tipo de animal" HorizontalOptions="CenterAndExpand" />
 
-            <StackLayout BackgroundColor="GhostWhite">
+            <Frame WidthRequest="300" HeightRequest="400">
+                <FlexLayout Direction="Column">
 
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tipo animal: "/>
-                    <Picker x:Name="pckTipoDeAnimal" 
-                            Title="Seleccione tipo animal" 
-                            ItemDisplayBinding="{Binding Descripcion}"/>
-                </StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Mascota"/>
+                        <Picker  Grid.Column="1" Title="Tipo de animal" x:Name="pckTipoDeAnimal" />
+                    </Grid>
 
-                <StackLayout Orientation="Vertical">
-                    <Label Text="Descripcion: "/>
-                    <Editor x:Name="txtDescripcion" 
-                            Placeholder="Descripcion"/>
-                </StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Descripcion"/>
+                        <Label Grid.Column="1" Text="Max: 250 caracteres."/>
+                    </Grid>
+                    <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtNuevaDescripcion" IsEnabled="False"/>
 
-                <StackLayout Orientation="Horizontal">
-                    <Button x:Name="btnAgregar" Text="Agregar"></Button>
-                    <Button x:Name="btnModificar" Text="Modificar"></Button>
-                </StackLayout>
+                </FlexLayout>
+            </Frame>
+            
+            <Frame WidthRequest="100" HeightRequest="50">
+                <FlexLayout Direction="Column">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnAgregar" Text="Agregar"/>
+                        <Button x:Name="btnModificar" Text="Modificar" Grid.Column="1"/>
+                    </Grid>
+                </FlexLayout>
+            </Frame>
 
-            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

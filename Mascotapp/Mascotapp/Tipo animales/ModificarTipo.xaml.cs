@@ -30,7 +30,6 @@ namespace Mascotapp.Tipo_animales
         void CargarEventos()
         {
             btnGuardar.Clicked += btnGuardar_Clicked;
-            btnCancelar.Clicked += btnCancelar_Clicked;
         }
 
         void CargarControles()
@@ -50,17 +49,45 @@ namespace Mascotapp.Tipo_animales
             }
         }
 
-        private void btnGuardar_Clicked(object sender, EventArgs e)
+        private async void btnGuardar_Clicked(object sender, EventArgs e)
         {
-            var tipoAniaml = new Domain.Entidades.TipoAnimal();
-            tipoAniaml.IdTipoAnimal = 1;//pckTipoAnimal.SelectedItem.
-            tipoAniaml.Descripcion = txtDescripcion.Text;
-            serviceTipoAnimal.GuardarTipoAnimal(tipoAniaml);
+            try
+            {
+                if (ValidarForm())
+                {
+                    var tipoAniaml = new Domain.Entidades.TipoAnimal();
+                    tipoAniaml.IdTipoAnimal = 1;//pckTipoAnimal.SelectedItem.
+                    tipoAniaml.Descripcion = txtDescripcion.Text;
+                    serviceTipoAnimal.GuardarTipoAnimal(tipoAniaml);
+
+                    await DisplayAlert("Tipo de Animal", "Se modifico el Tipo de Animal correctamente!", "OK");
+                    await App.MasterD.Detail.Navigation.PopToRootAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Tipo de Animal", "Falta completar datos.", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Tipo de Animal", "Hubo un problema, vuelva a intentar mas tarde.", "OK");
+                Console.WriteLine(ex);
+            }
         }
 
-        private void btnCancelar_Clicked(object sender, EventArgs e)
+        public bool ValidarForm()
         {
-            throw new NotImplementedException();
+            bool validate = true;
+            /*if (pckTipoAnimal.SelectedItem == null)
+            {
+                validate = false;
+            }
+            else */
+            if (txtDescripcion.Text == "" || txtDescripcion.Text == null)
+            {
+                validate = false;
+            }
+            return validate;
         }
     }
 }
