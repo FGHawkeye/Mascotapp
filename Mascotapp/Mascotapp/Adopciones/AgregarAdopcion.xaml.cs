@@ -10,6 +10,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mascotapp.NavigationMenu;
 using System.IO;
+using Plugin.Geolocator;
+using Plugin.Media.Abstractions;
 
 namespace Mascotapp
 {
@@ -48,17 +50,22 @@ namespace Mascotapp
         }
         private async void CameraButton_Clicked(object sender, EventArgs e)
         {
+            string directoryPath = "/storage/emulated/0/Mascotapp/";
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
                 new Plugin.Media.Abstractions.StoreCameraMediaOptions() 
                 {
-                    CompressionQuality=5
+                    CompressionQuality =5
                 }
                 );
-
+            System.IO.File.Copy(photo.Path, directoryPath, true);
+            TaskScheduler.FromCurrentSynchronizationContext();
+            var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
+            string name = photo.Path.Replace(trm, string.Empty);
             if (photo != null)
             {
-                ImageSource imageSource = ImageSource.FromStream(() => { return photo.GetStream(); });
-                AgregarFoto(imageSource,photo.Path);
+                ImageSource image = ImageSource.FromFile(directoryPath + name);
+                AgregarFoto(image, directoryPath + name);
+                File.Delete(photo.Path);
             }       
         }
         private void Img_Clicked(object sender, EventArgs e)
@@ -96,6 +103,8 @@ namespace Mascotapp
         {
             try
             {
+                var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
+                
                 if (ValidarForm())
                 {
                     var adopcion = new Adopciones();
@@ -107,7 +116,7 @@ namespace Mascotapp
                     adopcion.Estado = true;
                     adopcion.Nombre = txtNombre.Text;
                     adopcion.Sexo = pckSexo.SelectedItem.ToString();
-                    adopcion.Ubicacion = "Prueba";
+                    adopcion.Ubicacion = currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString();
                     int idAd=servicioAdopciones.GuardarAdopcion(adopcion);
 
                     if (imgMin1.Source != null)
@@ -165,11 +174,7 @@ namespace Mascotapp
         {
             //agregar mensajes faltantes
             bool validate = true;
-            if (pckUnidad.SelectedItem == null)
-            {
-                validate = false;
-            }
-            else if (pckAnimal.SelectedItem == null)
+            if (pckAnimal.SelectedItem == null)
             {
                 validate = false;
             }

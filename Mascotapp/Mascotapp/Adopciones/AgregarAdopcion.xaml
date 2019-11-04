@@ -105,13 +105,7 @@
                                 <Entry
                                Keyboard="Numeric" Placeholder="Edad" x:Name="txtEdad"
                                />
-                                <Picker  Grid.Column="1"
-                            Title="Unidad" x:Name="pckUnidad" >
-                                    <Picker.Items>
-                                        <x:String>Mes</x:String>
-                                        <x:String>Año</x:String>
-                                    </Picker.Items>
-                                </Picker>
+                                <Label Grid.Column="1" Text="Año"></Label>
                             </Grid>
                         </Grid>
                         <Grid>

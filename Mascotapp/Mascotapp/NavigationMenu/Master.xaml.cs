@@ -50,5 +50,10 @@ namespace Mascotapp.NavigationMenu
             App.MasterD.IsPresented = false; //isVisible = false
             await App.MasterD.Detail.Navigation.PushAsync(new VisualizarSolicitud(3));
         }
+        private async void BtnNotificaciones_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new Notificaciones());
+        }
     }
 }
