@@ -23,6 +23,12 @@ namespace Domain.Servicios
             int pk = dbConnection.ExecuteScalar<int>("select last_insert_rowid()");
             return pk;
         }
+        public int GuardarModificarImagen(Imagenes imagen)
+        {
+            dbConnection.Update(imagen);
+            int pk = imagen.IdImagen.Value;
+            return pk;
+        }
 
     }
 }
