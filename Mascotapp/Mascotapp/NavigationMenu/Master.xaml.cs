@@ -1,4 +1,5 @@
 ﻿using Mascotapp.Marcador_animales;
+using Mascotapp.Login;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,17 @@ namespace Mascotapp.NavigationMenu
             App.MasterD.IsPresented = false; //isVisible = false
             await App.MasterD.Detail.Navigation.PushAsync(new MostrarAdopciones());
         }
+        private async void BtnLogin_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new Login.Login());
+        }
+        private async void BtnRegistro_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new Registro.Registro());
+        }
+
         private async void BtnSolicitudAdopcion_Clicked(object sender, EventArgs e)
         {
             App.MasterD.IsPresented = false; //isVisible = false

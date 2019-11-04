@@ -5,8 +5,12 @@ using Xamarin.Forms;
 
 namespace Mascotapp
 {
+
+   
     public partial class MainPage : MasterDetailPage
     {
+        public static int TipoUsuario = 0;
+        public static string NombreYApellido = "";
         //ObservableCollection<Usuario> usuarios = new ObservableCollection<Usuario>();
         //public ObservableCollection<Usuario> Usuarios { get { return usuarios; } }
 
