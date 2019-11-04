@@ -40,7 +40,7 @@ namespace Mascotapp.Droid
 
         protected override void OnMapReady(GoogleMap map)
         {
-            base.OnMapReady(map);
+            //base.OnMapReady(map);
 
             NativeMap.InfoWindowClick += OnInfoWindowClick;
             NativeMap.SetInfoWindowAdapter(this);
