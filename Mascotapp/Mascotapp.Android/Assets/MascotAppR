@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS Imagenes;
 CREATE TABLE Imagenes (
     IdImagen INTEGER           PRIMARY KEY,
     Imagen   VARCHAR (100),
-    Estado   VARCHAR (50)
+    Estado   BOOLEAN
 );
 
 
@@ -53,7 +53,7 @@ CREATE TABLE Marcadores (
                                REFERENCES Imagenes (IdImagen),
     Ubicacion    VARCHAR (100),
     Descripcion  VARCHAR (100),
-    Estado       VARCHAR (50)
+    Estado       BOOLEAN
 );
 
 

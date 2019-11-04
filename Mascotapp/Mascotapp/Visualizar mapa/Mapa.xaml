@@ -4,14 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             x:Class="Mascotapp.Visualizar_mapa.Mapa">
+             x:Class="Mascotapp.Visualizar_mapa.Mapa"
+             xmlns:local="clr-namespace:Domain.MapRenderer;assembly=Domain">
     <ContentPage.Content>
 
         <StackLayout VerticalOptions="FillAndExpand" Padding="12">
-            <maps:Map WidthRequest="320" HeightRequest="200" x:Name="map_Mapa" MapType="Street">
+            <local:CustomMap WidthRequest="320" HeightRequest="200" x:Name="map_Mapa" MapType="Street">
 
-            </maps:Map>
+            </local:CustomMap>
         </StackLayout>
         
     </ContentPage.Content>

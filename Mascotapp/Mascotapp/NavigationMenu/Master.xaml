@@ -13,7 +13,7 @@
         <Button Text="Mostrar Adopciones" x:Name="btnMostrarAdopciones" Clicked="BtnMostrarAdopciones_Clicked" />
         <Button Text="Login" x:Name="btnLogin" Clicked="BtnLogin_Clicked" />
         <Button Text="Registrarse" x:Name="btnRegistro" Clicked="BtnRegistro_Clicked" />
-    </StackLayout> 
-
-
+        <Button Text="Solicitud de Adopcion" x:Name="btnSolicitudAdopcion" Clicked="BtnSolicitudAdopcion_Clicked" />
+    </StackLayout>
+    
 </ContentPage>

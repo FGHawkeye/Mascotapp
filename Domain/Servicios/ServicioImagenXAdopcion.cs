@@ -2,6 +2,7 @@
 using Domain.Entidades;
 using SQLite;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -15,9 +16,9 @@ namespace Domain.Servicios
         {
             dbConnection=DependencyService.Get<IDBInterface>().CreateConnection();
         }
-        public List<ImagenXAdopcion> ObtenerImagenXAdopcion()
+        public List<ImagenXAdopcion> ObtenerImagenXAdopcion(int id)
         {
-            return dbConnection.Query<ImagenXAdopcion>("Select * From [ImagenXAdopcion]");
+            return dbConnection.Query<ImagenXAdopcion>("Select * From [ImagenXAdopcion]").Where(x=>x.IdAdopcion==id).ToList();
         }
         public int GuardarImagenXAdopcion(ImagenXAdopcion imagenXAdopcion)
         {

@@ -1,9 +1,7 @@
 ﻿using Domain.DB;
 using Domain.Entidades;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace Domain.Servicios
@@ -15,14 +13,20 @@ namespace Domain.Servicios
         {
             dbConnection = DependencyService.Get<IDBInterface>().CreateConnection();
         }
-        public List<Imagenes> ObtenerImagenes()
+        public Imagenes ObtenerImagen(int id)
         {
-            return dbConnection.Query<Imagenes>("Select * From [Imagenes]");
+            return dbConnection.Query<Imagenes>("Select * From [Imagenes]").Where(x=>x.IdImagen==id).FirstOrDefault();
         }
         public int GuardarImagen(Imagenes imagen)
         {
             dbConnection.Insert(imagen);
-            int pk = dbConnection.ExecuteScalar<int>("SELECT last_insert_rowid()");
+            int pk = dbConnection.ExecuteScalar<int>("select last_insert_rowid()");
+            return pk;
+        }
+        public int GuardarModificarImagen(Imagenes imagen)
+        {
+            dbConnection.Update(imagen);
+            int pk = imagen.IdImagen.Value;
             return pk;
         }
 
