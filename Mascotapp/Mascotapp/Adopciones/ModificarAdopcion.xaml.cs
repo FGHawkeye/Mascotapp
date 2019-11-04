@@ -15,42 +15,50 @@ namespace Mascotapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ModificarAdopcion : ContentPage
     {
-        #region BindableObjects
-        List<TipoAnimal> _lstTipoAnimal = new List<TipoAnimal>();
-        #endregion
         private string image1;
         private string image2;
         private string image3;
+        private int imgCount = 0;
+        private int idAdop = 0;
+
+        private List<Imagenes> imagenes = new List<Imagenes>();
+        private List<Imagenes> imagenesAgregar = new List<Imagenes>();
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
         private ServicioImagenes servicioImagenes = new ServicioImagenes();
         private ServicioImagenXAdopcion servicioImagenXAdopcion = new ServicioImagenXAdopcion();
+
         public ModificarAdopcion(int id)
         {
             InitializeComponent();
             CargarElementos(id);
         }
+
         public void CargarElementos(int id)
         {
+            idAdop = id;
             Adopciones adopcion = servicioAdopciones.ObtenerAdopcion(id);
             List<ImagenXAdopcion> imagenXAdopcions = servicioImagenXAdopcion.ObtenerImagenXAdopcion(id);
-            List<Imagenes> imagenes = new List<Imagenes>();// servicioImagenes.ObtenerImagenes().Where(x => x.IdImagen == imagenXAdopcions.;
-            foreach(ImagenXAdopcion item in imagenXAdopcions)
+            // servicioImagenes.ObtenerImagenes().Where(x => x.IdImagen == imagenXAdopcions.;
+            foreach (ImagenXAdopcion item in imagenXAdopcions)
             {
                 imagenes.Add(servicioImagenes.ObtenerImagen(item.IdImagen));
             }
-            CargarImagenes(imagenes);
+            CargarImagenes();
             CargarTipoAnimal();
             CargarAdopcion(adopcion);
+            btnCamara.Clicked += CameraButton_Clicked;
+            btnQuitar.Clicked += Quitar_Clicked;
+            btnGuardar.Clicked += Guardar_Clicked;
         }
+
         public void CargarTipoAnimal()
         {
-            _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
-            foreach(TipoAnimal tipo in _lstTipoAnimal)
-            {
-                pckAnimal.Items.Add(tipo.Descripcion);
-            }
+            List<TipoAnimal> _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            pckAnimal.ItemsSource = _lstTipoAnimal;
+            pckAnimal.ItemDisplayBinding = new Binding("Descripcion");
         }
+
         public void CargarAdopcion(Adopciones adopcion)
         {
             txtEdad.Text = adopcion.Edad.ToString();
@@ -66,27 +74,53 @@ namespace Mascotapp
             }
             pckAnimal.SelectedIndex = adopcion.IdTipoAnimal;
         }
-        public void CargarImagenes(List<Imagenes> imagenes)
+
+        public void CargarImagenes()
         {
-            if (imagenes.Count>0)
+            imgCount = imagenes.Count;
+            Boolean full = true;
+            if (imgCount > 0)
             {
-                imgMin1.Source = ImageSource.FromFile(imagenes[0].Imagen);
-                image1 = imagenes[0].Imagen;
+                if (imagenes[0].Estado)
+                {
+                    imgMin1.Source = ImageSource.FromFile(imagenes[0].Imagen);
+                    image1 = imagenes[0].Imagen;
+                }
+                else
+                {
+                    full = false;
+                }
             }
-            if (imagenes.Count > 1) { 
-                imgMin2.Source = ImageSource.FromFile(imagenes[1].Imagen);
-                image2 = imagenes[1].Imagen;
-            }
-            if (imagenes.Count>2)
+            if (imgCount > 1)
             {
-                imgMin3.Source = ImageSource.FromFile(imagenes[2].Imagen);
-                image3 = imagenes[2].Imagen;
+                if (imagenes[1].Estado)
+                {
+                    imgMin2.Source = ImageSource.FromFile(imagenes[1].Imagen);
+                    image2 = imagenes[1].Imagen;
+                }
+                else
+                {
+                    full = false;
+                }
             }
-            if (imagenes.Count == 3)
+            if (imgCount > 2)
+            {
+                if (imagenes[2].Estado)
+                {
+                    imgMin3.Source = ImageSource.FromFile(imagenes[2].Imagen);
+                    image3 = imagenes[2].Imagen;
+                }
+                else
+                {
+                    full = false;
+                }
+            }
+            if (imgCount == 3&&full)
             {
                 btnCamara.IsEnabled = false;
             }
         }
+
         private async void CameraButton_Clicked(object sender, EventArgs e)
         {
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
@@ -102,6 +136,7 @@ namespace Mascotapp
                 AgregarFoto(imageSource, photo.Path);
             }
         }
+
         private void Img_Clicked(object sender, EventArgs e)
         {
             ImageButton ia = (ImageButton)sender;
@@ -112,6 +147,7 @@ namespace Mascotapp
                 imgCamara.Source = ia.Source;
             }
         }
+
         private void Quitar_Clicked(object sender, EventArgs e)
         {
             if (lbImage.Text != "")
@@ -137,12 +173,16 @@ namespace Mascotapp
                     imgMin3.Source = null;
                     image3 = null;
                 }
+                if (image1 == null) imagenes[0].Estado = false;
+                if (image2 == null) imagenes[1].Estado = false;
+                if (image3 == null) imagenes[2].Estado = false;
                 btnCamara.IsEnabled = true;
                 imgCamara.Source = null;
                 lbImage.Text = "";
                 btnQuitar.IsEnabled = false;
             }
         }
+
         public bool ValidarForm()
         {
             //agregar mensajes faltantes
@@ -173,30 +213,91 @@ namespace Mascotapp
             }
             return validate;
         }
+
         public void AgregarFoto(ImageSource img, string path)
         {
             bool estado = false;
+            bool existe = true;
+            int id = 0;
             if (imgMin1.Source == null)
             {
+                imagenes[0].Imagen = path;
+                imagenes[0].Estado = true;
                 estado = true;
                 lbImage.Text = imgMin1.Id.ToString();
                 imgMin1.Source = img;
-                image1 = path;
             }
             else if (imgMin2.Source == null)
             {
+                if (imgCount > 1)
+                {
+                    imagenes[1].Imagen = path;
+                    imagenes[1].Estado = true;
+                }
+                else
+                {
+                    int index = 0;
+                    foreach (Imagenes imgAdd in imagenesAgregar)
+                    {
+                        if (imgAdd.IdImagen == 2)
+                        {
+                            imagenesAgregar[index].IdImagen= index;
+                            imagenesAgregar[index].Imagen = path;
+                            imagenesAgregar[index].Estado= true;
+                        }
+                        index++;
+                    }
+                    if (index == 0)
+                    {
+                        existe = false;
+                        id = 2;
+                    }
+                }
                 lbImage.Text = imgMin2.Id.ToString();
                 estado = true;
                 imgMin2.Source = img;
-                image2 = path;
             }
             else if (imgMin3.Source == null)
             {
+                if (imgCount > 2)
+                {
+                    imagenes[2].Imagen = path;
+                    imagenes[2].Estado = true;
+                }
+                else
+                {
+                    int index = 0;
+                    foreach (Imagenes imgAdd in imagenesAgregar)
+                    {
+                        if (imgAdd.IdImagen == 3)
+                        {
+                            imagenesAgregar[index].IdImagen = index;
+                            imagenesAgregar[index].Imagen = path;
+                            imagenesAgregar[index].Estado = true;
+                        }
+                        index++;
+                    }
+                    if (index == 0)
+                    {
+                        existe = false;
+                        id = 3;
+                    }
+                }
                 lbImage.Text = imgMin3.Id.ToString();
                 estado = true;
                 imgMin3.Source = img;
-                image3 = path;
             }
+            if (!existe)
+            {
+                Imagenes imgAgregar = new Imagenes
+                {
+                    IdImagen = id,
+                    Imagen = path,
+                    Estado = true
+                };
+                imagenesAgregar.Add(imgAgregar);
+            }
+
             if (estado)
             {
                 imgCamara.Source = img;
@@ -210,64 +311,42 @@ namespace Mascotapp
                 btnQuitar.IsEnabled = false;
             }
         }
-        /*private async void Guardar_Clicked(object sender, EventArgs e)
+
+        private async void Guardar_Clicked(object sender, EventArgs e)
         {
-            /*try
+            try
             {
                 if (ValidarForm())
                 {
                     var adopcion = new Adopciones();
                     adopcion.IdUsuario = 2;
-                    adopcion.IdAdopcion = null;
+                    adopcion.IdAdopcion = idAdop;
                     adopcion.IdTipoAnimal = 1;
                     adopcion.Detalle = txtDescripcion.Text;
                     adopcion.Edad = Int32.Parse(txtEdad.Text);//faltaria modificar la tabla para agregar edad meses y edad años
-                    adopcion.Estado = "Activo";
+                    adopcion.Estado = true;
                     adopcion.Nombre = txtNombre.Text;
                     adopcion.Sexo = pckSexo.SelectedItem.ToString();
                     adopcion.Ubicacion = "Prueba";
-                    int idAd = servicioAdopciones.GuardarAdopcion(adopcion);
 
-                    if (imgMin1.Source != null)
+                    int idAd = servicioAdopciones.ModificarAdopcion(adopcion);
+                    foreach (Imagenes imgAdd in imagenesAgregar)
                     {
-                        var imagen = new Imagenes();
-                        imagen.IdImagen = null;
-                        imagen.Imagen = image1;
-                        imagen.Estado = "Activo";
-                        int idImg = servicioImagenes.GuardarImagen(imagen);
-
-                        var imgXad = new ImagenXAdopcion();
-                        imgXad.IdAdopcion = idAd;
-                        imgXad.IdImagen = idImg;
-                        int idIXA = servicioImagenXAdopcion.GuardarImagenXAdopcion(imgXad);
-
+                        int idImg = GuardarFoto(imgAdd);
                     }
-                    if (imgMin2.Source != null)
+
+                    if (imgCount > 0) ModificarFoto(imagenes[0]);
+                    if (imgCount > 1)
                     {
-                        var imagen = new Imagenes();
-                        imagen.IdImagen = null;
-                        imagen.Imagen = image2;
-                        imagen.Estado = "Activo";
-                        int idImg = servicioImagenes.GuardarImagen(imagen);
-
-                        var imgXad = new ImagenXAdopcion();
-                        imgXad.IdAdopcion = idAd;
-                        imgXad.IdImagen = idImg;
-                        int idIXA = servicioImagenXAdopcion.GuardarImagenXAdopcion(imgXad);
+                        ModificarFoto(imagenes[1]);
                     }
-                    if (imgMin3.Source != null)
+                    else if (imagenesAgregar.Count > 0) GuardarFoto(imagenesAgregar[0]);
+                    if (imgCount > 2)
                     {
-                        var imagen = new Imagenes();
-                        imagen.IdImagen = null;
-                        imagen.Imagen = image3;
-                        imagen.Estado = "Activo";
-                        int idImg = servicioImagenes.GuardarImagen(imagen);
-
-                        var imgXad = new ImagenXAdopcion();
-                        imgXad.IdAdopcion = idAd;
-                        imgXad.IdImagen = idImg;
-                        int idIXA = servicioImagenXAdopcion.GuardarImagenXAdopcion(imgXad);
+                        ModificarFoto(imagenes[2]);
                     }
+                    else if (imagenesAgregar.Count > 1) GuardarFoto(imagenesAgregar[1]);
+
                     await DisplayAlert("Adopciones", "Se modificó la publicación correctamente!", "OK");
                     await App.MasterD.Detail.Navigation.PopToRootAsync();
                 }
@@ -281,6 +360,36 @@ namespace Mascotapp
                 await DisplayAlert("Adopciones", "Hubo un problema, vuelva a intentar mas tarde.", "OK");
                 Console.WriteLine(ex);
             }
-        }*/
+        }
+        public int GuardarFoto(Imagenes imageButton)
+        {
+            Boolean estado = false;
+            if (imageButton.Imagen != null && imageButton.Imagen != "") estado = true;
+            var imagen = new Imagenes
+            {
+                Imagen = imageButton.Imagen,
+                Estado = estado,
+                IdImagen = null
+            };
+            int idNew = servicioImagenes.GuardarImagen(imagen);
+            var imgXAd = new ImagenXAdopcion
+            {
+                IdImagen = idNew,
+                IdAdopcion = idAdop
+            };
+            return servicioImagenXAdopcion.GuardarImagenXAdopcion(imgXAd);
+        }
+        public void ModificarFoto(Imagenes imageButton)
+        {
+            //Boolean estado = false;
+            //if (imageButton.Imagen != null && imageButton.Imagen != "") estado = true;
+            var imagen = new Imagenes
+            {
+                Imagen = imageButton.Imagen,
+                Estado = imageButton.Estado,
+                IdImagen = imageButton.IdImagen
+            };
+            servicioImagenes.GuardarModificarImagen(imagen);
+        }
     }
 }

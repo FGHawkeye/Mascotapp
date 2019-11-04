@@ -43,7 +43,6 @@ namespace Mascotapp
         public void CargarEventos()
         {
             btnCamara.Clicked += CameraButton_Clicked;
-            imgMin1.Clicked += Img_Clicked;
             btnQuitar.Clicked += Quitar_Clicked;
             btnGuardar.Clicked += Guardar_Clicked;
         }
