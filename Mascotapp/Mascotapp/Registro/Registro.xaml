@@ -81,7 +81,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Nombre y Apellido:"/>
+                            <Label Text="Email: "/>
                             <Entry x:Name="txtEmail" Placeholder="Email@Email.com" Grid.Column="1"></Entry>
                         </Grid>
 
@@ -123,8 +123,8 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
-                            <Button  x:Name="btnRegistrar" Text="Registrar"/>
-                            <Button Grid.Column="1" Text="Cancelar"/>
+                            <Button x:Name="btnRegistrar" Text="Registrar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
 
     
 

@@ -30,6 +30,7 @@ namespace Mascotapp.Registro
 
             btnRegistrar.Clicked += Registrar_Clicked;
             txtContra2.Completed += Registrar_Clicked;
+            btnCancelar.Clicked += Cancelar_Clicked;
         }
 
         private async void Registrar_Clicked(object sender, EventArgs e)
@@ -101,6 +102,14 @@ namespace Mascotapp.Registro
 
         }
 
+
+        private void Cancelar_Clicked(object sender, EventArgs e)
+        {
+
+            Navigation.PopAsync(false);
+
+
+        }
         private int ValidarForm()
         {
 

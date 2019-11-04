@@ -90,7 +90,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Button  x:Name="btnIngresar" Text="Aceptar"/>
-                            <Button Grid.Column="1" Text="Cancelar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
 
                             <Label Grid.Column="1" Grid.Row="1" 
                                Text="Nuevo usuario? Registrate!"/>

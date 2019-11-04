@@ -35,6 +35,7 @@ namespace Mascotapp.Login
 
             btnIngresar.Clicked += Ingresar_Clicked;
             txtContra.Completed += Ingresar_Clicked;
+            btnCancelar.Clicked += Cancelar_Clicked;
         }
 
 
@@ -51,10 +52,14 @@ namespace Mascotapp.Login
                 Usuario.Contraseña = txtContra.Text;
 
                 UsuarioValidado = servicioUsuarios.ValidarUsuario(Usuario);
-              
-                MainPage._variable1 = UsuarioValidado.IdTipoUsuario;
+
+                MainPage.TipoUsuario = UsuarioValidado.IdTipoUsuario;
+                MainPage.NombreYApellido = UsuarioValidado.NombreYApellido;
                 await Navigation.PopAsync(false);
-     
+
+                await DisplayAlert("Bienvenido " + MainPage.NombreYApellido , "Nos alegra que nos visites nuevamente.", "Continuar");
+          
+           
 
                 /*}*/
             }
@@ -69,9 +74,14 @@ namespace Mascotapp.Login
 
         }
 
-  
+
+        private void Cancelar_Clicked(object sender, EventArgs e)
+        {
+
+           Navigation.PopAsync(false);
 
 
+        }
 
 
     }
