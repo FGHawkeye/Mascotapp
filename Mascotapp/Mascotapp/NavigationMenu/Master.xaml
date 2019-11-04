@@ -12,6 +12,7 @@
         <Button Text="Agregar Adopcion" x:Name="btnAgregarAdopcion" Clicked="BtnAgregarAdopcion_Clicked" />
         <Button Text="Mostrar Adopciones" x:Name="btnMostrarAdopciones" Clicked="BtnMostrarAdopciones_Clicked" />
         <Button Text="Solicitud de Adopcion" x:Name="btnSolicitudAdopcion" Clicked="BtnSolicitudAdopcion_Clicked" />
+        <Button Text="Mostrar Tipo Animal" x:Name="btnMostrarTipoAnimal" Clicked="BtnMostrarTipoAnimal_Clicked" />
         <Button Text="Login" x:Name="btnLogin"  />
     </StackLayout> 
 
