@@ -72,8 +72,17 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Nombre y Apellido:"/>
-                            <Entry x:Name="txtNombre" Placeholder="Nombre y Apellido" Grid.Column="1"></Entry>
+                            <Label Text="Nombre:"/>
+                            <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1"></Entry>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Apellido:"/>
+                            <Entry x:Name="txtApellido" Placeholder="Apellido" Grid.Column="1"></Entry>
                         </Grid>
 
                         <Grid>

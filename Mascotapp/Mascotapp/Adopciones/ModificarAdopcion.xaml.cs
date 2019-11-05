@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mascotapp.NavigationMenu;
+using System.IO;
 
 namespace Mascotapp
 {
@@ -123,6 +124,26 @@ namespace Mascotapp
 
         private async void CameraButton_Clicked(object sender, EventArgs e)
         {
+            string directoryPath = "/storage/emulated/0/Mascotapp/";
+            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
+                new Plugin.Media.Abstractions.StoreCameraMediaOptions()
+                {
+                    CompressionQuality = 5
+                }
+                );
+            System.IO.File.Copy(photo.Path, directoryPath, true);
+            TaskScheduler.FromCurrentSynchronizationContext();
+            var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
+            string name = photo.Path.Replace(trm, string.Empty);
+            if (photo != null)
+            {
+                ImageSource image = ImageSource.FromFile(directoryPath + name);
+                AgregarFoto(image, directoryPath + name);
+                File.Delete(photo.Path);
+            }
+        }
+        /*private async void CameraButton_Clicked(object sender, EventArgs e)
+        {
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
                 new Plugin.Media.Abstractions.StoreCameraMediaOptions()
                 {
@@ -135,7 +156,7 @@ namespace Mascotapp
                 ImageSource imageSource = ImageSource.FromStream(() => { return photo.GetStream(); });
                 AgregarFoto(imageSource, photo.Path);
             }
-        }
+        }*/
 
         private void Img_Clicked(object sender, EventArgs e)
         {
@@ -173,9 +194,9 @@ namespace Mascotapp
                     imgMin3.Source = null;
                     image3 = null;
                 }
-                if (image1 == null) imagenes[0].Estado = false;
-                if (image2 == null) imagenes[1].Estado = false;
-                if (image3 == null) imagenes[2].Estado = false;
+                if (image1 == null && imgCount > 0) imagenes[0].Estado = false;
+                if (image2 == null && imgCount > 1) imagenes[1].Estado = false;
+                if (image3 == null && imgCount > 2) imagenes[2].Estado = false;
                 btnCamara.IsEnabled = true;
                 imgCamara.Source = null;
                 lbImage.Text = "";
@@ -187,11 +208,7 @@ namespace Mascotapp
         {
             //agregar mensajes faltantes
             bool validate = true;
-            if (pckUnidad.SelectedItem == null)
-            {
-                validate = false;
-            }
-            else if (pckAnimal.SelectedItem == null)
+            if (pckAnimal.SelectedItem == null)
             {
                 validate = false;
             }

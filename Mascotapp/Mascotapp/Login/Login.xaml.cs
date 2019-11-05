@@ -22,12 +22,18 @@ namespace Mascotapp.Login
 
         private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
 
-        public Login(string nombreusuario = "")
+        public Login(string nombreusuario = "", string contra = "")
         {
             
             InitializeComponent();
             CargarEventos();
-            txtNombre.Text = nombreusuario;
+
+            if (contra != "")
+            {
+                txtNombre.Text = nombreusuario;
+                txtContra.Text = contra;
+                btnIngresar.Focus();
+            }
         }
 
         public void CargarEventos()
@@ -45,17 +51,15 @@ namespace Mascotapp.Login
             {
                 Usuario Usuario = new Usuario();
                 Usuario UsuarioValidado = new Usuario();
-
-                Usuario.NombreUsuario = txtNombre.Text;
-                Usuario.Contraseña = txtContra.Text;
+                
+                Usuario.NombreUsuario = txtNombre.Text.Trim();
+                Usuario.Contraseña =  txtContra.Text.Trim();
 
                 UsuarioValidado = servicioUsuarios.ValidarUsuario(Usuario);
 
-                MainPage.TipoUsuario = UsuarioValidado.IdTipoUsuario;
-                MainPage.NombreYApellido = UsuarioValidado.NombreYApellido;
+                MainPage.UsuarioRegristrado = UsuarioValidado;
 
-                
-                await DisplayAlert("Bienvenido " + MainPage.NombreYApellido , "Nos alegra que nos visites nuevamente.", "Continuar");
+                await DisplayAlert("Bienvenido " + MainPage.UsuarioRegristrado.Nombre, "Nos alegra que nos visites nuevamente.", "Continuar");
                 await Navigation.PopAsync(false);
             }
             catch

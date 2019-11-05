@@ -12,13 +12,9 @@ namespace Domain.Entidades
         public string NombreUsuario { get; set; }
         public int IdTipoUsuario { get; set; }
         public string Contraseña { get; set; }
-        public string NombreYApellido { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public long Telefono { get; set; }
         public string Email { get; set; }
-
-        public override string ToString()
-        {
-            return NombreYApellido;
-        }
     }
 }

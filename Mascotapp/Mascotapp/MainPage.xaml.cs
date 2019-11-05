@@ -9,8 +9,9 @@ namespace Mascotapp
    
     public partial class MainPage : MasterDetailPage
     {
-        public static int TipoUsuario = 0;
-        public static string NombreYApellido = "";
+
+        public static Domain.Entidades.Usuario UsuarioRegristrado = null;
+
         //ObservableCollection<Usuario> usuarios = new ObservableCollection<Usuario>();
         //public ObservableCollection<Usuario> Usuarios { get { return usuarios; } }
 
@@ -24,6 +25,7 @@ namespace Mascotapp
             App.MasterD = this;
             //CargarUsuarios();
         }
+
 
 
         //void CargarUsuarios()

@@ -36,12 +36,37 @@ namespace Mascotapp.Droid
 
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) != (int)Permission.Granted)
             {
-                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessCoarseLocation, Manifest.Permission.AccessFineLocation, Manifest.Permission.AccessMockLocation, Manifest.Permission.AccessLocationExtraCommands }, 0);
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessCoarseLocation }, 0);
+            }
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] {Manifest.Permission.AccessFineLocation}, 0);
+            }
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessMockLocation) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessMockLocation}, 0);
+            }
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessLocationExtraCommands) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessLocationExtraCommands }, 0);
             }
 
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Internet) != (int)Permission.Granted)
             {
-                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Internet, Manifest.Permission.AccessNetworkState, Manifest.Permission.AccessWifiState}, 0);
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Internet}, 0);
+            }
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessNetworkState) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] {  Manifest.Permission.AccessNetworkState}, 0);
+            }
+
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessWifiState) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] {Manifest.Permission.AccessWifiState}, 0);
             }
 
             TabLayoutResource = Resource.Layout.Tabbar;
