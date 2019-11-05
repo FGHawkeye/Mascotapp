@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Mascotapp.Login.Login"
+             Title="Login">
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BorderColor" Value="Blue" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="FlexLayout.Order" Value="-1" />
+            <Setter Property="FlexLayout.AlignSelf" Value="Center" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Blue" />
+            <Setter Property="BorderRadius" Value="20" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#E5E5E5" Orientation ="Vertical">
+            
+            
+            <StackLayout>
+                <Frame WidthRequest="300"
+                   HeightRequest="32">
+                    
+                    <Label Text="Ingregar"
+               HorizontalOptions="Center" 
+               FontAttributes="Bold" />
+                </Frame>
+                
+                <Frame WidthRequest="300"
+                   HeightRequest="480">
+                    
+                    <FlexLayout Direction="Column">
+
+                        <Grid>
+                            
+                            <Label Text="Ingrese su usuario" />
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                          
+                        </Grid>
+
+                        <Editor x:Name="txtNombre" Placeholder="Usuario" MaxLength="250" />
+
+
+                        <Grid Margin="0,20,0,0">
+
+                            <Label Text="Ingrese su contraseña"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                        </Grid>
+                        <Entry x:Name="txtContra" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" >
+
+                        </Entry>
+             
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="btnIngresar" Text="Aceptar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
+
+                            <Label Grid.Column="1" Grid.Row="1" 
+                               Text="Nuevo usuario? Registrate!">
+                                 <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                 </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                    
+
+                    </FlexLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

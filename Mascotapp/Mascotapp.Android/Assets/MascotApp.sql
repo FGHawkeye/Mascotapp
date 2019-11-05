@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS Adopciones;
 
 CREATE TABLE Adopciones (
     IdAdopcion   INTEGER           PRIMARY KEY,
-    IdUsuario    INTEGER           REFERENCES Usuarios (IdUsuario) 
+    IdUsuario    INTEGER           REFERENCES Usuario (IdUsuario) 
                                NOT NULL,
     IdTipoAnimal INTEGER           REFERENCES TipoAnimal (IdTipoAnimal) 
                                NOT NULL,
@@ -45,7 +45,7 @@ DROP TABLE IF EXISTS Marcadores;
 
 CREATE TABLE Marcadores (
     IdMarcador   INTEGER           PRIMARY KEY,
-    IdUsuario                  REFERENCES Usuarios (IdUsuario) 
+    IdUsuario                  REFERENCES Usuario (IdUsuario) 
                                NOT NULL,
     IdTipoAnimal INTEGER           REFERENCES TipoAnimal (IdTipoAnimal) 
                                NOT NULL,
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS Preguntas;
 CREATE TABLE Preguntas (
     Pregunta  VARCHAR (100) PRIMARY KEY
                             NOT NULL,
-    IdUsuario INTEGER           REFERENCES Usuarios (IdUsuario) 
+    IdUsuario INTEGER           REFERENCES Usuario (IdUsuario) 
                             NOT NULL,
     Respuesta VARCHAR (100) 
 );
@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS Refugio;
 
 CREATE TABLE Refugio (
     IdRefugio     INTEGER           PRIMARY KEY,
-    IdUsuario     INTEGER           REFERENCES Usuarios (IdUsuario) 
+    IdUsuario     INTEGER           REFERENCES Usuario (IdUsuario) 
                                 NOT NULL
                                 UNIQUE,
     RazonSocial   VARCHAR (50)  NOT NULL,
@@ -93,7 +93,7 @@ DROP TABLE IF EXISTS Reportes;
 
 CREATE TABLE Reportes (
     IdReporte  INTEGER PRIMARY KEY,
-    IdUsuario  INTEGER REFERENCES Usuarios (IdUsuario) 
+    IdUsuario  INTEGER REFERENCES Usuario (IdUsuario) 
                    NOT NULL,
     IdMarcador INTEGER REFERENCES Marcadores (IdMarcador) 
                    NOT NULL
@@ -106,7 +106,7 @@ DROP TABLE IF EXISTS SolicitudAdopcion;
 CREATE TABLE SolicitudAdopcion (
     IdAdopcion           INTEGER           REFERENCES Adopciones (IdAdopcion) 
                                        NOT NULL,
-    IdUsuarioSolicitante INTEGER           REFERENCES Usuarios (IdUsuario) 
+    IdUsuarioSolicitante INTEGER           REFERENCES Usuario (IdUsuario) 
                                        NOT NULL,
     Descripcion          VARCHAR (100),
     FechaCreacion        DATETIME,
@@ -133,15 +133,16 @@ CREATE TABLE TipoUsuario(
 
 
 -- Table: Usuarios
-DROP TABLE IF EXISTS Usuarios;
+DROP TABLE IF EXISTS Usuario;
 
-CREATE TABLE Usuarios (
+CREATE TABLE Usuario (
     IdUsuario       INTEGER           PRIMARY KEY,
-    Usuario         VARCHAR (50)  UNIQUE,
+    NombreUsuario         VARCHAR (50)  UNIQUE,
     IdTipoUsuario   INTEGER           REFERENCES TipoUsuario (IdTipoUsuario) 
                                   NOT NULL,
     Contraseña      VARCHAR (50),
-    NombreYApellido VARCHAR (100),
+    Nombre VARCHAR (100),
+    Apellido VARCHAR (100),
     Telefono        BIGINT,
     Email           VARCHAR (50) 
 );

@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Domain.MapRenderer;
 using Mascotapp.Droid;
+using Mascotapp.Visualizar_mapa;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
@@ -79,16 +80,14 @@ namespace Mascotapp.Droid
             if(customPin.MarkerType == "Adopcion")
             {
                 App.MasterD.IsPresented = false;
-                await App.MasterD.Detail.Navigation.PushAsync(new MostrarAdopciones());
+                await App.MasterD.Detail.Navigation.PushAsync(new VisualizarSolicitud(customPin.IdPin));
             }
-
-            //if (!string.IsNullOrWhiteSpace(customPin.Url))
-            //{
-            //    var url = Android.Net.Uri.Parse(customPin.Url);
-            //    var intent = new Intent(Intent.ActionView, url);
-            //    intent.AddFlags(ActivityFlags.NewTask);
-            //    Android.App.Application.Context.StartActivity(intent);
-            //}
+            else if(customPin.MarkerType == "Marcador")
+            {
+                App.MasterD.IsPresented = false;
+                await App.MasterD.Detail.Navigation.PushAsync(new DetalleMarcador(customPin.IdPin));
+            }
+           
         }
 
         public Android.Views.View GetInfoContents(Marker marker)
