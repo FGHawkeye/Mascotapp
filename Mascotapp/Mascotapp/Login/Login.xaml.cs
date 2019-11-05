@@ -22,12 +22,18 @@ namespace Mascotapp.Login
 
         private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
 
-        public Login()
+        public Login(string nombreusuario = "", string contra = "")
         {
-           
-           
+            
             InitializeComponent();
             CargarEventos();
+
+            if (contra != "")
+            {
+                txtNombre.Text = nombreusuario;
+                txtContra.Text = contra;
+                btnIngresar.Focus();
+            }
         }
 
         public void CargarEventos()
@@ -43,25 +49,18 @@ namespace Mascotapp.Login
         {
             try
             {
-                /* if (ValidarForm())+
-                 {*/
                 Usuario Usuario = new Usuario();
                 Usuario UsuarioValidado = new Usuario();
-
-                Usuario.NombreUsuario = txtNombre.Text;
-                Usuario.Contraseña = txtContra.Text;
+                
+                Usuario.NombreUsuario = txtNombre.Text.Trim();
+                Usuario.Contraseña =  txtContra.Text.Trim();
 
                 UsuarioValidado = servicioUsuarios.ValidarUsuario(Usuario);
 
-                MainPage.TipoUsuario = UsuarioValidado.IdTipoUsuario;
-                MainPage.NombreYApellido = UsuarioValidado.Nombre;
+                MainPage.UsuarioRegristrado = UsuarioValidado;
+
+                await DisplayAlert("Bienvenido " + MainPage.UsuarioRegristrado.Nombre, "Nos alegra que nos visites nuevamente.", "Continuar");
                 await Navigation.PopAsync(false);
-
-                await DisplayAlert("Bienvenido " + MainPage.NombreYApellido , "Nos alegra que nos visites nuevamente.", "Continuar");
-          
-           
-
-                /*}*/
             }
             catch
             {
@@ -77,12 +76,15 @@ namespace Mascotapp.Login
 
         private void Cancelar_Clicked(object sender, EventArgs e)
         {
-
            Navigation.PopAsync(false);
-
-
         }
 
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+            Navigation.PopAsync(false);
+            Navigation.PushAsync(new Registro.Registro());
+        }
 
     }
 }
