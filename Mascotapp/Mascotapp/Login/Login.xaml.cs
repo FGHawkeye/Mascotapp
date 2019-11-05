@@ -22,12 +22,12 @@ namespace Mascotapp.Login
 
         private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
 
-        public Login()
+        public Login(string nombreusuario = "")
         {
-           
-           
+            
             InitializeComponent();
             CargarEventos();
+            txtNombre.Text = nombreusuario;
         }
 
         public void CargarEventos()
@@ -43,8 +43,6 @@ namespace Mascotapp.Login
         {
             try
             {
-                /* if (ValidarForm())+
-                 {*/
                 Usuario Usuario = new Usuario();
                 Usuario UsuarioValidado = new Usuario();
 
@@ -55,13 +53,10 @@ namespace Mascotapp.Login
 
                 MainPage.TipoUsuario = UsuarioValidado.IdTipoUsuario;
                 MainPage.NombreYApellido = UsuarioValidado.NombreYApellido;
-                await Navigation.PopAsync(false);
 
+                
                 await DisplayAlert("Bienvenido " + MainPage.NombreYApellido , "Nos alegra que nos visites nuevamente.", "Continuar");
-          
-           
-
-                /*}*/
+                await Navigation.PopAsync(false);
             }
             catch
             {
@@ -77,12 +72,15 @@ namespace Mascotapp.Login
 
         private void Cancelar_Clicked(object sender, EventArgs e)
         {
-
            Navigation.PopAsync(false);
-
-
         }
 
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+            Navigation.PopAsync(false);
+            Navigation.PushAsync(new Registro.Registro());
+        }
 
     }
 }

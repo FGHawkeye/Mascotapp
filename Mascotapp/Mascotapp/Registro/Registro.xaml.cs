@@ -25,6 +25,7 @@ namespace Mascotapp.Registro
             CargarEventos();
         }
 
+
         public void CargarEventos()
         {
 
@@ -36,7 +37,7 @@ namespace Mascotapp.Registro
         private async void Registrar_Clicked(object sender, EventArgs e)
         {
 
-            int Validacion = 0;
+            int Validacion;
             Validacion = ValidarForm();
 
            switch (Validacion)
@@ -45,60 +46,53 @@ namespace Mascotapp.Registro
                     try
                     {
                         int Registrado = 0;
-                        Usuario Usuario = new Usuario();
 
-                
-
-                        Usuario.NombreUsuario = txtUsuario.Text;
-                        Usuario.IdTipoUsuario = 1;
-                        Usuario.NombreYApellido = txtNombre.Text;
-                        Usuario.Contraseña = txtContra.Text;
-                        Usuario.Email = txtEmail.Text;
-                        Usuario.Telefono = Convert.ToInt64(txtTel.Text);
-
-
-
-
-
+                        Usuario Usuario = new Usuario
+                        {
+                            NombreUsuario = txtUsuario.Text,
+                            IdTipoUsuario = 1,
+                            NombreYApellido = txtNombre.Text,
+                            Contraseña = txtContra.Text,
+                            Email = txtEmail.Text,
+                            Telefono = Convert.ToInt64(txtTel.Text),
+                        };
 
                         Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
 
-
-                        await Navigation.PopAsync(false);
                         if(Registrado == 1)
                         { 
                         await DisplayAlert("Registro Exitoso", "Su Nuevo Usuario fue creado correctamente", "Entendido");
-                        txtContra.Text = "";
-                        }
-
+                        SalirRegistrado();             
+                        }    
+                        
                     }
                     catch (Exception ex)
-                    {
-                        
-            
-                          
+                    {           
                             await DisplayAlert("Error de Registro", "Fallo algo al registrar", "Entendido");
+                            /*    sacar estooooo*/
                             txtNombre.Text = ex.ToString();
                     }
-
                     break;
 
-
                 case 1:
+                    await DisplayAlert("Email Invalido", "Por favor ingrese un email valido con el formato 'Ejemplo@email.com'.", "Entendido");
+                    txtEmail.Text = "";
+                    txtEmail.Focus();
+                    break;
+
+                case 2:
                     await DisplayAlert("Las Contraseñas son diferentes", "Vuelva a ingresar la contraseña y su confirmacion, ambas deben ser iguales", "Entendido");
                     txtContra.Text = "";
                     txtContra2.Text = "";
                     break;
 
-                case 2:
+                case 3:
 
                     break;
 
 
+
             }
-
-
-
 
         }
 
@@ -113,16 +107,27 @@ namespace Mascotapp.Registro
         private int ValidarForm()
         {
 
-            if (txtContra.Text != txtContra2.Text)
+            try { 
+            var DireccionMail = new System.Net.Mail.MailAddress(txtEmail.Text);
+            }
+            catch (Exception)
             {
                 return 1;
             }
-            else
+
+            if (txtContra.Text != txtContra2.Text)
             {
-                return 0;
+                return 2;
             }
+
+                return 0;
         }
 
+        private void SalirRegistrado()
+        {
+            Navigation.PopAsync(false);
+            Navigation.PushAsync(new Login.Login(txtUsuario.Text));
+        }
 
     }
 }
