@@ -69,19 +69,44 @@ namespace Mascotapp.Marcador_animales
 
         private async void btnAgregar_Clicked(object sender, EventArgs e)
         {
-            var idImagen = GuardarImagen();
+            if (MainPage.UsuarioRegristrado == null)
+            {
+                await DisplayAlert("Error de autenticación", "Para agregar marcadores, tiene que estar logeado", "Entendido");
+            }
+            else
+            {
+                if (_currentImg != null)
+                {
+                    try
+                    {
+                        var idImagen = GuardarImagen();
 
-            var marcador = new Marcadores();
-            marcador.IdTipoAnimal = pckAnimal.SelectedIndex;
-            marcador.Descripcion = txtDescripcion.Text;
-            marcador.IdImagen = idImagen.HasValue ? idImagen.Value : 0;
-            marcador.IdUsuario = 1; //Crear ApplicationSession
-            marcador.Estado = true;
+                        var marcador = new Marcadores();
+                        marcador.IdTipoAnimal = pckAnimal.SelectedIndex;
+                        marcador.Descripcion = txtDescripcion.Text;
+                        marcador.IdImagen = idImagen.HasValue ? idImagen.Value : 0;
+                        marcador.IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value;
+                        marcador.Estado = true;
 
-            var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
-            marcador.Ubicacion = currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString();
+                        var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
+                        marcador.Ubicacion = currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString();
 
-            serviceMarcadores.GuardarMarcador(marcador);
+                        serviceMarcadores.GuardarMarcador(marcador);
+
+                        await DisplayAlert("Agregar marcador", "Su marcador fue registrado con exito", "Entendido");
+                        await Navigation.PopToRootAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert("Agregar marcador", "Hubo un problema, vuelva a intentar mas tarde.", "OK");
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Error al guardar", "Para agregar un marcador tiene que cargar una foto", "Entendido");
+                }
+            }
+           
         }
 
         private int? GuardarImagen()

@@ -9,5 +9,6 @@ namespace Domain.MapRenderer
     {
         public string Url { get; set; }
         public string MarkerType { get; set; }
+        public int IdPin { get; set; }
     }
 }

@@ -57,7 +57,9 @@ namespace Mascotapp.Login
 
                 UsuarioValidado = servicioUsuarios.ValidarUsuario(Usuario);
 
+
                 MainPage.UsuarioRegristrado = UsuarioValidado;
+                await Navigation.PopAsync(false);
 
                 await DisplayAlert("Bienvenido " + MainPage.UsuarioRegristrado.Nombre, "Nos alegra que nos visites nuevamente.", "Continuar");
                 await Navigation.PopAsync(false);

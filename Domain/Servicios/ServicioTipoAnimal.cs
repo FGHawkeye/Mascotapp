@@ -3,6 +3,7 @@ using Domain.Entidades;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -25,6 +26,13 @@ namespace Domain.Servicios
         {
             return dbConnection.Insert(tipoAnimal);
         }
+
+        public TipoAnimal ObtenerTipoAnimal(int id)
+        {
+            var query = string.Format("Select * From [TipoAnimal] where IdTipoAnimal = {0} ", id);
+            return dbConnection.Query<TipoAnimal>(query).FirstOrDefault();
+        }
+
     }
 }
 

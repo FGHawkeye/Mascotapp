@@ -32,7 +32,7 @@ namespace Mascotapp.Visualizar_mapa
 
             foreach (var adopcion in adopciones)
             {
-                var pin = GenerarMarcador(adopcion.Nombre, adopcion.Ubicacion, "Adopcion");
+                var pin = GenerarMarcador(adopcion.Nombre, adopcion.Ubicacion, "Adopcion", adopcion.IdAdopcion.Value);
                 map_Mapa.Pins.Add(pin);
                 map_Mapa.CustomPins.Add(pin);
             }
@@ -43,13 +43,13 @@ namespace Mascotapp.Visualizar_mapa
             var marcadores = servicioMarcadores.ObtenerMarcadores();
             foreach (var marcador in marcadores)
             {
-                var pin = GenerarMarcador(marcador.Descripcion, marcador.Ubicacion, "Marcador");
+                var pin = GenerarMarcador(marcador.Descripcion, marcador.Ubicacion, "Marcador", marcador.IdMarcador.Value);
                 map_Mapa.CustomPins.Add(pin);
                 map_Mapa.Pins.Add(pin);             
             }
         }
 
-        private CustomPin GenerarMarcador(string descripcion, string ubicacion, string tipoMarcador)
+        private CustomPin GenerarMarcador(string descripcion, string ubicacion, string tipoMarcador, int id)
         {
             //Primero siempre latitud
             var arrayUbicacion = ubicacion.Split(';');
@@ -58,8 +58,8 @@ namespace Mascotapp.Visualizar_mapa
             {
                 Position = new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])),
                 Label = descripcion,
-                Url = "http://xamarin.com/about/",
-                MarkerType = tipoMarcador
+                MarkerType = tipoMarcador,
+                IdPin = id
             };
             return pin;
         }
