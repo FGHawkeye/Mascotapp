@@ -51,7 +51,8 @@ namespace Mascotapp.Registro
 
                         Usuario.NombreUsuario = txtUsuario.Text;
                         Usuario.IdTipoUsuario = 1;
-                        Usuario.NombreYApellido = txtNombre.Text;
+                        Usuario.Nombre = txtNombre.Text;
+                        Usuario.Apellido = txtApellido.Text;
                         Usuario.Contraseña = txtContra.Text;
                         Usuario.Email = txtEmail.Text;
                         Usuario.Telefono = Convert.ToInt64(txtTel.Text);

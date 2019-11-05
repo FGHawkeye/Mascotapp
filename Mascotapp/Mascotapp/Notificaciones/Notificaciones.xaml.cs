@@ -64,7 +64,7 @@ namespace Mascotapp
                     {
                         Text = "Ver Detalle",
                         ClassId = solicitudAdopcion.IdAdopcion.ToString(),
-                        BindingContext = solicitudAdopcion.IdAdopcion.ToString(),
+                        BindingContext = solicitudAdopcion.IdAdopcion.ToString()+";"+solicitudAdopcion.IdUsuarioSolicitante.ToString(),
                     };
 
                     btnDetalle.Clicked += Detalle_Clicked;
@@ -78,11 +78,10 @@ namespace Mascotapp
         }
         private async void Detalle_Clicked(object sender, EventArgs e)
         {
-            /*
             Button btn = (Button)sender;
-            var id = Int32.Parse(btn.BindingContext.ToString());
+            var id =btn.BindingContext.ToString().Split(';');
             App.MasterD.IsPresented = false;
-            await App.MasterD.Detail.Navigation.PushAsync(new ModificarAdopcion(id));*/
+            await App.MasterD.Detail.Navigation.PushAsync(new DetalleNotificacionSolicitud(Int32.Parse(id[0]),Int32.Parse(id[1])));
         }
     }
 }

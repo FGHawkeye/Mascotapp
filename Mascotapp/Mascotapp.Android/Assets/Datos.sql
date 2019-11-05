@@ -7,11 +7,11 @@ INSERT INTO TipoUsuario (IdTipoUsuario,Descripcion) VALUES
 	(2,'Usuario'),
 	(3,'Refugio');
 
-INSERT INTO Usuario (IdUsuario, NombreUsuario, IdTipoUsuario, Contraseña, NombreYApellido, Telefono, Email) VALUES
-	(NULL,'LUCAS',1,'lucas123','Lucas Peña', 12345, 'lucas@lucas.com'),
-	(NULL,'UsuarioComun',2,'usuario123','Usuario Comun', 12345, 'usuario@comun.com'),
-	(NULL,'Refugio',3,'refugio123','Refugio Refugio', 12345, 'refugio@refugio.com'),
-	(NULL,'Comun',2,'usuario2','Comun 2', 12345, 'comun@usuario.com');
+INSERT INTO Usuario (IdUsuario, NombreUsuario, IdTipoUsuario, Contraseña, Nombre, Apellido, Telefono, Email) VALUES
+	(NULL,'LUCAS',1,'lucas123','Lucas','Peña', 12345, 'lucas@lucas.com'),
+	(NULL,'UsuarioComun',2,'usuario123','Pedro','Luis', 12345, 'usuario@comun.com'),
+	(NULL,'Refugio',3,'refugio123','Jorge','Mendez', 12345, 'refugio@refugio.com'),
+	(NULL,'Comun',2,'usuario2','Damian','Alvarez', 12345, 'comun@usuario.com');
 	
 INSERT INTO Adopciones(IdAdopcion,IdUsuario,IdTipoAnimal, Nombre,Detalle,Ubicacion,Sexo,Edad,Estado) VALUES
 	(NULL,2,1,'Biscuit', 'Vacunado', '-34.4602262740955;-58.611957365647', 'Macho', 2, true),

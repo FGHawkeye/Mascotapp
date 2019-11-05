@@ -12,30 +12,31 @@ using Xamarin.Forms.Xaml;
 namespace Mascotapp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetalleNotificacionSolicitud : ContentPage
+    public partial class DetalleNotificacionAdmin : ContentPage
     {
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
         private ServicioSolicitudAdopcion servicioSolicitudAdopcion = new ServicioSolicitudAdopcion();
         private ServicioUsuarios servicioUsuario = new ServicioUsuarios();
         private SolicitudAdopcion solicitudAdopcion;
-        public DetalleNotificacionSolicitud(int idAd, int idSol)
+        public DetalleNotificacionAdmin(int idRef)
         {
             InitializeComponent();
-            CargarElementos(idSol,idAd);
+            CargarElementos(idRef);
         }
 
-        public void CargarElementos(int idSol,int idAd){
+        public void CargarElementos(int idRef){
             btnAceptar.Clicked+=btnAceptar_Clicked;
             btnRechazar.Clicked+=btnRechazar_Clicked;
-            solicitudAdopcion=servicioSolicitudAdopcion.ObtenerSolicitudAdopcion(idAd,idSol);
-            Adopciones adopciones=servicioAdopciones.ObtenerAdopcion(idAd);
-            Usuario usuario=servicioUsuario.ObtenerUsuario(idSol);
-            txtApellido.Text=usuario.Apellido;
-            txtNombre.Text= usuario.Nombre;
+            /*//solicitudRefugio=servicioSolicitudRefugio.ObtenerSolicitudAdopcion(idAd,idSol);
+            //Adopciones adopciones=servicioAdopciones.ObtenerAdopcion(idAd);
+            //Usuario usuario=servicioUsuario.ObtenerUsuario(idSol);
+            var apellidoN=usuario.NombreYApellido.Split(new char[0]);
+            txtApellido.Text=apellidoN[0];
+            txtNombre.Text=apellidoN[1];
             txtUsuario.Text=usuario.NombreUsuario;
             txtMascota.Text=adopciones.Nombre;
-            txtDetalle.Text=solicitudAdopcion.Descripcion;
+            txtDetalle.Text=solicitudAdopcion.Descripcion;*/
         }
 
         public void btnAceptar_Clicked(object sender, EventArgs e)
