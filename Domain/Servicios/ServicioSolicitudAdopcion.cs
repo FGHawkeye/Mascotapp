@@ -17,30 +17,30 @@ namespace Domain.Servicios
             dbConnection = DependencyService.Get<IDBInterface>().CreateConnection();
         }
 
-        public List<Adopciones> ObtenerSolicitudesAdopciones()
+        public List<SolicitudAdopcion> ObtenerSolicitudesAdopciones()
         {
-            return dbConnection.Query<Adopciones>("Select * From [Adopciones]");
+            return dbConnection.Query<SolicitudAdopcion>("Select * From [SolicitudAdopcion]");
         }
 
-        public Adopciones ObtenerSolicitudAdopcion(int idA, int idU)
+        public SolicitudAdopcion ObtenerSolicitudAdopcion(int idA, int idU)
         {
-            return dbConnection.Query<Adopciones>("Select * from [Adopciones]").Where(x => x.IdAdopcion == idA && x.IdUsuario == idU).FirstOrDefault();
+            return dbConnection.Query<SolicitudAdopcion>("Select * from [SolicitudAdopcion]").Where(x => x.IdAdopcion == idA && x.IdUsuarioSolicitante == idU).FirstOrDefault();
         }
-        public List<Adopciones> ObtenerSolicitudesAdopcionUsuario (int idU)
+        public List<SolicitudAdopcion> ObtenerSolicitudesAdopcionUsuario (int idU)
         {
-            return dbConnection.Query<Adopciones>("Select * from [Adopciones]").Where(x => x.IdUsuario == idU).ToList();
+            return dbConnection.Query<SolicitudAdopcion>("Select * from [SolicitudAdopcion]").Where(x => x.IdUsuarioSolicitante== idU).ToList();
         }
-        public List<Adopciones> ObtenerSolicitudesAdopcion (int idA)
+        public List<SolicitudAdopcion> ObtenerSolicitudesAdopcion (int idA)
         {
-            return dbConnection.Query<Adopciones>("Select * from [Adopciones]").Where(x => x.IdAdopcion== idA).ToList();
+            return dbConnection.Query<SolicitudAdopcion>("Select * from [SolicitudAdopcion]").Where(x => x.IdAdopcion== idA).ToList();
         }
-        public int ModificarSolicitudAdopcion (Adopciones adopcion)
+        public int ModificarSolicitudAdopcion (SolicitudAdopcion adopcion)
         {
             dbConnection.Update(adopcion);
-            int pk = adopcion.IdAdopcion.Value;
+            int pk = adopcion.IdAdopcion;
             return pk;
         }
-        public int GuardarTipoAnimal(Adopciones adopcion)
+        public int GuardarSolicitudAdopcion(SolicitudAdopcion adopcion)
         {
             dbConnection.Insert(adopcion);
             int pk = dbConnection.ExecuteScalar<int>("SELECT last_insert_rowid()");

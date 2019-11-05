@@ -36,7 +36,6 @@ namespace Mascotapp
             idAdop = id;
             Adopciones adopcion = servicioAdopciones.ObtenerAdopcion(id);
             List<ImagenXAdopcion> imagenXAdopcions = servicioImagenXAdopcion.ObtenerImagenXAdopcion(id);
-            // servicioImagenes.ObtenerImagenes().Where(x => x.IdImagen == imagenXAdopcions.;
             foreach (ImagenXAdopcion item in imagenXAdopcions)
             {
                 imagenes.Add(servicioImagenes.ObtenerImagen(item.IdImagen));
@@ -119,7 +118,7 @@ namespace Mascotapp
                         IdUsuarioSolicitante = 2
 
                     };
-
+                    servicioSolicitudAdopcion.GuardarSolicitudAdopcion(solicitud);
                     await DisplayAlert("Adopciones", "Se modificó la publicación correctamente!", "OK");
                     await App.MasterD.Detail.Navigation.PopToRootAsync();
                 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace Domain.Servicios
 {
@@ -26,5 +27,15 @@ namespace Domain.Servicios
                 return dbConnection.Insert(marcador);
         }
 
+        public Marcadores ObtenerMarcador(int id)
+        {
+            var query = string.Format("Select * From [Marcadores] where IdMarcador = {0} ", id);
+            return dbConnection.Query<Marcadores>(query).FirstOrDefault();
+        }
+
+        public void ModificarMarcador(Marcadores marcador)
+        {
+            dbConnection.Update(marcador);
+        }
     }
 }
