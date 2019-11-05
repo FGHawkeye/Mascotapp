@@ -54,7 +54,7 @@ namespace Mascotapp.Login
                 UsuarioValidado = servicioUsuarios.ValidarUsuario(Usuario);
 
                 MainPage.TipoUsuario = UsuarioValidado.IdTipoUsuario;
-                MainPage.NombreYApellido = UsuarioValidado.NombreYApellido;
+                MainPage.NombreYApellido = UsuarioValidado.Nombre;
                 await Navigation.PopAsync(false);
 
                 await DisplayAlert("Bienvenido " + MainPage.NombreYApellido , "Nos alegra que nos visites nuevamente.", "Continuar");

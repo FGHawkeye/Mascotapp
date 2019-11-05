@@ -141,7 +141,8 @@ CREATE TABLE Usuario (
     IdTipoUsuario   INTEGER           REFERENCES TipoUsuario (IdTipoUsuario) 
                                   NOT NULL,
     Contraseña      VARCHAR (50),
-    NombreYApellido VARCHAR (100),
+    Nombre VARCHAR (100),
+    Apellido VARCHAR (100),
     Telefono        BIGINT,
     Email           VARCHAR (50) 
 );
