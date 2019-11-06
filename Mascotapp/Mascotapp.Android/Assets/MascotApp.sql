@@ -110,7 +110,8 @@ CREATE TABLE SolicitudAdopcion (
                                        NOT NULL,
     Descripcion          VARCHAR (100),
     FechaCreacion        DATETIME,
-    Estado               BOOLEAN
+    Estado               BOOLEAN,
+    PRIMARY KEY(IdAdopcion,IdUsuarioSolicitante)
 );
 
 

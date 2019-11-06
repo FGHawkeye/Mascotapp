@@ -15,5 +15,6 @@
         <Button Text="Registrarse" x:Name="btnRegistro" Clicked="BtnRegistro_Clicked" />
         <Button Text="Notificaciones" x:Name="btnNotificaciones" Clicked="BtnNotificaciones_Clicked" />
         <Button Text="Solicitud de Adopcion" x:Name="btnSolicitudAdopcion" Clicked="BtnSolicitudAdopcion_Clicked" />
+        <Button Text="Solicitud de Adopcion Administrador" x:Name="btnSolicitudAdopcionAdmin" Clicked="BtnSolicitudAdopcionAdmin_Clicked" />
     </StackLayout>
 </ContentPage>

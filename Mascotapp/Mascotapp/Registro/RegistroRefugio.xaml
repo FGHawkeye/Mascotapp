@@ -1,10 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.DetalleNotificacionAdmin">
+             x:Class="Mascotapp.RegistroRefugio"
+             Title="Registro Refugio">
+    
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
@@ -12,22 +14,18 @@
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
         </Style>
-
         <Style TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
         </Style>
-
         <Style x:Key="headerLabel" TargetType="Label">
             <Setter Property="Margin" Value="0, 8" />
             <Setter Property="FontSize" Value="Large" />
             <Setter Property="TextColor" Value="Blue" />
         </Style>
-
         <Style TargetType="Image">
             <Setter Property="FlexLayout.Order" Value="-1" />
             <Setter Property="FlexLayout.AlignSelf" Value="Center" />
         </Style>
-
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
@@ -36,46 +34,24 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout >
-                <Label Text="Solicitud de Refugio"
+        <StackLayout BackgroundColor="#E5E5E5" Orientation ="Vertical">
+            <StackLayout>
+                <Frame WidthRequest="300"
+                   HeightRequest="32">
+                    <Label Text="Registro de Nuevo Usuario"
                HorizontalOptions="Center"
                FontAttributes="Bold" />
+                </Frame>
                 <Frame WidthRequest="300"
-                   HeightRequest="400">
+                   HeightRequest="480">
                     <FlexLayout Direction="Column">
-                        <Label Text="Datos del solicitante" />
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Nombre:"/>
-                            <Label x:Name="txtNombre" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Apellido:"/>
-                            <Label x:Name="txtApellido" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Razon Social:"/>
-                            <Label x:Name="txtRazonSocial" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Telefono:"/>
-                            <Label x:Name="txtTelefono" Grid.Column="1"></Label>
+                            <Label Text="Ingrese su razon social:"/>
+                            <Entry x:Name="txtRazonSolial" Placeholder="Razon Social" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -83,15 +59,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Direccion:"/>
-                            <Label x:Name="txtDireccion" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Codigo Postal:"/>
-                            <Label x:Name="txtCP" Grid.Column="1"></Label>
+                            <Entry x:Name="txtDireccion" Placeholder="Direccion" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -99,27 +67,35 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Localidad:"/>
-                            <Label x:Name="txtLocalidad" Grid.Column="1"></Label>
+                            <Entry x:Name="txtLocalidad" Placeholder="Direccion" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Fecha de creacion:"/>
-                            <Label x:Name="txtFecha" Grid.Column="1"></Label>
+                            <Label Text="Ingrese el codigo postal:"/>
+                            <Entry x:Name="txtCodigoP" Placeholder="Codigo Postal" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btnAceptar" Text="Aceptar"/>
-                            <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar"/>
+                            <Label Text="Ingrese un numero de contacto:"/>
+                            <Entry x:Name="txtTel" Keyboard="Numeric" Placeholder="1512345678" Grid.Column="1"></Entry>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnRegistrar" Text="Registrar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
                         </Grid>
                     </FlexLayout>
                 </Frame>
             </StackLayout>
-        </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
