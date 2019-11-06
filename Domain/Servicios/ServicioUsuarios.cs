@@ -27,6 +27,10 @@ namespace Domain.Servicios
             return dbConnection.Insert(usuario);
         }
 
+        public Usuario ObtenerUsuario(int id)
+        {
+            return dbConnection.Query<Usuario>("Select * From [Usuario]").Where(X=>X.IdUsuario==id).FirstOrDefault();
+        }
 
         public Usuario ValidarUsuario (Usuario usuario)
         {

@@ -36,7 +36,7 @@ namespace Mascotapp.Visualizar_mapa
 
         private async void btnReportar_Clicked(object sender, EventArgs e)
         {
-            if(MainPage.usuarioLogeado == null)
+            if(MainPage.UsuarioRegristrado == null)
             {
                 await DisplayAlert("Error de autenticación", "Para reportar marcadores, tiene que estar logeado", "Entendido");
             }
@@ -47,7 +47,7 @@ namespace Mascotapp.Visualizar_mapa
                     var reporte = new Reportes();
                     reporte.IdReporte = null;
                     reporte.IdMarcador = _idMarcador;
-                    reporte.IdUsuario = MainPage.usuarioLogeado.IdUsuario.Value;
+                    reporte.IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value;
 
                     
                     serviceReportes.GuardarReporte(reporte);

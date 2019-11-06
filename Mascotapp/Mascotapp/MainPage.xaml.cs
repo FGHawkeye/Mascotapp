@@ -10,7 +10,9 @@ namespace Mascotapp
    
     public partial class MainPage : MasterDetailPage
     {
-        public static Usuario usuarioLogeado = null;
+
+        public static Domain.Entidades.Usuario UsuarioRegristrado = null;
+
         public MainPage()
         {
             InitializeComponent();
@@ -19,6 +21,5 @@ namespace Mascotapp
 
             App.MasterD = this;
         }
-
     }
 }

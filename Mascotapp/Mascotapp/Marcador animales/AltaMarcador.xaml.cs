@@ -69,7 +69,7 @@ namespace Mascotapp.Marcador_animales
 
         private async void btnAgregar_Clicked(object sender, EventArgs e)
         {
-            if (MainPage.usuarioLogeado == null)
+            if (MainPage.UsuarioRegristrado == null)
             {
                 await DisplayAlert("Error de autenticación", "Para agregar marcadores, tiene que estar logeado", "Entendido");
             }
@@ -85,7 +85,7 @@ namespace Mascotapp.Marcador_animales
                         marcador.IdTipoAnimal = pckAnimal.SelectedIndex;
                         marcador.Descripcion = txtDescripcion.Text;
                         marcador.IdImagen = idImagen.HasValue ? idImagen.Value : 0;
-                        marcador.IdUsuario = MainPage.usuarioLogeado.IdUsuario.Value;
+                        marcador.IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value;
                         marcador.Estado = true;
 
                         var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();

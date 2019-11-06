@@ -162,6 +162,10 @@ namespace Mascotapp
                     await DisplayAlert("Adopciones", "Se publico correctamente!", "OK");
                     await App.MasterD.Detail.Navigation.PopToRootAsync();
                 }
+                else
+                {
+                    await DisplayAlert("Adopciones", "Falta completar datos.", "OK");
+                }
             }catch(Exception ex)
             {
                 await DisplayAlert("Adopciones", "Hubo un problema, vuelva a intentar mas tarde.", "OK");
@@ -186,7 +190,7 @@ namespace Mascotapp
             {
                 validate = false;
             }
-            else if (txtEdad.Text == "" || txtEdad.Text == null)
+            else if (txtEdad.Text == "" || txtEdad.Text == null || Int32.Parse(txtEdad.Text)<0 || Int32.Parse(txtEdad.Text) > 30)
             {
                 validate = false;
             }

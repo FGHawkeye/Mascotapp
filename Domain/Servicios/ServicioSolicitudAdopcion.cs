@@ -36,7 +36,7 @@ namespace Domain.Servicios
         }
         public int ModificarSolicitudAdopcion (SolicitudAdopcion adopcion)
         {
-            dbConnection.Update(adopcion);
+            dbConnection.Query<SolicitudAdopcion>("UPDATE [SolicitudAdopcion] SET Estado = '"+adopcion.Estado+"' WHERE IdAdopcion = "+adopcion.IdAdopcion+" and IdUsuarioSolicitante = "+adopcion.IdUsuarioSolicitante+";");
             int pk = adopcion.IdAdopcion;
             return pk;
         }
