@@ -17,13 +17,21 @@ namespace Mascotapp.Visualizar_mapa
     {
         ServicioMarcadores servicioMarcadores = new ServicioMarcadores();
         ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
+        ServicioRefugio servicioRefugio = new ServicioRefugio();
 
         public Mapa()
         {
             InitializeComponent();
             CargarMapa();
+            CargarPines();
+            
+        }
+
+        private void CargarPines()
+        {
             CargarMarcadores();
             CargarAdopciones();
+            CargarRefugios();
         }
 
         private void CargarAdopciones()
@@ -48,6 +56,18 @@ namespace Mascotapp.Visualizar_mapa
                 map_Mapa.Pins.Add(pin);             
             }
         }
+
+        private void CargarRefugios()
+        {
+            var refugios = servicioRefugio.ObtenerRefugios();
+            foreach (var refugio in refugios)
+            {
+                var pin = GenerarMarcador(refugio.RazonSocial, refugio.Ubicacion, "Refugio", refugio.IdRefugio.Value);
+                map_Mapa.CustomPins.Add(pin);
+                map_Mapa.Pins.Add(pin);
+            }
+        }
+
 
         private CustomPin GenerarMarcador(string descripcion, string ubicacion, string tipoMarcador, int id)
         {

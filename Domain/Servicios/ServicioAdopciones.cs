@@ -19,7 +19,7 @@ namespace Domain.Servicios
         }
         public List<Adopciones> ObtenerAdopciones()
         {
-            return dbConnection.Query<Adopciones>("Select * From [Adopciones]");
+            return dbConnection.Query<Adopciones>("Select * From [Adopciones]").Where(x => x.Estado).ToList();
         }
         public Adopciones ObtenerAdopcion(int id)
         {
