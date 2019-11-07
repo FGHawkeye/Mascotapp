@@ -87,8 +87,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Mascota"/>
-                            <Picker  Grid.Column="1"
-                            Title="Tipo animal" x:Name="pckAnimal">
+                            <Picker  Grid.Column="1" Title="Tipo animal" x:Name="pckAnimal" >
                             </Picker>
                         </Grid>
                         <Grid>

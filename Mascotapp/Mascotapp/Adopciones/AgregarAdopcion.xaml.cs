@@ -18,9 +18,9 @@ namespace Mascotapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgregarAdopcion : ContentPage
     {
-        #region BindableObjects
+
         List<TipoAnimal> _lstTipoAnimal = new List<TipoAnimal>();
-        #endregion
+
         private string image1;
         private string image2;
         private string image3;
@@ -32,21 +32,20 @@ namespace Mascotapp
         {
             InitializeComponent();
             CargarEventos();
-            CargarTipoAnimal();
         }
+
         public void CargarTipoAnimal()
         {
-            _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
-            foreach (TipoAnimal tipo in _lstTipoAnimal)
-            {
-                pckAnimal.Items.Add(tipo.Descripcion);
-            }
+            List<TipoAnimal> _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            pckAnimal.ItemsSource = _lstTipoAnimal;
+            pckAnimal.ItemDisplayBinding = new Binding("Descripcion");
         }
         public void CargarEventos()
         {
             btnCamara.Clicked += CameraButton_Clicked;
             btnQuitar.Clicked += Quitar_Clicked;
             btnGuardar.Clicked += Guardar_Clicked;
+            CargarTipoAnimal();
         }
         private async void CameraButton_Clicked(object sender, EventArgs e)
         {
@@ -104,13 +103,14 @@ namespace Mascotapp
             try
             {
                 var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
-                
-                if (ValidarForm())
+                string mensaje= ValidarForm();
+                if (mensaje=="")
                 {
                     var adopcion = new Adopciones();
-                    adopcion.IdUsuario = 2;
+                    adopcion.IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value;
                     adopcion.IdAdopcion= null;
-                    adopcion.IdTipoAnimal =pckAnimal.SelectedIndex;
+                    TipoAnimal tipoAnimal = (TipoAnimal)pckAnimal.ItemsSource[pckAnimal.SelectedIndex];
+                    adopcion.IdTipoAnimal = tipoAnimal.IdTipoAnimal.Value;
                     adopcion.Detalle = txtDescripcion.Text;
                     adopcion.Edad = Int32.Parse(txtEdad.Text);//faltaria modificar la tabla para agregar edad meses y edad años
                     adopcion.Estado = true;
@@ -118,7 +118,6 @@ namespace Mascotapp
                     adopcion.Sexo = pckSexo.SelectedItem.ToString();
                     adopcion.Ubicacion = currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString();
                     int idAd=servicioAdopciones.GuardarAdopcion(adopcion);
-
                     if (imgMin1.Source != null)
                     {
                         var imagen = new Imagenes();
@@ -159,12 +158,13 @@ namespace Mascotapp
                         imgXad.IdImagen = idImg;
                         int idIXA = servicioImagenXAdopcion.GuardarImagenXAdopcion(imgXad);
                     }
+                    //mensaje = "Se publico correctamente!";
                     await DisplayAlert("Adopciones", "Se publico correctamente!", "OK");
                     await App.MasterD.Detail.Navigation.PopToRootAsync();
                 }
                 else
                 {
-                    await DisplayAlert("Adopciones", "Falta completar datos.", "OK");
+                    await DisplayAlert("Adopciones", mensaje, "OK");
                 }
             }catch(Exception ex)
             {
@@ -174,31 +174,38 @@ namespace Mascotapp
             
         }
 
-        public bool ValidarForm()
+        public string ValidarForm()
         {
+            string msg = "";
             //agregar mensajes faltantes
-            bool validate = true;
-            if (pckAnimal.SelectedItem == null)
+            if (MainPage.UsuarioRegristrado == null)
             {
-                validate = false;
+                msg = "Para ingresar una publicacion debe estar logueado.";
+            }
+            else if (pckAnimal.SelectedItem == null)
+            {
+                msg = "Falta seleccionar un tipo de animal.";
             }
             else if (pckSexo.SelectedItem == null)
             {
-                validate = false;
+                msg = "Falta seleccionar el sexo.";
             }
             else if (txtDescripcion.Text == "" || txtDescripcion.Text == null)
             {
-                validate = false;
+                msg = "Falta ingresar una descripcion.";
             }
-            else if (txtEdad.Text == "" || txtEdad.Text == null || Int32.Parse(txtEdad.Text)<0 || Int32.Parse(txtEdad.Text) > 30)
+            else if (txtEdad.Text == "" || txtEdad.Text == null)
             {
-                validate = false;
+                msg = "Falta ingresar la edad del animal.";
             }
             else if (imgMin1.Source == null&& imgMin2.Source == null&& imgMin3.Source == null)
             {
-                validate = false;
+                msg = "Falta ingresar al menos una foto.";
+            }else if (Int32.Parse(txtEdad.Text) < 0 || Int32.Parse(txtEdad.Text) > 30)
+            {
+                msg = "Ingrese una edad valida.";
             }
-            return validate;
+            return msg;
         }
         public void AgregarFoto(ImageSource img,string path)
         {

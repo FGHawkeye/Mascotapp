@@ -19,7 +19,7 @@ namespace Domain.Servicios
 
         public List<Marcadores> ObtenerMarcadores()
         {
-            return dbConnection.Query<Marcadores>("Select * From [Marcadores]");
+            return dbConnection.Query<Marcadores>("Select * From [Marcadores]").Where(x => x.Estado).ToList();
         }
 
         public int GuardarMarcador(Marcadores marcador)
