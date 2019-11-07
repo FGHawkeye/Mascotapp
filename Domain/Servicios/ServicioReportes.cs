@@ -24,7 +24,7 @@ namespace Domain.Servicios
 
         public bool VerificarLimiteReportes(Marcadores marcador)
         {
-            var contadorReportes = dbConnection.Query<Reportes>("SELECT * FROM ").Where(x => x.IdMarcador == marcador.IdMarcador).Count();
+            var contadorReportes = dbConnection.Query<Reportes>("SELECT * FROM Reportes").Where(x => x.IdMarcador == marcador.IdMarcador).Count();
             return contadorReportes >= 3;
         }
     }
