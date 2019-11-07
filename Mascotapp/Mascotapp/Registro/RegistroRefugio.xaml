@@ -67,7 +67,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Localidad:"/>
-                            <Entry x:Name="txtLocalidad" Placeholder="Direccion" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtLocalidad" Placeholder="Localidad" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>

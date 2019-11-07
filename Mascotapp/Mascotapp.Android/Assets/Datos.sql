@@ -58,16 +58,16 @@ INSERT INTO Preguntas (Pregunta, IdUsuario, Respuesta) VALUES
 	('Como puedo ver una publicacion?', 1, 'Se puede acceder a las publicaciones seleccionando en el mapa el marcador y luego ver detalle.');
 	
 INSERT INTO Refugio (IdRefugio, IdUsuario, RazonSocial, Localidad, Direccion, Ubicacion, CodigoPostal, Telefono, FechaCreacion, Estado) VALUES
-	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'2019-11-02','Pendiente'),
-	(NULL,5,'Adopteros Argentina','Recoleta','Las Heras, Buenos Aires','-34.5518341;-58.4320087','1900',01140893717,'2019-11-02','Pendiente'),
-	(NULL,6,'Ayudacan','Salguero','Jerónimo Salguero, Buenos Aires','-34.609192;-58.419967','1700',123456789,'2019-11-02','Pendiente');
+	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'2019-11-02 00:00:00','Pendiente'),
+	(NULL,5,'Adopteros Argentina','Recoleta','Las Heras, Buenos Aires','-34.5518341;-58.4320087','1900',01140893717,'2019-11-03 00:00:00','Pendiente'),
+	(NULL,6,'Ayudacan','Salguero','Jerónimo Salguero, Buenos Aires','-34.609192;-58.419967','1700',123456789,'2019-11-04 00:00:00','Pendiente');
 	
 INSERT INTO Reportes (IdReporte, IdUsuario, IdMarcador) VALUES
 	(NULL,4,1),
 	(NULL,4,2);
 	
 INSERT INTO SolicitudAdopcion (IdAdopcion, IdUsuarioSolicitante, Descripcion, FechaCreacion, Estado) VALUES
-	(1,4,'Tengo espacio para cuidarlo','2019-11-02','Pendiente'),
-	(2,4,'Tengo espacio para cuidarlo','2019-11-02','Pendiente'),
-	(3,4,'Estoy disponible a cuidarlo','2019-11-02','Pendiente'),
-	(4,4,'Estoy disponible a cuidarlo','2019-11-02','Pendiente');
+	(1,4,'Tengo espacio para cuidarlo','2019-11-03 00:00:00','Pendiente'),
+	(2,4,'Tengo espacio para cuidarlo','2019-11-04 00:00:00','Pendiente'),
+	(3,4,'Estoy disponible a cuidarlo','2019-11-05 00:00:00','Pendiente'),
+	(4,4,'Estoy disponible a cuidarlo','2019-11-06 00:00:00','Pendiente');
