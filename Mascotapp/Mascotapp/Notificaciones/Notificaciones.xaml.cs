@@ -29,52 +29,56 @@ namespace Mascotapp
 
         public void CargarElementos()
         {
-            List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopcionesUsuario(2);
-
-            foreach(Adopciones adopciones1 in adopciones)
+            if (MainPage.UsuarioRegristrado != null)
             {
-                List<SolicitudAdopcion> solicitudAdopciones = servicioSolicitudAdopcion.ObtenerSolicitudesAdopcion(adopciones1.IdAdopcion.GetValueOrDefault()).Where(x => x.Estado == "Pendiente").ToList();
-            
-                foreach(SolicitudAdopcion solicitudAdopcion in solicitudAdopciones)
+                List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopcionesUsuario(MainPage.UsuarioRegristrado.IdUsuario.Value);
+
+                foreach (Adopciones adopciones1 in adopciones)
                 {
-                    Adopciones adopcion = servicioAdopciones.ObtenerAdopcion(solicitudAdopcion.IdAdopcion);
-                    Usuario usuario = servicioUsuario.ObtenerUsuarios().Where(x => x.IdUsuario == solicitudAdopcion.IdUsuarioSolicitante).FirstOrDefault();
+                    List<SolicitudAdopcion> solicitudAdopciones = servicioSolicitudAdopcion.ObtenerSolicitudesAdopcion(adopciones1.IdAdopcion.GetValueOrDefault()).Where(x => x.Estado == "Pendiente").ToList();
 
-                    var grid = new Grid();
-
-                    grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-                    grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-                    grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-                    grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-                    
-                    Frame frame = new Frame { };
-                    Label lbNombre = new Label
+                    foreach (SolicitudAdopcion solicitudAdopcion in solicitudAdopciones)
                     {
-                        Text = "Mascota: "+adopcion.Nombre,
-                        ClassId = solicitudAdopcion.IdAdopcion.ToString(),
-                    };
+                        Adopciones adopcion = servicioAdopciones.ObtenerAdopcion(solicitudAdopcion.IdAdopcion);
+                        Usuario usuario = servicioUsuario.ObtenerUsuarios().Where(x => x.IdUsuario == solicitudAdopcion.IdUsuarioSolicitante).FirstOrDefault();
 
-                    Label lbUsuarioSolicitante = new Label
-                    {
-                        Text = "Usuario Solicitante: " + usuario.NombreUsuario,
-                        ClassId = usuario.IdUsuario.ToString()
-                    };
+                        var grid = new Grid();
 
-                    Button btnDetalle = new Button
-                    {
-                        Text = "Ver Detalle",
-                        ClassId = solicitudAdopcion.IdAdopcion.ToString(),
-                        BindingContext = solicitudAdopcion.IdAdopcion.ToString()+";"+solicitudAdopcion.IdUsuarioSolicitante.ToString(),
-                    };
+                        grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+                        grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+                        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-                    btnDetalle.Clicked += Detalle_Clicked;
-                    grid.Children.Add(lbNombre, 0, 0);
-                    grid.Children.Add(btnDetalle, 1, 0);
-                    grid.Children.Add(lbUsuarioSolicitante, 0, 1);
-                    frame.Content = grid;
-                    Mostrar.Children.Add(frame);
+                        Frame frame = new Frame { };
+                        Label lbNombre = new Label
+                        {
+                            Text = "Mascota: " + adopcion.Nombre,
+                            ClassId = solicitudAdopcion.IdAdopcion.ToString(),
+                        };
+
+                        Label lbUsuarioSolicitante = new Label
+                        {
+                            Text = "Usuario Solicitante: " + usuario.NombreUsuario,
+                            ClassId = usuario.IdUsuario.ToString()
+                        };
+
+                        Button btnDetalle = new Button
+                        {
+                            Text = "Ver Detalle",
+                            ClassId = solicitudAdopcion.IdAdopcion.ToString(),
+                            BindingContext = solicitudAdopcion.IdAdopcion.ToString() + ";" + solicitudAdopcion.IdUsuarioSolicitante.ToString(),
+                        };
+
+                        btnDetalle.Clicked += Detalle_Clicked;
+                        grid.Children.Add(lbNombre, 0, 0);
+                        grid.Children.Add(btnDetalle, 1, 0);
+                        grid.Children.Add(lbUsuarioSolicitante, 0, 1);
+                        frame.Content = grid;
+                        Mostrar.Children.Add(frame);
+                    }
                 }
             }
+            
         }
         private async void Detalle_Clicked(object sender, EventArgs e)
         {

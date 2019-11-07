@@ -18,9 +18,9 @@ namespace Mascotapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AgregarAdopcion : ContentPage
     {
-        #region BindableObjects
+
         List<TipoAnimal> _lstTipoAnimal = new List<TipoAnimal>();
-        #endregion
+
         private string image1;
         private string image2;
         private string image3;
@@ -32,8 +32,8 @@ namespace Mascotapp
         {
             InitializeComponent();
             CargarEventos();
-            CargarTipoAnimal();
         }
+
         public void CargarTipoAnimal()
         {
             _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
@@ -47,6 +47,7 @@ namespace Mascotapp
             btnCamara.Clicked += CameraButton_Clicked;
             btnQuitar.Clicked += Quitar_Clicked;
             btnGuardar.Clicked += Guardar_Clicked;
+            CargarTipoAnimal();
         }
         private async void CameraButton_Clicked(object sender, EventArgs e)
         {
@@ -104,13 +105,13 @@ namespace Mascotapp
             try
             {
                 var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
-                
-                if (ValidarForm())
+                if (ValidarForm()&& MainPage.UsuarioRegristrado!=null)
                 {
                     var adopcion = new Adopciones();
-                    adopcion.IdUsuario = 2;
+                    adopcion.IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value;
                     adopcion.IdAdopcion= null;
-                    adopcion.IdTipoAnimal =pckAnimal.SelectedIndex;
+                    TipoAnimal tipoAnimal = (TipoAnimal)pckAnimal.ItemsSource[pckAnimal.SelectedIndex];
+                    adopcion.IdTipoAnimal = tipoAnimal.IdTipoAnimal.Value;
                     adopcion.Detalle = txtDescripcion.Text;
                     adopcion.Edad = Int32.Parse(txtEdad.Text);//faltaria modificar la tabla para agregar edad meses y edad años
                     adopcion.Estado = true;
@@ -118,7 +119,6 @@ namespace Mascotapp
                     adopcion.Sexo = pckSexo.SelectedItem.ToString();
                     adopcion.Ubicacion = currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString();
                     int idAd=servicioAdopciones.GuardarAdopcion(adopcion);
-
                     if (imgMin1.Source != null)
                     {
                         var imagen = new Imagenes();
