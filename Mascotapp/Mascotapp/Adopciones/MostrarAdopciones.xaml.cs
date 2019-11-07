@@ -29,40 +29,43 @@ namespace Mascotapp
             {
                 List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones().Where(x=>x.IdUsuario== MainPage.UsuarioRegristrado.IdUsuario).ToList();
                 List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+                if(adopciones.Count>0){
+                    foreach (Adopciones item in adopciones)
+                    {
+                        FlexLayout flexLayout = new FlexLayout
+                        {
+                            Direction = FlexDirection.Row,
+                            JustifyContent = FlexJustify.SpaceBetween,
+                            AlignItems = FlexAlignItems.Center,
+                        };
+                        Frame frame = new Frame { };
+                        Label lbNombre = new Label
+                        {
+                            Text = item.Nombre,
+                            ClassId = item.IdAdopcion.ToString(),
+                        };
 
-                foreach (Adopciones item in adopciones)
-                {
-                    FlexLayout flexLayout = new FlexLayout
-                    {
-                        Direction = FlexDirection.Row,
-                        JustifyContent = FlexJustify.SpaceBetween,
-                        AlignItems = FlexAlignItems.Center,
-                    };
-                    Frame frame = new Frame { };
-                    Label lbNombre = new Label
-                    {
-                        Text = item.Nombre,
-                        ClassId = item.IdAdopcion.ToString(),
-                    };
+                        Label lbTipoAnimal = new Label
+                        {
+                            Text = tipoAnimal.Where(x => x.IdTipoAnimal == item.IdTipoAnimal).FirstOrDefault().Descripcion,
+                            ClassId = tipoAnimal.Where(x => x.IdTipoAnimal == item.IdTipoAnimal).FirstOrDefault().IdTipoAnimal.ToString(),
+                        };
 
-                    Label lbTipoAnimal = new Label
-                    {
-                        Text = tipoAnimal.Where(x => x.IdTipoAnimal == item.IdTipoAnimal).FirstOrDefault().Descripcion,
-                        ClassId = tipoAnimal.Where(x => x.IdTipoAnimal == item.IdTipoAnimal).FirstOrDefault().IdTipoAnimal.ToString(),
-                    };
-
-                    Button btnModificar = new Button
-                    {
-                        Text = "Modificar",
-                        ClassId = item.IdAdopcion.ToString(),
-                        BindingContext = item.IdAdopcion.ToString(),
-                    };
-                    btnModificar.Clicked += Modificar_Clicked;
-                    flexLayout.Children.Add(lbNombre);
-                    flexLayout.Children.Add(lbTipoAnimal);
-                    flexLayout.Children.Add(btnModificar);
-                    frame.Content = flexLayout;
-                    Mostrar.Children.Add(frame);
+                        Button btnModificar = new Button
+                        {
+                            Text = "Modificar",
+                            ClassId = item.IdAdopcion.ToString(),
+                            BindingContext = item.IdAdopcion.ToString(),
+                        };
+                        btnModificar.Clicked += Modificar_Clicked;
+                        flexLayout.Children.Add(lbNombre);
+                        flexLayout.Children.Add(lbTipoAnimal);
+                        flexLayout.Children.Add(btnModificar);
+                        frame.Content = flexLayout;
+                        Mostrar.Children.Add(frame);
+                    }
+                }else{
+                    await DisplayAlert("Publicaciones de adopcion", "No posee publicaciones!", "OK");
                 }
             }   
             else
