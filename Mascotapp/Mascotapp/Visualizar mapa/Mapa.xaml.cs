@@ -15,20 +15,43 @@ namespace Mascotapp.Visualizar_mapa
 {
     public partial class Mapa : ContentPage
     {
-        ServicioMarcadores servicioMarcadores = new ServicioMarcadores();
-        ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
-        ServicioRefugio servicioRefugio = new ServicioRefugio();
+        private ServicioMarcadores servicioMarcadores = new ServicioMarcadores();
+        private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
+        private ServicioRefugio servicioRefugio = new ServicioRefugio();
+        private string filtroSeleccionado = "";
 
         public Mapa()
         {
             InitializeComponent();
             CargarMapa();
+            CargarEventos();
+        }
+
+        private void CargarEventos()
+        {
+            btnFiltro.Clicked += btnFiltro_Clicked;
+            btnQuitarFiltro.Clicked += btnQuitarFiltro_Clicked;
+        }
+
+        private void btnQuitarFiltro_Clicked(object sender, EventArgs e)
+        {
+            filtroSeleccionado = "";
             CargarPines();
-            
+        }
+
+        private void btnFiltro_Clicked(object sender, EventArgs e)
+        {
+            if (pckFiltro.SelectedItem != null)
+            {
+                filtroSeleccionado = pckFiltro.SelectedItem.ToString();
+                CargarPines();
+            }
         }
 
         private void CargarPines()
         {
+            map_Mapa.CustomPins = new List<CustomPin>();
+            map_Mapa.Pins.Clear();
             CargarMarcadores();
             CargarAdopciones();
             CargarRefugios();
@@ -36,35 +59,45 @@ namespace Mascotapp.Visualizar_mapa
 
         private void CargarAdopciones()
         {
-            var adopciones = servicioAdopciones.ObtenerAdopciones();
-
-            foreach (var adopcion in adopciones)
+            if (filtroSeleccionado == "Adopciones" || string.IsNullOrEmpty(filtroSeleccionado))
             {
-                var pin = GenerarMarcador(adopcion.Nombre, adopcion.Ubicacion, "Adopcion", adopcion.IdAdopcion.Value);
-                map_Mapa.Pins.Add(pin);
-                map_Mapa.CustomPins.Add(pin);
+                var adopciones = servicioAdopciones.ObtenerAdopciones();
+
+                foreach (var adopcion in adopciones)
+                {
+                    var pin = GenerarMarcador(adopcion.Nombre, adopcion.Ubicacion, "Adopcion", adopcion.IdAdopcion.Value);
+                    map_Mapa.Pins.Add(pin);
+                    map_Mapa.CustomPins.Add(pin);
+                }
             }
         }
 
         private void CargarMarcadores()
         {
-            var marcadores = servicioMarcadores.ObtenerMarcadores();
-            foreach (var marcador in marcadores)
+            if (filtroSeleccionado == "Marcadores" || string.IsNullOrEmpty(filtroSeleccionado))
             {
-                var pin = GenerarMarcador(marcador.Descripcion, marcador.Ubicacion, "Marcador", marcador.IdMarcador.Value);
-                map_Mapa.CustomPins.Add(pin);
-                map_Mapa.Pins.Add(pin);             
+                var marcadores = servicioMarcadores.ObtenerMarcadores();
+                foreach (var marcador in marcadores)
+                {
+                    var pin = GenerarMarcador(marcador.Descripcion, marcador.Ubicacion, "Marcador", marcador.IdMarcador.Value);
+                    map_Mapa.CustomPins.Add(pin);
+                    map_Mapa.Pins.Add(pin);
+                }
             }
+
         }
 
         private void CargarRefugios()
         {
-            var refugios = servicioRefugio.ObtenerRefugios();
-            foreach (var refugio in refugios)
+            if (filtroSeleccionado == "Refugios" || string.IsNullOrEmpty(filtroSeleccionado))
             {
-                var pin = GenerarMarcador(refugio.RazonSocial, refugio.Ubicacion, "Refugio", refugio.IdRefugio.Value);
-                map_Mapa.CustomPins.Add(pin);
-                map_Mapa.Pins.Add(pin);
+                var refugios = servicioRefugio.ObtenerRefugios();
+                foreach (var refugio in refugios)
+                {
+                    var pin = GenerarMarcador(refugio.RazonSocial, refugio.Ubicacion, "Refugio", refugio.IdRefugio.Value);
+                    map_Mapa.CustomPins.Add(pin);
+                    map_Mapa.Pins.Add(pin);
+                }
             }
         }
 
@@ -93,7 +126,13 @@ namespace Mascotapp.Visualizar_mapa
             );
 
             map_Mapa.IsShowingUser = true;
-            map_Mapa.CustomPins = new List<CustomPin>();
+
         }
+
+        protected override void OnAppearing()
+        {
+            CargarPines();
+        }
+
     }
 }
