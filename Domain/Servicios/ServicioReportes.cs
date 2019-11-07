@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace Domain.Servicios
 {
@@ -21,5 +22,10 @@ namespace Domain.Servicios
             return dbConnection.Insert(reporte);
         }
 
+        public bool VerificarLimiteReportes(Marcadores marcador)
+        {
+            var contadorReportes = dbConnection.Query<Reportes>("SELECT * FROM ").Where(x => x.IdMarcador == marcador.IdMarcador).Count();
+            return contadorReportes >= 3;
+        }
     }
 }

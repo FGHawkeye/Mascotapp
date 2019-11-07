@@ -51,8 +51,17 @@ namespace Mascotapp.Visualizar_mapa
 
                     
                     serviceReportes.GuardarReporte(reporte);
-
+           
                     await DisplayAlert("Reporte", "Su reporte fue registrado con exito", "Entendido");
+
+                    var limiteAlcanzado = serviceReportes.VerificarLimiteReportes(marcador);
+
+                    if (limiteAlcanzado)
+                    {
+                        marcador.Estado = false;
+                        serviceMarcadores.ModificarMarcador(marcador);
+                    }
+
                     await Navigation.PopToRootAsync();
                 }
                 catch(Exception ex)

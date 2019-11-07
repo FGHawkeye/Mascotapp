@@ -19,7 +19,7 @@ namespace Domain.Servicios
 
         public List<Refugio> ObtenerRefugios()
         {
-            return dbConnection.Query<Refugio>("Select * From [Refugio]");
+            return dbConnection.Query<Refugio>("Select * From [Refugio]").Where(x => x.Estado == "Aceptado").ToList();
         }
 
         public int RegistrarRefugio(Refugio usuario)
