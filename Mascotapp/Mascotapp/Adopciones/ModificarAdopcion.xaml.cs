@@ -73,7 +73,13 @@ namespace Mascotapp
             {
                 pckSexo.SelectedIndex = 1;
             }
-            pckAnimal.SelectedIndex = adopcion.IdTipoAnimal;
+            int index = 0;
+            foreach(TipoAnimal tipoAnimal in pckAnimal.ItemsSource)
+            {
+                if (tipoAnimal.IdTipoAnimal == adopcion.IdTipoAnimal) pckAnimal.SelectedIndex = index;
+                index++;
+            }
+            
         }
 
         public void CargarImagenes()
@@ -333,18 +339,16 @@ namespace Mascotapp
         {
             try
             {
-                if (ValidarForm())
+                if (ValidarForm()&& MainPage.UsuarioRegristrado!=null)
                 {
-                    var adopcion = new Adopciones();
-                    adopcion.IdUsuario = 2;
-                    adopcion.IdAdopcion = idAdop;
-                    adopcion.IdTipoAnimal = 1;
+                    var adopcion = servicioAdopciones.ObtenerAdopcion(idAdop);
+                    TipoAnimal tipoAnimal = (TipoAnimal)pckAnimal.ItemsSource[pckAnimal.SelectedIndex];
+                    adopcion.IdTipoAnimal = tipoAnimal.IdTipoAnimal.Value;
                     adopcion.Detalle = txtDescripcion.Text;
                     adopcion.Edad = Int32.Parse(txtEdad.Text);//faltaria modificar la tabla para agregar edad meses y edad años
                     adopcion.Estado = true;
                     adopcion.Nombre = txtNombre.Text;
                     adopcion.Sexo = pckSexo.SelectedItem.ToString();
-                    adopcion.Ubicacion = "Prueba";
 
                     int idAd = servicioAdopciones.ModificarAdopcion(adopcion);
                     foreach (Imagenes imgAdd in imagenesAgregar)
