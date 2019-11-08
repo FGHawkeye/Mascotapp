@@ -24,7 +24,16 @@ namespace Domain.Servicios
 
         public int GuardarTipoAnimal(TipoAnimal tipoAnimal)
         {
-            return dbConnection.Insert(tipoAnimal);
+            dbConnection.Insert(tipoAnimal);
+            int pk = dbConnection.ExecuteScalar<int>("SELECT last_insert_rowid()");
+            return pk;
+        }
+
+        public int GuardarModificarTipoAnimal(TipoAnimal tipoAnimal)
+        {
+            dbConnection.Update(tipoAnimal);
+            int pk = tipoAnimal.IdTipoAnimal.Value;
+            return pk;
         }
 
         public TipoAnimal ObtenerTipoAnimal(int id)
