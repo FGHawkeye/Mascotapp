@@ -29,6 +29,13 @@ namespace Domain.Servicios
             return pk;
         }
 
+        public int GuardarModificarTipoAnimal(TipoAnimal tipoAnimal)
+        {
+            dbConnection.Update(tipoAnimal);
+            int pk = tipoAnimal.IdTipoAnimal.Value;
+            return pk;
+        }
+
         public TipoAnimal ObtenerTipoAnimal(int id)
         {
             var query = string.Format("Select * From [TipoAnimal] where IdTipoAnimal = {0} ", id);

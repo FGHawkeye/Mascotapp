@@ -58,7 +58,7 @@ namespace Mascotapp.Tipo_animales
                     var tipoAniaml = new Domain.Entidades.TipoAnimal();
                     tipoAniaml.IdTipoAnimal = 1;//pckTipoAnimal.SelectedItem.
                     tipoAniaml.Descripcion = txtDescripcion.Text;
-                    serviceTipoAnimal.GuardarTipoAnimal(tipoAniaml);
+                    serviceTipoAnimal.GuardarModificarTipoAnimal(tipoAniaml);
 
                     await DisplayAlert("Tipo de Animal", "Se modifico el Tipo de Animal correctamente!", "OK");
                     await App.MasterD.Detail.Navigation.PopToRootAsync();

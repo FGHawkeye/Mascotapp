@@ -18,8 +18,7 @@
         <Button Text="Solicitud de Adopcion Administrador" x:Name="btnSolicitudAdopcionAdmin" Clicked="BtnSolicitudAdopcionAdmin_Clicked" />
     </StackLayout>
         <Button Text="Mostrar Tipo Animal" x:Name="btnMostrarTipoAnimal" Clicked="BtnMostrarTipoAnimal_Clicked" />
-        <Button Text="Login" x:Name="btnLogin"  />
-    </StackLayout> 
+    <Button Text="Login" x:Name="btnLogin"  />
 
 
 </ContentPage>
