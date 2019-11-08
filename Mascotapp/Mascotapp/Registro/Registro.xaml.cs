@@ -35,9 +35,9 @@ namespace Mascotapp.Registro
 
         private async void Registrar_Clicked(object sender, EventArgs e)
         {
-
-            int Validacion;
-            Validacion = ValidarForm();
+            
+           int Validacion;
+           Validacion = ValidarForm();
 
            switch (Validacion)
             {
@@ -57,15 +57,21 @@ namespace Mascotapp.Registro
                             Email = txtEmail.Text.Trim(),
                             Telefono = Convert.ToInt64(txtTel.Text.Trim()),
                         };
-
-                        Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
+                        if (chkRefugio.IsChecked)
+                        {
+                            App.MasterD.IsPresented = false;
+                            await App.MasterD.Detail.Navigation.PushAsync(new RegistroRefugio(Usuario));
+                        }
+                        else
+                        {
+                            Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
+                        }
 
                         if(Registrado == 1)
                         { 
                         await DisplayAlert("Registro Exitoso", "Su Nuevo Usuario fue creado correctamente", "Entendido");
                         SalirRegistrado();             
-                        }    
-                        
+                        }
                     }
                     catch (Exception ex)
                     {           
@@ -104,10 +110,7 @@ namespace Mascotapp.Registro
 
         private void Cancelar_Clicked(object sender, EventArgs e)
         {
-
             Navigation.PopAsync(false);
-
-
         }
         private int ValidarForm()
         {
@@ -125,7 +128,7 @@ namespace Mascotapp.Registro
             }*/
 
             try { 
-            var DireccionMail = new System.Net.Mail.MailAddress(txtEmail.Text);
+                var DireccionMail = new System.Net.Mail.MailAddress(txtEmail.Text);
             }
             catch (Exception)
             {

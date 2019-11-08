@@ -27,7 +27,7 @@ namespace Mascotapp
 
         public void CargarElementos()
         {
-            List<Refugio> refugios = servicioRefugio.ObtenerRefugios().Where(x=>x.Estado=="Pendiente").ToList();
+            List<Refugio> refugios = servicioRefugio.ObtenerRefugiosPendientes();
 
             foreach(Refugio refugio in refugios)
             {

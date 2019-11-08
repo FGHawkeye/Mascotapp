@@ -85,6 +85,9 @@
                             <Label Text="Ingrese un numero de contacto:"/>
                             <Entry x:Name="txtTel" Keyboard="Numeric" Placeholder="1512345678" Grid.Column="1"></Entry>
                         </Grid>
+                        <StackLayout Spacing="20">
+                            <Label></Label>
+                        </StackLayout>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />

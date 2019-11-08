@@ -22,6 +22,11 @@ namespace Domain.Servicios
             return dbConnection.Query<Refugio>("Select * From [Refugio]").Where(x => x.Estado == "Aceptado").ToList();
         }
 
+        public List<Refugio> ObtenerRefugiosPendientes()
+        {
+            return dbConnection.Query<Refugio>("Select * From [Refugio]").Where(x => x.Estado == "Pendiente").ToList();
+        }
+
         public int RegistrarRefugio(Refugio usuario)
         {
             return dbConnection.Insert(usuario);

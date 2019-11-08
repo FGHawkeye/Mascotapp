@@ -15,8 +15,6 @@ namespace Mascotapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Notificaciones : ContentPage
     {
-
-        private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
         private ServicioSolicitudAdopcion servicioSolicitudAdopcion = new ServicioSolicitudAdopcion();
         private ServicioUsuarios servicioUsuario = new ServicioUsuarios();

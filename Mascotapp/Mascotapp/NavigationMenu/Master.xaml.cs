@@ -49,12 +49,6 @@ namespace Mascotapp.NavigationMenu
             await App.MasterD.Detail.Navigation.PushAsync(new Registro.Registro());
         }
 
-        //private async void BtnSolicitudAdopcion_Clicked(object sender, EventArgs e)
-        //{
-        //    App.MasterD.IsPresented = false; //isVisible = false
-        //    await App.MasterD.Detail.Navigation.PushAsync(new VisualizarSolicitud(3));
-        //}
-
         private async void BtnNotificaciones_Clicked(object sender, EventArgs e)
         {
             App.MasterD.IsPresented = false; //isVisible = false
