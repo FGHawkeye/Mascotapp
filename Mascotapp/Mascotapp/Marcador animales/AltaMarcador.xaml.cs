@@ -23,7 +23,8 @@ namespace Mascotapp.Marcador_animales
         private ServicioMarcadores serviceMarcadores = new ServicioMarcadores();
         private ServicioImagenes serviceImagenes = new ServicioImagenes();
 
-        private MediaFile _currentImg;
+        //private MediaFile _currentImg;
+        private string _currentImg;
 
         public AltaMarcador()
         {
@@ -53,16 +54,25 @@ namespace Mascotapp.Marcador_animales
 
         private async void btnCamera_Clicked(object sender, EventArgs e)
         {
+            string directoryPath = "/storage/emulated/0/Mascotapp/";
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
                 new Plugin.Media.Abstractions.StoreCameraMediaOptions()
                 {
                     CompressionQuality = 5
                 });
 
+            System.IO.File.Copy(photo.Path, directoryPath, true);
+            TaskScheduler.FromCurrentSynchronizationContext();
+            var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
+            string name = photo.Path.Replace(trm, string.Empty);
             if (photo != null)
             {
-                imgCamara.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
-                _currentImg = photo;
+                ImageSource image = ImageSource.FromFile(directoryPath + name);
+
+                //imgCamara.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
+                imgCamara.Source = image;
+                _currentImg = directoryPath + name;
+                File.Delete(photo.Path);
             }
                 
         }
@@ -75,14 +85,15 @@ namespace Mascotapp.Marcador_animales
             }
             else
             {
-                if (_currentImg != null)
+                var mensaje = ValidarFormulario();
+                if (mensaje == "")
                 {
                     try
                     {
                         var idImagen = GuardarImagen();
 
                         var marcador = new Marcadores();
-                        marcador.IdTipoAnimal = pckAnimal.SelectedIndex;
+                        marcador.IdTipoAnimal = ((TipoAnimal)pckAnimal.ItemsSource[pckAnimal.SelectedIndex]).IdTipoAnimal.Value;
                         marcador.Descripcion = txtDescripcion.Text;
                         marcador.IdImagen = idImagen.HasValue ? idImagen.Value : 0;
                         marcador.IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value;
@@ -103,17 +114,36 @@ namespace Mascotapp.Marcador_animales
                 }
                 else
                 {
-                    await DisplayAlert("Error al guardar", "Para agregar un marcador tiene que cargar una foto", "Entendido");
+                    await DisplayAlert("Error al guardar", mensaje, "Entendido");
                 }
             }
            
+        }
+
+        private string ValidarFormulario()
+        {
+            string msg = "";
+
+            if(_currentImg == null)
+            {
+                msg = "Falta cargar una imagen.";
+            }
+            else if (pckAnimal.SelectedItem == null)
+            {
+                msg = "Falta seleccionar un tipo de animal.";
+            }
+            else if (txtDescripcion.Text == "" || txtDescripcion.Text == null)
+            {
+                msg = "Falta ingresar una descripcion.";
+            }
+            return msg;
         }
 
         private int? GuardarImagen()
         {
             Imagenes img = new Imagenes();
             img.IdImagen = null;
-            img.Imagen = Path.GetFileName(_currentImg.Path);
+            img.Imagen = _currentImg;
             img.Estado = true;
             var pk = serviceImagenes.GuardarImagen(img);
             return pk;
