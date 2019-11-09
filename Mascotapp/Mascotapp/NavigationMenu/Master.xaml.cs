@@ -66,7 +66,7 @@ namespace Mascotapp.NavigationMenu
             App.MasterD.IsPresented = false; //isVisible = false
             await App.MasterD.Detail.Navigation.PushAsync(new TipoDeAnimal());
         }
-        private async void BtnNotificaciones_Clicked(object sender, EventArgs e)
+        private async void BtnSolicitudAdopcionAdmin_Clicked(object sender, EventArgs e)
         {
             App.MasterD.IsPresented = false; //isVisible = false
             await App.MasterD.Detail.Navigation.PushAsync(new NotificacionesAdmin());
