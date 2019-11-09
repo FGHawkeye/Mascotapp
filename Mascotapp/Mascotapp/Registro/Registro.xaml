@@ -64,7 +64,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Usuario:"/>
-                            <Entry x:Name="txtUsuario" Placeholder="Usuario" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtUsuario" Placeholder="Usuario" Grid.Column="1" MaxLength="49"></Entry>
                         </Grid>
 
                         <Grid>
@@ -73,7 +73,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Nombre:"/>
-                            <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1" MaxLength="50"></Entry>
                         </Grid>
 
                         <Grid>
@@ -82,7 +82,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Apellido:"/>
-                            <Entry x:Name="txtApellido" Placeholder="Apellido" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtApellido" Placeholder="Apellido" Grid.Column="1" MaxLength="50"></Entry>
                         </Grid>
 
                         <Grid>
@@ -91,7 +91,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Email: "/>
-                            <Entry x:Name="txtEmail" Placeholder="Email@Email.com" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtEmail" Placeholder="Email@Email.com" Grid.Column="1" MaxLength="49"></Entry>
                         </Grid>
 
                         <Grid>
@@ -100,16 +100,16 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Teléfono"/>
-                            <Entry x:Name="txtTel" Placeholder="1512345678" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtTel" Placeholder="1512345678" Grid.Column="1" MaxLength="18"></Entry>
                         </Grid>
-
+                        
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Contraseña"/>
-                            <Entry x:Name="txtContra" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtContra" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="49"></Entry>
                         </Grid>
 
 
@@ -119,13 +119,21 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Confirme Contraseña"/>
-                            <Entry x:Name="txtContra2" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtContra2" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="49"></Entry>
                         </Grid>
 
 
-                   
-
-
+                        <CheckBox x:Name="chkRefugio" IsChecked="False"/>
+                        <Label x:Name="txtRefugio" Text="Antes de registrarlo como refugio valido, el administrador evaluara su solicitud y documentacion" IsVisible="False">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label"
+                                       Binding="{Binding Source={x:Reference chkRefugio},
+                                       Path=Text}"
+                                         Value="asdasdasdasddd">
+                                    <Setter Property="IsVisible" Value="True" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
