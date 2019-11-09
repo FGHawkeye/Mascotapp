@@ -10,7 +10,7 @@
         <Button Text="Agregar Marcador" x:Name="btnAgregarMarcador" Clicked="BtnAgregarMarcador_Clicked" />
         <Button Text="Adopciones" x:Name="btnMostrarAdopciones" Clicked="BtnMostrarAdopciones_Clicked" />
         <Button Text="Notificaciones" x:Name="btnNotificaciones" Clicked="BtnNotificaciones_Clicked" />
-        <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" />
+        <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />
         <Button Text="Cerrar sesion" x:Name="btnCerrarSesion" Clicked="BtnCerrarSesion_Clicked" />
     </StackLayout>
 </ContentPage>

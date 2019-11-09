@@ -92,22 +92,26 @@ namespace Mascotapp
         }
 
 
-        public bool ValidarForm()
+        public string ValidarForm()
         {
-            //agregar mensajes faltantes
-            bool validate = true;
+            string msg = "";
+
             if (txtDetalle.Text == "" || txtDescripcion.Text == null)
             {
-                validate = false;
+                msg = "Falta completar el detalle.";
+            }else if (MainPage.UsuarioRegristrado == null)
+            {
+                msg = "Para realizar una solicitud, debe estar registrado.";
             }
-            return validate;
+            return msg;
         }
 
         private async void Guardar_Clicked(object sender, EventArgs e)
         {
             try
             {
-                if (ValidarForm())
+                string msg = ValidarForm();
+                if (msg==""&& MainPage.UsuarioRegristrado!=null)
                 {
                     SolicitudAdopcion solicitud = new SolicitudAdopcion
                     {
@@ -116,7 +120,6 @@ namespace Mascotapp
                         Estado = "Pendiente",
                         FechaCreacion = DateTime.UtcNow,
                         IdUsuarioSolicitante = MainPage.UsuarioRegristrado.IdUsuario.Value
-
                     };
                     servicioSolicitudAdopcion.GuardarSolicitudAdopcion(solicitud);
                     await DisplayAlert("Adopciones", "Se modificó la publicación correctamente!", "OK");
@@ -124,7 +127,7 @@ namespace Mascotapp
                 }
                 else
                 {
-                    await DisplayAlert("Adopciones", "Falta completar datos.", "OK");
+                    await DisplayAlert("Adopciones", msg, "OK");
                 }
             }
             catch (Exception ex)

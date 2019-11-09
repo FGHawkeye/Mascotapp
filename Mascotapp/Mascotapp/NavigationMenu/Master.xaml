@@ -10,7 +10,7 @@
     <StackLayout>
         <Button Text="Login" x:Name="btnLogin" Clicked="BtnLogin_Clicked" />
         <Button Text="Registrarse" x:Name="btnRegistro" Clicked="BtnRegistro_Clicked" />
-        <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" />
+        <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />
     </StackLayout>
 
 </ContentPage>

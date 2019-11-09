@@ -31,6 +31,12 @@ namespace Mascotapp.NavigationMenu
             await App.MasterD.Detail.Navigation.PushAsync(new Registro.Registro());
         }
 
+        private async void BtnPreguntasFrecuentes_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new PreguntasFrecuentes());
+        }
+
         #endregion
     }
 }
