@@ -18,7 +18,6 @@ namespace Mascotapp
             InitializeComponent();
             this.Master = new Master();
             this.Detail = new NavigationPage(new Mapa());
-
             App.MasterD = this;
         }
     }

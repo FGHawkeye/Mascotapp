@@ -10,7 +10,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using Mascotapp.NavigationMenu;
 
 namespace Mascotapp.Login
 {
@@ -61,12 +61,24 @@ namespace Mascotapp.Login
 
 
                 MainPage.UsuarioRegristrado = UsuarioValidado;
+
+
+                if (UsuarioValidado.IdTipoUsuario == 1)
+                {
+                    App.MasterD.Master = new MenuAdmin();
+                }
+                else
+                {
+                    App.MasterD.Master = new MenuUsuario();
+                }
+
                 await Navigation.PopAsync(false);
 
                 await DisplayAlert("Bienvenido " + MainPage.UsuarioRegristrado.Nombre, "Nos alegra que nos visites nuevamente.", "Continuar");
+
                 await Navigation.PopAsync(false);
             }
-            catch
+            catch(Exception ex)
             {
   
                     await DisplayAlert("Error de autenticación", "Su cuenta o contraseña no se encuentran registradas", "Entendido");
