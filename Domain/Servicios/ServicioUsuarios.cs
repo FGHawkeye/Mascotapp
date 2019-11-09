@@ -25,7 +25,8 @@ namespace Domain.Servicios
         public int RegistrarUsuario(Usuario usuario)
         {
             dbConnection.Insert(usuario);
-            return dbConnection.ExecuteScalar<int>("SELECT last_insert_rowid()");
+            int id= dbConnection.ExecuteScalar<int>("SELECT last_insert_rowid()");
+            return id;
         }
 
         public Usuario ObtenerUsuario(int id)

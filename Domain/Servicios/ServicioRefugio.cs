@@ -27,18 +27,17 @@ namespace Domain.Servicios
             return dbConnection.Query<Refugio>("Select * From [Refugio]").Where(x => x.Estado == "Pendiente").ToList();
         }
 
-        public int RegistrarRefugio(Refugio usuario)
+        public int RegistrarRefugio(Refugio refugio)
         {
-            return dbConnection.Insert(usuario);
+            dbConnection.Insert(refugio);
+            int id = dbConnection.ExecuteScalar<int>("SELECT last_insert_rowid()");
+            return id;
         }
         public int ObtenerRazonSocial(string razon)
         {
-            int i=-1;
-            try{
-                i=dbConnection.Query<Refugio>("Select * From [Refugio]").Where(x=>x.RazonSocial==razon).FirstOrDefault().IdRefugio.Value;
-            }catch{
-                i=-1;
-            }
+            int i = -1;
+            Refugio refugio= dbConnection.Query<Refugio>("Select * From [Refugio]").Where(x => x.RazonSocial == razon).FirstOrDefault();
+            if (refugio != null) i = 1;
             return i;
         }
         public int ModificarRefugio(Refugio refugio)

@@ -47,11 +47,10 @@ namespace Mascotapp.Registro
                     {
                         int Registrado = 0;
 
-
                         Usuario Usuario = new Usuario
                         {
                             NombreUsuario = txtUsuario.Text.Trim(),
-                            IdTipoUsuario = 1,
+                            IdTipoUsuario = 2,
                             Nombre = txtNombre.Text.Trim(),
                             Apellido = txtApellido.Text.Trim(),
                             Contraseña = txtContra.Text.Trim(),
@@ -66,17 +65,12 @@ namespace Mascotapp.Registro
                         else
                         {
                             Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
+                            if (Registrado == 1)
+                            {
+                                await DisplayAlert("Registro Exitoso", "Su Nuevo Usuario fue creado correctamente", "Entendido");
+                                SalirRegistrado();
+                            }
                         }
-
-
-                        Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
-
-                        if (Registrado == 1)
-                        {
-                            await DisplayAlert("Registro Exitoso", "Su Nuevo Usuario fue creado correctamente", "Entendido");
-                            SalirRegistrado();
-                        }
-
                     }
                     catch (Exception ex)
                     {

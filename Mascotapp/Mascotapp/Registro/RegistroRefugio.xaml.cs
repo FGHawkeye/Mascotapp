@@ -36,9 +36,8 @@ namespace Mascotapp
 
         private async void Registrar_Clicked(object sender, EventArgs e)
         {
-           string Validacion;
-           Validacion = ValidarForm();
-           if(Validacion==""){
+           string validacion= ValidarForm();
+           if(validacion==""){
                try{
                     var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
                     int id= servicioUsuarios.RegistrarUsuario(usuario);
@@ -56,12 +55,12 @@ namespace Mascotapp
                         Estado ="Pendiente"
                     };
                     servicioRefugio.RegistrarRefugio(refugio);
-                    Validacion="Se realizo el registro con exito, la solicitud se encuentra en estado pendiente.";
+                    validacion="Se realizo el registro con exito, la solicitud se encuentra en estado pendiente.";
                }catch (Exception ex){
-                   Validacion="Se produjo un problema, vuelva a intentar."+ex.Message+"////"+ex.ToString();
+                   validacion="Se produjo un problema, vuelva a intentar.";
                }
            }
-           await DisplayAlert("Registro Refugio", Validacion, "Ok");
+           await DisplayAlert("Registro Refugio", validacion, "Ok");
            await App.MasterD.Detail.Navigation.PopToRootAsync();
         }
 
