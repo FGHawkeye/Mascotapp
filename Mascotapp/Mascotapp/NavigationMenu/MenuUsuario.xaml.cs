@@ -42,6 +42,7 @@ namespace Mascotapp.NavigationMenu
             if (rta)
             {
                 MainPage.UsuarioRegristrado = null;
+                App.MasterD.IsPresented = false;
                 App.MasterD.Master = new Master();
             }
         }

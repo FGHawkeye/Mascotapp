@@ -4,12 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.NavigationMenu.MenuAdmin">
-    <ContentPage.Content>
+             x:Class="Mascotapp.NavigationMenu.MenuAdmin"
+             Title="MenuAdmin">
+  
         <StackLayout>
             <Button Text="Notificaciones" x:Name="btnSolicitudRefugioAdmin_Clicked" Clicked="BtnSolicitudRefugioAdmin_Clicked" />
             <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" />
             <Button Text="Cerrar sesion" x:Name="btnCerrarSesion" Clicked="BtnCerrarSesion_Clicked" />
         </StackLayout>
-    </ContentPage.Content>
+  
 </ContentPage>
