@@ -4,8 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.Login.Login"
-             Title="Login">
+             x:Class="Mascotapp.Tipo_animales.NuevoTipoAnimal">
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
@@ -24,11 +23,6 @@
             <Setter Property="TextColor" Value="Blue" />
         </Style>
 
-        <Style TargetType="Image">
-            <Setter Property="FlexLayout.Order" Value="-1" />
-            <Setter Property="FlexLayout.AlignSelf" Value="Center" />
-        </Style>
-
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
@@ -36,73 +30,62 @@
             <Setter Property="BorderRadius" Value="20" />
         </Style>
     </ContentPage.Resources>
-
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#E5E5E5" Orientation ="Vertical">
-            
-            
-            <StackLayout>
-                <Frame WidthRequest="300"
-                   HeightRequest="32">
-                    
-                    <Label Text="Ingregar"
-               HorizontalOptions="Center" 
-               FontAttributes="Bold" />
-                </Frame>
-                
-                <Frame WidthRequest="300"
-                   HeightRequest="480">
-                    
+        <StackLayout Orientation="Vertical">
+            <Label Text="Nuevo Tipo de animal" HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout BackgroundColor="GhostWhite">
+
+                <Frame WidthRequest="300" HeightRequest="400">
                     <FlexLayout Direction="Column">
+                        <Label Text="Datos del Tipo de Animal" />
 
                         <Grid>
-                            
-                            <Label Text="Ingrese su usuario" />
-
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                          
+                            <Label Text="Id"/>
+                            <Entry x:Name="txtIDTipoAnimal" Placeholder="1 ID" Grid.Column="1"></Entry>
                         </Grid>
 
-                        <Editor x:Name="txtNombre" Placeholder="Usuario" MaxLength="49" />
-
-
-                        <Grid Margin="0,20,0,0">
-
-                            <Label Text="Ingrese su contraseña"/>
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-
+                            <Label Text="Mascota"/>
+                            <Entry x:Name="txtNuevoTipoAnimal" Placeholder="Nuevo Tipo de Mascota" Grid.Column="1"></Entry>
+                            <!--<Picker  Grid.Column="1" Title="Tipo de animal" x:Name="pckTipoAnimal" />-->
                         </Grid>
-                        <Entry x:Name="txtContra" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" MaxLength="49" >
 
-                        </Entry>
-             
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Descripcion"/>
+                            <Label Grid.Column="1"
+                               Text="Max: 250 caracteres."
+                               />
+                        </Grid>
+                        <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtNuevaDescripcion"/>
                         
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="btnIngresar" Text="Aceptar"/>
-                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
-
-                            <Label Grid.Column="1" Grid.Row="1" 
-                               Text="Nuevo usuario? Registrate!">
-                                 <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
-                                 </Label.GestureRecognizers>
-                            </Label>
-                        </Grid>
-                    
-
                     </FlexLayout>
                 </Frame>
+
+                <Frame WidthRequest="100" HeightRequest="50">
+                    <FlexLayout Direction="Column">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnGuardar" Text="Agregar"/>
+                        </Grid>
+                    </FlexLayout>
+                </Frame>
+
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

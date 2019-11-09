@@ -1,4 +1,6 @@
 ﻿using Mascotapp.Marcador_animales;
+using Mascotapp.Login;
+using Mascotapp.Tipo_animales;
 using System;
 
 using Xamarin.Forms;

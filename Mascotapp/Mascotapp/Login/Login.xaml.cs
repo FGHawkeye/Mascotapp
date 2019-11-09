@@ -28,7 +28,9 @@ namespace Mascotapp.Login
             InitializeComponent();
             CargarEventos();
 
-            if (contra != "")
+            if (contra.Equals(""))
+            { }
+            else
             {
                 txtNombre.Text = nombreusuario;
                 txtContra.Text = contra;
