@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Mascotapp.NavigationMenu.MenuUsuario">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Agregar Marcador" x:Name="btnAgregarMarcador" Clicked="BtnAgregarMarcador_Clicked" />
+            <Button Text="Adopciones" x:Name="btnMostrarAdopciones" Clicked="BtnMostrarAdopciones_Clicked" />
+            <Button Text="Notificaciones" x:Name="btnNotificaciones" Clicked="BtnNotificaciones_Clicked" />
+            <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" />
+            <Button Text="Cerrar sesion" x:Name="btnCerrarSesion" Clicked="BtnCerrarSesion_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
