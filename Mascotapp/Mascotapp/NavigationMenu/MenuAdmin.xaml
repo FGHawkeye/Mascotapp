@@ -9,7 +9,8 @@
   
         <StackLayout>
             <Button Text="Notificaciones" x:Name="btnSolicitudRefugioAdmin_Clicked" Clicked="BtnSolicitudRefugioAdmin_Clicked" />
-        <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />
+            <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />
+            <Button Text="Tipo de Animal" x:Name="btnTipoDeAnimal" Clicked="BtnTipoDeAnimal_Clicked" />
             <Button Text="Cerrar sesion" x:Name="btnCerrarSesion" Clicked="BtnCerrarSesion_Clicked" />
         </StackLayout>
   

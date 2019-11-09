@@ -23,9 +23,11 @@ namespace Mascotapp
             CargarElementos(idRef);
         }
 
-        public void CargarElementos(int idRef){
+        public void CargarElementos(int idRef)
+        {
             btnAceptar.Clicked+=btnAceptar_Clicked;
             btnRechazar.Clicked+=btnRechazar_Clicked;
+
             refugio = servicioRefugio.ObtenerRefugio(idRef);
             Usuario usuario = servicioUsuario.ObtenerUsuario(refugio.IdUsuario);
             txtApellido.Text = usuario.Apellido;

@@ -58,15 +58,18 @@ namespace Mascotapp.Marcador_animales
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
                 new Plugin.Media.Abstractions.StoreCameraMediaOptions()
                 {
-                    CompressionQuality = 5
+                    PhotoSize = PhotoSize.MaxWidthHeight,
+                    MaxWidthHeight = 300,
+                    CompressionQuality = 50
                 });
 
-            System.IO.File.Copy(photo.Path, directoryPath, true);
-            TaskScheduler.FromCurrentSynchronizationContext();
-            var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
-            string name = photo.Path.Replace(trm, string.Empty);
+            
             if (photo != null)
             {
+                System.IO.File.Copy(photo.Path, directoryPath, true);
+                TaskScheduler.FromCurrentSynchronizationContext();
+                var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
+                string name = photo.Path.Replace(trm, string.Empty);
                 ImageSource image = ImageSource.FromFile(directoryPath + name);
 
                 //imgCamara.Source = ImageSource.FromStream(() => { return photo.GetStream(); });

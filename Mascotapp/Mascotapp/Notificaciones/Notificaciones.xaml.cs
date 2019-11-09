@@ -76,6 +76,21 @@ namespace Mascotapp
                         }
                     }
                 }else{
+                    FlexLayout flexLayout = new FlexLayout
+                    {
+                        Direction = FlexDirection.Row,
+                        JustifyContent = FlexJustify.SpaceBetween,
+                        AlignItems = FlexAlignItems.Center,
+                    };
+                    Label label = new Label
+                    {
+                        Text = "No posee publicaciones!",
+                    };
+                    label.HorizontalTextAlignment = TextAlignment.Center;
+                    flexLayout.Children.Add(label);
+                    Frame frame = new Frame { };
+                    frame.Content = flexLayout;
+                    Mostrar.Children.Add(frame);
                     await DisplayAlert("Notificaciones", "No posee notificaciones!", "OK");
                 }
             }else{

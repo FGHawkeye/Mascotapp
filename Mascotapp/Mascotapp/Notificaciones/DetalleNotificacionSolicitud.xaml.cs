@@ -29,6 +29,7 @@ namespace Mascotapp
         public void CargarElementos(int idSol,int idAd){
             btnAceptar.Clicked+=btnAceptar_Clicked;
             btnRechazar.Clicked+=btnRechazar_Clicked;
+
             solicitudAdopcion=servicioSolicitudAdopcion.ObtenerSolicitudAdopcion(idAd,idSol);
             adopciones=servicioAdopciones.ObtenerAdopcion(idAd);
             Usuario usuario=servicioUsuario.ObtenerUsuario(idSol);
