@@ -42,6 +42,12 @@ namespace Mascotapp.NavigationMenu
             await App.MasterD.Detail.Navigation.PushAsync(new PreguntasFrecuentes());
         }
 
+        private async void BtnAgregarAdopciones_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new AgregarAdopcion());
+        }
+
         private async void BtnCerrarSesion_Clicked(object sender, EventArgs e)
         {
             var rta = await DisplayAlert("Cerrar sesion", "¿Esta seguro de cerrar sesion?", "Si", "No");
