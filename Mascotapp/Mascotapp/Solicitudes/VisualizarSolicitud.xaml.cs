@@ -111,7 +111,7 @@ namespace Mascotapp
             try
             {
                 string msg = ValidarForm();
-                if (msg==""&& MainPage.UsuarioRegristrado!=null)
+                if (msg==""&& MainPage.UsuarioRegristrado!=null&& MainPage.UsuarioRegristrado.IdTipoUsuario!=3)
                 {
                     SolicitudAdopcion solicitud = new SolicitudAdopcion
                     {

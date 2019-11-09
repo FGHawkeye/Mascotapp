@@ -40,6 +40,7 @@ namespace Mascotapp
            if(validacion==""){
                try{
                     var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
+                    usuario.IdTipoUsuario = 3;
                     int id= servicioUsuarios.RegistrarUsuario(usuario);
                     Refugio refugio=new Refugio
                     {
