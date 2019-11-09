@@ -19,6 +19,7 @@ namespace Mascotapp
         private ServicioSolicitudAdopcion servicioSolicitudAdopcion = new ServicioSolicitudAdopcion();
         private ServicioUsuarios servicioUsuario = new ServicioUsuarios();
         private SolicitudAdopcion solicitudAdopcion;
+        private Adopciones adopciones;
         public DetalleNotificacionSolicitud(int idAd, int idSol)
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace Mascotapp
             btnAceptar.Clicked+=btnAceptar_Clicked;
             btnRechazar.Clicked+=btnRechazar_Clicked;
             solicitudAdopcion=servicioSolicitudAdopcion.ObtenerSolicitudAdopcion(idAd,idSol);
-            Adopciones adopciones=servicioAdopciones.ObtenerAdopcion(idAd);
+            adopciones=servicioAdopciones.ObtenerAdopcion(idAd);
             Usuario usuario=servicioUsuario.ObtenerUsuario(idSol);
             txtApellido.Text=usuario.Apellido;
             txtNombre.Text= usuario.Nombre;
@@ -40,6 +41,8 @@ namespace Mascotapp
 
         public void btnAceptar_Clicked(object sender, EventArgs e)
         {
+            adopciones.Estado = false;
+            servicioAdopciones.ModificarAdopcion(adopciones);
             ModificarSolicitudUsuario("Aceptado");
         }
         
@@ -51,6 +54,7 @@ namespace Mascotapp
         private async void ModificarSolicitudUsuario(string estado)
         {
             solicitudAdopcion.Estado=estado;
+            
             servicioSolicitudAdopcion.ModificarSolicitudAdopcion(solicitudAdopcion);
             await DisplayAlert("Adopciones", "Se "+estado+" la solicitud con exito", "OK");
             await App.MasterD.Detail.Navigation.PopToRootAsync();

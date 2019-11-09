@@ -36,10 +36,9 @@ namespace Mascotapp.Registro
 
         private async void Registrar_Clicked(object sender, EventArgs e)
         {
-
-
-            int Validacion;
-            Validacion = ValidarForm();
+            
+           int Validacion;
+           Validacion = ValidarForm();
 
             switch (Validacion)
             {
@@ -59,6 +58,16 @@ namespace Mascotapp.Registro
                             Email = txtEmail.Text.Trim(),
                             Telefono = Convert.ToInt64(txtTel.Text.Trim()),
                         };
+                        if (chkRefugio.IsChecked)
+                        {
+                            App.MasterD.IsPresented = false;
+                            await App.MasterD.Detail.Navigation.PushAsync(new RegistroRefugio(Usuario));
+                        }
+                        else
+                        {
+                            Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
+                        }
+
 
                         Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
 
@@ -108,10 +117,7 @@ namespace Mascotapp.Registro
 
         private void Cancelar_Clicked(object sender, EventArgs e)
         {
-
             Navigation.PopAsync(false);
-
-
         }
 
         private void Refugio_Clicked(object sender, EventArgs e)

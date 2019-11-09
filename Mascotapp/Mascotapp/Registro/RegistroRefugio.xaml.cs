@@ -10,16 +10,17 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Geolocator;
 
 namespace Mascotapp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegistroRefugio : ContentPage
     {
-
         private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
         private ServicioRefugio servicioRefugio=new ServicioRefugio();
         private Usuario usuario;
+
         public RegistroRefugio(Usuario usu)
         {
             usuario=usu;
@@ -30,6 +31,7 @@ namespace Mascotapp
         public void CargarEventos()
         {
             btnRegistrar.Clicked += Registrar_Clicked;
+            btnCancelar.Clicked += BtnCancelar_Clicked;
         }
 
         private async void Registrar_Clicked(object sender, EventArgs e)
@@ -38,34 +40,36 @@ namespace Mascotapp
            Validacion = ValidarForm();
            if(Validacion==""){
                try{
-                   Refugio refugio=new Refugio
+                    var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
+                    int id= servicioUsuarios.RegistrarUsuario(usuario);
+                    Refugio refugio=new Refugio
                     {
                         RazonSocial=txtRazonSolial.Text,
                         CodigoPostal=txtCodigoP.Text,
                         Direccion=txtDireccion.Text,
                         FechaCreacion=DateTime.UtcNow,
                         IdRefugio=null,
-                        IdUsuario=servicioUsuarios.RegistrarUsuario(usuario),
+                        IdUsuario=id,
                         Localidad=txtLocalidad.Text,
                         Telefono=Int32.Parse(txtTel.Text),
-                        Ubicacion="",
-                        Estado="Pendiente"
+                        Ubicacion= currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString(),
+                        Estado ="Pendiente"
                     };
                     servicioRefugio.RegistrarRefugio(refugio);
                     Validacion="Se realizo el registro con exito, la solicitud se encuentra en estado pendiente.";
-               }catch{
-                   Validacion="Se produjo un problema, vuelva a intentar.";
+               }catch (Exception ex){
+                   Validacion="Se produjo un problema, vuelva a intentar."+ex.Message+"////"+ex.ToString();
                }
-               
            }
            await DisplayAlert("Registro Refugio", Validacion, "Ok");
+           await App.MasterD.Detail.Navigation.PopToRootAsync();
         }
 
-
-        private void Cancelar_Clicked(object sender, EventArgs e)
+        private void BtnCancelar_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync(false);
         }
+
         private string ValidarForm()
         {
             string msg="";
@@ -79,7 +83,7 @@ namespace Mascotapp
                 msg="Falta completar el codigo postal";
             }else if(txtTel.Text==null||txtTel.Text==""){
                 msg="Falta completar el numero de contacto";
-            }else if(servicioRefugio.ObtenerRazonSocial(txtRazonSolial.Text)<1){
+            }else if(servicioRefugio.ObtenerRazonSocial(txtRazonSolial.Text)>0){
                 msg="La Razon Social seleccionada ya existe";
             }
             return msg;

@@ -27,7 +27,7 @@ namespace Mascotapp
         {
             if (MainPage.UsuarioRegristrado != null)
             {
-                List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones().Where(x=>x.IdUsuario== MainPage.UsuarioRegristrado.IdUsuario).ToList();
+                List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones().Where(x=>x.IdUsuario== MainPage.UsuarioRegristrado.IdUsuario&&x.Estado).ToList();
                 List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
 
                 foreach (Adopciones item in adopciones)

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="Mascotapp.Registro.Registro"
              Title="Registro">
-    
+
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
@@ -37,27 +37,18 @@
             <Setter Property="BorderRadius" Value="20" />
         </Style>
     </ContentPage.Resources>
-
-    
-    
     <ContentPage.Content>
         <StackLayout BackgroundColor="#E5E5E5" Orientation ="Vertical">
-
             <StackLayout>
                 <Frame WidthRequest="300"
                    HeightRequest="32">
-                    
                     <Label Text="Registro de Nuevo Usuario"
                HorizontalOptions="Center"
                FontAttributes="Bold" />
-                   
                 </Frame>
-                
                 <Frame WidthRequest="300"
                    HeightRequest="480">
-
                     <FlexLayout Direction="Column">
-                        
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -66,7 +57,6 @@
                             <Label Text="Usuario:"/>
                             <Entry x:Name="txtUsuario" Placeholder="Usuario" Grid.Column="1" MaxLength="49"></Entry>
                         </Grid>
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -75,7 +65,6 @@
                             <Label Text="Nombre:"/>
                             <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1" MaxLength="50"></Entry>
                         </Grid>
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -84,7 +73,6 @@
                             <Label Text="Apellido:"/>
                             <Entry x:Name="txtApellido" Placeholder="Apellido" Grid.Column="1" MaxLength="50"></Entry>
                         </Grid>
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -93,7 +81,6 @@
                             <Label Text="Email: "/>
                             <Entry x:Name="txtEmail" Placeholder="Email@Email.com" Grid.Column="1" MaxLength="49"></Entry>
                         </Grid>
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -111,8 +98,6 @@
                             <Label Text="Contraseña"/>
                             <Entry x:Name="txtContra" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="49"></Entry>
                         </Grid>
-
-
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -121,33 +106,25 @@
                             <Label Text="Confirme Contraseña"/>
                             <Entry x:Name="txtContra2" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="49"></Entry>
                         </Grid>
-
-
-                        <CheckBox x:Name="chkRefugio" IsChecked="False"/>
-                        <Label x:Name="txtRefugio" Text="Antes de registrarlo como refugio valido, el administrador evaluara su solicitud y documentacion" IsVisible="False">
-                            <Label.Triggers>
-                                <DataTrigger TargetType="Label"
-                                       Binding="{Binding Source={x:Reference chkRefugio},
-                                       Path=Text}"
-                                         Value="asdasdasdasddd">
-                                    <Setter Property="IsVisible" Value="True" />
-                                </DataTrigger>
-                            </Label.Triggers>
-                        </Label>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="btnRegistrar" Text="Registrar"/>
-                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
-
-    
-
-                        </Grid>
-
-
+                        
+                        <StackLayout Spacing="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="btnRegistrar" Text="Registrar"/>
+                                <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox x:Name="chkRefugio"></CheckBox>
+                                <Label Text="Registrarse como Refugio." Grid.Column="1"></Label>
+                            </Grid>
+                        </StackLayout>
                     </FlexLayout>
                 </Frame>
             </StackLayout>
