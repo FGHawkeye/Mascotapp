@@ -115,7 +115,7 @@ namespace Mascotapp
                         Descripcion = txtDetalle.Text,
                         Estado = "Pendiente",
                         FechaCreacion = DateTime.UtcNow,
-                        IdUsuarioSolicitante = 2
+                        IdUsuarioSolicitante = MainPage.UsuarioRegristrado.IdUsuario.Value
 
                     };
                     servicioSolicitudAdopcion.GuardarSolicitudAdopcion(solicitud);

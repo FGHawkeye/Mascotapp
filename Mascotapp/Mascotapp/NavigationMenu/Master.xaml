@@ -14,6 +14,7 @@
         <Button Text="Login" x:Name="btnLogin" Clicked="BtnLogin_Clicked" />
         <Button Text="Registrarse" x:Name="btnRegistro" Clicked="BtnRegistro_Clicked" />
         <Button Text="Notificaciones" x:Name="btnNotificaciones" Clicked="BtnNotificaciones_Clicked" />
+        <Button Text="Preguntas Frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />
         <!--<Button Text="Solicitud de Adopcion" x:Name="btnSolicitudAdopcion" Clicked="BtnSolicitudAdopcion_Clicked" />-->
         <Button Text="Solicitud de Adopcion Administrador" x:Name="btnSolicitudAdopcionAdmin" Clicked="BtnSolicitudAdopcionAdmin_Clicked" />
         <Button Text="Mostrar Tipo Animal" x:Name="btnMostrarTipoAnimal" Clicked="BtnMostrarTipoAnimal_Clicked" />
