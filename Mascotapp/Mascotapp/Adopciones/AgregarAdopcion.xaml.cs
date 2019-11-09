@@ -53,15 +53,17 @@ namespace Mascotapp
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
                 new Plugin.Media.Abstractions.StoreCameraMediaOptions() 
                 {
-                    CompressionQuality =5
+                    PhotoSize=PhotoSize.MaxWidthHeight,
+                    MaxWidthHeight=300,                    
+                    CompressionQuality =50
                 }
-                );
-            System.IO.File.Copy(photo.Path, directoryPath, true);
-            TaskScheduler.FromCurrentSynchronizationContext();
-            var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
-            string name = photo.Path.Replace(trm, string.Empty);
+            );
             if (photo != null)
             {
+                System.IO.File.Copy(photo.Path, directoryPath, true);
+                TaskScheduler.FromCurrentSynchronizationContext();
+                var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
+                string name = photo.Path.Replace(trm, string.Empty);
                 ImageSource image = ImageSource.FromFile(directoryPath + name);
                 AgregarFoto(image, directoryPath + name);
                 File.Delete(photo.Path);
@@ -96,6 +98,7 @@ namespace Mascotapp
                 imgCamara.Source = null;
                 lbImage.Text = "";
                 btnQuitar.IsEnabled = false;
+                btnCamara.IsEnabled = true;
             }
         }
         private async void Guardar_Clicked(object sender, EventArgs e)
@@ -229,6 +232,7 @@ namespace Mascotapp
                 estado = true;
                 imgMin3.Source = img;
                 image3 = path;
+                btnCamara.IsEnabled = false;
             }
             if (estado)
             {

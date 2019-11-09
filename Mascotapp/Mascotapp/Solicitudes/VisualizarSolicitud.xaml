@@ -44,18 +44,17 @@
                 <Frame WidthRequest="300"
                    HeightRequest="480" >
                     <FlexLayout Direction="Column">
-                        <Label Text="Agregar Foto" />
-                        <StackLayout Orientation="Horizontal"  HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
-                            <Image x:Name="imgCamara" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
+                        <StackLayout Orientation="Horizontal"  HeightRequest="300" WidthRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
+                            <Image x:Name="imgCamara" Aspect="AspectFill" HorizontalOptions="FillAndExpand"  />
                         </StackLayout>
                         <Label x:Name="lbImage" IsVisible="False"></Label>
                         <Frame WidthRequest="300"
                            HeightRequest="60" HorizontalOptions="Center">
                             <FlexLayout Direction="Column" JustifyContent="Center" HorizontalOptions="Center">
                                 <StackLayout Orientation="Horizontal"  HeightRequest="48" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
-                                    <ImageButton x:Name="imgMin1" WidthRequest="48" Aspect="Fill"  Clicked="Img_Clicked" />
-                                    <ImageButton x:Name="imgMin2" WidthRequest="48" Aspect="Fill"  Clicked="Img_Clicked" />
-                                    <ImageButton x:Name="imgMin3" WidthRequest="48" Aspect="Fill"  Clicked="Img_Clicked" />
+                                    <ImageButton x:Name="imgMin1" Aspect="AspectFill"  Clicked="Img_Clicked" />
+                                    <ImageButton x:Name="imgMin2" Aspect="AspectFill"  Clicked="Img_Clicked" />
+                                    <ImageButton x:Name="imgMin3" Aspect="AspectFill"  Clicked="Img_Clicked" />
                                 </StackLayout>
                             </FlexLayout>
                         </Frame>

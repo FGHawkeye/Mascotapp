@@ -51,13 +51,22 @@ namespace Mascotapp
                             ClassId = tipoAnimal.Where(x => x.IdTipoAnimal == item.IdTipoAnimal).FirstOrDefault().IdTipoAnimal.ToString(),
                         };
 
+                        Button btnEliminar = new Button
+                        {
+                            Text = "Eliminar",
+                            ClassId = item.IdAdopcion.ToString(),
+                            BindingContext = item.IdAdopcion.ToString(),
+                        };
+
                         Button btnModificar = new Button
                         {
                             Text = "Modificar",
                             ClassId = item.IdAdopcion.ToString(),
                             BindingContext = item.IdAdopcion.ToString(),
                         };
+
                         btnModificar.Clicked += Modificar_Clicked;
+                        btnEliminar.Clicked += Eliminar_Clicked;
                         flexLayout.Children.Add(lbNombre);
                         flexLayout.Children.Add(lbTipoAnimal);
                         flexLayout.Children.Add(btnModificar);
@@ -65,6 +74,21 @@ namespace Mascotapp
                         Mostrar.Children.Add(frame);
                     }
                 }else{
+                    FlexLayout flexLayout = new FlexLayout
+                    {
+                        Direction = FlexDirection.Row,
+                        JustifyContent = FlexJustify.SpaceBetween,
+                        AlignItems = FlexAlignItems.Center,
+                    };
+                    Label label = new Label
+                    {
+                        Text = "No posee publicaciones!",
+                    };
+                    label.HorizontalTextAlignment = TextAlignment.Center;
+                    flexLayout.Children.Add(label);
+                    Frame frame = new Frame { };
+                    frame.Content = flexLayout;
+                    Mostrar.Children.Add(frame);
                     await DisplayAlert("Publicaciones de adopcion", "No posee publicaciones!", "OK");
                 }
             }   
@@ -77,6 +101,21 @@ namespace Mascotapp
         {
             Button btn = (Button)sender;
             var id = Int32.Parse(btn.BindingContext.ToString());
+            App.MasterD.IsPresented = false;
+            await App.MasterD.Detail.Navigation.PushAsync(new ModificarAdopcion(id));
+        }
+
+        private async void Eliminar_Clicked(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            var id = Int32.Parse(btn.BindingContext.ToString());
+            Adopciones adopcion = new Adopciones
+            {
+                IdAdopcion = id,
+                IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value,
+                Estado = false
+            };
+            servicioAdopciones.ModificarAdopcion(adopcion);
             App.MasterD.IsPresented = false;
             await App.MasterD.Detail.Navigation.PushAsync(new ModificarAdopcion(id));
         }

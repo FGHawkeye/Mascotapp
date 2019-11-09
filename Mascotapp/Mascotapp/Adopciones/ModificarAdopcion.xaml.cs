@@ -137,12 +137,13 @@ namespace Mascotapp
                     CompressionQuality = 5
                 }
                 );
-            System.IO.File.Copy(photo.Path, directoryPath, true);
-            TaskScheduler.FromCurrentSynchronizationContext();
-            var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
-            string name = photo.Path.Replace(trm, string.Empty);
+            
             if (photo != null)
             {
+                System.IO.File.Copy(photo.Path, directoryPath, true);
+                TaskScheduler.FromCurrentSynchronizationContext();
+                var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
+                string name = photo.Path.Replace(trm, string.Empty);
                 ImageSource image = ImageSource.FromFile(directoryPath + name);
                 AgregarFoto(image, directoryPath + name);
                 File.Delete(photo.Path);
@@ -311,6 +312,7 @@ namespace Mascotapp
                 lbImage.Text = imgMin3.Id.ToString();
                 estado = true;
                 imgMin3.Source = img;
+                //btnCamara.IsEnabled = false;
             }
             if (!existe)
             {

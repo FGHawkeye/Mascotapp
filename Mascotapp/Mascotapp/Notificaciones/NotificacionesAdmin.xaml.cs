@@ -28,51 +28,71 @@ namespace Mascotapp
         public void CargarElementos()
         {
             List<Refugio> refugios = servicioRefugio.ObtenerRefugiosPendientes();
-
-            foreach(Refugio refugio in refugios)
+            if (refugios.Count > 0)
             {
-                Usuario usuario = servicioUsuario.ObtenerUsuario(refugio.IdUsuario);
+                foreach (Refugio refugio in refugios)
+                {
+                    Usuario usuario = servicioUsuario.ObtenerUsuario(refugio.IdUsuario);
 
-                var grid = new Grid();
+                    var grid = new Grid();
 
-                grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-                grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-                grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                    grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+                    grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+                    grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                    grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
+                    Frame frame = new Frame { };
+
+                    Label lbUsuarioSolicitante = new Label
+                    {
+                        Text = "Usuario Solicitante: " + usuario.NombreUsuario,
+                        ClassId = usuario.IdUsuario.ToString()
+                    };
+
+                    Label lbRazonSocial = new Label
+                    {
+                        Text = "Razon Social: " + refugio.RazonSocial,
+                        ClassId = usuario.IdUsuario.ToString()
+                    };
+
+                    Label lbFecha = new Label
+                    {
+                        Text = "Fecha solicitud: " + refugio.FechaCreacion,
+                        ClassId = refugio.IdRefugio.ToString()
+                    };
+
+                    Button btnDetalle = new Button
+                    {
+                        Text = "Ver Detalle",
+                        ClassId = refugio.IdRefugio.ToString(),
+                        BindingContext = refugio.IdRefugio.ToString(),
+                    };
+
+                    btnDetalle.Clicked += Detalle_Clicked;
+                    grid.Children.Add(lbRazonSocial, 0, 0);
+                    grid.Children.Add(btnDetalle, 1, 0);
+                    grid.Children.Add(lbUsuarioSolicitante, 0, 1);
+                    grid.Children.Add(lbFecha, 1, 1);
+                    frame.Content = grid;
+                    Mostrar.Children.Add(frame);
+                }
+            }
+            else
+            {
+                FlexLayout flexLayout = new FlexLayout
+                {
+                    Direction = FlexDirection.Row,
+                    JustifyContent = FlexJustify.SpaceBetween,
+                    AlignItems = FlexAlignItems.Center,
+                };
+                Label label = new Label
+                {
+                    Text = "No posee publicaciones!",
+                };
+                label.HorizontalTextAlignment = TextAlignment.Center;
+                flexLayout.Children.Add(label);
                 Frame frame = new Frame { };
-
-                Label lbUsuarioSolicitante = new Label
-                {
-                    Text = "Usuario Solicitante: " + usuario.NombreUsuario,
-                    ClassId = usuario.IdUsuario.ToString()
-                };
-
-                Label lbRazonSocial = new Label
-                {
-                    Text = "Razon Social: " + refugio.RazonSocial,
-                    ClassId = usuario.IdUsuario.ToString()
-                };
-
-                Label lbFecha = new Label
-                {
-                    Text = "Fecha solicitud: " + refugio.FechaCreacion,
-                    ClassId = refugio.IdRefugio.ToString()
-                };
-
-                Button btnDetalle = new Button
-                {
-                    Text = "Ver Detalle",
-                    ClassId = refugio.IdRefugio.ToString(),
-                    BindingContext = refugio.IdRefugio.ToString(),
-                };
-
-                btnDetalle.Clicked += Detalle_Clicked;
-                grid.Children.Add(lbRazonSocial, 0, 0);
-                grid.Children.Add(btnDetalle, 1, 0);
-                grid.Children.Add(lbUsuarioSolicitante, 0, 1);
-                grid.Children.Add(lbFecha, 1, 1);
-                frame.Content = grid;
+                frame.Content = flexLayout;
                 Mostrar.Children.Add(frame);
             }
         }
