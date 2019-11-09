@@ -42,79 +42,85 @@ namespace Mascotapp
             returnType: typeof(string),
             declaringType: typeof(PreguntasFrecuentes),
             defaultValue: default(string));
-        private bool _IsExpanded;
+
         private bool _IsExpanding;
-        private ServicioPreguntasFrecuentes servicioPreguntas= new ServicioPreguntasFrecuentes();
+        private ServicioPreguntasFrecuentes servicioPreguntas = new ServicioPreguntasFrecuentes();
         public PreguntasFrecuentes()
         {
             InitializeComponent();
             CargarElementos();
-            ExpandableLayout.HeightRequest = 0;
+
         }
         public async void CargarElementos()
         {
             List<Preguntas> preguntas = servicioPreguntas.ObtenerPreguntas();
-            if(preguntas.Count>0){
+            if (preguntas.Count > 0)
+            {
                 foreach (Preguntas item in preguntas)
                 {
                     StackLayout stack = new StackLayout
                     {
-                        Padding=0,
-                        BackgroundColor=Color.White,
-                        Spacing=0
+                        Padding = 0,
+                        BackgroundColor = Color.Gray,
+                        Spacing = 0
                     };
-                    var tgr =new TapGestureRecognizer();
-                    tgr.Tapped+=(s,e)=>Title_Clicked(s,e);
-                    StackLayout stackPreg=new StackLayout
+                    var tgr = new TapGestureRecognizer();
+                    tgr.Tapped += (s, e) => Title_Clicked(s, e);
+                    StackLayout stackPreg = new StackLayout
                     {
-                        Padding=10,
-                        BackgroundColor=Color.Accent,
-                        HorizontalOptions=LayoutOptions.FillAndExpand,
-                        Spacing=0
+                        Padding = 10,
+                        BackgroundColor = Color.Gray,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Spacing = 0
                     };
-                    stackPreg.GestureRecognizers.Add(tgr);
+                    stack.GestureRecognizers.Add(tgr);
                     Label lbPregunta = new Label
                     {
                         Text = item.Pregunta
                     };
                     stackPreg.Children.Add(lbPregunta);
-                    
-                    StackLayout ExpandableLayout=new StackLayout
+
+                    StackLayout ExpandableLayout = new StackLayout
                     {
-                        Padding=0,
-                        BackgroundColor=Color.Accent,
-                        HorizontalOptions=LayoutOptions.FillAndExpand,
-                        Opacity=0,
-                        Spacing=0
+                        Padding = 0,
+                        BackgroundColor = Color.LightGray,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        Opacity = 0,
+                        Spacing = 0
                     };
 
                     StackLayout ExpandableContent = new StackLayout
                     {
-                        Padding=10,
-                    };                        
+                        Padding = 5,
+                    };
 
                     Label ExpandableText = new Label
                     {
                         Text = item.Respuesta
                     };
+                    ExpandableLayout.HeightRequest = 0;
                     ExpandableContent.Children.Add(ExpandableText);
                     ExpandableLayout.Children.Add(ExpandableContent);
                     stack.Children.Add(stackPreg);
                     stack.Children.Add(ExpandableLayout);
                     Mostrar.Children.Add(stack);
                 }
-            }else{
+            }
+            else
+            {
                 await DisplayAlert("Preguntas", "No hay preguntas?!", "OK");
             }
         }
 
         private async void Title_Clicked(object sender, EventArgs e)
         {
+            StackLayout Content = (StackLayout)sender;
+            StackLayout ExpandableLayout = (StackLayout)Content.Children[1];
             if (!_IsExpanding)
             {
                 _IsExpanding = true;
-                var height = ExpandableContent.Height;
-                if (_IsExpanded)
+                var height = Content.Height;
+                if (ExpandableLayout.HeightRequest>0)
                 {
                     var animation = new Animation(v => ExpandableLayout.HeightRequest = v, height, 0);
                     await ExpandableLayout.FadeTo(0, 250);
@@ -126,7 +132,6 @@ namespace Mascotapp
                     animation.Commit(this, "ExpandSize", 16, 250);
                     await ExpandableLayout.FadeTo(1, 250);
                 }
-                _IsExpanded = !_IsExpanded;
                 _IsExpanding = false;
             }
         }
@@ -154,7 +159,7 @@ namespace Mascotapp
                 SetValue(TextProperty, value);
             }
         }
-        protected override void OnPropertyChanged(string propertyName = null)
+        /*protected override void OnPropertyChanged(string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
             if (propertyName == TitleProperty.PropertyName)
@@ -165,6 +170,6 @@ namespace Mascotapp
             {
                 ExpandableText.Text = Text;
             }
-        }
+        }*/
     }
 }
