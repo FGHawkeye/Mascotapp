@@ -210,31 +210,33 @@ namespace Mascotapp
             }
         }
 
-        public bool ValidarForm()
+        public string ValidarForm()
         {
-            //agregar mensajes faltantes
-            bool validate = true;
+            string msg="";
             if (pckAnimal.SelectedItem == null)
             {
-                validate = false;
+                msg="Falta seleccionar un tipo de animal.";
             }
             else if (pckSexo.SelectedItem == null)
             {
-                validate = false;
+                msg="Falta seleccionar el sexo del animal.";
             }
             else if (txtDescripcion.Text == "" || txtDescripcion.Text == null)
             {
-                validate = false;
+                msg="Falta ingresar una descripcion.";
             }
             else if (txtEdad.Text == "" || txtEdad.Text == null)
             {
-                validate = false;
+                msg="Falta ingresar la edad del animal.";
             }
             else if (imgMin1.Source == null && imgMin2.Source == null && imgMin3.Source == null)
             {
-                validate = false;
+                msg="Debe ingresar al menos una foto.";
             }
-            return validate;
+            else if(Int32.Parse(txtEdad.Text)<0||Int32.Parse(txtEdad.Text)>30){
+                msg="Debe ingresar una edad valida.";
+            }
+            return msg;
         }
 
         public void AgregarFoto(ImageSource img, string path)
@@ -339,13 +341,14 @@ namespace Mascotapp
         {
             try
             {
-                if (ValidarForm()&& MainPage.UsuarioRegristrado!=null)
+                string msg=ValidarForm();
+                if (msg==""&& MainPage.UsuarioRegristrado!=null)
                 {
                     var adopcion = servicioAdopciones.ObtenerAdopcion(idAdop);
                     TipoAnimal tipoAnimal = (TipoAnimal)pckAnimal.ItemsSource[pckAnimal.SelectedIndex];
                     adopcion.IdTipoAnimal = tipoAnimal.IdTipoAnimal.Value;
                     adopcion.Detalle = txtDescripcion.Text;
-                    adopcion.Edad = Int32.Parse(txtEdad.Text);//faltaria modificar la tabla para agregar edad meses y edad años
+                    adopcion.Edad = Int32.Parse(txtEdad.Text);
                     adopcion.Estado = true;
                     adopcion.Nombre = txtNombre.Text;
                     adopcion.Sexo = pckSexo.SelectedItem.ToString();
@@ -373,7 +376,7 @@ namespace Mascotapp
                 }
                 else
                 {
-                    await DisplayAlert("Adopciones", "Falta completar datos.", "OK");
+                    await DisplayAlert("Adopciones", msg, "OK");
                 }
             }
             catch (Exception ex)
