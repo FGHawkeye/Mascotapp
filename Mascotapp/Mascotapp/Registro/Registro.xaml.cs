@@ -31,7 +31,7 @@ namespace Mascotapp.Registro
             btnRegistrar.Clicked += Registrar_Clicked;
             txtContra2.Completed += Registrar_Clicked;
             btnCancelar.Clicked += Cancelar_Clicked;
-            chkRefugio.CheckedChanged += Refugio_Clicked;
+            //chkRefugio.CheckedChanged += Refugio_Clicked;
         }
 
         private async void Registrar_Clicked(object sender, EventArgs e)
@@ -65,17 +65,13 @@ namespace Mascotapp.Registro
                         else
                         {
                             Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
-                            if (Registrado == 1)
-                            {
-                                await DisplayAlert("Registro Exitoso", "Su Nuevo Usuario fue creado correctamente", "Entendido");
-                                SalirRegistrado();
-                            }
+                            await DisplayAlert("Registro Exitoso", "Su Nuevo Usuario fue creado correctamente", "Entendido");
+                            SalirRegistrado();
                         }
                     }
                     catch (Exception ex)
                     {
                         await DisplayAlert("Error de Registro", "Fallo algo al registrar", "Entendido");
-                        txtNombre.Text = ex.ToString();
                     }
                     break;
 
@@ -108,23 +104,10 @@ namespace Mascotapp.Registro
 
         }
 
-
         private void Cancelar_Clicked(object sender, EventArgs e)
         {
             Navigation.PopAsync(false);
         }
-
-        private void Refugio_Clicked(object sender, EventArgs e)
-        {
-            if (chkRefugio.IsChecked)
-            {
-
-            }
-
-        }
-
-
-
 
         private int ValidarForm()
         {
