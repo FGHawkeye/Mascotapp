@@ -38,6 +38,7 @@ namespace Mascotapp.Visualizar_mapa
         private void btnQuitarFiltro_Clicked(object sender, EventArgs e)
         {
             filtroSeleccionado = "";
+            pckFiltro.SelectedItem = "";
             CargarPines();
         }
 
@@ -52,7 +53,7 @@ namespace Mascotapp.Visualizar_mapa
 
         private void CargarPines()
         {
-            map_Mapa.CustomPins = new List<CustomPin>();
+            map_Mapa.CustomPins.Clear();
             map_Mapa.Pins.Clear();
             CargarMarcadores();
             CargarAdopciones();
@@ -129,7 +130,7 @@ namespace Mascotapp.Visualizar_mapa
             );
 
             map_Mapa.IsShowingUser = true;
-
+            map_Mapa.CustomPins = new List<CustomPin>();
         }
 
         protected override void OnAppearing()
