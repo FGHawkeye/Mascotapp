@@ -17,6 +17,7 @@ namespace Mascotapp
     {
         private int imgCount = 0;
         private int idAdop = 0;
+        private int idUsuarioAdopcion = 0;
 
         private List<Imagenes> imagenes = new List<Imagenes>();
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
@@ -35,6 +36,7 @@ namespace Mascotapp
         {
             idAdop = id;
             Adopciones adopcion = servicioAdopciones.ObtenerAdopcion(id);
+            idUsuarioAdopcion = adopcion.IdUsuario;
             List<ImagenXAdopcion> imagenXAdopcions = servicioImagenXAdopcion.ObtenerImagenXAdopcion(id);
             foreach (ImagenXAdopcion item in imagenXAdopcions)
             {
@@ -95,13 +97,23 @@ namespace Mascotapp
         public string ValidarForm()
         {
             string msg = "";
-
+            SolicitudAdopcion solicitudAdopcion = servicioSolicitudAdopcion.ObtenerSolicitudAdopcion(idAdop, MainPage.UsuarioRegristrado.IdUsuario.Value);
             if (txtDetalle.Text == "" || txtDescripcion.Text == null)
             {
                 msg = "Falta completar el detalle.";
             }else if (MainPage.UsuarioRegristrado == null)
             {
                 msg = "Para realizar una solicitud, debe estar registrado.";
+            }
+            else if (MainPage.UsuarioRegristrado.IdTipoUsuario==3) 
+            {
+                msg = "Los refugios no pueden solicitar publicaciones.";
+            }else if (MainPage.UsuarioRegristrado.IdUsuario==idUsuarioAdopcion) 
+            {
+                msg = "¡No puede solicitar para su propia publicación!";
+            }else if( solicitudAdopcion!= null)
+            {
+                msg = "Usted ya realizo una solicitud para esta publicación. Estado de la solicitud: " + solicitudAdopcion.Estado+".";
             }
             return msg;
         }
@@ -111,7 +123,7 @@ namespace Mascotapp
             try
             {
                 string msg = ValidarForm();
-                if (msg==""&& MainPage.UsuarioRegristrado!=null&& MainPage.UsuarioRegristrado.IdTipoUsuario!=3)
+                if (msg=="")
                 {
                     SolicitudAdopcion solicitud = new SolicitudAdopcion
                     {
@@ -122,7 +134,7 @@ namespace Mascotapp
                         IdUsuarioSolicitante = MainPage.UsuarioRegristrado.IdUsuario.Value
                     };
                     servicioSolicitudAdopcion.GuardarSolicitudAdopcion(solicitud);
-                    await DisplayAlert("Adopciones", "Se modificó la publicación correctamente!", "OK");
+                    await DisplayAlert("Adopciones", "¡Se solicito la publicación correctamente!", "OK");
                     await App.MasterD.Detail.Navigation.PopToRootAsync();
                 }
                 else

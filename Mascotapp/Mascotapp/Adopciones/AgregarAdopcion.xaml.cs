@@ -76,6 +76,7 @@ namespace Mascotapp
             {
                 lbImage.Text = ia.Id.ToString();
                 btnQuitar.IsEnabled = true;
+                btnQuitar.BackgroundColor = Color.DarkBlue;
                 imgCamara.Source = ia.Source;
             }
         }
@@ -98,6 +99,7 @@ namespace Mascotapp
                 imgCamara.Source = null;
                 lbImage.Text = "";
                 btnQuitar.IsEnabled = false;
+                btnQuitar.BackgroundColor = Color.Gray;
                 btnCamara.IsEnabled = true;
             }
         }
@@ -238,12 +240,14 @@ namespace Mascotapp
             {
                 imgCamara.Source = img;
                 btnQuitar.IsEnabled = true;
+                btnQuitar.BackgroundColor = Color.DarkBlue;
             }
             else
             {
                 //agregar mensaje de limite de fotos
                 imgCamara.Source = null;
                 btnQuitar.IsEnabled = false;
+                btnQuitar.BackgroundColor = Color.DarkBlue;
             }
         }
     }

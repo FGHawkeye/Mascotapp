@@ -29,7 +29,19 @@ namespace Mascotapp
             {
                 List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones().Where(x=>x.IdUsuario== MainPage.UsuarioRegristrado.IdUsuario&&x.Estado).ToList();
                 List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
-                if(adopciones.Count>0){
+                Button btnAgregar = new Button
+                {
+                    Text = "Agregar Adopcion",
+                };
+                btnAgregar.Clicked += Agregar_Clicked;
+                Mostrar.Children.Add(btnAgregar);
+                if (adopciones.Count>0){
+                    Frame frameGral = new Frame { };
+                    FlexLayout flexGral = new FlexLayout {
+                        Direction = FlexDirection.Column,
+                        JustifyContent = FlexJustify.SpaceBetween,
+                        AlignItems = FlexAlignItems.Center,
+                    };
                     foreach (Adopciones item in adopciones)
                     {
                         FlexLayout flexLayout = new FlexLayout
@@ -71,9 +83,12 @@ namespace Mascotapp
                         flexLayout.Children.Add(lbTipoAnimal);
                         flexLayout.Children.Add(btnModificar);
                         frame.Content = flexLayout;
-                        Mostrar.Children.Add(frame);
+                        flexGral.Children.Add(frame);
                     }
-                }else{
+                    frameGral.Content = flexGral;
+                    Mostrar.Children.Add(frameGral);
+                }
+                else{
                     FlexLayout flexLayout = new FlexLayout
                     {
                         Direction = FlexDirection.Row,
@@ -118,6 +133,12 @@ namespace Mascotapp
             servicioAdopciones.ModificarAdopcion(adopcion);
             App.MasterD.IsPresented = false;
             await App.MasterD.Detail.Navigation.PushAsync(new ModificarAdopcion(id));
+        }
+
+        private async void Agregar_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false;
+            await App.MasterD.Detail.Navigation.PushAsync(new AgregarAdopcion());
         }
     }
 }
