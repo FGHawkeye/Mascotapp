@@ -43,7 +43,7 @@ namespace Mascotapp
         public void btnAceptar_Clicked(object sender, EventArgs e)
         {
             adopciones.Estado = false;
-            servicioAdopciones.ModificarAdopcion(adopciones);
+            servicioAdopciones.BajaAdopcion(adopciones);
             ModificarSolicitudUsuario("Aceptado");
         }
         
