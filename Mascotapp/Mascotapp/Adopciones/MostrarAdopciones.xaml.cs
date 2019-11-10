@@ -29,7 +29,19 @@ namespace Mascotapp
             {
                 List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones().Where(x=>x.IdUsuario== MainPage.UsuarioRegristrado.IdUsuario&&x.Estado).ToList();
                 List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
-                if(adopciones.Count>0){
+                Button btnAgregar = new Button
+                {
+                    Text = "Agregar Adopcion",
+                };
+                btnAgregar.Clicked += Agregar_Clicked;
+                Mostrar.Children.Add(btnAgregar);
+                if (adopciones.Count>0){
+                    Frame frameGral = new Frame { };
+                    FlexLayout flexGral = new FlexLayout {
+                        Direction = FlexDirection.Column,
+                        JustifyContent = FlexJustify.SpaceBetween,
+                        AlignItems = FlexAlignItems.Center,
+                    };
                     foreach (Adopciones item in adopciones)
                     {
                         FlexLayout flexLayout = new FlexLayout
@@ -56,6 +68,7 @@ namespace Mascotapp
                             Text = "Eliminar",
                             ClassId = item.IdAdopcion.ToString(),
                             BindingContext = item.IdAdopcion.ToString(),
+                            BackgroundColor=Color.DarkRed
                         };
 
                         Button btnModificar = new Button
@@ -70,10 +83,14 @@ namespace Mascotapp
                         flexLayout.Children.Add(lbNombre);
                         flexLayout.Children.Add(lbTipoAnimal);
                         flexLayout.Children.Add(btnModificar);
+                        flexLayout.Children.Add(btnEliminar);
                         frame.Content = flexLayout;
-                        Mostrar.Children.Add(frame);
+                        flexGral.Children.Add(frame);
                     }
-                }else{
+                    frameGral.Content = flexGral;
+                    Mostrar.Children.Add(frameGral);
+                }
+                else{
                     FlexLayout flexLayout = new FlexLayout
                     {
                         Direction = FlexDirection.Row,
@@ -107,17 +124,28 @@ namespace Mascotapp
 
         private async void Eliminar_Clicked(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
-            var id = Int32.Parse(btn.BindingContext.ToString());
-            Adopciones adopcion = new Adopciones
+            var rta = await DisplayAlert("Borrar Pulicación", "¿Esta seguro que desea eliminar la publicación?", "Si", "No");
+            if (rta)
             {
-                IdAdopcion = id,
-                IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value,
-                Estado = false
-            };
-            servicioAdopciones.ModificarAdopcion(adopcion);
+                Button btn = (Button)sender;
+                var id = Int32.Parse(btn.BindingContext.ToString());
+                Adopciones adopcion = new Adopciones
+                {
+                    IdAdopcion = id,
+                    IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value,
+                    Estado = false
+                };
+                servicioAdopciones.BajaAdopcion(adopcion);
+                App.MasterD.IsPresented = false;
+                await DisplayAlert("Adopciones", "Se eliminó la publicación con exito", "OK");
+                await App.MasterD.Detail.Navigation.PopToRootAsync();
+            }
+        }
+
+        private async void Agregar_Clicked(object sender, EventArgs e)
+        {
             App.MasterD.IsPresented = false;
-            await App.MasterD.Detail.Navigation.PushAsync(new ModificarAdopcion(id));
+            await App.MasterD.Detail.Navigation.PushAsync(new AgregarAdopcion());
         }
     }
 }

@@ -6,6 +6,49 @@
              mc:Ignorable="d"
              x:Class="Mascotapp.Visualizar_mapa.Mapa"
              xmlns:local="clr-namespace:Domain.MapRenderer;assembly=Domain">
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="Editor">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+            <Setter Property="BorderRadius" Value="20" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
 
         <StackLayout>

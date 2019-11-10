@@ -35,6 +35,12 @@ namespace Domain.Servicios
             int pk = dbConnection.ExecuteScalar<int>("SELECT last_insert_rowid()");
             return pk;
         }
+        public int BajaAdopcion(Adopciones adopcion)
+        {
+            dbConnection.Query<SolicitudAdopcion>("UPDATE [Adopciones] SET Estado = '" + adopcion.Estado+"' WHERE IdAdopcion = "+adopcion.IdAdopcion+";");
+            int pk = adopcion.IdAdopcion.Value;
+            return pk;
+        }
         public int ModificarAdopcion(Adopciones adopcion)
         {
             dbConnection.Update(adopcion);

@@ -16,6 +16,7 @@
         <Style TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
             <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Black"/>
         </Style>
 
         <Style x:Key="headerLabel" TargetType="Label">
