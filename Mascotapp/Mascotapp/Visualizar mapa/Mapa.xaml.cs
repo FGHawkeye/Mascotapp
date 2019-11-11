@@ -1,6 +1,7 @@
 ﻿using Domain.Entidades;
 using Domain.MapRenderer;
 using Domain.Servicios;
+using Plugin.Geolocator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,14 +141,19 @@ namespace Mascotapp.Visualizar_mapa
             return pin;
         }
 
-        void CargarMapa()
+        async void CargarMapa()
         {
+            //map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
+            //        new Xamarin.Forms.Maps.Position(-34.456668, -58.624652),
+            //        Xamarin.Forms.Maps.Distance.FromKilometers(5)
+            //    )
+            //);
+            var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
             map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
-                    new Xamarin.Forms.Maps.Position(-34.456668, -58.624652),
+                    new Position(currentPosition.Latitude, currentPosition.Longitude),
                     Xamarin.Forms.Maps.Distance.FromKilometers(5)
                 )
             );
-
             map_Mapa.IsShowingUser = true;
             map_Mapa.CustomPins = new List<CustomPin>();
         }

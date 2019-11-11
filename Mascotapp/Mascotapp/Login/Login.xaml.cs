@@ -53,6 +53,7 @@ namespace Mascotapp.Login
         {
             try
             {
+                bool flagRefugioValido = true;
                 Usuario Usuario = new Usuario();
                 Usuario UsuarioValidado = new Usuario();
 
@@ -69,14 +70,16 @@ namespace Mascotapp.Login
                     {
                         await DisplayAlert("Error de autenticación", "Su cuenta de refugio esta en estado pendiente a revisar por un administrador, no puede utilizar momentaneamente esta cuenta", "Entendido");
                         await Navigation.PopAsync(false);
+                        flagRefugioValido = false;
                     }
                     else if (refugio.Estado == "Rechazado")
                     {
                         await DisplayAlert("Error de autenticación", "Su cuenta de refugio fue rechazado por un administrador, su cuenta esta deshabilitada", "Entendido");
                         await Navigation.PopAsync(false);
+                        flagRefugioValido = false;
                     }
                 }
-                else
+                if (flagRefugioValido)
                 {
                     MainPage.UsuarioRegristrado = UsuarioValidado;
 
@@ -94,6 +97,7 @@ namespace Mascotapp.Login
                     await DisplayAlert("Bienvenido " + MainPage.UsuarioRegristrado.Nombre, "Nos alegra que nos visites nuevamente.", "Continuar");
                     MainPage.RecargarPrincipal();
                 }
+                    
 
 
             }
