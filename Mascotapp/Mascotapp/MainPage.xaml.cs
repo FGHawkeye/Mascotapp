@@ -25,7 +25,11 @@ namespace Mascotapp
             App.MasterD = this;
             //CargarUsuarios();
         }
-
+        public static void RecargarPrincipal ()
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            App.MasterD.Detail = new NavigationPage(new Mapa());
+        }
 
 
         //void CargarUsuarios()

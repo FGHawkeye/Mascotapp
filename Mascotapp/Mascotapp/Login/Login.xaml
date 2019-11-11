@@ -12,6 +12,8 @@
             <Setter Property="BorderColor" Value="Blue" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
         </Style>
 
         <Style TargetType="Label">
@@ -42,20 +44,15 @@
             
             
             <StackLayout>
-                <Frame WidthRequest="300"
-                   HeightRequest="32">
-                    
-                    <Label Text="Ingregar"
-               HorizontalOptions="Center" 
-               FontAttributes="Bold" />
+                <Frame>
+                    <Label Text="Ingregar" HorizontalOptions="Start" FontAttributes="Bold" />
                 </Frame>
                 
-                <Frame WidthRequest="300"
-                   HeightRequest="480">
+                <Frame>
                     
                     <FlexLayout Direction="Column">
 
-                        <Grid>
+                        <Grid Margin="4,4,4,4">
                             
                             <Label Text="Ingrese su usuario" />
 
@@ -89,7 +86,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
-                            <Button x:Name="btnIngresar" Text="Aceptar"/>
+                            <Button x:Name="btnIngresar" Grid.Column="0" Text="Aceptar"/>
                             <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
 
                             <Label Grid.Column="1" Grid.Row="1" 

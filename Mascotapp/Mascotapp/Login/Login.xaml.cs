@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 
+
 namespace Mascotapp.Login
 {
     
@@ -62,7 +63,8 @@ namespace Mascotapp.Login
                 MainPage.UsuarioRegristrado = UsuarioValidado;
 
                 await DisplayAlert("Bienvenido " + MainPage.UsuarioRegristrado.Nombre, "Nos alegra que nos visites nuevamente.", "Continuar");
-                await Navigation.PopAsync(false);
+                MainPage.RecargarPrincipal();
+               
             }
             catch
             {

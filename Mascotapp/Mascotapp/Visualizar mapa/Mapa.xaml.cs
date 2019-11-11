@@ -15,6 +15,7 @@ namespace Mascotapp.Visualizar_mapa
 {
     public partial class Mapa : ContentPage
     {
+        
         ServicioMarcadores servicioMarcadores = new ServicioMarcadores();
         ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
 
@@ -24,6 +25,8 @@ namespace Mascotapp.Visualizar_mapa
             CargarMapa();
             CargarMarcadores();
             CargarAdopciones();
+            VerificaLogeado();
+
         }
 
         private void CargarAdopciones()
@@ -36,6 +39,21 @@ namespace Mascotapp.Visualizar_mapa
                 map_Mapa.Pins.Add(pin);
                 map_Mapa.CustomPins.Add(pin);
             }
+        }
+
+        private void VerificaLogeado()
+        {
+            if (MainPage.UsuarioRegristrado == null)
+            {
+                Logeado.Text = "Ingresar";
+            }
+            else
+            {
+                Logeado.Text = MainPage.UsuarioRegristrado.NombreUsuario;
+            }
+
+
+     
         }
 
         private void CargarMarcadores()
@@ -74,6 +92,11 @@ namespace Mascotapp.Visualizar_mapa
 
             map_Mapa.IsShowingUser = true;
             map_Mapa.CustomPins = new List<CustomPin>();
+        }
+        private async void Logeado_Clicked(object sender, EventArgs e)
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            await App.MasterD.Detail.Navigation.PushAsync(new Login.Login());
         }
     }
 }
