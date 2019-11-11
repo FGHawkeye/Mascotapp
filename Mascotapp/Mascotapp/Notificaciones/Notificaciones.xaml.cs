@@ -29,6 +29,7 @@ namespace Mascotapp
         {
             if (MainPage.UsuarioRegristrado != null)
             {
+                bool sinNot = true;
                 List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopcionesUsuario(MainPage.UsuarioRegristrado.IdUsuario.Value);
                 if(adopciones.Count>0){
                     foreach (Adopciones adopciones1 in adopciones)
@@ -37,6 +38,7 @@ namespace Mascotapp
 
                         foreach (SolicitudAdopcion solicitudAdopcion in solicitudAdopciones)
                         {
+                            sinNot = false;
                             Adopciones adopcion = servicioAdopciones.ObtenerAdopcion(solicitudAdopcion.IdAdopcion);
                             Usuario usuario = servicioUsuario.ObtenerUsuarios().Where(x => x.IdUsuario == solicitudAdopcion.IdUsuarioSolicitante).FirstOrDefault();
 
@@ -75,7 +77,8 @@ namespace Mascotapp
                             Mostrar.Children.Add(frame);
                         }
                     }
-                }else{
+                }
+                if(sinNot){
                     FlexLayout flexLayout = new FlexLayout
                     {
                         Direction = FlexDirection.Row,
@@ -96,7 +99,6 @@ namespace Mascotapp
             }else{
                 await DisplayAlert("Acceso denegado", "No posee notificaciones!", "OK");
             }
-            
         }
         private async void Detalle_Clicked(object sender, EventArgs e)
         {

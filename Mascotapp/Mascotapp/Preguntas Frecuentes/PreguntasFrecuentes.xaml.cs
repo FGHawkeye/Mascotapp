@@ -58,51 +58,74 @@ namespace Mascotapp
             {
                 foreach (Preguntas item in preguntas)
                 {
+                    Frame frameStack = new Frame 
+                    {
+                        Margin=0,
+                        BorderColor=Color.LightGray,
+                        VerticalOptions=LayoutOptions.FillAndExpand
+                    };
                     StackLayout stack = new StackLayout
                     {
                         Padding = 0,
-                        BackgroundColor = Color.Gray,
-                        Spacing = 0
+                        BackgroundColor = Color.LightGray,
+                        Spacing =10
                     };
                     var tgr = new TapGestureRecognizer();
                     tgr.Tapped += (s, e) => Title_Clicked(s, e);
                     StackLayout stackPreg = new StackLayout
                     {
                         Padding = 10,
-                        BackgroundColor = Color.Gray,
+                        BackgroundColor = Color.LightGray,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         Spacing = 0
                     };
                     stack.GestureRecognizers.Add(tgr);
+                    Grid grid = new Grid();
+                    grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+                    grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+
                     Label lbPregunta = new Label
                     {
                         Text = item.Pregunta
                     };
-                    stackPreg.Children.Add(lbPregunta);
+                    Label lbMostrar = new Label
+                    {
+                        //Text = "v",
+                        Text = " +",
+                        FontSize=20,
+                        TextColor=Color.DarkBlue
+                    };
+                    grid.Children.Add(lbMostrar, 0, 0);
+                    grid.Children.Add(lbPregunta, 1, 0);
+                    stackPreg.Children.Add(grid);
 
                     StackLayout ExpandableLayout = new StackLayout
                     {
                         Padding = 0,
                         BackgroundColor = Color.LightGray,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
                         Opacity = 0,
                         Spacing = 0
                     };
 
                     StackLayout ExpandableContent = new StackLayout
                     {
-                        Padding = 5,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        Padding = 0,
                     };
 
                     Label ExpandableText = new Label
                     {
+                        Margin=-15,
                         Text = item.Respuesta
                     };
                     ExpandableLayout.HeightRequest = 0;
-                    ExpandableContent.Children.Add(ExpandableText);
-                    ExpandableLayout.Children.Add(ExpandableContent);
+                    //ExpandableContent.Children.Add(ExpandableText);
+                    frameStack.Content = ExpandableText;
+                    //ExpandableLayout.Children.Add(ExpandableContent);
+                    ExpandableLayout.Children.Add(frameStack);
                     stack.Children.Add(stackPreg);
                     stack.Children.Add(ExpandableLayout);
+                    //frameStack.Content = stack;
                     Mostrar.Children.Add(stack);
                 }
             }
@@ -116,18 +139,30 @@ namespace Mascotapp
         {
             StackLayout Content = (StackLayout)sender;
             StackLayout ExpandableLayout = (StackLayout)Content.Children[1];
+            StackLayout preguntaLayout = (StackLayout)Content.Children[0];
+            Grid grid = (Grid)preguntaLayout.Children[0];
+            Label label1 = (Label)grid.Children[0];
+
             if (!_IsExpanding)
             {
                 _IsExpanding = true;
                 var height = Content.Height;
                 if (ExpandableLayout.HeightRequest>0)
                 {
+                    //label1.Text = "v";
+                    label1.Text = " +";
+                    //label1.FontSize = 18;
+                    label1.FontSize = 20;
                     var animation = new Animation(v => ExpandableLayout.HeightRequest = v, height, 0);
                     await ExpandableLayout.FadeTo(0, 250);
                     animation.Commit(this, "ExpandSize", 16, 250);
                 }
                 else
                 {
+                    //label1.Text = "^";
+                    label1.Text = " -";
+                    //label1.FontSize = 25;
+                    label1.FontSize = 25;
                     var animation = new Animation(v => ExpandableLayout.HeightRequest = v, 0, height);
                     animation.Commit(this, "ExpandSize", 16, 250);
                     await ExpandableLayout.FadeTo(1, 250);
@@ -135,41 +170,5 @@ namespace Mascotapp
                 _IsExpanding = false;
             }
         }
-
-        public string Title
-        {
-            get
-            {
-                return (string)GetValue(TitleProperty);
-            }
-            set
-            {
-                SetValue(TitleProperty, value);
-            }
-        }
-
-        public string Text
-        {
-            get
-            {
-                return (string)GetValue(TextProperty);
-            }
-            set
-            {
-                SetValue(TextProperty, value);
-            }
-        }
-        /*protected override void OnPropertyChanged(string propertyName = null)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (propertyName == TitleProperty.PropertyName)
-            {
-                TitleText.Text = Title;
-            }
-            else if (propertyName == TextProperty.PropertyName)
-            {
-                ExpandableText.Text = Text;
-            }
-        }*/
     }
 }

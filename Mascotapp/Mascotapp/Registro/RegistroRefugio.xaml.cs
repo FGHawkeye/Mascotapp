@@ -56,7 +56,7 @@ namespace Mascotapp
                         Estado ="Pendiente"
                     };
                     servicioRefugio.RegistrarRefugio(refugio);
-                    validacion="Se realizo el registro con exito, la solicitud se encuentra en estado pendiente.";
+                    validacion="Se realizo el registro con exito, la solicitud se encuentra en estado pendiente. Para continuar con el tramite debera enviar la documentacion que certifique los datos ingresados al mail: admin@mascotapp.com.";
                }catch (Exception ex){
                    validacion="Se produjo un problema, vuelva a intentar.";
                }
