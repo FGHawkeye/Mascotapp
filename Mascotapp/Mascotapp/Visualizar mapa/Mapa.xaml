@@ -7,18 +7,84 @@
              x:Class="Mascotapp.Visualizar_mapa.Mapa"
              xmlns:local="clr-namespace:Domain.MapRenderer;assembly=Domain">
 
+
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="Logeado" Text="Ingresar" Clicked="Logeado_Clicked"/>
         
     </ContentPage.ToolbarItems>
 
+
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="Editor">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+            <Setter Property="BorderRadius" Value="20" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
 
-        <StackLayout VerticalOptions="FillAndExpand" Padding="12">
-         
-            <local:CustomMap WidthRequest="320" HeightRequest="200" x:Name="map_Mapa" MapType="Street">
+        <StackLayout>
+            <StackLayout>
+                <Picker Title="Filtrar" x:Name="pckFiltro">
+                    <Picker.Items>
+                        <x:String>Marcadores</x:String>
+                        <x:String>Adopciones</x:String>
+                        <x:String>Refugios</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-            </local:CustomMap>
+                    <Button x:Name="btnFiltro" Text="Aplicar filtro" />
+                    <Button x:Name="btnQuitarFiltro" Text="Quitar filtro" Grid.Column="1"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Padding="12">
+                <local:CustomMap WidthRequest="320" HeightRequest="200" x:Name="map_Mapa" MapType="Street">
+
+
+                </local:CustomMap>
+            </StackLayout>
         </StackLayout>
         
     </ContentPage.Content>

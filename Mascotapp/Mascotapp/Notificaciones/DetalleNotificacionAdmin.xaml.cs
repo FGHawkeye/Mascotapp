@@ -14,29 +14,30 @@ namespace Mascotapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetalleNotificacionAdmin : ContentPage
     {
-        private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
-        private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
-        private ServicioSolicitudAdopcion servicioSolicitudAdopcion = new ServicioSolicitudAdopcion();
+        private ServicioRefugio servicioRefugio = new ServicioRefugio();
         private ServicioUsuarios servicioUsuario = new ServicioUsuarios();
-        private SolicitudAdopcion solicitudAdopcion;
+        private Refugio refugio;
         public DetalleNotificacionAdmin(int idRef)
         {
             InitializeComponent();
             CargarElementos(idRef);
         }
 
-        public void CargarElementos(int idRef){
+        public void CargarElementos(int idRef)
+        {
             btnAceptar.Clicked+=btnAceptar_Clicked;
             btnRechazar.Clicked+=btnRechazar_Clicked;
-            /*//solicitudRefugio=servicioSolicitudRefugio.ObtenerSolicitudAdopcion(idAd,idSol);
-            //Adopciones adopciones=servicioAdopciones.ObtenerAdopcion(idAd);
-            //Usuario usuario=servicioUsuario.ObtenerUsuario(idSol);
-            var apellidoN=usuario.NombreYApellido.Split(new char[0]);
-            txtApellido.Text=apellidoN[0];
-            txtNombre.Text=apellidoN[1];
-            txtUsuario.Text=usuario.NombreUsuario;
-            txtMascota.Text=adopciones.Nombre;
-            txtDetalle.Text=solicitudAdopcion.Descripcion;*/
+
+            refugio = servicioRefugio.ObtenerRefugio(idRef);
+            Usuario usuario = servicioUsuario.ObtenerUsuario(refugio.IdUsuario);
+            txtApellido.Text = usuario.Apellido;
+            txtNombre.Text = usuario.Nombre;
+            txtRazonSocial.Text = refugio.RazonSocial;
+            txtDireccion.Text = refugio.Direccion;
+            txtCP.Text = refugio.CodigoPostal;
+            txtLocalidad.Text = refugio.Localidad;
+            txtFecha.Text = refugio.FechaCreacion.ToString(@"MM\/dd\/yyyy HH:mm");
+            txtTelefono.Text = usuario.Telefono.ToString();
         }
 
         public void btnAceptar_Clicked(object sender, EventArgs e)
@@ -51,9 +52,9 @@ namespace Mascotapp
 
         private async void ModificarSolicitudUsuario(string estado)
         {
-            solicitudAdopcion.Estado=estado;
-            servicioSolicitudAdopcion.ModificarSolicitudAdopcion(solicitudAdopcion);
-            await DisplayAlert("Adopciones", "Se "+estado+" la solicitud con exito", "OK");
+            refugio.Estado=estado;
+            servicioRefugio.ModificarRefugio(refugio);
+            await DisplayAlert("Solicitud Refugio", "Se a "+estado+" el refugio con exito", "OK");
             await App.MasterD.Detail.Navigation.PopToRootAsync();
         }
     }

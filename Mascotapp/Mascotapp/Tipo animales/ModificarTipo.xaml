@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Mascotapp.Tipo_animales.ModificarTipo">
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BorderColor" Value="Blue" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="Blue" />
+            <Setter Property="BorderRadius" Value="20" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Modificar Tipo de Animal"
+                HorizontalOptions="CenterAndExpand" />
+
+            <Frame WidthRequest="300" HeightRequest="400">
+                <FlexLayout Direction="Column">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Mascota"/>
+                        <Picker  Grid.Column="1" Title="Tipo de animal" x:Name="pckTipoAnimal"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Descripcion"/>
+                        <Label Grid.Column="1" Text="Max: 250 caracteres."/>
+                    </Grid>
+                    <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion"/>
+
+                </FlexLayout>
+            </Frame>
+
+            <Frame WidthRequest="100" HeightRequest="50">
+                <FlexLayout Direction="Column">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnGuardar" Text="Guardar"/>
+                    </Grid>
+                </FlexLayout>
+            </Frame>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

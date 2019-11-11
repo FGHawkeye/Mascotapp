@@ -11,7 +11,9 @@ INSERT INTO Usuario (IdUsuario, NombreUsuario, IdTipoUsuario, Contraseña, Nombr
 	(NULL,'LUCAS',1,'lucas123','Lucas','Peña', 12345, 'lucas@lucas.com'),
 	(NULL,'UsuarioComun',2,'usuario123','Pedro','Luis', 12345, 'usuario@comun.com'),
 	(NULL,'Refugio',3,'refugio123','Jorge','Mendez', 12345, 'refugio@refugio.com'),
-	(NULL,'Comun',2,'usuario2','Damian','Alvarez', 12345, 'comun@usuario.com');
+	(NULL,'Comun',2,'usuario2','Damian','Alvarez', 12345, 'comun@usuario.com'),
+	(NULL,'Refugio2',3,'refugio123','Fernando','Gutierrez', 12345, 'refugio2@refugio.com'),
+	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 12345, 'refugio3@refugio.com');
 	
 INSERT INTO Adopciones(IdAdopcion,IdUsuario,IdTipoAnimal, Nombre,Detalle,Ubicacion,Sexo,Edad,Estado) VALUES
 	(NULL,2,1,'Biscuit', 'Vacunado', '-34.4602262740955;-58.611957365647', 'Macho', 2, true),
@@ -56,12 +58,16 @@ INSERT INTO Preguntas (Pregunta, IdUsuario, Respuesta) VALUES
 	('Como puedo ver una publicacion?', 1, 'Se puede acceder a las publicaciones seleccionando en el mapa el marcador y luego ver detalle.');
 	
 INSERT INTO Refugio (IdRefugio, IdUsuario, RazonSocial, Localidad, Direccion, Ubicacion, CodigoPostal, Telefono, FechaCreacion, Estado) VALUES
-	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'2019-11-02','Pendiente');
+	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'2019-11-02 00:00:00','Pendiente'),
+	(NULL,5,'Adopteros Argentina','Recoleta','Las Heras, Buenos Aires','-34.5518341;-58.4320087','1900',01140893717,'2019-11-03 00:00:00','Pendiente'),
+	(NULL,6,'Ayudacan','Salguero','Jerónimo Salguero, Buenos Aires','-34.609192;-58.419967','1700',123456789,'2019-11-04 00:00:00','Pendiente');
 	
 INSERT INTO Reportes (IdReporte, IdUsuario, IdMarcador) VALUES
 	(NULL,4,1),
 	(NULL,4,2);
 	
 INSERT INTO SolicitudAdopcion (IdAdopcion, IdUsuarioSolicitante, Descripcion, FechaCreacion, Estado) VALUES
-	(1,4,'Tengo espacio para cuidarlo','2019-11-02','Pendiente'),
-	(3,4,'Estoy disponible a cuidarlo','2019-11-02','Pendiente');
+	(1,4,'Tengo espacio para cuidarlo','2019-11-03 00:00:00','Pendiente'),
+	(2,4,'Tengo espacio para cuidarlo','2019-11-04 00:00:00','Pendiente'),
+	(3,4,'Estoy disponible a cuidarlo','2019-11-05 00:00:00','Pendiente'),
+	(4,4,'Estoy disponible a cuidarlo','2019-11-06 00:00:00','Pendiente');

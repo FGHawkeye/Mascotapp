@@ -7,7 +7,7 @@ namespace Domain.Entidades
 {
     public class Preguntas
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public string Pregunta { get; set; }
         public int IdUsuario { get; set; }
         public string Respuesta { get; set; }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
 using Android.Views;
 using Android.Widget;
 using Domain.MapRenderer;
 using Mascotapp.Droid;
+using Mascotapp.Visualizar_mapa;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
@@ -52,19 +54,19 @@ namespace Mascotapp.Droid
             marker.SetPosition(new LatLng(pin.Position.Latitude, pin.Position.Longitude));
             marker.SetTitle(pin.Label);
             marker.SetSnippet(pin.Address);
-            if(((CustomPin)pin).MarkerType == "Marcador")
+            if (((CustomPin)pin).MarkerType == "Marcador")
             {
                 marker.SetIcon(BitmapDescriptorFactory.DefaultMarker());
             }
-            else if(((CustomPin)pin).MarkerType == "Adopcion")
+            else if (((CustomPin)pin).MarkerType == "Adopcion")
             {
-                marker.SetIcon(BitmapDescriptorFactory.DefaultMarker(hue:BitmapDescriptorFactory.HueViolet));
+                marker.SetIcon(BitmapDescriptorFactory.DefaultMarker(hue: BitmapDescriptorFactory.HueViolet));
             }
             else
             {
                 marker.SetIcon(BitmapDescriptorFactory.DefaultMarker(hue: BitmapDescriptorFactory.HueGreen));
             }
-            
+
             return marker;
         }
 
@@ -76,19 +78,17 @@ namespace Mascotapp.Droid
                 throw new Exception("Custom pin not found");
             }
 
-            if(customPin.MarkerType == "Adopcion")
+            if (customPin.MarkerType == "Adopcion")
             {
                 App.MasterD.IsPresented = false;
-                await App.MasterD.Detail.Navigation.PushAsync(new MostrarAdopciones());
+                await App.MasterD.Detail.Navigation.PushAsync(new VisualizarSolicitud(customPin.IdPin));
+            }
+            else if (customPin.MarkerType == "Marcador")
+            {
+                App.MasterD.IsPresented = false;
+                await App.MasterD.Detail.Navigation.PushAsync(new DetalleMarcador(customPin.IdPin));
             }
 
-            //if (!string.IsNullOrWhiteSpace(customPin.Url))
-            //{
-            //    var url = Android.Net.Uri.Parse(customPin.Url);
-            //    var intent = new Intent(Intent.ActionView, url);
-            //    intent.AddFlags(ActivityFlags.NewTask);
-            //    Android.App.Application.Context.StartActivity(intent);
-            //}
         }
 
         public Android.Views.View GetInfoContents(Marker marker)
@@ -104,17 +104,11 @@ namespace Mascotapp.Droid
                     throw new Exception("Custom pin not found");
                 }
 
-                if (customPin.MarkerId.ToString() == "Xamarin")
-                {
-                    view = inflater.Inflate(Resource.Layout.XamarinMapInfoWindow, null);
-                }
-                else
-                {
-                    view = inflater.Inflate(Resource.Layout.MapInfoWindow, null);
-                }
+                view = inflater.Inflate(Resource.Layout.MapInfoWindow, null);
 
                 var infoTitle = view.FindViewById<TextView>(Resource.Id.InfoWindowTitle);
                 var infoSubtitle = view.FindViewById<TextView>(Resource.Id.InfoWindowSubtitle);
+                var infoIcon = view.FindViewById<ImageView>(Resource.Id.icon);
 
                 if (infoTitle != null)
                 {
@@ -123,6 +117,11 @@ namespace Mascotapp.Droid
                 if (infoSubtitle != null)
                 {
                     infoSubtitle.Text = marker.Snippet;
+                }
+                if(infoIcon != null &&  !string.IsNullOrEmpty(customPin.IconPath))
+                {
+                    Bitmap myBitmap = BitmapFactory.DecodeFile(customPin.IconPath);
+                    infoIcon.SetImageBitmap(myBitmap);
                 }
 
                 return view;

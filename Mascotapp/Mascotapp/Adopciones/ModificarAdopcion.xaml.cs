@@ -73,7 +73,13 @@ namespace Mascotapp
             {
                 pckSexo.SelectedIndex = 1;
             }
-            pckAnimal.SelectedIndex = adopcion.IdTipoAnimal;
+            int index = 0;
+            foreach(TipoAnimal tipoAnimal in pckAnimal.ItemsSource)
+            {
+                if (tipoAnimal.IdTipoAnimal == adopcion.IdTipoAnimal) pckAnimal.SelectedIndex = index;
+                index++;
+            }
+            
         }
 
         public void CargarImagenes()
@@ -131,12 +137,13 @@ namespace Mascotapp
                     CompressionQuality = 5
                 }
                 );
-            System.IO.File.Copy(photo.Path, directoryPath, true);
-            TaskScheduler.FromCurrentSynchronizationContext();
-            var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
-            string name = photo.Path.Replace(trm, string.Empty);
+            
             if (photo != null)
             {
+                System.IO.File.Copy(photo.Path, directoryPath, true);
+                TaskScheduler.FromCurrentSynchronizationContext();
+                var trm = "/storage/emulated/0/Android/data/Mascotapp.Mascotapp/files/Pictures/";
+                string name = photo.Path.Replace(trm, string.Empty);
                 ImageSource image = ImageSource.FromFile(directoryPath + name);
                 AgregarFoto(image, directoryPath + name);
                 File.Delete(photo.Path);
@@ -204,31 +211,33 @@ namespace Mascotapp
             }
         }
 
-        public bool ValidarForm()
+        public string ValidarForm()
         {
-            //agregar mensajes faltantes
-            bool validate = true;
+            string msg="";
             if (pckAnimal.SelectedItem == null)
             {
-                validate = false;
+                msg="Falta seleccionar un tipo de animal.";
             }
             else if (pckSexo.SelectedItem == null)
             {
-                validate = false;
+                msg="Falta seleccionar el sexo del animal.";
             }
             else if (txtDescripcion.Text == "" || txtDescripcion.Text == null)
             {
-                validate = false;
+                msg="Falta ingresar una descripcion.";
             }
             else if (txtEdad.Text == "" || txtEdad.Text == null)
             {
-                validate = false;
+                msg="Falta ingresar la edad del animal.";
             }
             else if (imgMin1.Source == null && imgMin2.Source == null && imgMin3.Source == null)
             {
-                validate = false;
+                msg="Debe ingresar al menos una foto.";
             }
-            return validate;
+            else if(Int32.Parse(txtEdad.Text)<0||Int32.Parse(txtEdad.Text)>30){
+                msg="Debe ingresar una edad valida.";
+            }
+            return msg;
         }
 
         public void AgregarFoto(ImageSource img, string path)
@@ -303,6 +312,7 @@ namespace Mascotapp
                 lbImage.Text = imgMin3.Id.ToString();
                 estado = true;
                 imgMin3.Source = img;
+                //btnCamara.IsEnabled = false;
             }
             if (!existe)
             {
@@ -333,18 +343,17 @@ namespace Mascotapp
         {
             try
             {
-                if (ValidarForm())
+                string msg=ValidarForm();
+                if (msg==""&& MainPage.UsuarioRegristrado!=null)
                 {
-                    var adopcion = new Adopciones();
-                    adopcion.IdUsuario = 2;
-                    adopcion.IdAdopcion = idAdop;
-                    adopcion.IdTipoAnimal = 1;
+                    var adopcion = servicioAdopciones.ObtenerAdopcion(idAdop);
+                    TipoAnimal tipoAnimal = (TipoAnimal)pckAnimal.ItemsSource[pckAnimal.SelectedIndex];
+                    adopcion.IdTipoAnimal = tipoAnimal.IdTipoAnimal.Value;
                     adopcion.Detalle = txtDescripcion.Text;
-                    adopcion.Edad = Int32.Parse(txtEdad.Text);//faltaria modificar la tabla para agregar edad meses y edad años
+                    adopcion.Edad = Int32.Parse(txtEdad.Text);
                     adopcion.Estado = true;
                     adopcion.Nombre = txtNombre.Text;
                     adopcion.Sexo = pckSexo.SelectedItem.ToString();
-                    adopcion.Ubicacion = "Prueba";
 
                     int idAd = servicioAdopciones.ModificarAdopcion(adopcion);
                     foreach (Imagenes imgAdd in imagenesAgregar)
@@ -369,7 +378,7 @@ namespace Mascotapp
                 }
                 else
                 {
-                    await DisplayAlert("Adopciones", "Falta completar datos.", "OK");
+                    await DisplayAlert("Adopciones", msg, "OK");
                 }
             }
             catch (Exception ex)

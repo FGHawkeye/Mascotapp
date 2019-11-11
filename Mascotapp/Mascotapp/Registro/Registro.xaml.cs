@@ -31,48 +31,47 @@ namespace Mascotapp.Registro
             btnRegistrar.Clicked += Registrar_Clicked;
             txtContra2.Completed += Registrar_Clicked;
             btnCancelar.Clicked += Cancelar_Clicked;
-            chkRefugio.CheckedChanged += Refugio_Clicked;
+            //chkRefugio.CheckedChanged += Refugio_Clicked;
         }
 
         private async void Registrar_Clicked(object sender, EventArgs e)
         {
-       
+            
+           int Validacion;
+           Validacion = ValidarForm();
 
-            int Validacion;
-            Validacion = ValidarForm();
-
-           switch (Validacion)
+            switch (Validacion)
             {
                 case 0: /* Validaciones correctas */
                     try
                     {
                         int Registrado = 0;
 
-
                         Usuario Usuario = new Usuario
                         {
                             NombreUsuario = txtUsuario.Text.Trim(),
-                            IdTipoUsuario = 1,             
+                            IdTipoUsuario = 2,
                             Nombre = txtNombre.Text.Trim(),
                             Apellido = txtApellido.Text.Trim(),
                             Contraseña = txtContra.Text.Trim(),
                             Email = txtEmail.Text.Trim(),
                             Telefono = Convert.ToInt64(txtTel.Text.Trim()),
                         };
-
-                        Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
-
-                        if(Registrado == 1)
-                        { 
-                        await DisplayAlert("Registro Exitoso", "Su Nuevo Usuario fue creado correctamente", "Entendido");
-                        SalirRegistrado();             
-                        }    
-                        
+                        if (chkRefugio.IsChecked)
+                        {
+                            App.MasterD.IsPresented = false;
+                            await App.MasterD.Detail.Navigation.PushAsync(new RegistroRefugio(Usuario));
+                        }
+                        else
+                        {
+                            Registrado = servicioUsuarios.RegistrarUsuario(Usuario);
+                            await DisplayAlert("Registro Exitoso", "Su Nuevo Usuario fue creado correctamente", "Entendido");
+                            SalirRegistrado();
+                        }
                     }
                     catch (Exception ex)
-                    {           
-                            await DisplayAlert("Error de Registro", "Fallo algo al registrar", "Entendido");
-                        txtNombre.Text = ex.ToString();
+                    {
+                        await DisplayAlert("Error de Registro", "Fallo algo al registrar", "Entendido");
                     }
                     break;
 
@@ -98,33 +97,21 @@ namespace Mascotapp.Registro
                     txtTel.Text = "";
                     txtTel.Focus();
                     break;
-
+                case 5:
+                    await DisplayAlert("Usuario Existente", "Vuelva a ingresar un nuevo nombre de usuario, el que intento registrar ya existe", "Entendido");
+                    txtUsuario.Text = "";
+                    txtUsuario.Focus();
+                    break;
 
 
             }
 
         }
-
 
         private void Cancelar_Clicked(object sender, EventArgs e)
         {
-
             Navigation.PopAsync(false);
-
-
         }
-
-        private void Refugio_Clicked(object sender, EventArgs e)
-        {
-            if (chkRefugio.IsChecked) 
-            {
-
-            }
-
-        }
-        
-
-
 
         private int ValidarForm()
         {
@@ -137,19 +124,20 @@ namespace Mascotapp.Registro
             || (String.IsNullOrWhiteSpace(txtEmail.Text))
             || (String.IsNullOrWhiteSpace(txtTel.Text))
                )
-            {       
+            {
                 return 1;
             }
 
-            try { 
-            var DireccionMail = new System.Net.Mail.MailAddress(txtEmail.Text);
+            try
+            {
+                var DireccionMail = new System.Net.Mail.MailAddress(txtEmail.Text);
             }
             catch (Exception)
             {
                 return 2;
             }
 
-            
+
             if (txtContra.Text != txtContra2.Text)
             {
                 return 3;
@@ -163,6 +151,12 @@ namespace Mascotapp.Registro
             {
                 return 4;
             }
+
+            if (servicioUsuarios.ValidarUsuarioExistente(txtUsuario.Text) > 0)
+            {
+                return 5;          
+            }
+
 
             return 0;
         }

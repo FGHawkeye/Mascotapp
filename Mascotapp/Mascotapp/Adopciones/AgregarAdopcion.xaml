@@ -8,13 +8,15 @@
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
-            <Setter Property="BorderColor" Value="Blue" />
+            <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
         </Style>
 
         <Style TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Black"/>
         </Style>
 
         <Style x:Key="headerLabel" TargetType="Label">
@@ -23,43 +25,46 @@
             <Setter Property="TextColor" Value="Blue" />
         </Style>
 
-        <Style TargetType="Image">
-            <Setter Property="FlexLayout.Order" Value="-1" />
-            <Setter Property="FlexLayout.AlignSelf" Value="Center" />
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="18"/>
         </Style>
 
+        <Style TargetType="Editor">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="Blue" />
+            <Setter Property="BackgroundColor" Value="DarkBlue"/>
             <Setter Property="BorderRadius" Value="20" />
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout >
-                <Label Text="Ingregar Datos de la Adopción"
-               HorizontalOptions="Center"
-               FontAttributes="Bold" />
-                <Frame WidthRequest="300"
-                   HeightRequest="480" >
-                    <FlexLayout Direction="Column">
-                        <Label Text="Agregar Foto" />
-                        <StackLayout Orientation="Horizontal"  HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
-                            <Image x:Name="imgCamara" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
+            <StackLayout Spacing="10" Padding="10">
+                <StackLayout>
+                    <Label Text="Ingregar Datos de la Adopción" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
+                </StackLayout>
+                <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
+                    <FlexLayout Direction="Column" >
+                        <StackLayout>
+                            <Label Text="Agregar Foto" FontSize="22" TextColor="Coral"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal"  HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" Padding="5">
+                            <Image x:Name="imgCamara" BackgroundColor="LightGray" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
                         </StackLayout>
                         <Label x:Name="lbImage" IsVisible="False"></Label>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Button x:Name="btnCamara" Text="Tomar Foto"  />
-                            <Button x:Name="btnQuitar" Text="Quitar Foto" Grid.Column="1" IsEnabled="False"  />
-                        </Grid>
-                        <Frame WidthRequest="300"
-                           HeightRequest="60" HorizontalOptions="Center">
-                            <FlexLayout Direction="Column" JustifyContent="Center" HorizontalOptions="Center">
+                        <Frame HeightRequest="60" HorizontalOptions="Center">
+                            <FlexLayout Direction="Column" JustifyContent="Center" HorizontalOptions="CenterAndExpand">
                                 <StackLayout Orientation="Horizontal"  HeightRequest="48" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
                                     <ImageButton x:Name="imgMin1" WidthRequest="48" Aspect="Fill"  Clicked="Img_Clicked" />
                                     <ImageButton x:Name="imgMin2" WidthRequest="48" Aspect="Fill"  Clicked="Img_Clicked" />
@@ -67,73 +72,80 @@
                                 </StackLayout>
                             </FlexLayout>
                         </Frame>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Button x:Name="btnQuitar" Text="Quitar Foto" IsEnabled="False" BackgroundColor="Gray" />
+                            <Button x:Name="btnCamara" Text="Tomar Foto"  Grid.Column="1"  />
+                        </Grid>
                     </FlexLayout>
                 </Frame>
-                <Frame WidthRequest="300"
-                   HeightRequest="400">
+                <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
                     <FlexLayout Direction="Column">
-                        <Label Text="Datos de adopcion" />
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Nombre"/>
-                            <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1"></Entry>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Mascota"/>
-                            <Picker  Grid.Column="1"
-                            Title="Tipo animal" x:Name="pckAnimal">
-                            </Picker>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Edad"/>
-                            <Grid Grid.Column="1">
+                        <StackLayout Spacing="10">
+                            <Label Text="Datos de adopcion" FontSize="22" TextColor="Coral"/>
+                        </StackLayout>
+                        <StackLayout Padding="20" >
+                            <Grid >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Entry
-                               Keyboard="Numeric" Placeholder="Edad" x:Name="txtEdad"
-                               />
-                                <Label Grid.Column="1" Text="Año"></Label>
+                                <Label Text="Nombre:" VerticalOptions="Center"/>
+                                <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1" ></Entry>
                             </Grid>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Sexo"/>
-                            <Picker  Grid.Column="1"
-                            Title="Sexo" x:Name="pckSexo">
-                                <Picker.Items>
-                                    <x:String>Macho</x:String>
-                                    <x:String>Hembra</x:String>
-                                </Picker.Items>
-                            </Picker>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Descripcion"/>
-                            <Label Grid.Column="1"
-                               Text="Max: 250 caracteres."
-                               />
-                        </Grid>
-                        <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion"/>
-                        <Button x:Name="btnGuardar" Text="Agregar"/>
+                            <Grid RowSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Tipo de animal:" VerticalOptions="Center"/>
+                                <Picker  Grid.Column="1" Title="Tipo animal" x:Name="pckAnimal" >
+                                </Picker>
+                            </Grid>
+                            <Grid RowSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Edad:" VerticalOptions="Center"/>
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Entry Keyboard="Numeric" Placeholder="Edad" x:Name="txtEdad" />
+                                    <Label Grid.Column="1" Text="Año" VerticalOptions="Center"></Label>
+                                </Grid>
+                            </Grid>
+                            <Grid RowSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Sexo:" VerticalOptions="Center"/>
+                                <Picker Grid.Column="1" Title="Sexo" x:Name="pckSexo">
+                                    <Picker.Items>
+                                        <x:String>Macho</x:String>
+                                        <x:String>Hembra</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </Grid>
+                            <Grid RowSpacing="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Descripcion:" VerticalOptions="Center"/>
+                                <Label Grid.Column="1" Text="Max: 250 caracteres." VerticalOptions="Center"/>
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Spacing="15" Padding="15">
+                            <Editor Placeholder="Descripcion" Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion"/>
+                            <Button x:Name="btnGuardar" Text="Agregar"/>
+                        </StackLayout>
                     </FlexLayout>
                 </Frame>
             </StackLayout>

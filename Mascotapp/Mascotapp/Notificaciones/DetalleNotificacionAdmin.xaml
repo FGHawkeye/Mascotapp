@@ -8,13 +8,15 @@
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
-            <Setter Property="BorderColor" Value="Blue" />
+            <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
         </Style>
 
         <Style TargetType="Label">
             <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Black"/>
         </Style>
 
         <Style x:Key="headerLabel" TargetType="Label">
@@ -23,22 +25,33 @@
             <Setter Property="TextColor" Value="Blue" />
         </Style>
 
-        <Style TargetType="Image">
-            <Setter Property="FlexLayout.Order" Value="-1" />
-            <Setter Property="FlexLayout.AlignSelf" Value="Center" />
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="Editor">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="16"/>
         </Style>
 
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="Blue" />
+            <Setter Property="BackgroundColor" Value="DarkBlue"/>
             <Setter Property="BorderRadius" Value="20" />
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout >
-                <Label Text="Solicitud de Adopcion"
+                <Label Text="Solicitud de Refugio"
                HorizontalOptions="Center"
                FontAttributes="Bold" />
                 <Frame WidthRequest="300"
@@ -66,19 +79,49 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Usuario:"/>
-                            <Label x:Name="txtUsuario" Grid.Column="1"></Label>
+                            <Label Text="Razon Social:"/>
+                            <Label x:Name="txtRazonSocial" Grid.Column="1"></Label>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Mascota:"/>
-                            <Label x:Name="txtMascota" Grid.Column="1"></Label>
+                            <Label Text="Telefono:"/>
+                            <Label x:Name="txtTelefono" Grid.Column="1"></Label>
                         </Grid>
-                        <Label Text="Detalle de solicitud:" />
-                        <Label x:Name="txtDetalle" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Direccion:"/>
+                            <Label x:Name="txtDireccion" Grid.Column="1"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Codigo Postal:"/>
+                            <Label x:Name="txtCP" Grid.Column="1"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Localidad:"/>
+                            <Label x:Name="txtLocalidad" Grid.Column="1"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Fecha de creacion:"/>
+                            <Label x:Name="txtFecha" Grid.Column="1"></Label>
+                        </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />

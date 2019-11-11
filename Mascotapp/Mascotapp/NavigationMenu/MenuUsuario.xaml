@@ -4,13 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.NavigationMenu.Master"
-             Title="Master">
-
+             x:Class="Mascotapp.NavigationMenu.MenuUsuario"
+             Title="MenuUsuario">
     <StackLayout>
-        <Button Text="Login" x:Name="btnLogin" Clicked="BtnLogin_Clicked" />
-        <Button Text="Registrarse" x:Name="btnRegistro" Clicked="BtnRegistro_Clicked" />
+        <Button Text="Agregar Marcador" x:Name="btnAgregarMarcador" Clicked="BtnAgregarMarcador_Clicked" />
+        <Button Text="Adopciones" x:Name="btnMostrarAdopciones" Clicked="BtnMostrarAdopciones_Clicked" />
+        <Button Text="Notificaciones" x:Name="btnNotificaciones" Clicked="BtnNotificaciones_Clicked" />
         <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />
+        <Button Text="Cerrar sesion" x:Name="btnCerrarSesion" Clicked="BtnCerrarSesion_Clicked" />
     </StackLayout>
-
 </ContentPage>

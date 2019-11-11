@@ -19,7 +19,7 @@ namespace Domain.Servicios
         }
         public List<Adopciones> ObtenerAdopciones()
         {
-            return dbConnection.Query<Adopciones>("Select * From [Adopciones]");
+            return dbConnection.Query<Adopciones>("Select * From [Adopciones]").Where(x => x.Estado).ToList();
         }
         public Adopciones ObtenerAdopcion(int id)
         {
@@ -33,6 +33,12 @@ namespace Domain.Servicios
         {
             dbConnection.Insert(adopcion);
             int pk = dbConnection.ExecuteScalar<int>("SELECT last_insert_rowid()");
+            return pk;
+        }
+        public int BajaAdopcion(Adopciones adopcion)
+        {
+            dbConnection.Query<SolicitudAdopcion>("UPDATE [Adopciones] SET Estado = '" + adopcion.Estado+"' WHERE IdAdopcion = "+adopcion.IdAdopcion+";");
+            int pk = adopcion.IdAdopcion.Value;
             return pk;
         }
         public int ModificarAdopcion(Adopciones adopcion)

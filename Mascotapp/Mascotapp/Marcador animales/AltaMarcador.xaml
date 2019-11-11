@@ -5,45 +5,91 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Mascotapp.Marcador_animales.AltaMarcador">
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="Editor">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+            <Setter Property="BorderRadius" Value="20" />
+        </Style>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        
         <StackLayout Orientation="Vertical">
-            <Label Text="Agregar marcador"
-                HorizontalOptions="CenterAndExpand" />
-            
-            <StackLayout BackgroundColor="GhostWhite">
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-
-                    <Image x:Name="imgCamara" />
-                    <Button x:Name="btnCamera" Text="Tomar foto" Grid.Row="1" />
-                </Grid>
-                
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Tipo animal: "/>
-                    <Picker Title="Tipo animal" x:Name="pckAnimal"/>
-
+            <ScrollView>
+                <StackLayout Spacing="10" Padding="10">
+                    <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
+                        <FlexLayout Direction="Column" >
+                            <StackLayout VerticalOptions="CenterAndExpand">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Horizontal" HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" Padding="5">
+                                        <Image x:Name="imgCamara" BackgroundColor="LightGray" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
+                                    </StackLayout>
+                                    <Button x:Name="btnCamera" Text="Tomar foto" Grid.Row="1" />
+                                </Grid>
+                                <Grid Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Tipo animal: "/>
+                                    <Picker Title="Tipo animal" x:Name="pckAnimal" Grid.Column="1"/>
+                                </Grid>
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label Text="Descripcion: "/>
+                                    <Editor Placeholder="Descripcion" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion"/>
+                                </StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Button x:Name="btnCancelar" Text="Cancelar"></Button>
+                                    <Button x:Name="btnAgregar" Text="Agregar" Grid.Column="1" ></Button>
+                                </Grid>
+                            </StackLayout>
+                        </FlexLayout>
+                    </Frame>
                 </StackLayout>
-
-                <StackLayout Orientation="Vertical">
-                    <Label Text="Descripcion: "/>
-                    <Editor 
-                        x:Name="txtDescripcion"
-                        Placeholder="Descripcion"/>
-
-
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Button x:Name="btnCancelar" Text="Cancelar"></Button>
-                    <Button x:Name="btnAgregar" Text="Agregar"></Button>
-                </StackLayout>
-            </StackLayout>
-            
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

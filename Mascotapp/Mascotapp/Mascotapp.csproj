@@ -28,6 +28,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Notificaciones\NotificacionesAdmin.xaml.cs">
+      <DependentUpon>NotificacionesAdmin.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Tipo animales\TipoDeAnimal.xaml.cs">
+      <DependentUpon>TipoDeAnimal.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Adopciones\ModificarAdopcion.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -53,6 +65,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Solicitudes\VisualizarSolicitud.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Tipo animales\TipoDeAnimal.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Visualizar mapa\Mapa.xaml">

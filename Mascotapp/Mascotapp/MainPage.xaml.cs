@@ -1,4 +1,5 @@
-﻿using Mascotapp.NavigationMenu;
+﻿using Domain.Entidades;
+using Mascotapp.NavigationMenu;
 using Mascotapp.Visualizar_mapa;
 using System;
 using Xamarin.Forms;
@@ -12,22 +13,24 @@ namespace Mascotapp
 
         public static Domain.Entidades.Usuario UsuarioRegristrado = null;
 
-        //ObservableCollection<Usuario> usuarios = new ObservableCollection<Usuario>();
-        //public ObservableCollection<Usuario> Usuarios { get { return usuarios; } }
-
-
         public MainPage()
         {
             InitializeComponent();
             this.Master = new Master();
             this.Detail = new NavigationPage(new Mapa());
-
             App.MasterD = this;
-            //CargarUsuarios();
         }
-        public static void RecargarPrincipal ()
+        public static void RecargarPrincipal()
         {
             App.MasterD.IsPresented = false; //isVisible = false
+            App.MasterD.Detail = new NavigationPage(new Mapa());
+        }
+
+        public static void RecargarPrincipalLogout()
+        {
+            MainPage.UsuarioRegristrado = null;
+            App.MasterD.IsPresented = false; //isVisible = false
+            App.MasterD.Master = new Master();
             App.MasterD.Detail = new NavigationPage(new Mapa());
         }
 

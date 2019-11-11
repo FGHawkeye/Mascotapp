@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.Registro.Registro"
-             Title="Registro">
+             x:Class="Mascotapp.RegistroRefugio"
+             Title="Registro Refugio">
 
     <ContentPage.Resources>
         <Style TargetType="Frame">
@@ -67,96 +67,55 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Usuario:"/>
-                            <Entry x:Name="txtUsuario" Placeholder="Usuario" Grid.Column="1" MaxLength="49"></Entry>
+                            <Label Text="Ingrese su razon social:"/>
+                            <Entry x:Name="txtRazonSolial" Placeholder="Razon Social" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Nombre:"/>
-                            <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1" MaxLength="50"></Entry>
+                            <Label Text="Direccion:"/>
+                            <Entry x:Name="txtDireccion" Placeholder="Direccion" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Apellido:"/>
-                            <Entry x:Name="txtApellido" Placeholder="Apellido" Grid.Column="1" MaxLength="50"></Entry>
+                            <Label Text="Localidad:"/>
+                            <Entry x:Name="txtLocalidad" Placeholder="Localidad" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Email: "/>
-                            <Entry x:Name="txtEmail" Placeholder="Email@Email.com" Grid.Column="1" MaxLength="49"></Entry>
+                            <Label Text="Ingrese el codigo postal:"/>
+                            <Entry x:Name="txtCodigoP" Placeholder="Codigo Postal" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Teléfono"/>
-                            <Entry x:Name="txtTel" Placeholder="1512345678" Grid.Column="1" MaxLength="18"></Entry>
+                            <Label Text="Ingrese un numero de contacto:"/>
+                            <Entry x:Name="txtTel" Keyboard="Numeric" Placeholder="1512345678" Grid.Column="1"></Entry>
                         </Grid>
-                        
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Contraseña"/>
-                            <Entry x:Name="txtContra" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="49"></Entry>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Confirme Contraseña"/>
-                            <Entry x:Name="txtContra2" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="49"></Entry>
-                        </Grid>
-                        
-                        <StackLayout Spacing="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Button x:Name="btnRegistrar" Text="Registrar"/>
-                                <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
-                            </Grid>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-                                <CheckBox x:Name="chkRefugio"></CheckBox>
-                                <Label Text="Registrarse como Refugio." Grid.Column="1"></Label>
-                            </Grid>
+                        <StackLayout Spacing="20">
+                            <Label></Label>
                         </StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnRegistrar" Text="Registrar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
+                        </Grid>
                     </FlexLayout>
                 </Frame>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

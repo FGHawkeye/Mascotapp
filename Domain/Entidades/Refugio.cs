@@ -13,7 +13,6 @@ namespace Domain.Entidades
         public string RazonSocial { get; set; }
         public string Localidad { get; set; }
         public string Direccion { get; set; }
-
         //coordenadas google maps (latitud, longitud) ej: 110050,100020
         public string Ubicacion { get; set; }
         public string CodigoPostal { get; set; }
