@@ -47,9 +47,7 @@ namespace Mascotapp.NavigationMenu
             var rta = await DisplayAlert("Cerrar sesion", "¿Esta seguro de cerrar sesion?", "Si", "No");
             if (rta)
             {
-                MainPage.UsuarioRegristrado = null;
-                App.MasterD.IsPresented = false;
-                App.MasterD.Master = new Master();
+                MainPage.RecargarPrincipalLogout();
             }
         }
     }

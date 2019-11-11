@@ -12,6 +12,8 @@
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
         </Style>
 
         <Style TargetType="Label">
@@ -55,20 +57,15 @@
             
             
             <StackLayout>
-                <Frame WidthRequest="300"
-                   HeightRequest="32">
-                    
-                    <Label Text="Ingregar"
-               HorizontalOptions="Center" 
-               FontAttributes="Bold" />
+                <Frame>
+                    <Label Text="Ingresar" HorizontalOptions="Start" FontAttributes="Bold" />
                 </Frame>
                 
-                <Frame WidthRequest="300"
-                   HeightRequest="480">
+                <Frame>
                     
                     <FlexLayout Direction="Column">
 
-                        <Grid>
+                        <Grid Margin="4,4,4,4">
                             
                             <Label Text="Ingrese su usuario" />
 
@@ -76,7 +73,6 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                          
                         </Grid>
 
                         <Editor x:Name="txtNombre" Placeholder="Usuario" MaxLength="49" />
@@ -94,7 +90,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btnCancelar" Text="Cancelar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="0" Text="Cancelar"/>
                             <Button x:Name="btnIngresar" Grid.Column="1" Text="Aceptar"/>
                             <Label Grid.Column="1" Grid.Row="1" 
                                Text="Nuevo usuario? Registrate!">

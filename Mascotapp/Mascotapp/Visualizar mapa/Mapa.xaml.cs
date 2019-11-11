@@ -15,6 +15,7 @@ namespace Mascotapp.Visualizar_mapa
 {
     public partial class Mapa : ContentPage
     {
+
         private ServicioMarcadores servicioMarcadores = new ServicioMarcadores();
         private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
         private ServicioRefugio servicioRefugio = new ServicioRefugio();
@@ -22,11 +23,13 @@ namespace Mascotapp.Visualizar_mapa
         private ServicioImagenXAdopcion servicioImagenXAdopcion = new ServicioImagenXAdopcion();
         private string filtroSeleccionado = "";
 
+
         public Mapa()
         {
             InitializeComponent();
             CargarMapa();
             CargarEventos();
+            VerificaLogeado();
         }
 
         private void CargarEventos()
@@ -58,6 +61,7 @@ namespace Mascotapp.Visualizar_mapa
             CargarMarcadores();
             CargarAdopciones();
             CargarRefugios();
+ 
         }
 
         private void CargarAdopciones()
@@ -73,6 +77,21 @@ namespace Mascotapp.Visualizar_mapa
                     map_Mapa.CustomPins.Add(pin);
                 }
             }
+        }
+
+        private void VerificaLogeado()
+        {
+            if (MainPage.UsuarioRegristrado == null)
+            {
+                Logeado.Text = "Ingresar";
+            }
+            else
+            {
+                Logeado.Text = MainPage.UsuarioRegristrado.NombreUsuario;
+            }
+
+
+     
         }
 
         private void CargarMarcadores()
@@ -149,5 +168,15 @@ namespace Mascotapp.Visualizar_mapa
             var imagenId = servicioImagenXAdopcion.ObtenerImagenXAdopcion(idAdopcion).FirstOrDefault().IdImagen;
             return imagenId;
         }
+        private async void Logeado_Clicked(object sender, EventArgs e)
+        {
+            if (MainPage.UsuarioRegristrado == null)
+            {
+                App.MasterD.IsPresented = false; //isVisible = false
+                await App.MasterD.Detail.Navigation.PushAsync(new Login.Login());
+            }
+
+        }
+
     }
 }

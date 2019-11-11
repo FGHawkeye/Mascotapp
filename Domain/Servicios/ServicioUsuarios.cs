@@ -39,8 +39,16 @@ namespace Domain.Servicios
             return dbConnection.Query<Usuario>("Select * From [Usuario] where NombreUsuario ='" + usuario.NombreUsuario + "' and Contraseña ='" + usuario.Contraseña + "'").FirstOrDefault();
 
         }
+        public int ValidarUsuarioExistente(string nomusuario)
+        {
+            int i = -1;
 
-        
+            Usuario usuario = dbConnection.Query<Usuario>("Select * From [Usuario]").Where(x => x.NombreUsuario == nomusuario).FirstOrDefault();
+          
+            if (usuario != null) i = 1;
+            return i;
+        }
+
 
     }
 }

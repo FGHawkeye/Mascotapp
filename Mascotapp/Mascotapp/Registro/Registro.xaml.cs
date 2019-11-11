@@ -97,7 +97,11 @@ namespace Mascotapp.Registro
                     txtTel.Text = "";
                     txtTel.Focus();
                     break;
-
+                case 5:
+                    await DisplayAlert("Usuario Existente", "Vuelva a ingresar un nuevo nombre de usuario, el que intento registrar ya existe", "Entendido");
+                    txtUsuario.Text = "";
+                    txtUsuario.Focus();
+                    break;
 
 
             }
@@ -147,6 +151,12 @@ namespace Mascotapp.Registro
             {
                 return 4;
             }
+
+            if (servicioUsuarios.ValidarUsuarioExistente(txtUsuario.Text) > 0)
+            {
+                return 5;          
+            }
+
 
             return 0;
         }

@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mascotapp.NavigationMenu;
 
+
 namespace Mascotapp.Login
 {
 
@@ -91,9 +92,9 @@ namespace Mascotapp.Login
                     await Navigation.PopAsync(false);
 
                     await DisplayAlert("Bienvenido " + MainPage.UsuarioRegristrado.Nombre, "Nos alegra que nos visites nuevamente.", "Continuar");
-
-                    await Navigation.PopAsync(false);
+                    MainPage.RecargarPrincipal();
                 }
+
 
             }
             catch (Exception ex)
