@@ -8,12 +8,27 @@ INSERT INTO TipoUsuario (IdTipoUsuario,Descripcion) VALUES
 	(3,'Refugio');
 
 INSERT INTO Usuario (IdUsuario, NombreUsuario, IdTipoUsuario, Contraseña, Nombre, Apellido, Telefono, Email) VALUES
-	(NULL,'LUCAS',1,'lucas123','Lucas','Peña', 12345, 'lucas@lucas.com'),
-	(NULL,'UsuarioComun',2,'usuario123','Pedro','Luis', 12345, 'usuario@comun.com'),
-	(NULL,'Refugio',3,'refugio123','Jorge','Mendez', 12345, 'refugio@refugio.com'),
-	(NULL,'Comun',2,'usuario2','Damian','Alvarez', 12345, 'comun@usuario.com'),
-	(NULL,'Refugio2',3,'refugio123','Fernando','Gutierrez', 12345, 'refugio2@refugio.com'),
-	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 12345, 'refugio3@refugio.com');
+	(NULL,'Admin',1,'admin123','Lucas','Peña', 1568515719, 'admin@mascotapp.com'),
+	(NULL,'PedroL',2,'usuario123','Pedro','Luis', 1568615719, 'lucas_pena_88@hotmail.com'),
+	(NULL,'Campito',3,'refugio123','Jorge','Mendez', 1578515719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'DamianA',2,'usuario123','Damian','Alvarez', 1568525719, 'lucas_pena_88@hotmail.com'),
+	(NULL,'AdopterosArg',3,'refugio123','Fernando','Gutierrez', 1563515719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Ayudacan',3,'refugio123','Mariano','Lopez', 1568575719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'LeandroP',2,'usuario123','Leandro','Perez', 1568515718, 'lucas_pena_88@hotmail.com'),
+	(NULL,'AlejandroA',2,'usuario123','Alejandro','Ajaya', 1568515729, 'lucas_pena_88@hotmail.com'),
+	(NULL,'MiguelR',2,'usuario123','Miguel','Rodriguez', 1568515759, 'lucas_pena_88@hotmail.com'),
+	(NULL,'GracielaG',2,'usuario123','Graciela','Gonzalez', 1568515749, 'lucas_pena_88@hotmail.com'),
+	(NULL,'GabrielD',2,'usuario123','Gabriel','Dominguez', 1568515519, 'lucas_pena_88@hotmail.com'),
+	(NULL,'VictoriaP',2,'usuario123','Victoria','Pignatta', 1568515619, 'lucas_pena_88@hotmail.com'),
+	(NULL,'FedericoC',2,'usuario123','Federico','Clavijo', 1568515819, 'lucas_pena_88@hotmail.com'),
+	(NULL,'MarkD',2,'usuario123','Mark','Dolling', 1568515919, 'lucas_pena_88@hotmail.com'),
+	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568511719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568512719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568513719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568514719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568510719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568525719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568535719, 'ajaya_gabriel@hotmail.com');
 	
 INSERT INTO Adopciones(IdAdopcion,IdUsuario,IdTipoAnimal, Nombre,Detalle,Ubicacion,Sexo,Edad,Estado) VALUES
 	(NULL,2,1,'Biscuit', 'Vacunado', '-34.4602262740955;-58.611957365647', 'Macho', 2, true),
