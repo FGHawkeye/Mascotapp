@@ -22,13 +22,13 @@ INSERT INTO Usuario (IdUsuario, NombreUsuario, IdTipoUsuario, Contraseña, Nombr
 	(NULL,'VictoriaP',2,'usuario123','Victoria','Pignatta', 1568515619, 'lucas_pena_88@hotmail.com'),
 	(NULL,'FedericoC',2,'usuario123','Federico','Clavijo', 1568515819, 'lucas_pena_88@hotmail.com'),
 	(NULL,'MarkD',2,'usuario123','Mark','Dolling', 1568515919, 'lucas_pena_88@hotmail.com'),
-	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568511719, 'ajaya_gabriel@hotmail.com'),
-	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568512719, 'ajaya_gabriel@hotmail.com'),
-	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568513719, 'ajaya_gabriel@hotmail.com'),
-	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568514719, 'ajaya_gabriel@hotmail.com'),
-	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568510719, 'ajaya_gabriel@hotmail.com'),
-	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568525719, 'ajaya_gabriel@hotmail.com'),
-	(NULL,'Refugio3',3,'refugio123','Mariano','Lopez', 1568535719, 'ajaya_gabriel@hotmail.com');
+	(NULL,'Apre',3,'refugio123','Rodrigo','Loiacono', 1568511719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'DonCuarto',3,'refugio123','Belen','Ayala', 1568512719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'SfaSA',3,'refugio123','Lautaro','Hernandez', 1568513719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Sams',3,'refugio123','Julieta','Liparotti', 1568514719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Renatas',3,'refugio123','Martin','Walther', 1568510719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'SanRoque',3,'refugio123','Gonzalo','Hansen', 1568525719, 'ajaya_gabriel@hotmail.com'),
+	(NULL,'Resistir',3,'refugio123','Agustina','Casado', 1568535719, 'ajaya_gabriel@hotmail.com');
 	
 INSERT INTO Adopciones(IdAdopcion,IdUsuario,IdTipoAnimal, Nombre,Detalle,Ubicacion,Sexo,Edad,Estado) VALUES
 	(NULL,2,1,'Biscuit', 'Vacunado', '-34.4602262740955;-58.611957365647', 'Macho', 2, true),
@@ -75,7 +75,14 @@ INSERT INTO Preguntas (Pregunta, IdUsuario, Respuesta) VALUES
 INSERT INTO Refugio (IdRefugio, IdUsuario, RazonSocial, Localidad, Direccion, Ubicacion, CodigoPostal, Telefono, FechaCreacion, Estado) VALUES
 	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'2019-11-02 00:00:00','Pendiente'),
 	(NULL,5,'Adopteros Argentina','Recoleta','Las Heras, Buenos Aires','-34.5518341;-58.4320087','1900',01140893717,'2019-11-03 00:00:00','Pendiente'),
-	(NULL,6,'Ayudacan','Salguero','Jerónimo Salguero, Buenos Aires','-34.609192;-58.419967','1700',123456789,'2019-11-04 00:00:00','Pendiente');
+	(NULL,6,'Ayudacan','Salguero','Jerónimo Salguero, Buenos Aires','-34.609192;-58.419967','1700',123455559,'2019-11-8 00:00:00','Pendiente'),
+	(NULL,15,'Apre','Gral Pacheco','Av. Constituyentes, Buenos Aires','-34.453331;-58.649052','1700',123456666,'2019-11-07 00:00:00','Pendiente'),
+	(NULL,16,'DonCuarto','Gral Pacheco','Olegario Victor Andrade 292, Buenos Aires','-34.459981;-58.627144','1700',123456777,'2019-11-04 00:00:00','Pendiente'),
+	(NULL,17,'SfaSA','Gral Pacheco','Gral. Pacheco, Buenos Aires','-34.460769;-58.630510','1700',123455789,'2019-11-6 00:00:00','Pendiente'),
+	(NULL,18,'Sams','Gral Pacheco','Chaco 97, Buenos Aires','-34.460601;-58.632559','1700',123446789,'2019-11-5 00:00:00','Pendiente'),
+	(NULL,19,'Renatas','Gral Pacheco','Buenos Aires 199, Buenos Aires','-34.455003;-58.627275','1700',121456789,'2019-11-01 00:00:00','Pendiente'),
+	(NULL,20,'SanRoque','Los Troncos del Talar','Independencia 498, Buenos Aires','-34.452915;-58.614250','1700',123256789,'2019-11-12 00:00:00','Pendiente'),
+	(NULL,21,'Resistir','Los Troncos del Talar','Cnel. Pringles 640, Buenos Aires','-34.450659;-58.615623','1700',123356789,'2019-11-10 00:00:00','Pendiente');
 	
 INSERT INTO Reportes (IdReporte, IdUsuario, IdMarcador) VALUES
 	(NULL,4,1),
