@@ -50,8 +50,10 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="6" x:Name="Mostrar">
-                
+            <StackLayout>
+                <StackLayout Spacing="6" x:Name="Mostrar">
+                       
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

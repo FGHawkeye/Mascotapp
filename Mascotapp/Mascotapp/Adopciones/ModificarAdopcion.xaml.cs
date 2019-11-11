@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mascotapp.NavigationMenu;
 using System.IO;
+using Plugin.Media.Abstractions;
 
 namespace Mascotapp
 {
@@ -92,6 +93,9 @@ namespace Mascotapp
                 {
                     imgMin1.Source = ImageSource.FromFile(imagenes[0].Imagen);
                     image1 = imagenes[0].Imagen;
+                    imgCamara.Source= ImageSource.FromFile(imagenes[0].Imagen);
+                    lbImage.Text = imgMin1.Id.ToString();
+                    btnQuitar.IsEnabled = true;
                 }
                 else
                 {
@@ -132,12 +136,13 @@ namespace Mascotapp
         {
             string directoryPath = "/storage/emulated/0/Mascotapp/";
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
-                new Plugin.Media.Abstractions.StoreCameraMediaOptions()
+                new Plugin.Media.Abstractions.StoreCameraMediaOptions() 
                 {
-                    CompressionQuality = 5
+                    PhotoSize= PhotoSize.MaxWidthHeight,
+                    MaxWidthHeight=300,
+                    CompressionQuality =50
                 }
-                );
-            
+            );
             if (photo != null)
             {
                 System.IO.File.Copy(photo.Path, directoryPath, true);
@@ -147,7 +152,7 @@ namespace Mascotapp
                 ImageSource image = ImageSource.FromFile(directoryPath + name);
                 AgregarFoto(image, directoryPath + name);
                 File.Delete(photo.Path);
-            }
+            } 
         }
         /*private async void CameraButton_Clicked(object sender, EventArgs e)
         {

@@ -31,6 +31,7 @@ namespace Mascotapp
                 List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
                 Button btnAgregar = new Button
                 {
+                    Padding=10,
                     Text = "Agregar Adopcion",
                 };
                 btnAgregar.Clicked += Agregar_Clicked;

@@ -50,56 +50,67 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout >
-                <Label Text="Solicitud de Adopcion"
-               HorizontalOptions="Center"
-               FontAttributes="Bold" />
-                <Frame WidthRequest="300"
-                   HeightRequest="400">
+            <StackLayout Spacing="10" Padding="10">
+                <StackLayout>
+                    <Label Text="Solicitud de Adopcion" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
+                </StackLayout>
+                <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
                     <FlexLayout Direction="Column">
-                        <Label Text="Datos del solicitante" />
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Nombre:"/>
-                            <Label x:Name="txtNombre" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Apellido:"/>
-                            <Label x:Name="txtApellido" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Usuario:"/>
-                            <Label x:Name="txtUsuario" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Mascota:"/>
-                            <Label x:Name="txtMascota" Grid.Column="1"></Label>
-                        </Grid>
-                        <Label Text="Detalle de solicitud:" />
-                        <Label x:Name="txtDetalle" />
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Button x:Name="btnAceptar" Text="Aceptar"/>
-                            <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar"/>
-                        </Grid>
+                        <StackLayout>
+                            <Label Text="Datos del solicitante" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
+                        </StackLayout>
+                        <StackLayout Padding="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Nombre:"/>
+                                <Label x:Name="txtNombre" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Apellido:"/>
+                                <Label x:Name="txtApellido" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Usuario:"/>
+                                <Label x:Name="txtUsuario" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Telefono:"/>
+                                <Label x:Name="txtTelefono" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Mascota:"/>
+                                <Label x:Name="txtMascota" Grid.Column="1"></Label>
+                            </Grid>
+                            <Label Text="Detalle de solicitud:" />
+                            <Label x:Name="txtDetalle" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="btnAceptar" Text="Aceptar"/>
+                                <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar"/>
+                            </Grid>
+                        </StackLayout>
                     </FlexLayout>
                 </Frame>
             </StackLayout>

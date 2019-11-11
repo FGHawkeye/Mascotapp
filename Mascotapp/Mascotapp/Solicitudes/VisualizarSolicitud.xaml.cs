@@ -65,6 +65,8 @@ namespace Mascotapp
                 if (imagenes[0].Estado)
                 {
                     imgMin1.Source = ImageSource.FromFile(imagenes[0].Imagen);
+                    imgCamara.Source = imgMin1.Source;
+                    lbImage.Text = imgMin1.Id.ToString();
                 }
             }
             if (imgCount > 1)

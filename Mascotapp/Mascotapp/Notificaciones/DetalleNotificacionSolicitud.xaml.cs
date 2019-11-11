@@ -36,6 +36,7 @@ namespace Mascotapp
             txtApellido.Text=usuario.Apellido;
             txtNombre.Text= usuario.Nombre;
             txtUsuario.Text=usuario.NombreUsuario;
+            txtTelefono.Text = usuario.Telefono.ToString();
             txtMascota.Text=adopciones.Nombre;
             txtDetalle.Text=solicitudAdopcion.Descripcion;
         }

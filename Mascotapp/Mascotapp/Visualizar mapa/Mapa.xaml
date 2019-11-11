@@ -18,8 +18,6 @@
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
             <Setter Property="BorderColor" Value="Black" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="CornerRadius" Value="15" />
         </Style>
 
         <Style TargetType="Label">
@@ -79,11 +77,12 @@
                 </Grid>
             </StackLayout>
 
-            <StackLayout VerticalOptions="FillAndExpand" Padding="12">
-                <local:CustomMap WidthRequest="320" HeightRequest="200" x:Name="map_Mapa" MapType="Street">
+            <StackLayout VerticalOptions="FillAndExpand" Padding="5">
+                <Frame >
+                    <local:CustomMap Margin="-15" WidthRequest="400" HeightRequest="500" x:Name="map_Mapa" MapType="Street">
 
-
-                </local:CustomMap>
+                    </local:CustomMap>
+                </Frame>
             </StackLayout>
         </StackLayout>
         
