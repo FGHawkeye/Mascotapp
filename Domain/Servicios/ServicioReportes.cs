@@ -27,5 +27,11 @@ namespace Domain.Servicios
             var contadorReportes = dbConnection.Query<Reportes>("SELECT * FROM Reportes").Where(x => x.IdMarcador == marcador.IdMarcador).Count();
             return contadorReportes >= 3;
         }
+
+        public bool UsuarioYaReporto(int idUsuario, int idMarcador)
+        {
+            var reporte = dbConnection.Query<Reportes>("SELECT * FROM Reportes").Where(x => x.IdMarcador == idMarcador && x.IdUsuario == idUsuario).FirstOrDefault();
+            return reporte != null;
+        }
     }
 }
