@@ -16,6 +16,7 @@ namespace Mascotapp
     {
         private ServicioRefugio servicioRefugio = new ServicioRefugio();
         private ServicioUsuarios servicioUsuario = new ServicioUsuarios();
+        private ServicioEmail servicioEmail = new ServicioEmail();
         private Refugio refugio;
         public DetalleNotificacionAdmin(int idRef)
         {
@@ -54,7 +55,23 @@ namespace Mascotapp
         {
             refugio.Estado=estado;
             servicioRefugio.ModificarRefugio(refugio);
-            await DisplayAlert("Solicitud Refugio", "Se a "+estado+" el refugio con exito", "OK");
+
+            try
+            {
+                var usuarioSolicitante = servicioUsuario.ObtenerUsuario(refugio.IdUsuario);
+                var datosEmail = new DatosEmail("Actualizacion de estado, solicitud de refugio",
+                    "La solicitud de refugio que usted realizo por el refugio " + refugio.RazonSocial + " se encuentra en estado " + estado.ToUpper(),
+                    usuarioSolicitante.Email);
+
+                servicioEmail.EnviarEmail(datosEmail);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+
+
+            await DisplayAlert("Solicitud Refugio", "Se ha "+estado+" el refugio con exito", "OK");
             await App.MasterD.Detail.Navigation.PopToRootAsync();
         }
     }
