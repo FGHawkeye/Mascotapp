@@ -124,6 +124,11 @@
                                 <Label Text="Fecha de creacion:"/>
                                 <Label x:Name="txtFecha" Grid.Column="1"></Label>
                             </Grid>
+                            <Label Text="Ubicacion en el mapa:"></Label>
+                            <StackLayout>
+                                <local:CustomMap Margin="-15" x:Name="map_Mapa" MapType="Street">
+                                </local:CustomMap>
+                            </StackLayout>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
