@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mascotapp.NavigationMenu;
+using System.Globalization;
 
 namespace Mascotapp
 {
@@ -57,7 +58,8 @@ namespace Mascotapp
 
                     Label lbFecha = new Label
                     {
-                        Text = "Fecha solicitud: " + refugio.FechaCreacion,
+                        Text = "Fecha solicitud: " + refugio.FechaCreacion.ToString(),
+                        //Text = "Fecha solicitud: " + refugio.FechaCreacion.ToString(@"MM\/dd\/yyyy HH:mm"),
                         ClassId = refugio.IdRefugio.ToString()
                     };
 

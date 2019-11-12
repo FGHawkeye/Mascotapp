@@ -36,8 +36,10 @@ namespace Mascotapp
             txtDireccion.Text = refugio.Direccion;
             txtCP.Text = refugio.CodigoPostal;
             txtLocalidad.Text = refugio.Localidad;
-            txtFecha.Text = refugio.FechaCreacion.ToString(@"MM\/dd\/yyyy HH:mm");
+            //txtFecha.Text = refugio.FechaCreacion.ToString("YYYY-MM-DD HH:MM:SS.SSS");
+            txtFecha.Text = refugio.FechaCreacion.ToString();
             txtTelefono.Text = usuario.Telefono.ToString();
+            //YYYY-MM-DD HH:MM:SS.SSS
         }
 
         public void btnAceptar_Clicked(object sender, EventArgs e)

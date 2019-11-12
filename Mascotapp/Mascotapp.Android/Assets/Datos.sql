@@ -70,26 +70,42 @@ INSERT INTO Marcadores (IdMarcador, IdUsuario, IdTipoAnimal , IdImagen, Ubicacio
 	(NULL,2,2,13,'-34.458256;-58.641778','Gato abandonado',true);
 	
 INSERT INTO Preguntas (Pregunta, IdUsuario, Respuesta) VALUES 
-	('Como puedo ver una publicacion?', 1, 'Se puede acceder a las publicaciones seleccionando en el mapa el marcador y luego ver detalle.');
+	('¿Como puedo ver una publicacion?', 1, 'Se puede acceder a las publicaciones seleccionando en el mapa el marcador y luego ver detalle.'),
+	('¿La aplicación es gratis?', 1, 'Sí. La aplicación está disponible sólo en español y puede descargarse e instalarse sin coste alguno,'),
+	('¿Tengo que registrarme?', 1, 'Si, para acceder a las funcionalidades totales de la app.'),
+	('¿En qué dispositivos funciona?', 1, 'Solo disponible en los dispositivos con S.O.Android .'),
+	('¿Cómo borro la aplicación?', 1, 'Manteniendo pulsado el icono hasta que empiece a moverse y pulsando la X que aparece en la esquina del icono, como con cualquier otra aplicación.'),
+	('¿Está la aplicación disponible en todos los países?', 1,'La app solo está disponible en Argentina. '),
+	('¿Qué hago si tengo problemas con la aplicación? ', 1, 'Si la aplicación se cierra inesperadamente o tienes cualquier otro problema, comprueba en primer lugar que tienes instalada la última versión. Si el problema persiste, puedes ponerte en contacto con el administrador a la dirección de email:  admin@mascotapp.com '),
+	('¿Cómo accedo a la app?', 1, 'La app posee dos tipos de perfiles de accesos 1) Privado: usuario previamente registrado 2) Público: anónimo el cual tendrá acceso limitado a las prestaciones /funcionalidades.'),
+	('¿Cómo Registrarme?', 1,'Para registrarse se deberá completar   un formulario el cual solicitada datos personales, datos de contacto de quien suscribe. Se deberá seleccionar el nombre de usuario y password el cual permitirá loguearse a la app. En el caso de los refugios se procederá de igual forma, con la particularidad de la carga de los datos refieren al refugio declarado'),
+	('¿Cómo realizar una   Adopción? ', 1, 'El usuario se deberá loguear y a posterior ingresar a la opción de Agregar Adopción, deberá proceder a sacarle a una foto al animal y puede proceder aceptar dicha foto o puede rechazarla para tomar nueva foto si lo desea. A posterior deberá completar el formulario con los datos del animal a publicar.  Como paso final si está todo ok.  procederá a presionar el botón agregar para publicar dicha   adopción.'),
+	('¿Cómo marcar un animal en situación de calle?', 1, 'Para reportar un animal en la calle, se deberá ingresar a la opción agregar marcador y se deberá proceder a cargar los datos de referencia del animal. Luego de aceptado el registro dicho marcador se visualizará en el mapa con el color Rojo. '),
+	('¿Solicitar adopciones? ', 1,'Al momento de querer realizar una solicitud de adopción, el usuario deberá previamente estar logueado. A través de la opción de solicitud de adopción se realizará una petición a quien publicó un animal.'),
+	('¿Notificaciones? ', 1, 'A través de notificaciones el usuario podrá disponer de todos los eventos recibidos como aquellos que genere el mismo usuario. '),
+	('¿Cómo denunciar un marcador?', 1,'En el caso que un usuario detecte una marcadora indebida, que no cumple con las políticas de resguardo y publicación, podrá proceder a reportar dicho marcador. Cuando la app recibe tres eventos de reporte de marcador, el mismo se baja de la visualización (Mapa)'),
+	('¿Cómo hago para visualizar Animales en Adopción o que se encuentran en la calle?', 1, 'Se ingresa al mapa   y se debe aplicar filtro, sobre el cual podrá seleccionar Marcadores que se corresponde con los animales reportados en la calle o en su defecto podrá seleccionar aquellos animales que están en adopción.'),
+	('¿Cómo hago para visualizar de Refugios de Animales? ', 1, 'Se ingresa al mapa   y se debe aplicar filtro, sobre el cual podrá seleccionar Refugios de animales disponibles.');
+
 	
 INSERT INTO Refugio (IdRefugio, IdUsuario, RazonSocial, Localidad, Direccion, Ubicacion, CodigoPostal, Telefono, FechaCreacion, Estado) VALUES
-	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'2019-11-02 00:00:00','Pendiente'),
-	(NULL,5,'Adopteros Argentina','Recoleta','Las Heras, Buenos Aires','-34.5518341;-58.4320087','1900',01140893717,'2019-11-03 00:00:00','Pendiente'),
-	(NULL,6,'Ayudacan','Salguero','Jerónimo Salguero, Buenos Aires','-34.609192;-58.419967','1700',123455559,'2019-11-8 00:00:00','Pendiente'),
-	(NULL,15,'Apre','Gral Pacheco','Av. Constituyentes, Buenos Aires','-34.453331;-58.649052','1700',123456666,'2019-11-07 00:00:00','Pendiente'),
-	(NULL,16,'DonCuarto','Gral Pacheco','Olegario Victor Andrade 292, Buenos Aires','-34.459981;-58.627144','1700',123456777,'2019-11-04 00:00:00','Pendiente'),
-	(NULL,17,'SfaSA','Gral Pacheco','Gral. Pacheco, Buenos Aires','-34.460769;-58.630510','1700',123455789,'2019-11-6 00:00:00','Pendiente'),
-	(NULL,18,'Sams','Gral Pacheco','Chaco 97, Buenos Aires','-34.460601;-58.632559','1700',123446789,'2019-11-5 00:00:00','Pendiente'),
-	(NULL,19,'Renatas','Gral Pacheco','Buenos Aires 199, Buenos Aires','-34.455003;-58.627275','1700',121456789,'2019-11-01 00:00:00','Pendiente'),
-	(NULL,20,'SanRoque','Los Troncos del Talar','Independencia 498, Buenos Aires','-34.452915;-58.614250','1700',123256789,'2019-11-12 00:00:00','Pendiente'),
-	(NULL,21,'Resistir','Los Troncos del Talar','Cnel. Pringles 640, Buenos Aires','-34.450659;-58.615623','1700',123356789,'2019-11-10 00:00:00','Pendiente');
+	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'02-11-2019','Pendiente'),
+	(NULL,5,'Adopteros Argentina','Recoleta','Las Heras, Buenos Aires','-34.5518341;-58.4320087','1900',01140893717,'03-11-2019','Pendiente'),
+	(NULL,6,'Ayudacan','Salguero','Jerónimo Salguero, Buenos Aires','-34.609192;-58.419967','1700',123455559,'04-11-2019','Pendiente'),
+	(NULL,15,'Apre','Gral Pacheco','Av. Constituyentes, Buenos Aires','-34.453331;-58.649052','1700',123456666,'05-11-2019','Pendiente'),
+	(NULL,16,'DonCuarto','Gral Pacheco','Olegario Victor Andrade 292, Buenos Aires','-34.459981;-58.627144','1700',123456777,'06-11-2019','Pendiente'),
+	(NULL,17,'SfaSA','Gral Pacheco','Gral. Pacheco, Buenos Aires','-34.460769;-58.630510','1700',123455789,'07-11-2019','Pendiente'),
+	(NULL,18,'Sams','Gral Pacheco','Chaco 97, Buenos Aires','-34.460601;-58.632559','1700',123446789,'08-11-2019','Pendiente'),
+	(NULL,19,'Renatas','Gral Pacheco','Buenos Aires 199, Buenos Aires','-34.455003;-58.627275','1700',121456789,'09-11-2019','Pendiente'),
+	(NULL,20,'SanRoque','Los Troncos del Talar','Independencia 498, Buenos Aires','-34.452915;-58.614250','1700',123256789,'10-11-2019','Pendiente'),
+	(NULL,21,'Resistir','Los Troncos del Talar','Cnel. Pringles 640, Buenos Aires','-34.450659;-58.615623','1700',123356789,'11-11-2019','Pendiente');
 	
 INSERT INTO Reportes (IdReporte, IdUsuario, IdMarcador) VALUES
 	(NULL,4,1),
 	(NULL,4,2);
 	
 INSERT INTO SolicitudAdopcion (IdAdopcion, IdUsuarioSolicitante, Descripcion, FechaCreacion, Estado) VALUES
-	(1,4,'Tengo espacio para cuidarlo','2019-11-03 00:00:00','Pendiente'),
-	(2,4,'Tengo espacio para cuidarlo','2019-11-04 00:00:00','Pendiente'),
-	(3,4,'Estoy disponible a cuidarlo','2019-11-05 00:00:00','Pendiente'),
-	(4,4,'Estoy disponible a cuidarlo','2019-11-06 00:00:00','Pendiente');
+	(1,4,'Tengo espacio para cuidarlo','02-11-2019','Pendiente'),
+	(2,4,'Tengo espacio para cuidarlo','03-11-2019','Pendiente'),
+	(3,4,'Estoy disponible a cuidarlo','04-11-2019','Pendiente'),
+	(4,4,'Estoy disponible a cuidarlo','05-11-2019','Pendiente');

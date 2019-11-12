@@ -206,7 +206,7 @@ namespace Mascotapp
             else if (imgMin1.Source == null&& imgMin2.Source == null&& imgMin3.Source == null)
             {
                 msg = "Falta ingresar al menos una foto.";
-            }else if (Int32.Parse(txtEdad.Text) < 0 || Int32.Parse(txtEdad.Text) > 30)
+            }else if (long.Parse(txtEdad.Text) < 0 || long.Parse(txtEdad.Text) > 30)
             {
                 msg = "Ingrese una edad valida.";
             }

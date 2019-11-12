@@ -47,11 +47,11 @@ namespace Mascotapp
                         RazonSocial=txtRazonSolial.Text,
                         CodigoPostal=txtCodigoP.Text,
                         Direccion=txtDireccion.Text,
-                        FechaCreacion=DateTime.UtcNow,
+                        FechaCreacion=DateTime.UtcNow.ToString("dd-MM-yyyy"),
                         IdRefugio=null,
                         IdUsuario=id,
                         Localidad=txtLocalidad.Text,
-                        Telefono=Int32.Parse(txtTel.Text),
+                        Telefono= long.Parse(txtTel.Text),
                         Ubicacion= currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString(),
                         Estado ="Pendiente"
                     };

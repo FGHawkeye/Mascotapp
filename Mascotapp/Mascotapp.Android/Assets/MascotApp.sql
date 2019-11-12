@@ -61,11 +61,11 @@ CREATE TABLE Marcadores (
 DROP TABLE IF EXISTS Preguntas;
 
 CREATE TABLE Preguntas (
-    Pregunta  VARCHAR (100) PRIMARY KEY
+    Pregunta  TEXT PRIMARY KEY
                             NOT NULL,
     IdUsuario INTEGER           REFERENCES Usuario (IdUsuario) 
                             NOT NULL,
-    Respuesta VARCHAR (100) 
+    Respuesta TEXT 
 );
 
 
