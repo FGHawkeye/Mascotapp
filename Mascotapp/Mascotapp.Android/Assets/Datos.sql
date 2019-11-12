@@ -43,8 +43,8 @@ INSERT INTO Adopciones(IdAdopcion,IdUsuario,IdTipoAnimal, Nombre,Detalle,Ubicaci
 	(NULL,7,2,'Ronin', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
 	(NULL,8,2,'Quimera', 'Nos mudamos y no podemos llevarla.', '-34.454929;-58.638872', 'Hembra', 1, true),
 	(NULL,9,1,'Chip', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
-	(NULL,10,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 1, true),
-	(NULL,11,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
+	(NULL,10,2,'Eureka', 'Desparasitada', '-34.454929;-58.638872', 'Hembra', 1, true),
+	(NULL,11,1,'Heinze', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
 	(NULL,12,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 1, true),
 	(NULL,13,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
 	(NULL,14,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 2, true),
@@ -130,6 +130,7 @@ INSERT INTO SolicitudAdopcion (IdAdopcion, IdUsuarioSolicitante, Descripcion, Fe
 
 
 /*
+If its work, try set VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" on yout ContentView
 <ContentPage Title="Map" Icon="IconMap.png" Style="{StaticResource PageStyle}"> 
 	<StackLayout x:Name="StackMapLayout" Orientation="Vertical" VerticalOptions="FillAndExpand"> 
 		<ActivityIndicator x:Name="ActivityMap" IsRunning="{Binding Busy}" IsVisible="{Binding Busy}" /> 
