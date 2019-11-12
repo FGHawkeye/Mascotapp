@@ -44,7 +44,7 @@
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="Medium" />
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+            <Setter Property="BackgroundColor" Value="DarkRed"/>
             <Setter Property="BorderRadius" Value="20" />
         </Style>
     </ContentPage.Resources>
@@ -86,7 +86,7 @@
                         </StackLayout>
                         <StackLayout Spacing="15" Padding="15">
                             <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion" IsReadOnly="True"/>
-                            <Button x:Name="btnReportar" Text="Reportar marcador"/>
+                            <Button x:Name="btnReportar" Text="Reportar marcador" />
                         </StackLayout>
                     </FlexLayout>
                 </Frame>

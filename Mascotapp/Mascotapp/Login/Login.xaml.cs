@@ -107,9 +107,6 @@ namespace Mascotapp.Login
                 await DisplayAlert("Error de autenticación", "Su cuenta o contraseña no se encuentran registradas", "Entendido");
                 txtContra.Text = "";
             }
-
-
-
         }
 
 

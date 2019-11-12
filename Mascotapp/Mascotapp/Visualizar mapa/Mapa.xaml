@@ -77,11 +77,15 @@
                 </Grid>
             </StackLayout>
 
-            <StackLayout VerticalOptions="FillAndExpand" Padding="5">
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Padding="5">
                 <Frame >
-                    <local:CustomMap Margin="-15" WidthRequest="400" HeightRequest="500" x:Name="map_Mapa" MapType="Street">
+                <ContentPage>
+                </ContentPage>
+                    <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                        <local:CustomMap Margin="-15" x:Name="map_Mapa" MapType="Street">
 
-                    </local:CustomMap>
+                        </local:CustomMap>
+                    </StackLayout>
                 </Frame>
             </StackLayout>
         </StackLayout>

@@ -74,7 +74,7 @@
                 <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
                     <FlexLayout Direction="Column">
                         <StackLayout Spacing="10">
-                            <Label Text="Datos de adopcion" FontSize="22" TextColor="Coral"/>
+                            <Label Text="Datos del usuario" FontSize="22" TextColor="Coral"/>
                         </StackLayout>
                         <StackLayout Padding="20" >
                             <Grid>
@@ -82,7 +82,46 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Nombre" VerticalOptions="Center"/>
+                                <Label Text="Nombre:" VerticalOptions="Center"/>
+                                <Label x:Name="txtNombreUsuario" VerticalOptions="Center" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Apellido:" VerticalOptions="Center"/>
+                                <Label x:Name="txtApellido" VerticalOptions="Center" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Telefono:" VerticalOptions="Center"/>
+                                <Label x:Name="txtTelefono" VerticalOptions="Center" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Email:" VerticalOptions="Center"/>
+                                <Label x:Name="txtEmail" VerticalOptions="Center" Grid.Column="1"></Label>
+                            </Grid>
+                    </FlexLayout>
+                </Frame>
+                <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
+                    <FlexLayout Direction="Column">
+                            <StackLayout Spacing="10">
+                                <Label Text="Datos de la adopcion" FontSize="22" TextColor="Coral"/>
+                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Nombre de la mascota:" VerticalOptions="Center"/>
                                 <Label x:Name="txtNombre" VerticalOptions="Center" Grid.Column="1"></Label>
                             </Grid>
                             <Grid>
@@ -90,7 +129,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Mascota" VerticalOptions="Center"/>
+                                <Label Text="Tipo de animal:" VerticalOptions="Center"/>
                                 <Label  Grid.Column="1" x:Name="lbAnimal" VerticalOptions="Center" >
                                 </Label>
                             </Grid>
@@ -99,7 +138,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Edad" VerticalOptions="Center"/>
+                                <Label Text="Edad del animal:" VerticalOptions="Center"/>
                                 <Grid Grid.Column="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -115,7 +154,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Sexo" VerticalOptions="Center"/>
+                                <Label Text="Sexo del animal:" VerticalOptions="Center"/>
                                 <Label  Grid.Column="1" VerticalOptions="Center" x:Name="lbSexo">
                                 </Label>
                             </Grid>
@@ -124,7 +163,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Descripcion" VerticalOptions="Center"/>
+                                <Label Text="Descripcion de la adopcion:" VerticalOptions="Center"/>
                                 <Label Grid.Column="1" VerticalOptions="Center" x:Name="txtDescripcion"/>
                             </Grid>
                             <Grid>
@@ -132,7 +171,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Mensaje" VerticalOptions="Center"/>
+                                <Label Text="Mensaje para el usuario:" VerticalOptions="Center"/>
                                 <Label Grid.Column="1" Text="Max: 250 caracteres." TextColor="LightGray" VerticalOptions="Center"/>
                             </Grid>
                         </StackLayout>

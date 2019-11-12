@@ -89,7 +89,7 @@ namespace Mascotapp
                 };
                 Label label = new Label
                 {
-                    Text = "No posee publicaciones!",
+                    Text = "No posee Notificaciones!",
                 };
                 label.HorizontalTextAlignment = TextAlignment.Center;
                 flexLayout.Children.Add(label);

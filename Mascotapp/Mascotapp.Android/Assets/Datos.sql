@@ -35,7 +35,25 @@ INSERT INTO Adopciones(IdAdopcion,IdUsuario,IdTipoAnimal, Nombre,Detalle,Ubicaci
 	(NULL,2,2,'Nuget', 'Vacunado', '-34.452355;-58.635193', 'Hembra', 4, true),
 	(NULL,2,1,'Oreo', 'Desparasitado', '-34.452877;-58.637864', 'Macho', 1, true),
 	(NULL,2,2,'Chips', 'Recien nacido', '-34.453549;-58.638089', 'Hembra', 0, true),
-	(NULL,2,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 3, true);
+	(NULL,2,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 3, true),
+	(NULL,3,2,'Max', 'Con vacunas, muy amigable', '-34.454929;-58.638872', 'Macho', 3, true),
+	(NULL,4,1,'Linlin', 'Sin vacunas', '-34.454929;-58.638872', 'Hembra', 0, true),
+	(NULL,5,1,'Tasmania', 'Tranquilo', '-34.454929;-58.638872', 'Macho', 2, true),
+	(NULL,6,2,'Elin', 'Vacunada', '-34.454929;-58.638872', 'Hembra', 1, true),
+	(NULL,7,2,'Ronin', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
+	(NULL,8,2,'Quimera', 'Nos mudamos y no podemos llevarla.', '-34.454929;-58.638872', 'Hembra', 1, true),
+	(NULL,9,1,'Chip', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
+	(NULL,10,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 1, true),
+	(NULL,11,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
+	(NULL,12,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 1, true),
+	(NULL,13,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
+	(NULL,14,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 2, true),
+	(NULL,15,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 3, true),
+	(NULL,16,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 0, true),
+	(NULL,17,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
+	(NULL,18,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 4, true),
+	(NULL,19,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 2, true),
+	(NULL,20,2,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 7, true),
 	
 INSERT INTO Imagenes (IdImagen, Imagen, Estado) VALUES
 	(NULL, '/storage/emulated/0/Mascotapp/gato1.jpg',true ), 
@@ -75,17 +93,17 @@ INSERT INTO Preguntas (Pregunta, IdUsuario, Respuesta) VALUES
 	('¿Tengo que registrarme?', 1, 'Si, para acceder a las funcionalidades totales de la app.'),
 	('¿En qué dispositivos funciona?', 1, 'Solo disponible en los dispositivos con S.O.Android .'),
 	('¿Cómo borro la aplicación?', 1, 'Manteniendo pulsado el icono hasta que empiece a moverse y pulsando la X que aparece en la esquina del icono, como con cualquier otra aplicación.'),
-	('¿Está la aplicación disponible en todos los países?', 1,'La app solo está disponible en Argentina. '),
-	('¿Qué hago si tengo problemas con la aplicación? ', 1, 'Si la aplicación se cierra inesperadamente o tienes cualquier otro problema, comprueba en primer lugar que tienes instalada la última versión. Si el problema persiste, puedes ponerte en contacto con el administrador a la dirección de email:  admin@mascotapp.com '),
+	('¿Está la aplicación disponible en todos los países?', 1,'La app solo está disponible en Argentina.'),
+	('¿Qué hago si tengo problemas con la aplicación?', 1, 'Si la aplicación se cierra inesperadamente o tienes cualquier otro problema, comprueba en primer lugar que tienes instalada la última versión. Si el problema persiste, puedes ponerte en contacto con el administrador a la dirección de email: admin@mascotapp.com '),
 	('¿Cómo accedo a la app?', 1, 'La app posee dos tipos de perfiles de accesos 1) Privado: usuario previamente registrado 2) Público: anónimo el cual tendrá acceso limitado a las prestaciones /funcionalidades.'),
-	('¿Cómo Registrarme?', 1,'Para registrarse se deberá completar   un formulario el cual solicitada datos personales, datos de contacto de quien suscribe. Se deberá seleccionar el nombre de usuario y password el cual permitirá loguearse a la app. En el caso de los refugios se procederá de igual forma, con la particularidad de la carga de los datos refieren al refugio declarado'),
-	('¿Cómo realizar una   Adopción? ', 1, 'El usuario se deberá loguear y a posterior ingresar a la opción de Agregar Adopción, deberá proceder a sacarle a una foto al animal y puede proceder aceptar dicha foto o puede rechazarla para tomar nueva foto si lo desea. A posterior deberá completar el formulario con los datos del animal a publicar.  Como paso final si está todo ok.  procederá a presionar el botón agregar para publicar dicha   adopción.'),
+	('¿Cómo Registrarme?', 1,'Para registrarse se deberá completar un formulario el cual solicitada datos personales, datos de contacto de quien suscribe. Se deberá seleccionar el nombre de usuario y password el cual permitirá loguearse a la app. En el caso de los refugios se procederá de igual forma, con la particularidad de la carga de los datos refieren al refugio declarado'),
+	('¿Cómo realizar una Adopción?', 1, 'El usuario se deberá loguear y a posterior ingresar a la opción de Agregar Adopción, deberá proceder a sacarle a una foto al animal y puede proceder aceptar dicha foto o puede rechazarla para tomar nueva foto si lo desea. A posterior deberá completar el formulario con los datos del animal a publicar. Como paso final si está todo ok. procederá a presionar el botón agregar para publicar dicha adopción.'),
 	('¿Cómo marcar un animal en situación de calle?', 1, 'Para reportar un animal en la calle, se deberá ingresar a la opción agregar marcador y se deberá proceder a cargar los datos de referencia del animal. Luego de aceptado el registro dicho marcador se visualizará en el mapa con el color Rojo. '),
-	('¿Solicitar adopciones? ', 1,'Al momento de querer realizar una solicitud de adopción, el usuario deberá previamente estar logueado. A través de la opción de solicitud de adopción se realizará una petición a quien publicó un animal.'),
-	('¿Notificaciones? ', 1, 'A través de notificaciones el usuario podrá disponer de todos los eventos recibidos como aquellos que genere el mismo usuario. '),
+	('¿Solicitar adopciones?', 1,'Al momento de querer realizar una solicitud de adopción, el usuario deberá previamente estar logueado. A través de la opción de solicitud de adopción se realizará una petición a quien publicó un animal.'),
+	('¿Notificaciones?', 1, 'A través de notificaciones el usuario podrá disponer de todos los eventos recibidos como aquellos que genere el mismo usuario.'),
 	('¿Cómo denunciar un marcador?', 1,'En el caso que un usuario detecte una marcadora indebida, que no cumple con las políticas de resguardo y publicación, podrá proceder a reportar dicho marcador. Cuando la app recibe tres eventos de reporte de marcador, el mismo se baja de la visualización (Mapa)'),
-	('¿Cómo hago para visualizar Animales en Adopción o que se encuentran en la calle?', 1, 'Se ingresa al mapa   y se debe aplicar filtro, sobre el cual podrá seleccionar Marcadores que se corresponde con los animales reportados en la calle o en su defecto podrá seleccionar aquellos animales que están en adopción.'),
-	('¿Cómo hago para visualizar de Refugios de Animales? ', 1, 'Se ingresa al mapa   y se debe aplicar filtro, sobre el cual podrá seleccionar Refugios de animales disponibles.');
+	('¿Cómo hago para visualizar Animales en Adopción o que se encuentran en la calle?', 1, 'Se ingresa al mapa y se debe aplicar filtro, sobre el cual podrá seleccionar Marcadores que se corresponde con los animales reportados en la calle o en su defecto podrá seleccionar aquellos animales que están en adopción.'),
+	('¿Cómo hago para visualizar de Refugios de Animales?', 1, 'Se ingresa al mapa y se debe aplicar filtro, sobre el cual podrá seleccionar Refugios de animales disponibles.');
 
 	
 INSERT INTO Refugio (IdRefugio, IdUsuario, RazonSocial, Localidad, Direccion, Ubicacion, CodigoPostal, Telefono, FechaCreacion, Estado) VALUES
@@ -109,3 +127,15 @@ INSERT INTO SolicitudAdopcion (IdAdopcion, IdUsuarioSolicitante, Descripcion, Fe
 	(2,4,'Tengo espacio para cuidarlo','03-11-2019','Pendiente'),
 	(3,4,'Estoy disponible a cuidarlo','04-11-2019','Pendiente'),
 	(4,4,'Estoy disponible a cuidarlo','05-11-2019','Pendiente');
+
+
+/*
+<ContentPage Title="Map" Icon="IconMap.png" Style="{StaticResource PageStyle}"> 
+	<StackLayout x:Name="StackMapLayout" Orientation="Vertical" VerticalOptions="FillAndExpand"> 
+		<ActivityIndicator x:Name="ActivityMap" IsRunning="{Binding Busy}" IsVisible="{Binding Busy}" /> 
+		<Label x:Name="LabelNoPos" VerticalOptions="Center" IsVisible="false" HorizontalOptions="Center" /> 
+		<local:CustomMap x:Name="VesselMap" IsShowingUser="false" IsVisible="false" MapType="Hybrid" /> 
+	</StackLayout> 
+</ContentPage>
+
+*/
