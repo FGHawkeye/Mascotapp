@@ -17,7 +17,7 @@ namespace Domain.Entidades
         public string Ubicacion { get; set; }
         public string CodigoPostal { get; set; }
         public long Telefono { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public string FechaCreacion { get; set; }
         public string Estado { get; set; }
     }
 }

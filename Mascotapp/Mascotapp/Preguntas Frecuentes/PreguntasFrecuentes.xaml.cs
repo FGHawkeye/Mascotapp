@@ -10,28 +10,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mascotapp.NavigationMenu;
 
-/*
-
-<StackLayout x:Name="PreguntasR" Padding="0" BackgroundColor="White" Spacing="0">
-    <StackLayout x:Name="Test" Padding="10" BackgroundColor="Accent" HorizontalOptions="FillAndExpand">
-        <StackLayout.GestureRecognizers>
-            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Title_Clicked" />
-        </StackLayout.GestureRecognizers>
-        <Label x:Name="TitleText" Text="{Binding Title}" />
-    </StackLayout>
-    <StackLayout x:Name="ExpandableLayout" Padding="0" HorizontalOptions="FillAndExpand" Opacity="0">
-        <StackLayout x:Name="ExpandableContent" Padding="10">
-            <Label x:Name="ExpandableText" Text="{Binding Text}" />
-        </StackLayout>
-    </StackLayout>
-</StackLayout>
-
-*/
 namespace Mascotapp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PreguntasFrecuentes : ContentPage
-    {
+    {/*
         public static readonly BindableProperty TitleProperty = BindableProperty.Create(
             propertyName: "Title",
             returnType: typeof(string),
@@ -42,7 +25,7 @@ namespace Mascotapp
             returnType: typeof(string),
             declaringType: typeof(PreguntasFrecuentes),
             defaultValue: default(string));
-
+        */
         private bool _IsExpanding;
         private ServicioPreguntasFrecuentes servicioPreguntas = new ServicioPreguntasFrecuentes();
         public PreguntasFrecuentes()
@@ -84,9 +67,16 @@ namespace Mascotapp
                     grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
                     grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
 
+                    Label ExpandableText = new Label
+                    {
+                        Margin = -15,
+                        Text = item.Respuesta
+                    };
+
                     Label lbPregunta = new Label
                     {
-                        Text = item.Pregunta
+                        Text = item.Pregunta,
+                        ClassId=ExpandableText.Height.ToString()
                     };
                     Label lbMostrar = new Label
                     {
@@ -103,6 +93,7 @@ namespace Mascotapp
                     {
                         Padding = 0,
                         BackgroundColor = Color.LightGray,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
                         Opacity = 0,
                         Spacing = 0
                     };
@@ -112,12 +103,7 @@ namespace Mascotapp
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         Padding = 0,
                     };
-
-                    Label ExpandableText = new Label
-                    {
-                        Margin=-15,
-                        Text = item.Respuesta
-                    };
+                    
                     ExpandableLayout.HeightRequest = 0;
                     //ExpandableContent.Children.Add(ExpandableText);
                     frameStack.Content = ExpandableText;
@@ -142,16 +128,15 @@ namespace Mascotapp
             StackLayout preguntaLayout = (StackLayout)Content.Children[0];
             Grid grid = (Grid)preguntaLayout.Children[0];
             Label label1 = (Label)grid.Children[0];
+            Label label2 = (Label)grid.Children[1];
 
             if (!_IsExpanding)
             {
                 _IsExpanding = true;
-                var height = Content.Height;
-                if (ExpandableLayout.HeightRequest>0)
+                var height = Int32.Parse(label2.ClassId);
+                if (ExpandableLayout.HeightRequest>0|| ExpandableLayout.HeightRequest==-1)
                 {
-                    //label1.Text = "v";
                     label1.Text = " +";
-                    //label1.FontSize = 18;
                     label1.FontSize = 20;
                     var animation = new Animation(v => ExpandableLayout.HeightRequest = v, height, 0);
                     await ExpandableLayout.FadeTo(0, 250);
@@ -159,9 +144,7 @@ namespace Mascotapp
                 }
                 else
                 {
-                    //label1.Text = "^";
                     label1.Text = " -";
-                    //label1.FontSize = 25;
                     label1.FontSize = 25;
                     var animation = new Animation(v => ExpandableLayout.HeightRequest = v, 0, height);
                     animation.Commit(this, "ExpandSize", 16, 250);
