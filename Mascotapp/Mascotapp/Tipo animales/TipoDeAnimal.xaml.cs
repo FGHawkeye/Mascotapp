@@ -14,31 +14,47 @@ namespace Mascotapp.Tipo_animales
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TipoDeAnimal : ContentPage
     {
+        private int idTipo = 0;
+
         private ServicioTipoAnimal servicieTipoAnimal = new ServicioTipoAnimal();
         private List<Domain.Entidades.TipoAnimal> _lstTipoAnimal;
 
-        public TipoDeAnimal()
+        public TipoDeAnimal(int id)
         {
             InitializeComponent();
-            CargarControles();
-            CargarElementos();
+            CargarControles(id);
+            //CargarElementos(id);
         }
 
-        void CargarControles()
+        void CargarControles(int id)
         {
-            CargarTipoAnimales();
+            idTipo = id;
+            TipoAnimal tipoAnimal = servicieTipoAnimal.ObtenerTipoAnimal(id);
+            //List<TipoAnimal> tipoAnimals = servicieTipoAnimal.ObtenerTipoAnimales();
+            /*foreach (ImagenXAdopcion item in imagenXAdopcions)
+            {
+                imagenes.Add(servicioImagenes.ObtenerImagen(item.IdImagen));
+            }
+            CargarImagenes();*/
+            //CargarAdopcion(adopcion);
+            CargarElementos();
+
+            CargarTipoAnimales(tipoAnimal);
         }
 
-        void CargarTipoAnimales()
+        void CargarTipoAnimales(TipoAnimal tipoAnimal)
         {
             /*_lstTipoAnimal = servicieTipoAnimal.ObtenerTipoAnimales();
             pckTipoDeAnimal.ItemsSource = _lstTipoAnimal;*/
 
-            _lstTipoAnimal = servicieTipoAnimal.ObtenerTipoAnimales();
+            /*_lstTipoAnimal = servicieTipoAnimal.ObtenerTipoAnimales();
             foreach (TipoAnimal tipo in _lstTipoAnimal)
             {
                 pckTipoDeAnimal.Items.Add(tipo.Descripcion);
-            }
+            }*/
+
+            List<TipoAnimal> _lstTipoAnimal = servicieTipoAnimal.ObtenerTipoAnimales();
+            lbAnimal.Text = _lstTipoAnimal.Where(X => X.IdTipoAnimal == tipoAnimal.IdTipoAnimal).Select(X => X.Descripcion).FirstOrDefault();
         }
 
         void CargarElementos()
@@ -54,7 +70,8 @@ namespace Mascotapp.Tipo_animales
 
         private void btnModificar_Clicked(object sender, EventArgs e)
         {
-            ((NavigationPage)this.Parent).PushAsync(new ModificarTipo());
+           ((NavigationPage)this.Parent).PushAsync(new ModificarTipo());
+            //await App.MasterD.Detail.Navigation.PushAsync(new ModificarTipo(IdTipoAnimal));
         }
     }
 }

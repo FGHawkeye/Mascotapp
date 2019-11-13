@@ -44,18 +44,25 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label Text="Mascota"/>
-                        <Picker  Grid.Column="1" Title="Tipo de animal" x:Name="pckTipoAnimal"/>
+                        <Picker  Grid.Column="1" Title="Seleccione" x:Name="pckTipoAnimal"/>
                     </Grid>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label Text="Descripcion"/>
-                        <Label Grid.Column="1" Text="Max: 250 caracteres."/>
+                        <Entry x:Name="txtTipoAnimal" MaxLength="10" Grid.Column="1"></Entry>
                     </Grid>
-                    <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="1" Text="Max: 10 caracteres."/>
+                    </Grid>
 
                 </FlexLayout>
             </Frame>

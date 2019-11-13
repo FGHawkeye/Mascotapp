@@ -37,16 +37,18 @@
             <Frame WidthRequest="300" HeightRequest="400">
                 <FlexLayout Direction="Column">
 
-                    <Grid>
+                    <!--<Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label Text="Mascota"/>
                         <Picker  Grid.Column="1" Title="Tipo de animal" x:Name="pckTipoDeAnimal" />
-                    </Grid>
+                    </Grid>-->
 
-                    <Grid>
+                    <Label  Grid.Column="1" x:Name="lbAnimal" ></Label>
+
+                    <!--<Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -54,7 +56,7 @@
                         <Label Text="Descripcion"/>
                         <Label Grid.Column="1" Text="Max: 250 caracteres."/>
                     </Grid>
-                    <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtNuevaDescripcion" IsEnabled="False"/>
+                    <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtNuevaDescripcion" IsEnabled="False"/>-->
 
                 </FlexLayout>
             </Frame>

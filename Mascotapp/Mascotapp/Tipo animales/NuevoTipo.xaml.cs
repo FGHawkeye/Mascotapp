@@ -51,11 +51,19 @@ namespace Mascotapp.Tipo_animales
                 {
                     var tipoAnimal = new Domain.Entidades.TipoAnimal();
                     tipoAnimal.IdTipoAnimal = 1; // NUEVO TIPO, BUSCAR EN TODA LA BD Y AGREGAR UNOS MAS
-                    tipoAnimal.Descripcion = txtNuevaDescripcion.Text;
-                    serviceTipoAnimal.GuardarTipoAnimal(tipoAnimal);
+                    if (txtNuevoTipoAnimal.Text == txtNuevoTipoAnimal2.Text)
+                    {
+                        tipoAnimal.Descripcion = txtNuevoTipoAnimal.Text;
+                        serviceTipoAnimal.GuardarTipoAnimal(tipoAnimal);
 
-                    await DisplayAlert("Tipo de Animal", "Se agrego el Tipo de Animal correctamente!", "OK");
-                    await App.MasterD.Detail.Navigation.PopToRootAsync();
+                        await DisplayAlert("Tipo de Animal", "¡Se agrego el Tipo de Animal correctamente!", "OK");
+                        await App.MasterD.Detail.Navigation.PopToRootAsync();
+                    }
+                    else
+                    {
+                        txtNuevoTipoAnimal2.Text = "";
+                        await DisplayAlert("Tipo de Animal", "Los textos no son igual.", "OK");
+                    }
                 }
                 else
                 {
@@ -72,11 +80,11 @@ namespace Mascotapp.Tipo_animales
         public bool ValidarForm()
         {
             bool validate = true;
-            /*if (pckTipoAnimal.SelectedItem == null)
+            if (txtNuevoTipoAnimal.Text == "" || txtNuevoTipoAnimal.Text == null)
             {
                 validate = false;
             }
-            else */if(txtNuevaDescripcion.Text == "" || txtNuevaDescripcion.Text == null)
+            else if(txtNuevoTipoAnimal2.Text == "" || txtNuevoTipoAnimal2.Text == null)
             {
                 validate = false;
             }

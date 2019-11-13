@@ -45,31 +45,37 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="Id"/>
-                            <Entry x:Name="txtIDTipoAnimal" Placeholder="1 ID" Grid.Column="1"></Entry>
-                        </Grid>
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
                             <Label Text="Mascota"/>
-                            <Entry x:Name="txtNuevoTipoAnimal" Placeholder="Nuevo Tipo de Mascota" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtNuevoTipoAnimal" MaxLength="10" Placeholder="Nuevo Tipo de Mascota" Grid.Column="1"></Entry>
                             <!--<Picker  Grid.Column="1" Title="Tipo de animal" x:Name="pckTipoAnimal" />-->
                         </Grid>
 
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="1" Text="Max: 10 caracteres."/>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Repita Mascota"/>
+                            <Entry x:Name="txtNuevoTipoAnimal2" MaxLength="10" Placeholder="Repita" Grid.Column="1"></Entry>
+                        </Grid>
+
+                        <!-- <Grid>
+                            <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Text="Descripcion"/>
-                            <Label Grid.Column="1"
-                               Text="Max: 250 caracteres."
-                               />
+                            <Label Text="Repita Mascota"/>
+                            <Label Grid.Column="1" Text="Max: 10 caracteres."/>
                         </Grid>
-                        <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtNuevaDescripcion"/>
+                        <Editor Text="" MaxLength="10" AutoSize="TextChanges" x:Name="txtNuevoTipoAnimal2"/>>-->
                         
                     </FlexLayout>
                 </Frame>

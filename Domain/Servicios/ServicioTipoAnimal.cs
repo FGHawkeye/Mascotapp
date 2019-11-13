@@ -42,6 +42,10 @@ namespace Domain.Servicios
             return dbConnection.Query<TipoAnimal>(query).FirstOrDefault();
         }
 
+        public List<TipoAnimal> ObtenerTipoAnima(int id)
+        {
+            return dbConnection.Query<TipoAnimal>("Select * From [TipoAnimal]").Where(x => x.IdTipoAnimal == id).ToList();
+        }
     }
 }
 

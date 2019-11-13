@@ -23,8 +23,9 @@ namespace Mascotapp.Tipo_animales
         public ModificarTipo()
         {
             InitializeComponent();
-            CargarControles();
             CargarEventos();
+            CargarControles();
+            
         }
 
         void CargarEventos()
@@ -46,7 +47,9 @@ namespace Mascotapp.Tipo_animales
             foreach (TipoAnimal tipo in _lstTipoAnimal)
             {
                 pckTipoAnimal.Items.Add(tipo.Descripcion);
+                
             }
+            txtTipoAnimal.Text = pckTipoAnimal.SelectedItem.ToString();
         }
 
         private async void btnGuardar_Clicked(object sender, EventArgs e)
@@ -57,7 +60,7 @@ namespace Mascotapp.Tipo_animales
                 {
                     var tipoAniaml = new Domain.Entidades.TipoAnimal();
                     tipoAniaml.IdTipoAnimal = 1;//pckTipoAnimal.SelectedItem.
-                    tipoAniaml.Descripcion = txtDescripcion.Text;
+                    tipoAniaml.Descripcion = txtTipoAnimal.Text;
                     serviceTipoAnimal.GuardarModificarTipoAnimal(tipoAniaml);
 
                     await DisplayAlert("Tipo de Animal", "Se modifico el Tipo de Animal correctamente!", "OK");
@@ -83,7 +86,7 @@ namespace Mascotapp.Tipo_animales
                 validate = false;
             }
             else */
-            if (txtDescripcion.Text == "" || txtDescripcion.Text == null)
+            if (txtTipoAnimal.Text == "" || txtTipoAnimal.Text == null)
             {
                 validate = false;
             }
