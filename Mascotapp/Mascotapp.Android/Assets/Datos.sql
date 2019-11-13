@@ -53,7 +53,7 @@ INSERT INTO Adopciones(IdAdopcion,IdUsuario,IdTipoAnimal, Nombre,Detalle,Ubicaci
 	(NULL,17,1,'Eros', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
 	(NULL,18,2,'Lili', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 4, true),
 	(NULL,19,1,'Lennon', 'Vacunado', '-34.454929;-58.638872', 'Macho', 2, true),
-	(NULL,20,1,'Selina', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 7, true),
+	(NULL,20,1,'Selina', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 7, true);
 	
 INSERT INTO Imagenes (IdImagen, Imagen, Estado) VALUES
 	(NULL, '/storage/emulated/0/Mascotapp/gato1.jpg',true ), 
