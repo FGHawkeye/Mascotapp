@@ -121,7 +121,7 @@ INSERT INTO Preguntas (Pregunta, IdUsuario, Respuesta) VALUES
 	('¿Notificaciones?', 1, 'A través de notificaciones el usuario podrá disponer de todos los eventos recibidos como aquellos que genere el mismo usuario.'),
 	('¿Cómo denunciar un marcador?', 1,'En el caso que un usuario detecte una marcadora indebida, que no cumple con las políticas de resguardo y publicación, podrá proceder a reportar dicho marcador. Cuando la app recibe tres eventos de reporte de marcador, el mismo se baja de la visualización (Mapa)'),
 	('¿Cómo hago para visualizar Animales en Adopción o que se encuentran en la calle?', 1, 'Se ingresa al mapa y se debe aplicar filtro, sobre el cual podrá seleccionar Marcadores que se corresponde con los animales reportados en la calle o en su defecto podrá seleccionar aquellos animales que están en adopción.'),
-	('¿Cómo hago para visualizar de Refugios de Animales?', 1, 'Se ingresa al mapa y se debe aplicar filtro, sobre el cual podrá seleccionar Refugios de animales disponibles.');
+	('¿Cómo hago para visualizar de Refugios de Animales?', 1, 'Se singresa al mapa y se debe aplicar filtro, sobre el cual podrá seleccionar Refugios de animales disponibles.');
 
 	
 INSERT INTO Refugio (IdRefugio, IdUsuario, RazonSocial, Localidad, Direccion, Ubicacion, CodigoPostal, Telefono, FechaCreacion, Estado) VALUES
