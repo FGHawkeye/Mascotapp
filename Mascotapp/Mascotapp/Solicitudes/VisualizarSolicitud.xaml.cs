@@ -23,6 +23,7 @@ namespace Mascotapp
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
         private ServicioImagenes servicioImagenes = new ServicioImagenes();
+        private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
         private ServicioImagenXAdopcion servicioImagenXAdopcion = new ServicioImagenXAdopcion();
         private ServicioSolicitudAdopcion servicioSolicitudAdopcion = new ServicioSolicitudAdopcion();
 
@@ -50,6 +51,11 @@ namespace Mascotapp
         public void CargarAdopcion(Adopciones adopcion)
         {
             List<TipoAnimal> _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            Usuario usuario = servicioUsuarios.ObtenerUsuario(adopcion.IdUsuario);
+            txtNombreUsuario.Text=usuario.Nombre;
+            txtApellido.Text=usuario.Apellido;
+            txtEmail.Text=usuario.Email;
+            txtTelefono.Text=usuario.Telefono.ToString();
             txtEdad.Text = adopcion.Edad.ToString();
             txtDescripcion.Text = adopcion.Detalle;
             txtNombre.Text = adopcion.Nombre;

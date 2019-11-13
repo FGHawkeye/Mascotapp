@@ -1,23 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.Visualizar_mapa.Mapa"
-             xmlns:local="clr-namespace:Domain.MapRenderer;assembly=Domain">
-
-
-    <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Logeado" Text="Ingresar" Clicked="Logeado_Clicked"/>
-        
-    </ContentPage.ToolbarItems>
-
+             x:Class="Mascotapp.AgregarTipoAnimal"
+             Title="Tipo de Animal">
 
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
             <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
         </Style>
 
         <Style TargetType="Label">
@@ -56,33 +51,32 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-
-        <StackLayout>
+        <StackLayout BackgroundColor="WhiteSmoke" Orientation ="Vertical">
             <StackLayout>
-                <Picker Title="Filtrar" x:Name="pckFiltro">
-                    <Picker.Items>
-                        <x:String>Marcadores</x:String>
-                        <x:String>Adopciones</x:String>
-                        <x:String>Refugios</x:String>
-                    </Picker.Items>
-                </Picker>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Button x:Name="btnFiltro" Text="Aplicar filtro" />
-                    <Button x:Name="btnQuitarFiltro" Text="Quitar filtro" Grid.Column="1"/>
-                </Grid>
-            </StackLayout>
-
-            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
-                <local:CustomMap x:Name="map_Mapa" MapType="Street">
-
-                </local:CustomMap>
+                <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
+                    <Label Text="Nuevo Tipo de Animal" HorizontalOptions="Center" FontAttributes="Bold" />
+                </Frame>
+                <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
+                    <FlexLayout Direction="Column">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Ingrese el nuevo tipo de animal:"/>
+                            <Entry x:Name="txtTipoAnimal" Placeholder="Tipo de animal" MaxLength="12" Grid.Column="1"></Entry>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnAgregar" Text="Agregar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
+                        </Grid>
+                    </FlexLayout>
+                </Frame>
             </StackLayout>
         </StackLayout>
-        
     </ContentPage.Content>
 </ContentPage>

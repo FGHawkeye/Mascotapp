@@ -11,7 +11,7 @@ CREATE TABLE Adopciones (
     IdTipoAnimal INTEGER           REFERENCES TipoAnimal (IdTipoAnimal) 
                                NOT NULL,
     Nombre       VARCHAR (50),
-    Detalle      VARCHAR (50),
+    Detalle      VARCHAR (250),
     Ubicacion    VARCHAR (100),
     Sexo         VARCHAR (50),
     Edad         INT,
@@ -52,7 +52,7 @@ CREATE TABLE Marcadores (
     IdImagen     INTEGER           NOT NULL
                                REFERENCES Imagenes (IdImagen),
     Ubicacion    VARCHAR (100),
-    Descripcion  VARCHAR (100),
+    Descripcion  VARCHAR (250),
     Estado       VARCHAR (50)
 );
 
@@ -61,11 +61,11 @@ CREATE TABLE Marcadores (
 DROP TABLE IF EXISTS Preguntas;
 
 CREATE TABLE Preguntas (
-    Pregunta  VARCHAR (100) PRIMARY KEY
+    Pregunta  TEXT PRIMARY KEY
                             NOT NULL,
     IdUsuario INTEGER           REFERENCES Usuario (IdUsuario) 
                             NOT NULL,
-    Respuesta VARCHAR (100) 
+    Respuesta TEXT 
 );
 
 
@@ -108,7 +108,7 @@ CREATE TABLE SolicitudAdopcion (
                                        NOT NULL,
     IdUsuarioSolicitante INTEGER           REFERENCES Usuario (IdUsuario) 
                                        NOT NULL,
-    Descripcion          VARCHAR (100),
+    Descripcion          VARCHAR (250),
     FechaCreacion        DATETIME,
     Estado               BOOLEAN,
     PRIMARY KEY(IdAdopcion,IdUsuarioSolicitante)
