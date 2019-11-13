@@ -42,7 +42,7 @@ namespace Mascotapp
             pckAnimal.SelectedIndexChanged += Pck_Clicked;
         }
 
-        private void Agregar_Clicked(object sender, EventArgs e)
+        private async void Agregar_Clicked(object sender, EventArgs e)
         {
             App.MasterD.IsPresented = false;
             await App.MasterD.Detail.Navigation.PushAsync(new AgregarTipoAnimal());
@@ -91,7 +91,7 @@ namespace Mascotapp
             {
                 msg = "Falta ingresar una descripcion.";
             }
-            else if(servicioTipoAnimal.ComprobarTipoAnimal(txtTipoAnimal.Text)>0)
+            else if(serviceTipoAnimal.ComprobarTipoAnimal(txtTipoAnimal.Text)>0)
             {
                 msg="El tipo de animal ingresado ya existe.";
             }

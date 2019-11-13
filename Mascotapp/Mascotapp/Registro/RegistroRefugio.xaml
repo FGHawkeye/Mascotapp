@@ -68,7 +68,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Ingrese su razon social:"/>
-                            <Entry x:Name="txtRazonSolial" Placeholder="Razon Social" MaxLenght="30" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtRazonSolial" Placeholder="Razon Social" MaxLength="30" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -76,7 +76,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Direccion:"/>
-                            <Entry x:Name="txtDireccion" Placeholder="Direccion" MaxLenght="30" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtDireccion" Placeholder="Direccion" MaxLength="50" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -84,7 +84,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Localidad:"/>
-                            <Entry x:Name="txtLocalidad" Placeholder="Localidad" MaxLenght="30" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtLocalidad" Placeholder="Localidad" MaxLength="20" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -92,7 +92,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Ingrese el codigo postal:"/>
-                            <Entry x:Name="txtCodigoP"  Keyboard="Numeric" Placeholder="Codigo Postal" MaxLenght="6" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtCodigoP"  Keyboard="Numeric" Placeholder="Codigo Postal" MaxLength="4" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -100,7 +100,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Ingrese un numero de contacto:"/>
-                            <Entry x:Name="txtTel" Keyboard="Numeric" Placeholder="1512345678" MaxLenght="12" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtTel" Keyboard="Numeric" Placeholder="1512345678" MaxLength="12" Grid.Column="1"></Entry>
                         </Grid>
                         <StackLayout Spacing="20">
                             <Label></Label>

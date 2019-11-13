@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Domain.MapRenderer;
+using Plugin.Geolocator;
+using Xamarin.Forms.Maps;
 
 namespace Mascotapp
 {
@@ -39,8 +42,8 @@ namespace Mascotapp
             //txtFecha.Text = refugio.FechaCreacion.ToString("YYYY-MM-DD HH:MM:SS.SSS");
             txtFecha.Text = refugio.FechaCreacion.ToString();
             txtTelefono.Text = usuario.Telefono.ToString();
-            CargarMapa(refugio.Ubicacion);
-            CargarRefugio(refugio);
+            //CargarMapa(refugio.Ubicacion);
+            //CargarRefugio(refugio);
         }
 
         public void btnAceptar_Clicked(object sender, EventArgs e)
@@ -61,45 +64,45 @@ namespace Mascotapp
             await App.MasterD.Detail.Navigation.PopToRootAsync();
         }
 
-        private async void CargarMapa(string ubicacion)
-        {
-            //map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
-            //        new Xamarin.Forms.Maps.Position(-34.456668, -58.624652),
-            //        Xamarin.Forms.Maps.Distance.FromKilometers(5)
-            //    )
-            //);
-            var arrayUbicacion = ubicacion.Split(';');
-            map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
-                    new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])),
-                    Xamarin.Forms.Maps.Distance.FromKilometers(5)
-                )
-            );
-            map_Mapa.IsShowingUser = true;
-            map_Mapa.CustomPins = new List<CustomPin>();
-        }
+        //private void CargarMapa(string ubicacion)
+        //{
+        //    //map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
+        //    //        new Xamarin.Forms.Maps.Position(-34.456668, -58.624652),
+        //    //        Xamarin.Forms.Maps.Distance.FromKilometers(5)
+        //    //    )
+        //    //);
+        //    var arrayUbicacion = ubicacion.Split(';');
+        //    map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
+        //            new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])),
+        //            Xamarin.Forms.Maps.Distance.FromMeters(50)
+        //        )
+        //    );
+        //    map_Mapa.IsShowingUser = true;
+        //    map_Mapa.CustomPins = new List<CustomPin>();
+        //}
 
-        private void CargarRefugio(Refugio refugio)
-        {
-            var pin = GenerarMarcador(refugio.RazonSocial, refugio.Ubicacion, "Refugio", refugio.IdRefugio.Value);
-            map_Mapa.CustomPins.Add(pin);
-            map_Mapa.Pins.Add(pin);
-        }
+        //private void CargarRefugio(Refugio refugio)
+        //{
+        //    var pin = GenerarMarcador(refugio.RazonSocial, refugio.Ubicacion, "Refugio", refugio.IdRefugio.Value);
+        //    map_Mapa.CustomPins.Add(pin);
+        //    map_Mapa.Pins.Add(pin);
+        //}
 
 
-        private CustomPin GenerarMarcador(string descripcion, string ubicacion, string tipoMarcador, int id, string iconPath = "")
-        {
-            //Primero siempre latitud
-            var arrayUbicacion = ubicacion.Split(';');
+        //private CustomPin GenerarMarcador(string descripcion, string ubicacion, string tipoMarcador, int id, string iconPath = "")
+        //{
+        //    //Primero siempre latitud
+        //    var arrayUbicacion = ubicacion.Split(';');
 
-            var pin = new CustomPin()
-            {
-                Position = new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])),
-                Label = descripcion,
-                MarkerType = tipoMarcador,
-                IdPin = id,
-                IconPath = iconPath
-            };
-            return pin;
-        }
+        //    var pin = new CustomPin()
+        //    {
+        //        Position = new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])),
+        //        Label = descripcion,
+        //        MarkerType = tipoMarcador,
+        //        IdPin = id,
+        //        IconPath = iconPath
+        //    };
+        //    return pin;
+        //}
     }
 }

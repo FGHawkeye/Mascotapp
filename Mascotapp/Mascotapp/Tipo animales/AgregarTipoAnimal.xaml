@@ -51,9 +51,9 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#E5E5E5" Orientation ="Vertical">
+        <StackLayout BackgroundColor="WhiteSmoke" Orientation ="Vertical">
             <StackLayout>
-                <Frame Frame WidthRequest="300" VerticalOptions="StartAndExpand">
+                <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
                     <Label Text="Nuevo Tipo de Animal" HorizontalOptions="Center" FontAttributes="Bold" />
                 </Frame>
                 <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
@@ -64,7 +64,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Ingrese el nuevo tipo de animal:"/>
-                            <Entry x:Name="txtTipoAnimal" Placeholder="Tipo de animal" MaxLenght="12" Grid.Column="1"></Entry>
+                            <Entry x:Name="txtTipoAnimal" Placeholder="Tipo de animal" MaxLength="12" Grid.Column="1"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>

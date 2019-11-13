@@ -26,7 +26,7 @@ namespace Mascotapp
 
         public void CargarEventos()
         {
-            btnRegistrar.Clicked += Registrar_Clicked;
+            btnAgregar.Clicked += Registrar_Clicked;
             btnCancelar.Clicked += BtnCancelar_Clicked;
         }
 
@@ -58,7 +58,7 @@ namespace Mascotapp
         private string ValidarForm()
         {
             string msg="";
-            if(txtRazonSolial.Text==null||txtRazonSolial.Text==""){
+            if(txtTipoAnimal.Text==null|| txtTipoAnimal.Text==""){
                 msg="Falta completar el tipo de animal";
             }else if(servicioTipoAnimal.ComprobarTipoAnimal(txtTipoAnimal.Text)>0){
                 msg="El tipo de animal ingresado ya existe.";

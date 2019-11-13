@@ -84,7 +84,22 @@ namespace Mascotapp
             }else if(txtTel.Text==null||txtTel.Text==""){
                 msg="Falta completar el numero de contacto";
             }else if(servicioRefugio.ObtenerRazonSocial(txtRazonSolial.Text)>0){
-                msg="La Razon Social seleccionada ya existe";
+                msg= "La Razon Social ingresada ya existe";
+            }else if (txtRazonSolial.Text.Length < 2)
+            {
+                msg = "La Razon Social ingresada debe tener como minimo dos letras.";
+            }else if (txtDireccion.Text.Length < 1)
+            {
+                msg = "La direccion ingresada es muy corta.";
+            }else if (txtLocalidad.Text.Length < 1)
+            {
+                msg = "La localidad ingresada es muy corta.";
+            }else if (txtCodigoP.Text.Length < 1)
+            {
+                msg = "El codigo postal ingresada es muy corto.";
+            }else if (txtTel.Text.Length < 8)
+            {
+                msg = "El numero de telefono debe contener al menos 8 digitos.";
             }
             return msg;
         }

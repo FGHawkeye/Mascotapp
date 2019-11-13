@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Mascotapp.VisualizarSolicitud">
+    
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
@@ -109,72 +110,72 @@
                                 <Label Text="Email:" VerticalOptions="Center"/>
                                 <Label x:Name="txtEmail" VerticalOptions="Center" Grid.Column="1"></Label>
                             </Grid>
+                        </StackLayout>
                     </FlexLayout>
                 </Frame>
                 <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
                     <FlexLayout Direction="Column">
-                            <StackLayout Spacing="10">
-                                <Label Text="Datos de la adopcion" FontSize="22" TextColor="Coral"/>
-                            </StackLayout>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Nombre de la mascota:" VerticalOptions="Center"/>
-                                <Label x:Name="txtNombre" VerticalOptions="Center" Grid.Column="1"></Label>
-                            </Grid>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Tipo de animal:" VerticalOptions="Center"/>
-                                <Label  Grid.Column="1" x:Name="lbAnimal" VerticalOptions="Center" >
-                                </Label>
-                            </Grid>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Edad del animal:" VerticalOptions="Center"/>
-                                <Grid Grid.Column="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label x:Name="txtEdad" VerticalOptions="Center"/>
-                                    <Label Text="Años" Grid.Column="1" x:Name="lbUnidad" VerticalOptions="Center" >
-                                    </Label>
-                                </Grid>
-                            </Grid>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Sexo del animal:" VerticalOptions="Center"/>
-                                <Label  Grid.Column="1" VerticalOptions="Center" x:Name="lbSexo">
-                                </Label>
-                            </Grid>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Descripcion de la adopcion:" VerticalOptions="Center"/>
-                                <Label Grid.Column="1" VerticalOptions="Center" x:Name="txtDescripcion"/>
-                            </Grid>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Mensaje para el usuario:" VerticalOptions="Center"/>
-                                <Label Grid.Column="1" Text="Max: 250 caracteres." TextColor="LightGray" VerticalOptions="Center"/>
-                            </Grid>
+                        <StackLayout Spacing="10">
+                            <Label Text="Datos de la adopcion" FontSize="22" TextColor="Coral"/>
                         </StackLayout>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Nombre de la mascota:" VerticalOptions="Center"/>
+                            <Label x:Name="txtNombre" VerticalOptions="Center" Grid.Column="1"></Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Tipo de animal:" VerticalOptions="Center"/>
+                            <Label  Grid.Column="1" x:Name="lbAnimal" VerticalOptions="Center" >
+                            </Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Edad del animal:" VerticalOptions="Center"/>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="txtEdad" VerticalOptions="Center"/>
+                                <Label Text="Años" Grid.Column="1" x:Name="lbUnidad" VerticalOptions="Center" >
+                                </Label>
+                            </Grid>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Sexo del animal:" VerticalOptions="Center"/>
+                            <Label  Grid.Column="1" VerticalOptions="Center" x:Name="lbSexo">
+                            </Label>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Descripcion de la adopcion:" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" x:Name="txtDescripcion"/>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Mensaje para el usuario:" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="Max: 250 caracteres." TextColor="LightGray" VerticalOptions="Center"/>
+                        </Grid>
                         <StackLayout Spacing="15" Padding="15">
                             <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDetalle"/>
                             <Button x:Name="btnGuardar" Text="Realizar Solicitud"/>
