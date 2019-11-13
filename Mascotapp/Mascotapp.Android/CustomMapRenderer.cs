@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
@@ -12,6 +13,7 @@ using Mascotapp.Visualizar_mapa;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
+using System.Linq;
 
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace Mascotapp.Droid
@@ -116,23 +118,28 @@ namespace Mascotapp.Droid
                 }
                 if (infoSubtitle != null)
                 {
-                    infoSubtitle.Text = marker.Snippet;
+                    //ObtenerDireccion(customPin.Position).ContinueWith((task) =>
+                    //{
+                    //    infoSubtitle.Text = task.Result;
+                    //});
+                    infoSubtitle.Text = customPin.Direccion;
                 }
                 if(infoIcon != null &&  !string.IsNullOrEmpty(customPin.IconPath))
                 {
                     Bitmap myBitmap = BitmapFactory.DecodeFile(customPin.IconPath);
                     infoIcon.SetImageBitmap(myBitmap);
                 }
-
                 return view;
             }
             return null;
         }
 
-        public Android.Views.View GetInfoWindow(Marker marker)
-        {
-            return null;
-        }
+        //private async Task<string> ObtenerDireccion(Position position)
+        //{
+        //    var geo = new Geocoder();
+        //    var result = await geo.GetAddressesForPositionAsync(position);
+        //    return result.FirstOrDefault();
+        //}
 
         CustomPin GetCustomPin(Marker annotation)
         {
@@ -147,5 +154,9 @@ namespace Mascotapp.Droid
             return null;
         }
 
+        public Android.Views.View GetInfoWindow(Marker marker)
+        {
+            return null;
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace Domain.MapRenderer
         public string MarkerType { get; set; }
         public int IdPin { get; set; }
         public string IconPath { get; set; }
+        public string Direccion { get; set; }
     }
 }
