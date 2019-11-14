@@ -68,7 +68,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Usuario:"/>
-                            <Entry x:Name="txtUsuario" Placeholder="Usuario" Grid.Column="1" MaxLength="49"></Entry>
+                            <Entry x:Name="txtUsuario" Placeholder="Usuario" Grid.Column="1" MaxLength="20"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -76,7 +76,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Nombre:"/>
-                            <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1" MaxLength="50"></Entry>
+                            <Entry x:Name="txtNombre" Placeholder="Nombre" Grid.Column="1" MaxLength="30"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -84,7 +84,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Apellido:"/>
-                            <Entry x:Name="txtApellido" Placeholder="Apellido" Grid.Column="1" MaxLength="50"></Entry>
+                            <Entry x:Name="txtApellido" Placeholder="Apellido" Grid.Column="1" MaxLength="30"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -100,7 +100,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Teléfono"/>
-                            <Entry x:Name="txtTel" Placeholder="1512345678" Grid.Column="1" MaxLength="18"></Entry>
+                            <Entry x:Name="txtTel" Placeholder="1512345678" Grid.Column="1" MaxLength="14"></Entry>
                         </Grid>
                         
                         <Grid>
@@ -109,7 +109,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Contraseña"/>
-                            <Entry x:Name="txtContra" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="49"></Entry>
+                            <Entry x:Name="txtContra" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="20"></Entry>
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -117,7 +117,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Confirme Contraseña"/>
-                            <Entry x:Name="txtContra2" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="49"></Entry>
+                            <Entry x:Name="txtContra2" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="20"></Entry>
                         </Grid>
                         
                         <StackLayout Spacing="10">
