@@ -12,7 +12,7 @@ namespace Domain.Entidades
         [PrimaryKey]
         public int IdUsuarioSolicitante { get; set; }
         public string Descripcion { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public string FechaCreacion { get; set; }
         public string Estado { get; set; }
 
     }
