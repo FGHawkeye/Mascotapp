@@ -69,7 +69,7 @@ namespace Mascotapp.Registro
                             SalirRegistrado();
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         await DisplayAlert("Error de Registro", "Fallo algo al registrar", "Entendido");
                     }
@@ -80,27 +80,36 @@ namespace Mascotapp.Registro
                     break;
 
                 case 2:
-                    await DisplayAlert("Email Ingresado Invalido", "Por favor ingrese un email valido con el formato 'Ejemplo@email.com'.", "Entendido");
-                    txtEmail.Text = "";
-                    txtEmail.Focus();
+                    await DisplayAlert("Usuario Existente", "Vuelva a ingresar un nuevo nombre de usuario, el que intento registrar ya existe", "Entendido");
+                    txtUsuario.Focus();
                     break;
 
                 case 3:
-                    await DisplayAlert("Contraseñas Ingresadas diferentes", "Vuelva a ingresar la contraseña y su confirmacion, ambas deben ser iguales", "Entendido");
-                    txtContra.Text = "";
-                    txtContra2.Text = "";
-                    txtContra.Focus();
+                    await DisplayAlert("Email Ingresado Invalido", "Por favor ingrese un email valido con el formato 'Ejemplo@email.com'.", "Entendido");
+                    txtEmail.Focus();
                     break;
 
                 case 4:
+                    await DisplayAlert("Teléfono incorrecto", "Por favor ingrese nuevamente un teléfono valido.", "Entendido");
+                    txtTel.Focus();
+                    break;
+
+                case 5:
                     await DisplayAlert("Teléfono Ingresado Invalido", "Vuelva a ingresar el Telefono, el campo solo acepta números, No ingrese espacios en blanco ni letras ni simbolos Por ejemplo: - , . $ Etc", "Entendido");
                     txtTel.Text = "";
                     txtTel.Focus();
                     break;
-                case 5:
-                    await DisplayAlert("Usuario Existente", "Vuelva a ingresar un nuevo nombre de usuario, el que intento registrar ya existe", "Entendido");
-                    txtUsuario.Text = "";
-                    txtUsuario.Focus();
+
+                case 6:
+                    await DisplayAlert("Contraseña Insegura", "Por favor ingrese una contraseña de al menos 5 caracteres.", "Entendido");
+                    txtContra.Focus();
+                    break;
+
+                case 7:
+                    await DisplayAlert("Contraseñas Ingresadas diferentes", "Vuelva a ingresar la contraseña y su confirmacion, ambas deben ser iguales", "Entendido");
+                    txtContra.Text = "";
+                    txtContra2.Text = "";
+                    txtContra.Focus();
                     break;
 
 
@@ -128,19 +137,23 @@ namespace Mascotapp.Registro
                 return 1;
             }
 
+            if (servicioUsuarios.ValidarUsuarioExistente(txtUsuario.Text) > 0)
+            {
+                return 2;
+            }
+
             try
             {
                 var DireccionMail = new System.Net.Mail.MailAddress(txtEmail.Text);
             }
             catch (Exception)
             {
-                return 2;
+                return 3;
             }
 
-
-            if (txtContra.Text != txtContra2.Text)
+            if ((txtTel.Text.Length) < 8)
             {
-                return 3;
+                return 4;
             }
 
             try
@@ -149,12 +162,17 @@ namespace Mascotapp.Registro
             }
             catch (Exception)
             {
-                return 4;
+                return 5;
             }
 
-            if (servicioUsuarios.ValidarUsuarioExistente(txtUsuario.Text) > 0)
+            if ((txtContra.Text.Length) < 4)
             {
-                return 5;          
+                return 6;
+            }
+
+            if (txtContra.Text != txtContra2.Text)
+            {
+                return 7;
             }
 
 
