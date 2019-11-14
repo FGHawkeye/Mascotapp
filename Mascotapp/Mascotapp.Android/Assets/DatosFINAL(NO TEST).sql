@@ -176,6 +176,6 @@ INSERT INTO SolicitudAdopcion (IdAdopcion, IdUsuarioSolicitante, Descripcion, Fe
 	(15,19,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
 	(15,20,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
 	(15,21,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
-	(16,22,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
-	(17,23,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
-	(18,2,'Estoy disponible a cuidarlo','10-11-2019','Pendiente');
+	(16,2,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(17,13,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(18,3,'Estoy disponible a cuidarlo','10-11-2019','Pendiente');
