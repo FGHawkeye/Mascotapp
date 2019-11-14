@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.ModificarAdopcion">
+             x:Class="Mascotapp.ModificarAdopcion"
+             Title="Modificar adopcion">
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
@@ -116,8 +117,8 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <Entry Keyboard="Numeric" Placeholder="Edad" x:Name="txtEdad" />
-                                    <Label Grid.Column="1" Text="Año" VerticalOptions="Center"></Label>
+                                    <Entry Keyboard="Numeric" Placeholder="Edad" MaxLength="100" x:Name="txtEdad" />
+                                    <Label Grid.Column="1" Text="Años" VerticalOptions="Center"></Label>
                                 </Grid>
                             </Grid>
                             <Grid RowSpacing="5">

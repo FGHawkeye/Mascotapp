@@ -4,13 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.PreguntasFrecuentes">
+             x:Class="Mascotapp.PreguntasFrecuentes"
+             Title="Preguntas frecuentes">
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
-            <Setter Property="CornerRadius" Value="15" />
         </Style>
 
         <Style TargetType="Label">
@@ -33,10 +33,6 @@
             <Setter Property="FontSize" Value="18"/>
         </Style>
 
-        <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
-        </Style>
-
         <Style TargetType="Picker">
             <Setter Property="FontSize" Value="16"/>
         </Style>
@@ -50,9 +46,18 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="6" x:Name="Mostrar">
+            <StackLayout>
+                <StackLayout Padding="5">
+                    <Label Text="Preguntas Frecuentes" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
+                </StackLayout>
                 
+                <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
+                    <StackLayout Spacing="8" x:Name="Mostrar" Padding="10" VerticalOptions="StartAndExpand">
+
+                    </StackLayout>
+                </Frame>
             </StackLayout>
+            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

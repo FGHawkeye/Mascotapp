@@ -47,16 +47,16 @@ namespace Mascotapp
                         RazonSocial=txtRazonSolial.Text,
                         CodigoPostal=txtCodigoP.Text,
                         Direccion=txtDireccion.Text,
-                        FechaCreacion=DateTime.UtcNow,
+                        FechaCreacion=DateTime.UtcNow.ToString("dd-MM-yyyy"),
                         IdRefugio=null,
                         IdUsuario=id,
                         Localidad=txtLocalidad.Text,
-                        Telefono=Int32.Parse(txtTel.Text),
+                        Telefono= long.Parse(txtTel.Text),
                         Ubicacion= currentPosition.Latitude.ToString() + ";" + currentPosition.Longitude.ToString(),
                         Estado ="Pendiente"
                     };
                     servicioRefugio.RegistrarRefugio(refugio);
-                    validacion="Se realizo el registro con exito, la solicitud se encuentra en estado pendiente.";
+                    validacion="Se realizo el registro con exito, la solicitud se encuentra en estado pendiente. Para continuar con el tramite debera enviar la documentacion que certifique los datos ingresados al mail: admin@mascotapp.com.";
                }catch (Exception ex){
                    validacion="Se produjo un problema, vuelva a intentar.";
                }
@@ -84,7 +84,22 @@ namespace Mascotapp
             }else if(txtTel.Text==null||txtTel.Text==""){
                 msg="Falta completar el numero de contacto";
             }else if(servicioRefugio.ObtenerRazonSocial(txtRazonSolial.Text)>0){
-                msg="La Razon Social seleccionada ya existe";
+                msg= "La Razon Social ingresada ya existe";
+            }else if (txtRazonSolial.Text.Length < 2)
+            {
+                msg = "La Razon Social ingresada debe tener como minimo dos letras.";
+            }else if (txtDireccion.Text.Length < 1)
+            {
+                msg = "La direccion ingresada es muy corta.";
+            }else if (txtLocalidad.Text.Length < 1)
+            {
+                msg = "La localidad ingresada es muy corta.";
+            }else if (txtCodigoP.Text.Length < 1)
+            {
+                msg = "El codigo postal ingresada es muy corto.";
+            }else if (txtTel.Text.Length < 8)
+            {
+                msg = "El numero de telefono debe contener al menos 8 digitos.";
             }
             return msg;
         }

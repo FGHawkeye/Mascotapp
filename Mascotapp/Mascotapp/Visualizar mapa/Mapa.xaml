@@ -18,8 +18,6 @@
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
             <Setter Property="BorderColor" Value="Black" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="CornerRadius" Value="15" />
         </Style>
 
         <Style TargetType="Label">
@@ -68,20 +66,14 @@
                         <x:String>Refugios</x:String>
                     </Picker.Items>
                 </Picker>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Button x:Name="btnFiltro" Text="Aplicar filtro" />
-                    <Button x:Name="btnQuitarFiltro" Text="Quitar filtro" Grid.Column="1"/>
-                </Grid>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button x:Name="btnFiltro" Text="Aplicar filtro" WidthRequest="150" HeightRequest="40"/>
+                    <Button x:Name="btnQuitarFiltro" Text="Quitar filtro" WidthRequest="150" HeightRequest="40"/>
+                </StackLayout>
             </StackLayout>
 
-            <StackLayout VerticalOptions="FillAndExpand" Padding="12">
-                <local:CustomMap WidthRequest="320" HeightRequest="200" x:Name="map_Mapa" MapType="Street">
-
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+                <local:CustomMap x:Name="map_Mapa" MapType="Street">
 
                 </local:CustomMap>
             </StackLayout>

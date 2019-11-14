@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mascotapp.NavigationMenu;
 using System.IO;
+using Plugin.Media.Abstractions;
 
 namespace Mascotapp
 {
@@ -92,6 +93,10 @@ namespace Mascotapp
                 {
                     imgMin1.Source = ImageSource.FromFile(imagenes[0].Imagen);
                     image1 = imagenes[0].Imagen;
+                    imgCamara.Source= ImageSource.FromFile(imagenes[0].Imagen);
+                    lbImage.Text = imgMin1.Id.ToString();
+                    btnQuitar.IsEnabled = true;
+                    btnQuitar.BackgroundColor= Color.DarkRed;
                 }
                 else
                 {
@@ -125,6 +130,7 @@ namespace Mascotapp
             if (imgCount == 3&&full)
             {
                 btnCamara.IsEnabled = false;
+                btnCamara.BackgroundColor = Color.Gray;
             }
         }
 
@@ -132,12 +138,13 @@ namespace Mascotapp
         {
             string directoryPath = "/storage/emulated/0/Mascotapp/";
             var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(
-                new Plugin.Media.Abstractions.StoreCameraMediaOptions()
+                new Plugin.Media.Abstractions.StoreCameraMediaOptions() 
                 {
-                    CompressionQuality = 5
+                    PhotoSize= PhotoSize.MaxWidthHeight,
+                    MaxWidthHeight=300,
+                    CompressionQuality =50
                 }
-                );
-            
+            );
             if (photo != null)
             {
                 System.IO.File.Copy(photo.Path, directoryPath, true);
@@ -147,7 +154,7 @@ namespace Mascotapp
                 ImageSource image = ImageSource.FromFile(directoryPath + name);
                 AgregarFoto(image, directoryPath + name);
                 File.Delete(photo.Path);
-            }
+            } 
         }
         /*private async void CameraButton_Clicked(object sender, EventArgs e)
         {
@@ -172,6 +179,7 @@ namespace Mascotapp
             {
                 lbImage.Text = ia.Id.ToString();
                 btnQuitar.IsEnabled = true;
+                btnQuitar.BackgroundColor = Color.DarkRed;
                 imgCamara.Source = ia.Source;
             }
         }
@@ -205,9 +213,11 @@ namespace Mascotapp
                 if (image2 == null && imgCount > 1) imagenes[1].Estado = false;
                 if (image3 == null && imgCount > 2) imagenes[2].Estado = false;
                 btnCamara.IsEnabled = true;
+                btnCamara.BackgroundColor = Color.DarkBlue;
                 imgCamara.Source = null;
                 lbImage.Text = "";
                 btnQuitar.IsEnabled = false;
+                btnQuitar.BackgroundColor = Color.Gray;
             }
         }
 
@@ -234,7 +244,7 @@ namespace Mascotapp
             {
                 msg="Debe ingresar al menos una foto.";
             }
-            else if(Int32.Parse(txtEdad.Text)<0||Int32.Parse(txtEdad.Text)>30){
+            else if(Int32.Parse(txtEdad.Text)<0||Int32.Parse(txtEdad.Text)>25){
                 msg="Debe ingresar una edad valida.";
             }
             return msg;
@@ -329,13 +339,16 @@ namespace Mascotapp
             {
                 imgCamara.Source = img;
                 btnQuitar.IsEnabled = true;
+                btnQuitar.BackgroundColor = Color.DarkRed;
             }
             else
             {
                 //agregar mensaje de limite de fotos
                 btnCamara.IsEnabled = false;
+                btnCamara.BackgroundColor = Color.Gray;
                 imgCamara.Source = null;
                 btnQuitar.IsEnabled = false;
+                btnQuitar.BackgroundColor = Color.Gray;
             }
         }
 

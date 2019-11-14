@@ -76,7 +76,7 @@ namespace Mascotapp
             {
                 lbImage.Text = ia.Id.ToString();
                 btnQuitar.IsEnabled = true;
-                btnQuitar.BackgroundColor = Color.DarkBlue;
+                btnQuitar.BackgroundColor = Color.DarkRed;
                 imgCamara.Source = ia.Source;
             }
         }
@@ -101,6 +101,7 @@ namespace Mascotapp
                 btnQuitar.IsEnabled = false;
                 btnQuitar.BackgroundColor = Color.Gray;
                 btnCamara.IsEnabled = true;
+                btnCamara.BackgroundColor = Color.DarkBlue;
             }
         }
         private async void Guardar_Clicked(object sender, EventArgs e)
@@ -206,7 +207,7 @@ namespace Mascotapp
             else if (imgMin1.Source == null&& imgMin2.Source == null&& imgMin3.Source == null)
             {
                 msg = "Falta ingresar al menos una foto.";
-            }else if (Int32.Parse(txtEdad.Text) < 0 || Int32.Parse(txtEdad.Text) > 30)
+            }else if (long.Parse(txtEdad.Text) < 0 || long.Parse(txtEdad.Text) > 25)
             {
                 msg = "Ingrese una edad valida.";
             }
@@ -235,19 +236,20 @@ namespace Mascotapp
                 imgMin3.Source = img;
                 image3 = path;
                 btnCamara.IsEnabled = false;
+                btnCamara.BackgroundColor = Color.Gray;
             }
             if (estado)
             {
                 imgCamara.Source = img;
                 btnQuitar.IsEnabled = true;
-                btnQuitar.BackgroundColor = Color.DarkBlue;
+                btnQuitar.BackgroundColor = Color.DarkRed;
             }
             else
             {
                 //agregar mensaje de limite de fotos
                 imgCamara.Source = null;
                 btnQuitar.IsEnabled = false;
-                btnQuitar.BackgroundColor = Color.DarkBlue;
+                btnQuitar.BackgroundColor = Color.Gray;
             }
         }
     }

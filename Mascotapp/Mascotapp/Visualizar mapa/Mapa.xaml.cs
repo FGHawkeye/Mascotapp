@@ -1,6 +1,7 @@
 ﻿using Domain.Entidades;
 using Domain.MapRenderer;
 using Domain.Servicios;
+using Plugin.Geolocator;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,10 +62,10 @@ namespace Mascotapp.Visualizar_mapa
             CargarMarcadores();
             CargarAdopciones();
             CargarRefugios();
- 
+
         }
 
-        private void CargarAdopciones()
+        private async void CargarAdopciones()
         {
             if (filtroSeleccionado == "Adopciones" || string.IsNullOrEmpty(filtroSeleccionado))
             {
@@ -72,7 +73,7 @@ namespace Mascotapp.Visualizar_mapa
 
                 foreach (var adopcion in adopciones)
                 {
-                    var pin = GenerarMarcador(adopcion.Nombre, adopcion.Ubicacion, "Adopcion", adopcion.IdAdopcion.Value, ObtenerPathImagen(ObtenerImagenIdAdopcion(adopcion.IdAdopcion.Value)));
+                    var pin = await GenerarMarcadorAsync(adopcion.Nombre, adopcion.Ubicacion, "Adopcion", adopcion.IdAdopcion.Value, ObtenerPathImagen(ObtenerImagenIdAdopcion(adopcion.IdAdopcion.Value)));
                     map_Mapa.Pins.Add(pin);
                     map_Mapa.CustomPins.Add(pin);
                 }
@@ -89,19 +90,16 @@ namespace Mascotapp.Visualizar_mapa
             {
                 Logeado.Text = MainPage.UsuarioRegristrado.NombreUsuario;
             }
-
-
-     
         }
 
-        private void CargarMarcadores()
+        private async void CargarMarcadores()
         {
             if (filtroSeleccionado == "Marcadores" || string.IsNullOrEmpty(filtroSeleccionado))
             {
                 var marcadores = servicioMarcadores.ObtenerMarcadores();
                 foreach (var marcador in marcadores)
                 {
-                    var pin = GenerarMarcador(marcador.Descripcion, marcador.Ubicacion, "Marcador", marcador.IdMarcador.Value, ObtenerPathImagen(marcador.IdImagen));
+                    var pin = await GenerarMarcadorAsync(marcador.Descripcion, marcador.Ubicacion, "Marcador", marcador.IdMarcador.Value, ObtenerPathImagen(marcador.IdImagen));
                     map_Mapa.CustomPins.Add(pin);
                     map_Mapa.Pins.Add(pin);
                 }
@@ -109,14 +107,14 @@ namespace Mascotapp.Visualizar_mapa
 
         }
 
-        private void CargarRefugios()
+        private async void CargarRefugios()
         {
             if (filtroSeleccionado == "Refugios" || string.IsNullOrEmpty(filtroSeleccionado))
             {
                 var refugios = servicioRefugio.ObtenerRefugios();
                 foreach (var refugio in refugios)
                 {
-                    var pin = GenerarMarcador(refugio.RazonSocial, refugio.Ubicacion, "Refugio", refugio.IdRefugio.Value);
+                    var pin = await GenerarMarcadorAsync(refugio.RazonSocial, refugio.Ubicacion, "Refugio", refugio.IdRefugio.Value);
                     map_Mapa.CustomPins.Add(pin);
                     map_Mapa.Pins.Add(pin);
                 }
@@ -124,10 +122,15 @@ namespace Mascotapp.Visualizar_mapa
         }
 
 
-        private CustomPin GenerarMarcador(string descripcion, string ubicacion, string tipoMarcador, int id, string iconPath = "")
+        private async Task<CustomPin> GenerarMarcadorAsync(string descripcion, string ubicacion, string tipoMarcador, int id, string iconPath = "")
         {
             //Primero siempre latitud
             var arrayUbicacion = ubicacion.Split(';');
+            string direccionCompleta = await ObtenerDireccion(new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])));
+            //ObtenerDireccion(new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1]))).ContinueWith((task) =>
+            //{
+            //    direccion = task.Result;
+            //});
 
             var pin = new CustomPin()
             {
@@ -135,19 +138,20 @@ namespace Mascotapp.Visualizar_mapa
                 Label = descripcion,
                 MarkerType = tipoMarcador,
                 IdPin = id,
-                IconPath = iconPath
+                IconPath = iconPath,
+                Direccion = direccionCompleta.Split(',').FirstOrDefault()
             };
             return pin;
         }
 
-        void CargarMapa()
+        async void CargarMapa()
         {
+            var currentPosition = await CrossGeolocator.Current.GetLastKnownLocationAsync();
             map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
-                    new Xamarin.Forms.Maps.Position(-34.456668, -58.624652),
+                    new Position(currentPosition.Latitude, currentPosition.Longitude),
                     Xamarin.Forms.Maps.Distance.FromKilometers(5)
                 )
             );
-
             map_Mapa.IsShowingUser = true;
             map_Mapa.CustomPins = new List<CustomPin>();
         }
@@ -176,6 +180,13 @@ namespace Mascotapp.Visualizar_mapa
                 await App.MasterD.Detail.Navigation.PushAsync(new Login.Login());
             }
 
+        }
+
+        private async Task<string> ObtenerDireccion(Position position)
+        {
+            var geo = new Geocoder();
+            var result = await geo.GetAddressesForPositionAsync(position);
+            return result.FirstOrDefault();
         }
 
     }

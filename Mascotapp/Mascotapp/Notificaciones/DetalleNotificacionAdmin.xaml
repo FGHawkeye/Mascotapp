@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Domain.MapRenderer;assembly=Domain"
              mc:Ignorable="d"
-             x:Class="Mascotapp.DetalleNotificacionAdmin">
+              x:Class="Mascotapp.DetalleNotificacionAdmin"
+             Title="Detalle de notificacion">
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
@@ -50,86 +52,93 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout >
-                <Label Text="Solicitud de Refugio"
-               HorizontalOptions="Center"
-               FontAttributes="Bold" />
-                <Frame WidthRequest="300"
-                   HeightRequest="400">
+            <StackLayout Spacing="10" Padding="10">
+                <StackLayout>
+                    <Label Text="Solicitud de Refugio" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="Orange"/>
+                </StackLayout>
+                <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
                     <FlexLayout Direction="Column">
-                        <Label Text="Datos del solicitante" />
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Nombre:"/>
-                            <Label x:Name="txtNombre" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Apellido:"/>
-                            <Label x:Name="txtApellido" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Razon Social:"/>
-                            <Label x:Name="txtRazonSocial" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Telefono:"/>
-                            <Label x:Name="txtTelefono" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Direccion:"/>
-                            <Label x:Name="txtDireccion" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Codigo Postal:"/>
-                            <Label x:Name="txtCP" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Localidad:"/>
-                            <Label x:Name="txtLocalidad" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="Fecha de creacion:"/>
-                            <Label x:Name="txtFecha" Grid.Column="1"></Label>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Button x:Name="btnAceptar" Text="Aceptar"/>
-                            <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar"/>
-                        </Grid>
+                        <StackLayout>
+                            <Label Text="Datos del solicitante" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
+                        </StackLayout>
+                        <StackLayout Padding="20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Nombre:"/>
+                                <Label x:Name="txtNombre" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Apellido:"/>
+                                <Label x:Name="txtApellido" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Razon Social:"/>
+                                <Label x:Name="txtRazonSocial" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Telefono:"/>
+                                <Label x:Name="txtTelefono" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Direccion:"/>
+                                <Label x:Name="txtDireccion" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Codigo Postal:"/>
+                                <Label x:Name="txtCP" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Localidad:"/>
+                                <Label x:Name="txtLocalidad" Grid.Column="1"></Label>
+                            </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Fecha de creacion:"/>
+                                <Label x:Name="txtFecha" Grid.Column="1"></Label>
+                            </Grid>
+                            <!--<Label Text="Ubicacion en el mapa:"></Label>
+                            <StackLayout HeightRequest="200" WidthRequest="200">
+                                <local:CustomMap x:Name="map_Mapa" MapType="Street" />
+                            </StackLayout>-->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="btnAceptar" Text="Aceptar"/>
+                                <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar" BackgroundColor="DarkRed"/>
+                            </Grid>
+                        </StackLayout>
                     </FlexLayout>
                 </Frame>
             </StackLayout>

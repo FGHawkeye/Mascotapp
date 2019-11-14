@@ -29,6 +29,7 @@ namespace Mascotapp
         {
             if (MainPage.UsuarioRegristrado != null)
             {
+                bool sinNot = true;
                 List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopcionesUsuario(MainPage.UsuarioRegristrado.IdUsuario.Value);
                 if(adopciones.Count>0){
                     foreach (Adopciones adopciones1 in adopciones)
@@ -37,6 +38,7 @@ namespace Mascotapp
 
                         foreach (SolicitudAdopcion solicitudAdopcion in solicitudAdopciones)
                         {
+                            sinNot = false;
                             Adopciones adopcion = servicioAdopciones.ObtenerAdopcion(solicitudAdopcion.IdAdopcion);
                             Usuario usuario = servicioUsuario.ObtenerUsuarios().Where(x => x.IdUsuario == solicitudAdopcion.IdUsuarioSolicitante).FirstOrDefault();
 
@@ -67,15 +69,22 @@ namespace Mascotapp
                                 BindingContext = solicitudAdopcion.IdAdopcion.ToString() + ";" + solicitudAdopcion.IdUsuarioSolicitante.ToString(),
                             };
 
+                            Label lbFecha = new Label
+                            {
+                                Text="Fecha solicitud: "+solicitudAdopcion.FechaCreacion
+                            };
+
                             btnDetalle.Clicked += Detalle_Clicked;
                             grid.Children.Add(lbNombre, 0, 0);
                             grid.Children.Add(btnDetalle, 1, 0);
                             grid.Children.Add(lbUsuarioSolicitante, 0, 1);
+                            grid.Children.Add(lbFecha, 1, 1);
                             frame.Content = grid;
                             Mostrar.Children.Add(frame);
                         }
                     }
-                }else{
+                }
+                if(sinNot){
                     FlexLayout flexLayout = new FlexLayout
                     {
                         Direction = FlexDirection.Row,
@@ -84,7 +93,7 @@ namespace Mascotapp
                     };
                     Label label = new Label
                     {
-                        Text = "No posee publicaciones!",
+                        Text = "No posee Notificaciones!",
                     };
                     label.HorizontalTextAlignment = TextAlignment.Center;
                     flexLayout.Children.Add(label);
@@ -96,7 +105,6 @@ namespace Mascotapp
             }else{
                 await DisplayAlert("Acceso denegado", "No posee notificaciones!", "OK");
             }
-            
         }
         private async void Detalle_Clicked(object sender, EventArgs e)
         {

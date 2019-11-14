@@ -42,6 +42,20 @@ namespace Domain.Servicios
             return dbConnection.Query<TipoAnimal>(query).FirstOrDefault();
         }
 
+        public int ComprobarTipoAnimal(string tipo)
+        {
+            int i = -1;
+            TipoAnimal tipoAnimal= dbConnection.Query<TipoAnimal>("Select * From [TipoAnimal]").Where(x => x.Descripcion.ToUpper() == tipo.ToUpper()).FirstOrDefault();
+            if (tipoAnimal != null) i = 1;
+            return i;
+        }
+
+        public int ModificarTipoAnimal (TipoAnimal tipoAnimal)
+        {
+            dbConnection.Query<TipoAnimal>("UPDATE [TipoAnimal] SET Descripcion = '"+tipoAnimal.Descripcion+"' WHERE IdTipoAnimal = "+tipoAnimal.IdTipoAnimal+";");
+            int pk = tipoAnimal.IdTipoAnimal.Value;
+            return pk;
+        }
     }
 }
 

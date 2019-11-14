@@ -25,6 +25,7 @@ namespace Domain.Servicios
         public List<Refugio> ObtenerRefugiosPendientes()
         {
             return dbConnection.Query<Refugio>("Select * From [Refugio]").Where(x => x.Estado == "Pendiente").ToList();
+
         }
 
         public int RegistrarRefugio(Refugio refugio)
@@ -48,7 +49,9 @@ namespace Domain.Servicios
         }
         public Refugio ObtenerRefugio(int id)
         {
-            return dbConnection.Query<Refugio>("Select * From [Refugio]").Where(X=>X.IdRefugio==id).FirstOrDefault();
+            //Refugio refugio = dbConnection.Query<Refugio>("Select * From [Refugio]").Where(X => X.IdRefugio == id).FirstOrDefault();
+            //string date = dbConnection.Query<Refugio>("Select * From [Refugio]").Where(X => X.IdRefugio == id).FirstOrDefault().FechaCreacion.ToString();
+            return dbConnection.Query<Refugio>("Select * From [Refugio]").Where(X => X.IdRefugio == id).FirstOrDefault();
         }
         public Refugio ObtenerRefugioUsuario(int id)
         {

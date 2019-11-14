@@ -49,20 +49,27 @@ namespace Mascotapp.Visualizar_mapa
                     reporte.IdMarcador = _idMarcador;
                     reporte.IdUsuario = MainPage.UsuarioRegristrado.IdUsuario.Value;
 
-                    
-                    serviceReportes.GuardarReporte(reporte);
-           
-                    await DisplayAlert("Reporte", "Su reporte fue registrado con exito", "Entendido");
-
-                    var limiteAlcanzado = serviceReportes.VerificarLimiteReportes(marcador);
-
-                    if (limiteAlcanzado)
+                    if (ValidarReporteExistenteDeUsuario(reporte.IdUsuario, reporte.IdMarcador))
                     {
-                        marcador.Estado = false;
-                        serviceMarcadores.ModificarMarcador(marcador);
-                    }
+                        serviceReportes.GuardarReporte(reporte);
 
-                    await Navigation.PopToRootAsync();
+                        await DisplayAlert("Reporte", "Su reporte fue registrado con exito", "Entendido");
+
+                        var limiteAlcanzado = serviceReportes.VerificarLimiteReportes(marcador);
+
+                        if (limiteAlcanzado)
+                        {
+                            marcador.Estado = false;
+                            serviceMarcadores.ModificarMarcador(marcador);
+                        }
+
+                        await Navigation.PopToRootAsync();
+                    }
+                    else
+                    {
+                        await DisplayAlert("Reporte", "Ya reportaste esta publicacion, no puede agregar mas de un reporte por marcador", "OK");
+                    }
+                   
                 }
                 catch(Exception ex)
                 {
@@ -71,6 +78,13 @@ namespace Mascotapp.Visualizar_mapa
                     
             }
 
+        }
+
+        private bool ValidarReporteExistenteDeUsuario(int idUsuario, int idMarcador)
+        {
+            var usuarioYaReporto = serviceReportes.UsuarioYaReporto(idUsuario, idMarcador);
+            //si usuario ya reporto, entonces no no debe poder reportar mas
+            return !usuarioYaReporto;
         }
 
         private void CargarElementos()

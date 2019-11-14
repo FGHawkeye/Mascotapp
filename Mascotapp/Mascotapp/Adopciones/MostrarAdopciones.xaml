@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Mascotapp.MostrarAdopciones">
+             x:Class="Mascotapp.MostrarAdopciones"
+             Title="Adopciones">
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
@@ -50,8 +51,10 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="6" x:Name="Mostrar">
-                
+            <StackLayout>
+                <StackLayout Spacing="6" x:Name="Mostrar">
+                       
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

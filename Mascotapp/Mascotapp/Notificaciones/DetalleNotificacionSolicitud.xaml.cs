@@ -14,10 +14,10 @@ namespace Mascotapp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetalleNotificacionSolicitud : ContentPage
     {
-        private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
         private ServicioSolicitudAdopcion servicioSolicitudAdopcion = new ServicioSolicitudAdopcion();
         private ServicioUsuarios servicioUsuario = new ServicioUsuarios();
+        private ServicioEmail servicioEmail = new ServicioEmail();
         private SolicitudAdopcion solicitudAdopcion;
         private Adopciones adopciones;
         public DetalleNotificacionSolicitud(int idAd, int idSol)
@@ -36,6 +36,7 @@ namespace Mascotapp
             txtApellido.Text=usuario.Apellido;
             txtNombre.Text= usuario.Nombre;
             txtUsuario.Text=usuario.NombreUsuario;
+            txtTelefono.Text = usuario.Telefono.ToString();
             txtMascota.Text=adopciones.Nombre;
             txtDetalle.Text=solicitudAdopcion.Descripcion;
         }
@@ -57,6 +58,22 @@ namespace Mascotapp
             solicitudAdopcion.Estado=estado;
             
             servicioSolicitudAdopcion.ModificarSolicitudAdopcion(solicitudAdopcion);
+
+            try
+            {
+                var usuarioSolicitante = servicioUsuario.ObtenerUsuario(solicitudAdopcion.IdUsuarioSolicitante);
+
+                var datosEmail = new DatosEmail("Actualizacion de estado, solicitud de adopcion",
+                    "La solicitud de adopcion que usted realizo por " + adopciones.Nombre + " se encuentra en estado " + estado.ToUpper(),
+                    usuarioSolicitante.Email);
+
+                servicioEmail.EnviarEmail(datosEmail);
+            }
+            catch(Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+
             await DisplayAlert("Adopciones", "Se "+estado+" la solicitud con exito", "OK");
             await App.MasterD.Detail.Navigation.PopToRootAsync();
         }

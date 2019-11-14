@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Domain.MapRenderer;
+using Plugin.Geolocator;
+using Xamarin.Forms.Maps;
 
 namespace Mascotapp
 {
@@ -16,6 +19,7 @@ namespace Mascotapp
     {
         private ServicioRefugio servicioRefugio = new ServicioRefugio();
         private ServicioUsuarios servicioUsuario = new ServicioUsuarios();
+        private ServicioEmail servicioEmail = new ServicioEmail();
         private Refugio refugio;
         public DetalleNotificacionAdmin(int idRef)
         {
@@ -36,8 +40,11 @@ namespace Mascotapp
             txtDireccion.Text = refugio.Direccion;
             txtCP.Text = refugio.CodigoPostal;
             txtLocalidad.Text = refugio.Localidad;
-            txtFecha.Text = refugio.FechaCreacion.ToString(@"MM\/dd\/yyyy HH:mm");
+            //txtFecha.Text = refugio.FechaCreacion.ToString("YYYY-MM-DD HH:MM:SS.SSS");
+            txtFecha.Text = refugio.FechaCreacion.ToString();
             txtTelefono.Text = usuario.Telefono.ToString();
+            //CargarMapa(refugio.Ubicacion);
+            //CargarRefugio(refugio);
         }
 
         public void btnAceptar_Clicked(object sender, EventArgs e)
@@ -54,8 +61,65 @@ namespace Mascotapp
         {
             refugio.Estado=estado;
             servicioRefugio.ModificarRefugio(refugio);
-            await DisplayAlert("Solicitud Refugio", "Se a "+estado+" el refugio con exito", "OK");
+
+            try
+            {
+                var usuarioSolicitante = servicioUsuario.ObtenerUsuario(refugio.IdUsuario);
+                var datosEmail = new DatosEmail("Actualizacion de estado, solicitud de refugio",
+                    "La solicitud de refugio que usted realizo por el refugio " + refugio.RazonSocial + " se encuentra en estado " + estado.ToUpper(),
+                    usuarioSolicitante.Email);
+
+                servicioEmail.EnviarEmail(datosEmail);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+            }
+
+
+            await DisplayAlert("Solicitud Refugio", "Se ha "+estado+" el refugio con exito", "OK");
             await App.MasterD.Detail.Navigation.PopToRootAsync();
         }
+
+        //private void CargarMapa(string ubicacion)
+        //{
+        //    //map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
+        //    //        new Xamarin.Forms.Maps.Position(-34.456668, -58.624652),
+        //    //        Xamarin.Forms.Maps.Distance.FromKilometers(5)
+        //    //    )
+        //    //);
+        //    var arrayUbicacion = ubicacion.Split(';');
+        //    map_Mapa.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(
+        //            new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])),
+        //            Xamarin.Forms.Maps.Distance.FromMeters(50)
+        //        )
+        //    );
+        //    map_Mapa.IsShowingUser = true;
+        //    map_Mapa.CustomPins = new List<CustomPin>();
+        //}
+
+        //private void CargarRefugio(Refugio refugio)
+        //{
+        //    var pin = GenerarMarcador(refugio.RazonSocial, refugio.Ubicacion, "Refugio", refugio.IdRefugio.Value);
+        //    map_Mapa.CustomPins.Add(pin);
+        //    map_Mapa.Pins.Add(pin);
+        //}
+
+
+        //private CustomPin GenerarMarcador(string descripcion, string ubicacion, string tipoMarcador, int id, string iconPath = "")
+        //{
+        //    //Primero siempre latitud
+        //    var arrayUbicacion = ubicacion.Split(';');
+
+        //    var pin = new CustomPin()
+        //    {
+        //        Position = new Position(Convert.ToDouble(arrayUbicacion[0]), Convert.ToDouble(arrayUbicacion[1])),
+        //        Label = descripcion,
+        //        MarkerType = tipoMarcador,
+        //        IdPin = id,
+        //        IconPath = iconPath
+        //    };
+        //    return pin;
+        //}
     }
 }

@@ -23,6 +23,7 @@ namespace Mascotapp
         private ServicioTipoAnimal serviceTipoAnimal = new ServicioTipoAnimal();
         private ServicioAdopciones servicioAdopciones = new ServicioAdopciones();
         private ServicioImagenes servicioImagenes = new ServicioImagenes();
+        private ServicioUsuarios servicioUsuarios = new ServicioUsuarios();
         private ServicioImagenXAdopcion servicioImagenXAdopcion = new ServicioImagenXAdopcion();
         private ServicioSolicitudAdopcion servicioSolicitudAdopcion = new ServicioSolicitudAdopcion();
 
@@ -50,6 +51,11 @@ namespace Mascotapp
         public void CargarAdopcion(Adopciones adopcion)
         {
             List<TipoAnimal> _lstTipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
+            Usuario usuario = servicioUsuarios.ObtenerUsuario(adopcion.IdUsuario);
+            txtNombreUsuario.Text=usuario.Nombre;
+            txtApellido.Text=usuario.Apellido;
+            txtEmail.Text=usuario.Email;
+            txtTelefono.Text=usuario.Telefono.ToString();
             txtEdad.Text = adopcion.Edad.ToString();
             txtDescripcion.Text = adopcion.Detalle;
             txtNombre.Text = adopcion.Nombre;
@@ -65,6 +71,8 @@ namespace Mascotapp
                 if (imagenes[0].Estado)
                 {
                     imgMin1.Source = ImageSource.FromFile(imagenes[0].Imagen);
+                    imgCamara.Source = imgMin1.Source;
+                    lbImage.Text = imgMin1.Id.ToString();
                 }
             }
             if (imgCount > 1)
@@ -130,7 +138,7 @@ namespace Mascotapp
                         IdAdopcion = idAdop,
                         Descripcion = txtDetalle.Text,
                         Estado = "Pendiente",
-                        FechaCreacion = DateTime.UtcNow,
+                        FechaCreacion = DateTime.UtcNow.ToString("dd-MM-yyyy"),
                         IdUsuarioSolicitante = MainPage.UsuarioRegristrado.IdUsuario.Value
                     };
                     servicioSolicitudAdopcion.GuardarSolicitudAdopcion(solicitud);
