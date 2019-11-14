@@ -1,6 +1,6 @@
 INSERT INTO TipoAnimal (IdTipoAnimal,Descripcion) VALUES 
-                (1,'Gato'),
-                (2,'Perro');
+	(1,'Gato'),
+	(2,'Perro');
 	
 INSERT INTO TipoUsuario (IdTipoUsuario,Descripcion) VALUES 
 	(1,'Admin'),
@@ -36,27 +36,27 @@ INSERT INTO Adopciones(IdAdopcion,IdUsuario,IdTipoAnimal, Nombre,Detalle,Ubicaci
 	(NULL,2,1,'Oreo', 'Desparasitado', '-34.452877;-58.637864', 'Macho', 1, true),
 	(NULL,2,2,'Chips', 'Recien nacido', '-34.453549;-58.638089', 'Hembra', 0, true),
 	(NULL,2,1,'Roronoa', 'Vacunado', '-34.454929;-58.638872', 'Macho', 3, true),
-	(NULL,3,2,'Max', 'Con vacunas, muy amigable', '-34.454929;-58.638872', 'Macho', 3, true),
-	(NULL,4,1,'Linlin', 'Sin vacunas', '-34.454929;-58.638872', 'Hembra', 0, true),
-	(NULL,5,1,'Tasmania', 'Tranquilo', '-34.454929;-58.638872', 'Macho', 2, true),
-	(NULL,6,2,'Elin', 'Vacunada', '-34.454929;-58.638872', 'Hembra', 1, true),
+	(NULL,3,2,'Max', 'Con vacunas, muy amigable', '-34.462550;-58.630269', 'Macho', 3, true),
+	(NULL,4,1,'Linlin', 'Sin vacunas', '-34.464451;-58.628661', 'Hembra', 0, true),
+	(NULL,5,1,'Tasmania', 'Tranquilo', '-34.461426;-58.624626', 'Macho', 2, true),
+	(NULL,6,2,'Elin', 'Vacunada', '-34.460446;-58.622889', 'Hembra', 1, true),
 	(NULL,7,2,'Ronin', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
-	(NULL,8,2,'Quimera', 'Nos mudamos y no podemos llevarla.', '-34.454929;-58.638872', 'Hembra', 1, true),
-	(NULL,9,1,'Chip', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
-	(NULL,10,2,'Eureka', 'Desparasitada', '-34.454929;-58.638872', 'Hembra', 1, true),
-	(NULL,11,1,'Heinze', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
-	(NULL,12,2,'Ain', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 1, true),
-	(NULL,13,2,'Enzo', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
-	(NULL,14,1,'Kat', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 2, true),
-	(NULL,15,1,'Sam', 'Vacunado', '-34.454929;-58.638872', 'Macho', 3, true),
-	(NULL,16,2,'Sasha', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 0, true),
-	(NULL,17,1,'Eros', 'Vacunado', '-34.454929;-58.638872', 'Macho', 1, true),
-	(NULL,18,2,'Lili', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 4, true),
-	(NULL,19,1,'Lennon', 'Vacunado', '-34.454929;-58.638872', 'Macho', 2, true),
-	(NULL,20,1,'Selina', 'Vacunado', '-34.454929;-58.638872', 'Hembra', 7, true);
+	(NULL,8,2,'Quimera', 'Nos mudamos y no podemos llevarla.', '-34.456765;-58.621913', 'Hembra', 1, true),
+	(NULL,9,1,'Chip', 'Vacunado', '-34.452665;-58.622305', 'Macho', 1, true),
+	(NULL,10,2,'Eureka', 'Desparasitada', '-34.453805;-58.621789', 'Hembra', 1, true),
+	(NULL,11,1,'Heinze', 'Vacunado', '-34.453724;-58.617651', 'Macho', 1, true),
+	(NULL,12,2,'Ain', 'Vacunado', '-34.454174;-58.616608', 'Hembra', 1, true),
+	(NULL,13,2,'Enzo', 'Vacunado', '-34.456177;-58.615364', 'Macho', 1, true),
+	(NULL,14,1,'Kat', 'Vacunado', '-34.456575;-58.616877', 'Hembra', 2, true),
+	(NULL,15,1,'Sam', 'Vacunado', '-34.457891;-58.616808', 'Macho', 3, true),
+	(NULL,16,2,'Sasha', 'Vacunado', '-34.455449;-58.625372', 'Hembra', 0, true),
+	(NULL,17,1,'Eros', 'Vacunado', '-34.457151;-58.628391', 'Macho', 1, true),
+	(NULL,18,2,'Lili', 'Vacunado', '-34.459544;-58.630733', 'Hembra', 4, true),
+	(NULL,19,1,'Lennon', 'Vacunado', '-34.458575;-58.630030', 'Macho', 2, true),
+	(NULL,20,1,'Selina', 'Vacunado', '-34.458112;-58.627937', 'Hembra', 7, true);
 	
 INSERT INTO Imagenes (IdImagen, Imagen, Estado) VALUES
-	(NULL, '/storage/emulated/0/Mascotapp/gato1.jpg',true ), 
+	(NULL, '/storage/emulated/0/Mascotapp/gato1.jpg',true ),
 	(NULL, '/storage/emulated/0/Mascotapp/gato2.jpg',true ),
 	(NULL, '/storage/emulated/0/Mascotapp/gato3.jpg',true ),
 	(NULL, '/storage/emulated/0/Mascotapp/perro1.jpg',true ),
@@ -68,7 +68,20 @@ INSERT INTO Imagenes (IdImagen, Imagen, Estado) VALUES
 	(NULL, '/storage/emulated/0/Mascotapp/gato7.jpg',true ),
 	(NULL, '/storage/emulated/0/Mascotapp/perro4.jpg',true ),
 	(NULL, '/storage/emulated/0/Mascotapp/gato8.jpg',true ),
-	(NULL, '/storage/emulated/0/Mascotapp/gato9.jpg',true );
+	(NULL, '/storage/emulated/0/Mascotapp/gato9.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/gato10.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/gato11.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/gato12.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/gato13.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/gato14.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/gato15.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/gato16.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/gato17.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/perro5.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/perro6.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/perro7.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/perro8.jpg',true ),
+	(NULL, '/storage/emulated/0/Mascotapp/perro9.jpg',true );
 	
 INSERT INTO ImagenXAdopcion (IdAdopcion,IdImagen) VALUES
 	(1,1),
@@ -80,30 +93,37 @@ INSERT INTO ImagenXAdopcion (IdAdopcion,IdImagen) VALUES
 	(4,7),
 	(5,8),
 	(5,9),
-	(6,9),
-	(7,9),
-	(8,9),
-	(9,9),
-	(10,9),
-	(11,9),
-	(12,9),
-	(13,9),
-	(14,9),
-	(15,9),
-	(16,9),
-	(17,9),
-	(18,9),
-	(19,9),
-	(20,9),
-	(21,9),
-	(22,9),
-	(23,9),
+	(6,22),
+	(7,14),
+	(8,15),
+	(9,23),
+	(10,24),
+	(11,25),
+	(12,13),
+	(13,26),
+	(14,15),
+	(15,4),
+	(16,25),
+	(17,17),
+	(18,23),
+	(19,22),
+	(20,16),
+	(21,26),
+	(22,16),
+	(23,17);
 
 INSERT INTO Marcadores (IdMarcador, IdUsuario, IdTipoAnimal , IdImagen, Ubicacion, Descripcion, Estado) VALUES
 	(NULL,2,1,10,'-34.450134;-58.638624','Gato perdido',true),
 	(NULL,2,2,11,'-34.452417;-58.642508','Perro perdido',true),
-	(NULL,2,1,12,'-34.456708;-58.639182','Gato abandonado',true),
-	(NULL,2,2,13,'-34.458256;-58.641778','Gato abandonado',true);
+	(NULL,7,1,12,'-34.456708;-58.639182','Gato abandonado',true),
+	(NULL,8,1,13,'-34.458256;-58.641778','Gato abandonado',true),
+	(NULL,9,2,22,'-34.455569;-58.616951','Perro abandonado',true),
+	(NULL,10,1,20,'-34.455279;-58.617865','Gato abandonado',true),
+	(NULL,11,1,19,'-34.454859;-58.619077','Gato abandonado',true),
+	(NULL,12,2,24,'-34.455216;-58.625488','Perro abandonado',true),
+	(NULL,13,1,18,'-34.455813;-58.626865','Gato perdido',true),
+	(NULL,14,2,26,'-34.455366;-58.627931','Perro perdido',true),
+	(NULL,13,1,21,'-34.455161;-58.633355','Gato abandonado',true);
 	
 INSERT INTO Preguntas (Pregunta, IdUsuario, Respuesta) VALUES 
 	('¿Como puedo ver una publicacion?', 1, 'Se puede acceder a las publicaciones seleccionando en el mapa el marcador y luego ver detalle.'),
@@ -125,13 +145,13 @@ INSERT INTO Preguntas (Pregunta, IdUsuario, Respuesta) VALUES
 
 	
 INSERT INTO Refugio (IdRefugio, IdUsuario, RazonSocial, Localidad, Direccion, Ubicacion, CodigoPostal, Telefono, FechaCreacion, Estado) VALUES
-	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'02-11-2019','Pendiente'),
+	(NULL,3,'Campito','Cáceres','Cáceres, Esteban Echeverría, Buenos Aires','-34.454611;-58.635515','1800',123456789,'02-11-2019','Aceptado'),
 	(NULL,5,'Adopteros Argentina','Recoleta','Las Heras, Buenos Aires','-34.5518341;-58.4320087','1900',01140893717,'03-11-2019','Pendiente'),
 	(NULL,6,'Ayudacan','Salguero','Jerónimo Salguero, Buenos Aires','-34.609192;-58.419967','1700',123455559,'04-11-2019','Pendiente'),
-	(NULL,15,'Apre','Gral Pacheco','Av. Constituyentes, Buenos Aires','-34.453331;-58.649052','1700',123456666,'05-11-2019','Pendiente'),
+	(NULL,15,'Apre','Gral Pacheco','Av. Constituyentes, Buenos Aires','-34.453331;-58.649052','1700',123456666,'05-11-2019','Aceptado'),
 	(NULL,16,'DonCuarto','Gral Pacheco','Olegario Victor Andrade 292, Buenos Aires','-34.459981;-58.627144','1700',123456777,'06-11-2019','Pendiente'),
 	(NULL,17,'SfaSA','Gral Pacheco','Gral. Pacheco, Buenos Aires','-34.460769;-58.630510','1700',123455789,'07-11-2019','Pendiente'),
-	(NULL,18,'Sams','Gral Pacheco','Chaco 97, Buenos Aires','-34.460601;-58.632559','1700',123446789,'08-11-2019','Pendiente'),
+	(NULL,18,'Sams','Gral Pacheco','Chaco 97, Buenos Aires','-34.460601;-58.632559','1700',123446789,'08-11-2019','Aceptado'),
 	(NULL,19,'Renatas','Gral Pacheco','Buenos Aires 199, Buenos Aires','-34.455003;-58.627275','1700',121456789,'09-11-2019','Pendiente'),
 	(NULL,20,'SanRoque','Los Troncos del Talar','Independencia 498, Buenos Aires','-34.452915;-58.614250','1700',123256789,'10-11-2019','Pendiente'),
 	(NULL,21,'Resistir','Los Troncos del Talar','Cnel. Pringles 640, Buenos Aires','-34.450659;-58.615623','1700',123356789,'11-11-2019','Pendiente');
@@ -142,19 +162,20 @@ INSERT INTO Reportes (IdReporte, IdUsuario, IdMarcador) VALUES
 	
 INSERT INTO SolicitudAdopcion (IdAdopcion, IdUsuarioSolicitante, Descripcion, FechaCreacion, Estado) VALUES
 	(1,4,'Tengo espacio para cuidarlo','02-11-2019','Pendiente'),
-	(2,4,'Tengo espacio para cuidarlo','03-11-2019','Pendiente'),
-	(3,4,'Estoy disponible a cuidarlo','04-11-2019','Pendiente'),
-	(4,4,'Estoy disponible a cuidarlo','05-11-2019','Pendiente');
-
-
-/*
-If its work, try set VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" on yout ContentView
-<ContentPage Title="Map" Icon="IconMap.png" Style="{StaticResource PageStyle}"> 
-	<StackLayout x:Name="StackMapLayout" Orientation="Vertical" VerticalOptions="FillAndExpand"> 
-		<ActivityIndicator x:Name="ActivityMap" IsRunning="{Binding Busy}" IsVisible="{Binding Busy}" /> 
-		<Label x:Name="LabelNoPos" VerticalOptions="Center" IsVisible="false" HorizontalOptions="Center" /> 
-		<local:CustomMap x:Name="VesselMap" IsShowingUser="false" IsVisible="false" MapType="Hybrid" /> 
-	</StackLayout> 
-</ContentPage>
-
-*/
+	(2,7,'Tengo espacio para cuidarlo','03-11-2019','Pendiente'),
+	(3,8,'Estoy disponible a cuidarlo','04-11-2019','Pendiente'),
+	(4,10,'Estoy disponible a cuidarlo','05-11-2019','Pendiente'),
+	(6,11,'Estoy disponible a cuidarlo','06-11-2019','Pendiente'),
+	(7,12,'Estoy disponible a cuidarlo','07-11-2019','Pendiente'),
+	(8,13,'Estoy disponible a cuidarlo','08-11-2019','Pendiente'),
+	(9,14,'Estoy disponible a cuidarlo','09-11-2019','Pendiente'),
+	(11,15,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(12,16,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(13,17,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(14,18,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(15,19,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(15,20,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(15,21,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(16,22,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(17,23,'Estoy disponible a cuidarlo','10-11-2019','Pendiente'),
+	(18,2,'Estoy disponible a cuidarlo','10-11-2019','Pendiente');
