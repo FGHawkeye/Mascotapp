@@ -45,7 +45,7 @@ namespace Domain.Servicios
         public int ComprobarTipoAnimal(string tipo)
         {
             int i = -1;
-            TipoAnimal tipoAnimal= dbConnection.Query<TipoAnimal>("Select * From [TipoAnimal]").Where(x => x.Descripcion == tipo).FirstOrDefault();
+            TipoAnimal tipoAnimal= dbConnection.Query<TipoAnimal>("Select * From [TipoAnimal]").Where(x => x.Descripcion.ToUpper() == tipo.ToUpper()).FirstOrDefault();
             if (tipoAnimal != null) i = 1;
             return i;
         }

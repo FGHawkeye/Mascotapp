@@ -244,7 +244,7 @@ namespace Mascotapp
             {
                 msg="Debe ingresar al menos una foto.";
             }
-            else if(Int32.Parse(txtEdad.Text)<0||Int32.Parse(txtEdad.Text)>30){
+            else if(Int32.Parse(txtEdad.Text)<0||Int32.Parse(txtEdad.Text)>25){
                 msg="Debe ingresar una edad valida.";
             }
             return msg;
