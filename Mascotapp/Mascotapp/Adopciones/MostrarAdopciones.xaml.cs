@@ -27,6 +27,7 @@ namespace Mascotapp
         {
             if (MainPage.UsuarioRegristrado != null)
             {
+                string directoryPath = "/storage/emulated/0/Mascotapp/";
                 List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones().Where(x=>x.IdUsuario== MainPage.UsuarioRegristrado.IdUsuario&&x.Estado).ToList();
                 List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
                 Button btnAgregar = new Button
@@ -68,25 +69,39 @@ namespace Mascotapp
 
                         Button btnEliminar = new Button
                         {
-                            Text = "Eliminar",
                             ClassId = item.IdAdopcion.ToString(),
                             BindingContext = item.IdAdopcion.ToString(),
-                            BackgroundColor=Color.DarkRed
+                            BackgroundColor = Color.DarkRed,
+                            ImageSource = ImageSource.FromFile(directoryPath + "eliminar.png"),
+                            HeightRequest = 50.0,
+                            WidthRequest = 50.0,
                         };
 
                         Button btnModificar = new Button
                         {
-                            Text = "Modificar",
                             ClassId = item.IdAdopcion.ToString(),
                             BindingContext = item.IdAdopcion.ToString(),
+                            BackgroundColor = Color.DarkGreen,
+                            ImageSource = ImageSource.FromFile(directoryPath + "editar.png"),
+                            HeightRequest = 50.0,
+                            WidthRequest = 50.0,
                         };
+
+                        StackLayout btns = new StackLayout
+                        {
+                            Orientation= StackOrientation.Horizontal,
+                            HorizontalOptions = LayoutOptions.EndAndExpand
+                        };
+                        
+                        btns.Children.Add(btnModificar);
+                        btns.Children.Add(btnEliminar);
 
                         btnModificar.Clicked += Modificar_Clicked;
                         btnEliminar.Clicked += Eliminar_Clicked;
                         flexLayout.Children.Add(lbNombre);
                         flexLayout.Children.Add(lbTipoAnimal);
-                        flexLayout.Children.Add(btnModificar);
-                        flexLayout.Children.Add(btnEliminar);
+                        flexLayout.Children.Add(btns);
+
                         frame.Content = flexLayout;
                         flexGral.Children.Add(frame);
                     }

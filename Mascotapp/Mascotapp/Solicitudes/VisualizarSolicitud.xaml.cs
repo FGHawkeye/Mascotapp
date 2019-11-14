@@ -138,7 +138,7 @@ namespace Mascotapp
                         IdAdopcion = idAdop,
                         Descripcion = txtDetalle.Text,
                         Estado = "Pendiente",
-                        FechaCreacion = DateTime.UtcNow,
+                        FechaCreacion = DateTime.UtcNow.ToString("dd-MM-yyyy"),
                         IdUsuarioSolicitante = MainPage.UsuarioRegristrado.IdUsuario.Value
                     };
                     servicioSolicitudAdopcion.GuardarSolicitudAdopcion(solicitud);
