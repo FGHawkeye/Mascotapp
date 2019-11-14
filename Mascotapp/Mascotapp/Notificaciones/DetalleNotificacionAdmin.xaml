@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:Domain.MapRenderer;assembly=Domain"
              mc:Ignorable="d"
-              x:Class="Mascotapp.DetalleNotificacionAdmin">
+              x:Class="Mascotapp.DetalleNotificacionAdmin"
+             Title="Detalle de notificacion">
     <ContentPage.Resources>
         <Style TargetType="Frame">
             <Setter Property="BackgroundColor" Value="WhiteSmoke" />
