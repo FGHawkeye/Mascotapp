@@ -27,12 +27,15 @@ namespace Mascotapp
         {
             if (MainPage.UsuarioRegristrado != null)
             {
+                string directoryPath = "/storage/emulated/0/Mascotapp/";
                 List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones().Where(x=>x.IdUsuario== MainPage.UsuarioRegristrado.IdUsuario&&x.Estado).ToList();
                 List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
                 Button btnAgregar = new Button
                 {
-                    Padding=10,
+                    Margin = 10,
+                    WidthRequest = 200,
                     Text = "Agregar Adopcion",
+                    HorizontalOptions = LayoutOptions.Center
                 };
                 btnAgregar.Clicked += Agregar_Clicked;
                 Mostrar.Children.Add(btnAgregar);
@@ -69,7 +72,10 @@ namespace Mascotapp
                             Text = "Eliminar",
                             ClassId = item.IdAdopcion.ToString(),
                             BindingContext = item.IdAdopcion.ToString(),
-                            BackgroundColor=Color.DarkRed
+                            BackgroundColor = Color.DarkRed,
+                            ImageSource = ImageSource.FromFile(directoryPath + "eliminar.png"),
+                            HeightRequest = 50.0,
+                            WidthRequest = 50.0,
                         };
 
                         Button btnModificar = new Button
@@ -77,6 +83,10 @@ namespace Mascotapp
                             Text = "Modificar",
                             ClassId = item.IdAdopcion.ToString(),
                             BindingContext = item.IdAdopcion.ToString(),
+                            BackgroundColor = Color.LightGreen,
+                            ImageSource = ImageSource.FromFile(directoryPath + "editar.png"),
+                            HeightRequest = 50.0,
+                            WidthRequest = 50.0,
                         };
 
                         btnModificar.Clicked += Modificar_Clicked;
