@@ -58,7 +58,7 @@
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
                     <FlexLayout Direction="Column">
                         <StackLayout>
-                            <Label Text="Datos del solicitante" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
+                            <Label Text="Datos del solicitante" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="Orange"/>
                         </StackLayout>
                         <StackLayout Padding="20">
                             <Grid>
@@ -109,7 +109,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Button x:Name="btnAceptar" Text="Aceptar"/>
-                                <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar"/>
+                                <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar" BackgroundColor="DarkRed"/>
                             </Grid>
                         </StackLayout>
                     </FlexLayout>

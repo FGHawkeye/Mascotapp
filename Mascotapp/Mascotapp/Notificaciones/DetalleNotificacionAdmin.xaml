@@ -136,7 +136,7 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Button x:Name="btnAceptar" Text="Aceptar"/>
-                                <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar"/>
+                                <Button x:Name="btnRechazar" Grid.Column="1" Text="Rechazar" BackgroundColor="DarkRed"/>
                             </Grid>
                         </StackLayout>
                     </FlexLayout>

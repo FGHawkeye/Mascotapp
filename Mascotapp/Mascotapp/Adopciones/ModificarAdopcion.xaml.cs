@@ -96,6 +96,7 @@ namespace Mascotapp
                     imgCamara.Source= ImageSource.FromFile(imagenes[0].Imagen);
                     lbImage.Text = imgMin1.Id.ToString();
                     btnQuitar.IsEnabled = true;
+                    btnQuitar.BackgroundColor= Color.DarkRed;
                 }
                 else
                 {
@@ -129,6 +130,7 @@ namespace Mascotapp
             if (imgCount == 3&&full)
             {
                 btnCamara.IsEnabled = false;
+                btnCamara.BackgroundColor = Color.Gray;
             }
         }
 
@@ -177,6 +179,7 @@ namespace Mascotapp
             {
                 lbImage.Text = ia.Id.ToString();
                 btnQuitar.IsEnabled = true;
+                btnQuitar.BackgroundColor = Color.DarkRed;
                 imgCamara.Source = ia.Source;
             }
         }
@@ -210,9 +213,11 @@ namespace Mascotapp
                 if (image2 == null && imgCount > 1) imagenes[1].Estado = false;
                 if (image3 == null && imgCount > 2) imagenes[2].Estado = false;
                 btnCamara.IsEnabled = true;
+                btnCamara.BackgroundColor = Color.DarkBlue;
                 imgCamara.Source = null;
                 lbImage.Text = "";
                 btnQuitar.IsEnabled = false;
+                btnQuitar.BackgroundColor = Color.Gray;
             }
         }
 
@@ -334,13 +339,16 @@ namespace Mascotapp
             {
                 imgCamara.Source = img;
                 btnQuitar.IsEnabled = true;
+                btnQuitar.BackgroundColor = Color.DarkRed;
             }
             else
             {
                 //agregar mensaje de limite de fotos
                 btnCamara.IsEnabled = false;
+                btnCamara.BackgroundColor = Color.Gray;
                 imgCamara.Source = null;
                 btnQuitar.IsEnabled = false;
+                btnQuitar.BackgroundColor = Color.Gray;
             }
         }
 
