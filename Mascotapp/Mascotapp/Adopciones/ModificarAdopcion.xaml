@@ -114,7 +114,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
-                                    <Entry Keyboard="Numeric" Placeholder="Edad" MaxLength="100" x:Name="txtEdad" />
+                                    <Entry Keyboard="Numeric" Placeholder="Edad" MaxLength="2" x:Name="txtEdad" />
                                     <Label Grid.Column="1" Text="Años" VerticalOptions="Center"></Label>
                                 </Grid>
                             </Grid>
