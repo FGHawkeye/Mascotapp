@@ -53,9 +53,6 @@
     <ContentPage.Content>
         <StackLayout Orientation ="Vertical">
             <StackLayout>
-                <Frame WidthRequest="300" HeightRequest="32">
-                    <Label Text="Registro de Nuevo Usuario" HorizontalOptions="Center" FontAttributes="Bold" />
-                </Frame>
                 <Frame WidthRequest="300" HeightRequest="480">
                     <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <Grid>

@@ -60,7 +60,7 @@
                 <Frame Margin="0">
                     <FlexLayout Direction="Column" BackgroundColor="FloralWhite" AlignItems="Center">
                         <StackLayout BackgroundColor="FloralWhite">
-                            <Picker Title="Filtrar" x:Name="pckFiltro" WidthRequest="400">
+                            <Picker Title="Filtrar" x:Name="pckFiltro" HorizontalOptions="FillAndExpand">
                                 <Picker.Items>
                                     <x:String>Marcadores</x:String>
                                     <x:String>Adopciones</x:String>
