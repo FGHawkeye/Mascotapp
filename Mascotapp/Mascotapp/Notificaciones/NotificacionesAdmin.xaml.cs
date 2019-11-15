@@ -72,9 +72,9 @@ namespace Mascotapp
 
                     btnDetalle.Clicked += Detalle_Clicked;
                     grid.Children.Add(lbRazonSocial, 0, 0);
-                    grid.Children.Add(btnDetalle, 1, 0);
+                    grid.Children.Add(lbFecha, 1, 0);
                     grid.Children.Add(lbUsuarioSolicitante, 0, 1);
-                    grid.Children.Add(lbFecha, 1, 1);
+                    grid.Children.Add(btnDetalle, 1, 1);
                     frame.Content = grid;
                     Mostrar.Children.Add(frame);
                 }
@@ -86,6 +86,7 @@ namespace Mascotapp
                     Direction = FlexDirection.Row,
                     JustifyContent = FlexJustify.SpaceBetween,
                     AlignItems = FlexAlignItems.Center,
+                    BackgroundColor = Color.FloralWhite
                 };
                 Label label = new Label
                 {

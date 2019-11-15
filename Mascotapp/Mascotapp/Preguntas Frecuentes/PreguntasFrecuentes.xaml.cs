@@ -51,7 +51,6 @@ namespace Mascotapp
                     {
                         Padding = 0,
                         BackgroundColor = Color.LightGray,
-                        Spacing =10
                     };
                     var tgr = new TapGestureRecognizer();
                     tgr.Tapped += (s, e) => Title_Clicked(s, e);

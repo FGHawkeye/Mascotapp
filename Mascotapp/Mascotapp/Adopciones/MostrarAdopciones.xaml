@@ -6,9 +6,13 @@
              mc:Ignorable="d"
              x:Class="Mascotapp.MostrarAdopciones"
              Title="Adopciones">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Agregar" Text="Agregar Adopcion" Clicked="Agregar_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -35,7 +39,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">

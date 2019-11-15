@@ -38,6 +38,7 @@ namespace Mascotapp.Marcador_animales
         {
             btnCamera.Clicked += btnCamera_Clicked;
             btnAgregar.Clicked += btnAgregar_Clicked;
+            btnCancelar.Clicked += Cancelar_Clicked;
         }
 
         void CargarControles()
@@ -152,5 +153,9 @@ namespace Mascotapp.Marcador_animales
             return pk;
         }
 
+        private void Cancelar_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PopAsync(false);
+        }
     }
 }

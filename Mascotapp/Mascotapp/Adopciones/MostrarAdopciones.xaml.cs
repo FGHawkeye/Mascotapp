@@ -30,21 +30,14 @@ namespace Mascotapp
                 string directoryPath = "/storage/emulated/0/Mascotapp/";
                 List<Adopciones> adopciones = servicioAdopciones.ObtenerAdopciones().Where(x=>x.IdUsuario== MainPage.UsuarioRegristrado.IdUsuario&&x.Estado).ToList();
                 List<TipoAnimal> tipoAnimal = serviceTipoAnimal.ObtenerTipoAnimales();
-                Button btnAgregar = new Button
-                {
-                    Margin=10,
-                    WidthRequest = 200,
-                    Text = "Agregar Adopcion",
-                    HorizontalOptions=LayoutOptions.Center
-                };
-                btnAgregar.Clicked += Agregar_Clicked;
-                Mostrar.Children.Add(btnAgregar);
+
                 if (adopciones.Count>0){
                     Frame frameGral = new Frame { };
                     FlexLayout flexGral = new FlexLayout {
                         Direction = FlexDirection.Column,
                         JustifyContent = FlexJustify.SpaceBetween,
                         AlignItems = FlexAlignItems.Center,
+                        BackgroundColor=Color.FloralWhite
                     };
                     foreach (Adopciones item in adopciones)
                     {
@@ -53,6 +46,7 @@ namespace Mascotapp
                             Direction = FlexDirection.Row,
                             JustifyContent = FlexJustify.SpaceBetween,
                             AlignItems = FlexAlignItems.Center,
+                            BackgroundColor = Color.FloralWhite
                         };
                         Frame frame = new Frame { };
                         Label lbNombre = new Label
@@ -90,7 +84,8 @@ namespace Mascotapp
                         StackLayout btns = new StackLayout
                         {
                             Orientation= StackOrientation.Horizontal,
-                            HorizontalOptions = LayoutOptions.EndAndExpand
+                            HorizontalOptions = LayoutOptions.EndAndExpand,
+                            BackgroundColor = Color.FloralWhite
                         };
                         
                         btns.Children.Add(btnModificar);
@@ -114,6 +109,7 @@ namespace Mascotapp
                         Direction = FlexDirection.Row,
                         JustifyContent = FlexJustify.SpaceBetween,
                         AlignItems = FlexAlignItems.Center,
+                        BackgroundColor = Color.FloralWhite
                     };
                     Label label = new Label
                     {

@@ -9,7 +9,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -36,7 +36,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -51,17 +51,13 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#E5E5E5" Orientation ="Vertical">
+        <StackLayout Orientation ="Vertical">
             <StackLayout>
-                <Frame WidthRequest="300"
-                   HeightRequest="32">
-                    <Label Text="Registro de Nuevo Usuario"
-               HorizontalOptions="Center"
-               FontAttributes="Bold" />
+                <Frame WidthRequest="300" HeightRequest="32">
+                    <Label Text="Registro de Nuevo Usuario" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Orange"/>
                 </Frame>
-                <Frame WidthRequest="300"
-                   HeightRequest="480">
-                    <FlexLayout Direction="Column">
+                <Frame WidthRequest="300" HeightRequest="480">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -119,17 +115,17 @@
                             <Label Text="Confirme Contraseña"/>
                             <Entry x:Name="txtContra2" Text="{Binding Password}" Placeholder="Contraseña" IsPassword="true" Grid.Column="1" MaxLength="20"></Entry>
                         </Grid>
-                        
-                        <StackLayout Spacing="10">
+
+                        <StackLayout Spacing="10" BackgroundColor="FloralWhite">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Button x:Name="btnRegistrar" Text="Registrar"/>
-                                <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
+                                <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar" BackgroundColor="DarkRed"/>
                             </Grid>
-                            <Grid>
+                            <Grid Margin="5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="auto" />

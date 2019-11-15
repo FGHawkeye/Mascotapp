@@ -8,7 +8,7 @@
              Title="Preguntas frecuentes">
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
         </Style>
@@ -33,6 +33,10 @@
             <Setter Property="FontSize" Value="18"/>
         </Style>
 
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
+        </Style>
+
         <Style TargetType="Picker">
             <Setter Property="FontSize" Value="16"/>
         </Style>
@@ -46,18 +50,13 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <StackLayout Padding="5">
-                    <Label Text="Preguntas Frecuentes" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
-                </StackLayout>
-                
+            <StackLayout>                
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
-                    <StackLayout Spacing="8" x:Name="Mostrar" Padding="10" VerticalOptions="StartAndExpand">
+                    <StackLayout Spacing="8" x:Name="Mostrar" Padding="10" VerticalOptions="StartAndExpand" BackgroundColor="FloralWhite">
 
                     </StackLayout>
                 </Frame>
-            </StackLayout>
-            
+            </StackLayout>            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

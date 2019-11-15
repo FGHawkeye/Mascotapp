@@ -4,14 +4,24 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BackgroundColor="#2196f3"
              x:Class="Mascotapp.NavigationMenu.MenuAdmin"
              Title="MenuAdmin">
-  
-        <StackLayout>
-            <Button Text="Notificaciones" x:Name="btnSolicitudRefugioAdmin_Clicked" Clicked="BtnSolicitudRefugioAdmin_Clicked" />
-            <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />
-            <Button Text="Tipo de Animal" x:Name="btnTipoDeAnimal" Clicked="BtnTipoDeAnimal_Clicked" />
-            <Button Text="Cerrar sesion" x:Name="btnCerrarSesion" Clicked="BtnCerrarSesion_Clicked" />
-        </StackLayout>
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="FloralWhite"/>
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout BackgroundColor="#2196f3" Margin="20" Spacing="20">
+        <Button Text="Notificaciones" x:Name="btnSolicitudRefugioAdmin_Clicked" Clicked="BtnSolicitudRefugioAdmin_Clicked" />
+        <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />
+        <Button Text="Tipo de Animal" x:Name="btnTipoDeAnimal" Clicked="BtnTipoDeAnimal_Clicked" />
+        <Button Text="Cerrar sesion" x:Name="btnCerrarSesion" Clicked="BtnCerrarSesion_Clicked" />
+    </StackLayout>
   
 </ContentPage>

@@ -5,9 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Mascotapp.NavigationMenu.Master"
+             BackgroundColor="#2196f3"
              Title="Master">
 
-    <StackLayout>
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="BackgroundColor" Value="FloralWhite"/>
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout BackgroundColor="#2196f3" Margin="20" Spacing="20">
         <Button Text="Login" x:Name="btnLogin" Clicked="BtnLogin_Clicked" />
         <Button Text="Registrarse" x:Name="btnRegistro" Clicked="BtnRegistro_Clicked" />
         <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />

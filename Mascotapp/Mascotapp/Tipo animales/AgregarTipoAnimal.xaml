@@ -9,7 +9,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -36,7 +36,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -51,13 +51,13 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="WhiteSmoke" Orientation ="Vertical">
+        <StackLayout  Orientation ="Vertical">
             <StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
-                    <Label Text="Nuevo Tipo de Animal" HorizontalOptions="Center" FontAttributes="Bold" />
+                    <Label Text="Nuevo Tipo de Animal" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Orange" />
                 </Frame>
                 <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
-                    <FlexLayout Direction="Column">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -72,7 +72,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Button x:Name="btnAgregar" Text="Agregar"/>
-                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar" BackgroundColor="DarkRed"/>
                         </Grid>
                     </FlexLayout>
                 </Frame>

@@ -9,7 +9,7 @@
     
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -36,7 +36,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -53,18 +53,15 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout  Spacing="10" Padding="10">
-                <StackLayout>
-                    <Label Text="Solicitud de Adopción" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
-                </StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
-                    <FlexLayout Direction="Column">
-                        <StackLayout Orientation="Horizontal"  HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" Padding="5">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                        <StackLayout Orientation="Horizontal"  HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" Padding="5" BackgroundColor="FloralWhite">
                             <Image x:Name="imgCamara" BackgroundColor="LightGray" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
                         </StackLayout>
                         <Label x:Name="lbImage" IsVisible="False"></Label>
                         <Frame HeightRequest="60" HorizontalOptions="Center">
-                            <FlexLayout Direction="Column" JustifyContent="Center" HorizontalOptions="CenterAndExpand">
-                                <StackLayout Orientation="Horizontal"  HeightRequest="48" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
+                            <FlexLayout Direction="Column" JustifyContent="Center" HorizontalOptions="CenterAndExpand" BackgroundColor="FloralWhite">
+                                <StackLayout Orientation="Horizontal"  HeightRequest="48" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" BackgroundColor="FloralWhite">
                                     <ImageButton x:Name="imgMin1" Aspect="AspectFill"  Clicked="Img_Clicked" />
                                     <ImageButton x:Name="imgMin2" Aspect="AspectFill"  Clicked="Img_Clicked" />
                                     <ImageButton x:Name="imgMin3" Aspect="AspectFill"  Clicked="Img_Clicked" />
@@ -74,11 +71,11 @@
                     </FlexLayout>
                 </Frame>
                 <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
-                    <FlexLayout Direction="Column">
-                        <StackLayout Spacing="10">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                        <StackLayout Spacing="10" BackgroundColor="FloralWhite">
                             <Label Text="Datos del usuario" FontSize="22" TextColor="Coral"/>
                         </StackLayout>
-                        <StackLayout Padding="20" >
+                        <StackLayout Padding="20" BackgroundColor="FloralWhite">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -115,8 +112,8 @@
                     </FlexLayout>
                 </Frame>
                 <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
-                    <FlexLayout Direction="Column">
-                        <StackLayout Spacing="10">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                        <StackLayout Spacing="10" BackgroundColor="FloralWhite">
                             <Label Text="Datos de la adopcion" FontSize="22" TextColor="Coral"/>
                         </StackLayout>
                         <Grid>
@@ -177,7 +174,7 @@
                             <Label Text="Mensaje para el usuario:" VerticalOptions="Center"/>
                             <Label Grid.Column="1" Text="Max: 250 caracteres." TextColor="LightGray" VerticalOptions="Center"/>
                         </Grid>
-                        <StackLayout Spacing="15" Padding="15">
+                        <StackLayout Spacing="15" Padding="15" BackgroundColor="FloralWhite">
                             <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDetalle"/>
                             <Button x:Name="btnGuardar" Text="Realizar Solicitud"/>
                         </StackLayout>

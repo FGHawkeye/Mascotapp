@@ -34,7 +34,6 @@ namespace Mascotapp.NavigationMenu
         {
             App.MasterD.IsPresented = false; //isVisible = false
             await App.MasterD.Detail.Navigation.PushAsync(new VerTipoAnimal());
-            //await App.MasterD.Detail.Navigation.PushAsync(new Tipo_animales.TipoDeAnimal());
         }
 
         private async void BtnCerrarSesion_Clicked(object sender, EventArgs e)

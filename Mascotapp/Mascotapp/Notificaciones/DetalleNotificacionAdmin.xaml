@@ -9,7 +9,7 @@
              Title="Detalle de notificacion">
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -36,7 +36,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -53,15 +53,12 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="10" Padding="10">
-                <StackLayout>
-                    <Label Text="Solicitud de Refugio" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="Orange"/>
-                </StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
-                    <FlexLayout Direction="Column">
-                        <StackLayout>
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                        <StackLayout BackgroundColor="FloralWhite">
                             <Label Text="Datos del solicitante" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
                         </StackLayout>
-                        <StackLayout Padding="20">
+                        <StackLayout Padding="20" BackgroundColor="FloralWhite">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -130,7 +127,7 @@
                             <StackLayout HeightRequest="200" WidthRequest="200">
                                 <local:CustomMap x:Name="map_Mapa" MapType="Street" />
                             </StackLayout>-->
-                            <Grid>
+                            <Grid Margin="15">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />

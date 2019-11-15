@@ -8,7 +8,7 @@
              Title="Tipo de animal">
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -35,7 +35,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -53,10 +53,10 @@
         <ScrollView>
             <StackLayout  Spacing="10" Padding="10">
                 <StackLayout>
-                    <Label Text="Tipo de Animales" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
+                    <Label Text="Tipo de Animales" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="Orange"/>
                 </StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
-                    <FlexLayout Direction="Column">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <Grid RowSpacing="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -68,16 +68,16 @@
                         </Grid>
                     </FlexLayout>
                 </Frame>
-                <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
-                    <FlexLayout Direction="Column">
-                        <StackLayout Spacing="10">
+                <Frame WidthRequest="300" VerticalOptions="CenterAndExpand">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                        <StackLayout Spacing="10" BackgroundColor="FloralWhite">
                             <Label Text="Modificar" FontSize="22" TextColor="Coral"/>
                         </StackLayout>
-                        <StackLayout Spacing="15" Padding="15">
+                        <StackLayout Spacing="15" Padding="15" BackgroundColor="FloralWhite">
                             <Label Text="Modificar tipo de animal:" VerticalOptions="Center"/>
                             <Editor Text="" MaxLength="12" AutoSize="TextChanges" x:Name="txtTipoAnimal"/>
                         </StackLayout>
-                        <StackLayout Padding="20" >
+                        <StackLayout Padding="20" BackgroundColor="FloralWhite">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />

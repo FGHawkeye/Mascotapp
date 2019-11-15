@@ -8,7 +8,7 @@
              Title="Detalle marcador">
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -35,7 +35,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -52,23 +52,20 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout >
-                <StackLayout>
-                    <Label Text="Marcador" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
-                </StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
-                    <FlexLayout Direction="Column">
-                        <StackLayout Orientation="Horizontal"  HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                        <StackLayout Orientation="Horizontal"  HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" BackgroundColor="FloralWhite">
                             <Image x:Name="imgMarcador" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
                         </StackLayout>
                         <Label x:Name="lbImage" IsVisible="False"></Label>
                     </FlexLayout>
                 </Frame>
                 <Frame WidthRequest="300" VerticalOptions="CenterAndExpand">
-                    <FlexLayout Direction="Column">
-                        <StackLayout Spacing="10">
-                            <Label Text="Datos del marcador" FontSize="22" TextColor="Coral"/>
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                        <StackLayout Spacing="10" BackgroundColor="FloralWhite">
+                            <Label Text="Datos del marcador" FontSize="22" TextColor="Coral" />
                         </StackLayout>
-                        <StackLayout Padding="20" >
+                        <StackLayout Padding="20" BackgroundColor="FloralWhite">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -85,9 +82,9 @@
                                 <Label Text="Descripcion"/>
                             </Grid>
                         </StackLayout>
-                        <StackLayout Spacing="15" Padding="15">
+                        <StackLayout Spacing="15" Padding="15" BackgroundColor="FloralWhite">
                             <Editor Text="" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion" IsReadOnly="True"/>
-                            <Button x:Name="btnReportar" Text="Reportar marcador" />
+                            <Button x:Name="btnReportar" Text="Reportar marcador" BackgroundColor="DarkRed"/>
                         </StackLayout>
                     </FlexLayout>
                 </Frame>
