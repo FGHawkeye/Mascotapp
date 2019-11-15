@@ -59,19 +59,23 @@
             <StackLayout Margin="0" Spacing="0">
                 <Frame Margin="0">
                     <FlexLayout Direction="Column" BackgroundColor="FloralWhite" AlignItems="Center">
-                        <StackLayout BackgroundColor="FloralWhite">
-                            <Picker Title="Filtrar" x:Name="pckFiltro" WidthRequest="400">
+                        <Grid RowSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Picker Title="Filtrar" x:Name="pckFiltro" HorizontalOptions="FillAndExpand">
                                 <Picker.Items>
                                     <x:String>Marcadores</x:String>
                                     <x:String>Adopciones</x:String>
                                     <x:String>Refugios</x:String>
                                 </Picker.Items>
                             </Picker>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="FloralWhite">
-                            <Button x:Name="btnFiltro" Text="Aplicar filtro" WidthRequest="150" HeightRequest="40" />
-                            <Button x:Name="btnQuitarFiltro" Text="Quitar filtro" WidthRequest="150" HeightRequest="40" />
-                        </StackLayout>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="FloralWhite" Grid.Row="1">
+                                <Button x:Name="btnFiltro" Text="Aplicar filtro" WidthRequest="150" HeightRequest="40" />
+                                <Button x:Name="btnQuitarFiltro" Text="Quitar filtro" WidthRequest="150" HeightRequest="40" />
+                            </StackLayout>
+                        </Grid>
                     </FlexLayout>
                 </Frame>
             </StackLayout>

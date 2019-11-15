@@ -188,6 +188,10 @@ namespace Mascotapp
             {
                 msg = "Para ingresar una publicacion debe estar logueado.";
             }
+            else if (txtNombre.Text == "" || txtNombre.Text == null)
+            {
+                msg = "Falta ingresar un nombre.";
+            }
             else if (pckAnimal.SelectedItem == null)
             {
                 msg = "Falta seleccionar un tipo de animal.";
@@ -196,18 +200,18 @@ namespace Mascotapp
             {
                 msg = "Falta seleccionar el sexo.";
             }
-            else if (txtDescripcion.Text == "" || txtDescripcion.Text == null)
-            {
-                msg = "Falta ingresar una descripcion.";
-            }
             else if (txtEdad.Text == "" || txtEdad.Text == null)
             {
                 msg = "Falta ingresar la edad del animal.";
             }
+            else if (txtDescripcion.Text == "" || txtDescripcion.Text == null)
+            {
+                msg = "Falta ingresar una descripcion.";
+            }            
             else if (imgMin1.Source == null&& imgMin2.Source == null&& imgMin3.Source == null)
             {
                 msg = "Falta ingresar al menos una foto.";
-            }else if (long.Parse(txtEdad.Text) < 0 || long.Parse(txtEdad.Text) > 25)
+            }else if (long.Parse(txtEdad.Text) < 0 || long.Parse(txtEdad.Text) > 30)
             {
                 msg = "Ingrese una edad valida.";
             }

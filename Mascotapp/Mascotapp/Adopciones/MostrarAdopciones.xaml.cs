@@ -138,7 +138,7 @@ namespace Mascotapp
 
         private async void Eliminar_Clicked(object sender, EventArgs e)
         {
-            var rta = await DisplayAlert("Borrar Pulicación", "¿Esta seguro que desea eliminar la publicación?", "Si", "No");
+            var rta = await DisplayAlert("Eliminar Publicación", "¿Esta seguro que desea eliminar la publicación?", "Si", "No");
             if (rta)
             {
                 Button btn = (Button)sender;
