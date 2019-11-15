@@ -9,7 +9,7 @@
 
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -36,7 +36,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="LightGray"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -51,17 +51,13 @@
         </Style>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#E5E5E5" Orientation ="Vertical">
+        <StackLayout Orientation ="Vertical">
             <StackLayout>
-                <Frame WidthRequest="300"
-                   HeightRequest="32">
-                    <Label Text="Registro de Nuevo Usuario"
-               HorizontalOptions="Center"
-               FontAttributes="Bold" />
+                <Frame WidthRequest="300" HeightRequest="32">
+                    <Label Text="Registro de Nuevo Usuario" HorizontalOptions="Center" FontAttributes="Bold" />
                 </Frame>
-                <Frame WidthRequest="300"
-                   HeightRequest="480">
-                    <FlexLayout Direction="Column">
+                <Frame WidthRequest="300" HeightRequest="480">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
@@ -102,7 +98,7 @@
                             <Label Text="Ingrese un numero de contacto:"/>
                             <Entry x:Name="txtTel" Keyboard="Numeric" Placeholder="1512345678" MaxLength="12" Grid.Column="1"></Entry>
                         </Grid>
-                        <StackLayout Spacing="20">
+                        <StackLayout Spacing="20" BackgroundColor="FloralWhite">
                             <Label></Label>
                         </StackLayout>
                         <Grid>
@@ -111,7 +107,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Button x:Name="btnRegistrar" Text="Registrar"/>
-                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="1" Text="Cancelar" BackgroundColor="DarkRed"/>
                         </Grid>
                     </FlexLayout>
                 </Frame>

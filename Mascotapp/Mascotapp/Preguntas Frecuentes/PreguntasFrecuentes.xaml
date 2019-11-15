@@ -8,7 +8,7 @@
              Title="Preguntas frecuentes">
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
         </Style>
@@ -33,6 +33,10 @@
             <Setter Property="FontSize" Value="18"/>
         </Style>
 
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="LightGray"/>
+        </Style>
+
         <Style TargetType="Picker">
             <Setter Property="FontSize" Value="16"/>
         </Style>
@@ -52,7 +56,7 @@
                 </StackLayout>
                 
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
-                    <StackLayout Spacing="8" x:Name="Mostrar" Padding="10" VerticalOptions="StartAndExpand">
+                    <StackLayout Spacing="8" x:Name="Mostrar" Padding="10" VerticalOptions="StartAndExpand" BackgroundColor="FloralWhite">
 
                     </StackLayout>
                 </Frame>

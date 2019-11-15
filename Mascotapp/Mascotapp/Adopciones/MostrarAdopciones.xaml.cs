@@ -45,6 +45,7 @@ namespace Mascotapp
                         Direction = FlexDirection.Column,
                         JustifyContent = FlexJustify.SpaceBetween,
                         AlignItems = FlexAlignItems.Center,
+                        BackgroundColor=Color.FloralWhite
                     };
                     foreach (Adopciones item in adopciones)
                     {
@@ -53,6 +54,7 @@ namespace Mascotapp
                             Direction = FlexDirection.Row,
                             JustifyContent = FlexJustify.SpaceBetween,
                             AlignItems = FlexAlignItems.Center,
+                            BackgroundColor = Color.FloralWhite
                         };
                         Frame frame = new Frame { };
                         Label lbNombre = new Label
@@ -90,7 +92,8 @@ namespace Mascotapp
                         StackLayout btns = new StackLayout
                         {
                             Orientation= StackOrientation.Horizontal,
-                            HorizontalOptions = LayoutOptions.EndAndExpand
+                            HorizontalOptions = LayoutOptions.EndAndExpand,
+                            BackgroundColor = Color.FloralWhite
                         };
                         
                         btns.Children.Add(btnModificar);
@@ -114,6 +117,7 @@ namespace Mascotapp
                         Direction = FlexDirection.Row,
                         JustifyContent = FlexJustify.SpaceBetween,
                         AlignItems = FlexAlignItems.Center,
+                        BackgroundColor = Color.FloralWhite
                     };
                     Label label = new Label
                     {

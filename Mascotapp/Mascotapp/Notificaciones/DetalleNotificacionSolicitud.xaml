@@ -8,7 +8,7 @@
              Title="Detalle de notificacion">
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -35,7 +35,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="LightGray"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -56,11 +56,11 @@
                     <Label Text="Solicitud de Adopcion" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
                 </StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
-                    <FlexLayout Direction="Column">
-                        <StackLayout>
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                        <StackLayout BackgroundColor="FloralWhite">
                             <Label Text="Datos del solicitante" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="Orange"/>
                         </StackLayout>
-                        <StackLayout Padding="20">
+                        <StackLayout Padding="20" BackgroundColor="FloralWhite">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />

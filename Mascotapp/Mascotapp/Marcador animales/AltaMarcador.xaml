@@ -8,7 +8,7 @@
              Title="Agregar marcador">
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -35,7 +35,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="LightGray"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -54,14 +54,14 @@
             <ScrollView>
                 <StackLayout Spacing="10" Padding="10">
                     <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
-                        <FlexLayout Direction="Column" >
-                            <StackLayout VerticalOptions="CenterAndExpand">
+                        <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                            <StackLayout VerticalOptions="CenterAndExpand" BackgroundColor="FloralWhite">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <StackLayout Orientation="Horizontal" HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" Padding="5">
+                                    <StackLayout Orientation="Horizontal" HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" Padding="5" BackgroundColor="FloralWhite">
                                         <Image x:Name="imgCamara" BackgroundColor="LightGray" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
                                     </StackLayout>
                                     <Button x:Name="btnCamera" Text="Tomar foto" Grid.Row="1" />
@@ -74,7 +74,7 @@
                                     <Label Text="Tipo animal: "/>
                                     <Picker Title="Tipo animal" x:Name="pckAnimal" Grid.Column="1"/>
                                 </Grid>
-                                <StackLayout Orientation="Vertical" Padding="10">
+                                <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="FloralWhite">
                                     <Label Text="Descripcion: "/>
                                     <Editor Placeholder="Descripcion" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion"/>
                                 </StackLayout>
@@ -83,7 +83,7 @@
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <Button x:Name="btnCancelar" Text="Cancelar"></Button>
+                                    <Button x:Name="btnCancelar" Text="Cancelar" BackgroundColor="DarkRed"></Button>
                                     <Button x:Name="btnAgregar" Text="Agregar" Grid.Column="1" ></Button>
                                 </Grid>
                             </StackLayout>

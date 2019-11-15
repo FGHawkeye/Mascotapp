@@ -8,7 +8,7 @@
              Title="Login">
     <ContentPage.Resources>
         <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
             <Setter Property="BorderColor" Value="Black" />
             <Setter Property="Margin" Value="10" />
             <Setter Property="CornerRadius" Value="15" />
@@ -37,7 +37,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="WhiteSmoke"/>
+            <Setter Property="BackgroundColor" Value="LightGray"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -53,12 +53,10 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#E5E5E5" Orientation ="Vertical">
-            
-            
-            <StackLayout>
+        <StackLayout Orientation ="Vertical">
+            <StackLayout >
                 <Frame>
-                    <Label Text="Ingresar" HorizontalOptions="Start" FontAttributes="Bold" />
+                    <Label Text="Ingresar" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Orange"/>
                 </Frame>
                 
                 <Frame>
@@ -90,10 +88,10 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="btnCancelar" Grid.Column="0" Text="Cancelar"/>
+                            <Button x:Name="btnCancelar" Grid.Column="0" Text="Cancelar" BackgroundColor="DarkRed"/>
                             <Button x:Name="btnIngresar" Grid.Column="1" Text="Aceptar"/>
                             <Label Grid.Column="1" Grid.Row="1" 
-                               Text="Nuevo usuario? Registrate!">
+                               Text="Nuevo usuario? Registrate!" FontSize="11" BackgroundColor="Transparent">
                                  <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                  </Label.GestureRecognizers>

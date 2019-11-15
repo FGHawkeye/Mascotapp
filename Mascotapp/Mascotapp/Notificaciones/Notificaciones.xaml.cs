@@ -90,6 +90,7 @@ namespace Mascotapp
                         Direction = FlexDirection.Row,
                         JustifyContent = FlexJustify.SpaceBetween,
                         AlignItems = FlexAlignItems.Center,
+                        BackgroundColor=Color.FloralWhite
                     };
                     Label label = new Label
                     {
