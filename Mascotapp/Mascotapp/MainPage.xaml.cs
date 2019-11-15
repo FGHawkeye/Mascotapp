@@ -1,42 +1,49 @@
 ﻿using Domain.Entidades;
-using Domain.Servicios;
+using Mascotapp.NavigationMenu;
+using Mascotapp.Visualizar_mapa;
 using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
-using Xamarin.Forms;
-using Domain.DB;
-using SQLite;
-using System;
-using System.IO;
 using Xamarin.Forms;
 
 namespace Mascotapp
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
-    {
-        ObservableCollection<Usuario> usuarios = new ObservableCollection<Usuario>();
-        public ObservableCollection<Usuario> Usuarios { get { return usuarios; } }
 
+   
+    public partial class MainPage : MasterDetailPage
+    {
+
+        public static Domain.Entidades.Usuario UsuarioRegristrado = null;
 
         public MainPage()
         {
             InitializeComponent();
-            CargarUsuarios();
+            this.Master = new Master();
+            this.Detail = new NavigationPage(new Mapa());
+            App.MasterD = this;
+        }
+        public static void RecargarPrincipal()
+        {
+            App.MasterD.IsPresented = false; //isVisible = false
+            App.MasterD.Detail = new NavigationPage(new Mapa());
         }
 
-        void CargarUsuarios()
+        public static void RecargarPrincipalLogout()
         {
-            lstUsuarios.ItemsSource = usuarios;
-            ServicioUsuarios service = new ServicioUsuarios();
-            var Usuarios = service.ObtenerUsuarios();
-            foreach (var usuario in Usuarios)
-            {
-                usuarios.Add(usuario);
-            }
+            MainPage.UsuarioRegristrado = null;
+            App.MasterD.IsPresented = false; //isVisible = false
+            App.MasterD.Master = new Master();
+            App.MasterD.Detail = new NavigationPage(new Mapa());
         }
+
+
+        //void CargarUsuarios()
+        //{
+        //    lstUsuarios.ItemsSource = usuarios;
+        //    ServicioUsuarios service = new ServicioUsuarios();
+        //    var Usuarios = service.ObtenerUsuarios();
+        //    foreach (var usuario in Usuarios)
+        //    {
+        //        usuarios.Add(usuario);
+        //    }
+        //}
     }
 }

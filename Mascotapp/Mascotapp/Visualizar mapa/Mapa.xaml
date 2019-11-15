@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Mascotapp.Visualizar_mapa.Mapa"
+             xmlns:local="clr-namespace:Domain.MapRenderer;assembly=Domain">
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Logeado" Text="Ingresar" Clicked="Logeado_Clicked"/>
+        
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
+            <Setter Property="BorderColor" Value="Black" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="Editor">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+            <Setter Property="BorderRadius" Value="7" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="0" Spacing="0">
+            <StackLayout Margin="0" Spacing="0">
+                <Frame Margin="0">
+                    <FlexLayout Direction="Column" BackgroundColor="FloralWhite" AlignItems="Center">
+                        <StackLayout BackgroundColor="FloralWhite">
+                            <Picker Title="Filtrar" x:Name="pckFiltro" WidthRequest="400">
+                                <Picker.Items>
+                                    <x:String>Marcadores</x:String>
+                                    <x:String>Adopciones</x:String>
+                                    <x:String>Refugios</x:String>
+                                </Picker.Items>
+                            </Picker>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" BackgroundColor="FloralWhite">
+                            <Button x:Name="btnFiltro" Text="Aplicar filtro" WidthRequest="150" HeightRequest="40" />
+                            <Button x:Name="btnQuitarFiltro" Text="Quitar filtro" WidthRequest="150" HeightRequest="40" />
+                        </StackLayout>
+                    </FlexLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Margin="0">
+                <local:CustomMap x:Name="map_Mapa" MapType="Street">
+
+                </local:CustomMap>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Mascotapp.Marcador_animales.AltaMarcador"
+             Title="Agregar marcador">
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="FloralWhite" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 4" />
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="Editor">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="DarkBlue"/>
+            <Setter Property="BorderRadius" Value="20" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <ScrollView>
+                <StackLayout Spacing="10" Padding="10">
+                    <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
+                        <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
+                            <StackLayout VerticalOptions="CenterAndExpand" BackgroundColor="FloralWhite">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Orientation="Horizontal" HeightRequest="300" Grid.Column="0" HorizontalOptions="Center" FlexLayout.AlignSelf="Center" Padding="5" BackgroundColor="FloralWhite">
+                                        <Image x:Name="imgCamara" BackgroundColor="LightGray" WidthRequest="200" Aspect="Fill" HorizontalOptions="Center"  />
+                                    </StackLayout>
+                                    <Button x:Name="btnCamera" Text="Tomar foto" Grid.Row="1" />
+                                </Grid>
+                                <Grid Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Tipo animal: "/>
+                                    <Picker Title="Tipo animal" x:Name="pckAnimal" Grid.Column="1"/>
+                                </Grid>
+                                <StackLayout Orientation="Vertical" Padding="10" BackgroundColor="FloralWhite">
+                                    <Label Text="Descripcion: "/>
+                                    <Editor Placeholder="Descripcion" MaxLength="250" AutoSize="TextChanges" x:Name="txtDescripcion"/>
+                                </StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Button x:Name="btnCancelar" Text="Cancelar" BackgroundColor="DarkRed"></Button>
+                                    <Button x:Name="btnAgregar" Text="Agregar" Grid.Column="1" ></Button>
+                                </Grid>
+                            </StackLayout>
+                        </FlexLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
