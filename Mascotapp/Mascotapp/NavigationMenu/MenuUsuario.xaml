@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             BackgroundColor="#367c87"
+             BackgroundColor="#2196f3"
              x:Class="Mascotapp.NavigationMenu.MenuUsuario"
              Title="MenuUsuario">
 
@@ -17,7 +17,7 @@
         </Style>
     </ContentPage.Resources>
 
-    <StackLayout BackgroundColor="#367c87" Margin="20" Spacing="20">
+    <StackLayout BackgroundColor="#2196f3" Margin="20" Spacing="20">
         <Button Text="Agregar Marcador" x:Name="btnAgregarMarcador" Clicked="BtnAgregarMarcador_Clicked" />
         <Button Text="Adopciones" x:Name="btnMostrarAdopciones" Clicked="BtnMostrarAdopciones_Clicked" />
         <Button Text="Notificaciones" x:Name="btnNotificaciones" Clicked="BtnNotificaciones_Clicked" />

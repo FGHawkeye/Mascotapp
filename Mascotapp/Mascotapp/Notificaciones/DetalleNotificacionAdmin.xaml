@@ -36,7 +36,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="LightGray"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -53,9 +53,6 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="10" Padding="10">
-                <StackLayout>
-                    <Label Text="Solicitud de Refugio" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="Orange"/>
-                </StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
                     <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <StackLayout BackgroundColor="FloralWhite">
@@ -130,7 +127,7 @@
                             <StackLayout HeightRequest="200" WidthRequest="200">
                                 <local:CustomMap x:Name="map_Mapa" MapType="Street" />
                             </StackLayout>-->
-                            <Grid>
+                            <Grid Margin="15">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />

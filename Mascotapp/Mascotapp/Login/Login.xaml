@@ -37,7 +37,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="LightGray"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -54,25 +54,16 @@
 
     <ContentPage.Content>
         <StackLayout Orientation ="Vertical">
-            <StackLayout >
-                <Frame>
-                    <Label Text="Ingresar" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Orange"/>
-                </Frame>
-                
-                <Frame>
-                    
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Frame >
                     <FlexLayout Direction="Column">
-
                         <Grid Margin="4,4,4,4">
-                            
                             <Label Text="Ingrese su usuario" />
-
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                         </Grid>
-
                         <Editor x:Name="txtNombre" Placeholder="Usuario" MaxLength="49" />
                         <Grid Margin="0,20,0,0">
                             <Label Text="Ingrese su contraseña"/>
@@ -97,8 +88,6 @@
                                  </Label.GestureRecognizers>
                             </Label>
                         </Grid>
-                    
-
                     </FlexLayout>
                 </Frame>
             </StackLayout>

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Mascotapp.NavigationMenu.Master"
-             BackgroundColor="#367c87"
+             BackgroundColor="#2196f3"
              Title="Master">
 
     <ContentPage.Resources>
@@ -17,7 +17,7 @@
         </Style>
     </ContentPage.Resources>
 
-    <StackLayout BackgroundColor="#367c87" Margin="20" Spacing="20">
+    <StackLayout BackgroundColor="#2196f3" Margin="20" Spacing="20">
         <Button Text="Login" x:Name="btnLogin" Clicked="BtnLogin_Clicked" />
         <Button Text="Registrarse" x:Name="btnRegistro" Clicked="BtnRegistro_Clicked" />
         <Button Text="Preguntas frecuentes" x:Name="btnPreguntasFrecuentes" Clicked="BtnPreguntasFrecuentes_Clicked" />

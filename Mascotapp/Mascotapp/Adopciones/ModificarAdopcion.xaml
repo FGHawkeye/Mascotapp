@@ -35,7 +35,7 @@
         </Style>
 
         <Style TargetType="StackLayout">
-            <Setter Property="BackgroundColor" Value="LightGray"/>
+            <Setter Property="BackgroundColor" Value="#6f8dcb"/>
         </Style>
 
         <Style TargetType="Picker">
@@ -52,9 +52,6 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout >
-                <StackLayout>
-                    <Label Text="Modificar Adopción" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="DarkBlue"/>
-                </StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
                     <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <StackLayout BackgroundColor="FloralWhite">
