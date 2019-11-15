@@ -224,7 +224,7 @@ namespace Mascotapp
         public string ValidarForm()
         {
             string msg="";
-            if (txtNombre.Text == null || txtDescripcion.Text == "")
+            if (txtNombre.Text == null || txtNombre.Text == "")
             {
                 msg="Falta ingresar un nombre.";
             }
