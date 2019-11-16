@@ -224,7 +224,11 @@ namespace Mascotapp
         public string ValidarForm()
         {
             string msg="";
-            if (pckAnimal.SelectedItem == null)
+            if (txtNombre.Text == null || txtNombre.Text == "")
+            {
+                msg="Falta ingresar un nombre.";
+            }
+            else if (pckAnimal.SelectedItem == null)
             {
                 msg="Falta seleccionar un tipo de animal.";
             }
@@ -244,7 +248,7 @@ namespace Mascotapp
             {
                 msg="Debe ingresar al menos una foto.";
             }
-            else if(Int32.Parse(txtEdad.Text)<0||Int32.Parse(txtEdad.Text)>25){
+            else if(Int32.Parse(txtEdad.Text)<0||Int32.Parse(txtEdad.Text)>30){
                 msg="Debe ingresar una edad valida.";
             }
             return msg;

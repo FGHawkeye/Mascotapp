@@ -48,6 +48,15 @@ namespace Domain.Servicios
             if (usuario != null) i = 1;
             return i;
         }
+        public int ValidarMailExistente(string mail)
+        {
+            int i = -1;
+
+            Usuario usuario = dbConnection.Query<Usuario>("Select * From [Usuario]").Where(x => x.Email == mail).FirstOrDefault();
+          
+            if (usuario != null) i = 1;
+            return i;
+        }
 
 
     }

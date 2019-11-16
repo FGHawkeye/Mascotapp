@@ -53,10 +53,7 @@
     <ContentPage.Content>
         <StackLayout  Orientation ="Vertical">
             <StackLayout>
-                <Frame WidthRequest="300" VerticalOptions="StartAndExpand">
-                    <Label Text="Nuevo Tipo de Animal" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Orange" />
-                </Frame>
-                <Frame WidthRequest="300" VerticalOptions="EndAndExpand">
+                <Frame WidthRequest="300" VerticalOptions="CenterAndExpand">
                     <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <Grid>
                             <Grid.ColumnDefinitions>

@@ -52,9 +52,6 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout  Spacing="10" Padding="10">
-                <StackLayout>
-                    <Label Text="Tipo de Animales" HorizontalOptions="Center" FontAttributes="Bold" FontSize="Title" TextColor="Orange"/>
-                </StackLayout>
                 <Frame WidthRequest="300" VerticalOptions="StartAndExpand" >
                     <FlexLayout Direction="Column" BackgroundColor="FloralWhite">
                         <Grid RowSpacing="5">

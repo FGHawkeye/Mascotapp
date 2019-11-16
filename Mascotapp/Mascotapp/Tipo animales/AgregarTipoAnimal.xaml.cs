@@ -33,6 +33,7 @@ namespace Mascotapp
         private async void Registrar_Clicked(object sender, EventArgs e)
         {
            string validacion= ValidarForm();
+           bool valido=false;
            if(validacion==""){
                try{
                     TipoAnimal tipo= new TipoAnimal
@@ -42,12 +43,13 @@ namespace Mascotapp
                     };
                     servicioTipoAnimal.GuardarTipoAnimal(tipo);
                     validacion="Se genero el tipo de animal con exito.";
+                    valido=true;
                }catch (Exception ex){
                    validacion="Se produjo un problema, vuelva a intentar.";
                }
            }
            await DisplayAlert("Tipo de Animal", validacion, "Ok");
-           await App.MasterD.Detail.Navigation.PopToRootAsync();
+           if(valido)await App.MasterD.Detail.Navigation.PopToRootAsync();
         }
 
         private void BtnCancelar_Clicked(object sender, EventArgs e)

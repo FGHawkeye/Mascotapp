@@ -105,7 +105,6 @@ namespace Mascotapp
         public string ValidarForm()
         {
             string msg = "";
-            SolicitudAdopcion solicitudAdopcion = servicioSolicitudAdopcion.ObtenerSolicitudAdopcion(idAdop, MainPage.UsuarioRegristrado.IdUsuario.Value);
             if (txtDetalle.Text == "" || txtDescripcion.Text == null)
             {
                 msg = "Falta completar el detalle.";
@@ -119,10 +118,14 @@ namespace Mascotapp
             }else if (MainPage.UsuarioRegristrado.IdUsuario==idUsuarioAdopcion) 
             {
                 msg = "¡No puede solicitar para su propia publicación!";
-            }else if( solicitudAdopcion!= null)
+            }else
             {
-                msg = "Usted ya realizo una solicitud para esta publicación. Estado de la solicitud: " + solicitudAdopcion.Estado+".";
-            }
+                SolicitudAdopcion solicitudAdopcion = servicioSolicitudAdopcion.ObtenerSolicitudAdopcion(idAdop, MainPage.UsuarioRegristrado.IdUsuario.Value);
+                if (solicitudAdopcion != null)
+                {
+                    msg = "Usted ya realizo una solicitud para esta publicación. Estado de la solicitud: " + solicitudAdopcion.Estado + ".";
+                }
+            }            
             return msg;
         }
 

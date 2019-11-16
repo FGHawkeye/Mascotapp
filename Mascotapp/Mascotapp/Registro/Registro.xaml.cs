@@ -112,6 +112,11 @@ namespace Mascotapp.Registro
                     txtContra.Focus();
                     break;
 
+                case 8:
+                    await DisplayAlert("Email existente", "Vuelva a ingresar mail, el que intento registrar ya existe", "Entendido");
+                    txtEmail.Focus();
+                    break;
+
 
             }
 
@@ -140,6 +145,11 @@ namespace Mascotapp.Registro
             if (servicioUsuarios.ValidarUsuarioExistente(txtUsuario.Text) > 0)
             {
                 return 2;
+            }
+            
+            if (servicioUsuarios.ValidarMailExistente(txtEmail.Text) > 0)
+            {
+                return 8;
             }
 
             try

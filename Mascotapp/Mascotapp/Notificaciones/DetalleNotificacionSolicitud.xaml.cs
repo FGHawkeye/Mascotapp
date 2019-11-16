@@ -74,7 +74,7 @@ namespace Mascotapp
                 Console.Write(ex.ToString());
             }
 
-            await DisplayAlert("Adopciones", "Se "+estado+" la solicitud con exito", "OK");
+            await DisplayAlert("Adopciones", "Se a "+estado+" la solicitud con exito", "OK");
             await App.MasterD.Detail.Navigation.PopToRootAsync();
         }
     }
